@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My GitHub Stats & Projects</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 2em; }
+    .repo { margin-bottom: 1em; }
+    .repo a { font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h1>My GitHub Stats & Projects</h1>
+  <div id="stats"></div>
+  <h2>Projects</h2>
+  <div id="repos"></div>
+  <script>
+    const username = 'CodewithD2'; // Change to your GitHub username
+
+    // Fetch user stats
+    fetch(`https://api.github.com/users/${username}`)
+      .then(res => res.json())
+      .then(user => {
+        document.getElementById('stats').innerHTML = `
+          <p><strong>Name:</strong> ${user.name || username}</p>
+          <p><strong>Followers:</strong> ${user.followers}</p>
+          <p><strong>Public Repos:</strong> ${user.public_repos}</p>
+        `;
+      });
+
+    // Fetch repositories
+    fetch(`https://api.github.com/users/${username}/repos?sort=updated`)
+      .then(res => res.json())
+      .then(repos => {
+        document.getElementById('repos').innerHTML = repos
+          .map(repo => `
+            <div class="repo">
+              <a href="${repo.html_url}" target="_blank">${repo.name}</a>
+              <p>${repo.description || ''}</p>
+            </div>
+          `).join('');
+      });
+  </script>
+</body>
+</html>
