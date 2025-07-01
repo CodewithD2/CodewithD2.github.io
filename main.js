@@ -32,9 +32,9 @@ fetch(`https://api.github.com/users/${username}/repos?per_page=100&sort=updated`
           ? `<span class="flex items-center text-yellow-400 text-sm font-semibold ml-2"><i data-feather="star" class="w-4 h-4"></i>${repo.stargazers_count}</span>`
           : '';
         projectList.innerHTML += `
-          <div class="bg-white/80 dark:bg-gradient-to-br dark:from-gray-800 dark:to-gray-900 rounded-3xl shadow-xl p-7 flex flex-col justify-between min-h-[220px] border-2 border-transparent hover:border-pink-400 hover:scale-105 transition duration-300">
+          <div class="bg-white/10 dark:bg-gradient-to-br dark:from-gray-800 dark:to-gray-900 rounded-3xl shadow-xl p-7 flex flex-col justify-between min-h-[220px] border-2 border-transparent hover:border-pink-400 hover:scale-105 transition duration-300">
             <a href="${repo.html_url}" target="_blank" class="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-600 via-pink-500 to-red-400 hover:underline">${repo.name}</a>
-            <p class="mt-2 text-gray-800 dark:text-gray-200 text-base">${repo.description || ''}</p>
+            <p class="mt-2 text-gray-200 text-base">${repo.description || ''}</p>
             <div class="flex items-center justify-between mt-4">
               <div class="flex gap-2 items-center">
                 ${langBadge}
@@ -47,6 +47,36 @@ fetch(`https://api.github.com/users/${username}/repos?per_page=100&sort=updated`
       });
     document.getElementById('stars').textContent = totalStars;
     feather.replace();
+  });
+
+// Fetch latest YouTube video from channel (using RSS feed)
+const ytContainer = document.getElementById('youtube-latest');
+fetch("https://www.youtube.com/feeds/videos.xml?channel_id=UCy9K__3J8QxzH2lZ9kqSeOA")
+  .then(res => res.text())
+  .then(str => (new window.DOMParser()).parseFromString(str, "text/xml"))
+  .then(data => {
+    const entry = data.querySelector("entry");
+    if (!entry) {
+      ytContainer.innerHTML = `<p class="text-gray-400">Could not load latest video.</p>`;
+      return;
+    }
+    const videoId = entry.querySelector("yt\\:videoId, videoId").textContent;
+    const title = entry.querySelector("title").textContent;
+    const published = new Date(entry.querySelector("published").textContent);
+    const link = "https://www.youtube.com/watch?v=" + videoId;
+    const thumbnail = `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`;
+    ytContainer.innerHTML = `
+      <a href="${link}" target="_blank" class="block group">
+        <div class="overflow-hidden rounded-2xl shadow-lg group-hover:scale-105 transition mb-3">
+          <img src="${thumbnail}" alt="${title}" class="w-full h-60 object-cover rounded-2xl"/>
+        </div>
+        <div class="text-lg font-semibold text-pink-300 group-hover:underline">${title}</div>
+        <div class="text-xs text-gray-400 mt-1">${published.toLocaleDateString()}</div>
+      </a>
+    `;
+  })
+  .catch(() => {
+    ytContainer.innerHTML = `<p class="text-gray-400">Could not load latest video.</p>`;
   });
 
 // Dark mode toggle
