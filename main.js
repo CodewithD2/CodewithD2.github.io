@@ -49,7 +49,7 @@ fetch(`https://api.github.com/users/${username}/repos?per_page=100&sort=updated`
     feather.replace();
   });
 
-// Fetch latest YouTube video from channel (using RSS feed)
+// Fetch latest YouTube video from channel (using RSS feed and embed in iframe)
 const ytContainer = document.getElementById('youtube-latest');
 fetch("https://www.youtube.com/feeds/videos.xml?channel_id=UCy9K__3J8QxzH2lZ9kqSeOA")
   .then(res => res.text())
@@ -64,20 +64,22 @@ fetch("https://www.youtube.com/feeds/videos.xml?channel_id=UCy9K__3J8QxzH2lZ9kqS
     const title = entry.querySelector("title").textContent;
     const published = new Date(entry.querySelector("published").textContent);
     const link = "https://www.youtube.com/watch?v=" + videoId;
-    const thumbnail = `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`;
     ytContainer.innerHTML = `
-      <a href="${link}" target="_blank" class="block group">
-        <div class="overflow-hidden rounded-2xl shadow-lg group-hover:scale-105 transition mb-3">
-          <img src="${thumbnail}" alt="${title}" class="w-full h-60 object-cover rounded-2xl"/>
+      <div class="w-full flex flex-col items-center">
+        <div class="w-full aspect-video max-w-xl rounded-2xl overflow-hidden shadow-lg mb-4">
+          <iframe 
+            width="100%" height="315"
+            src="https://www.youtube.com/embed/${videoId}" 
+            title="${title}" 
+            frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen
+            class="w-full h-full"></iframe>
         </div>
-        <div class="text-lg font-semibold text-pink-300 group-hover:underline">${title}</div>
+        <a href="${link}" target="_blank" class="text-lg font-semibold text-pink-300 hover:underline">${title}</a>
         <div class="text-xs text-gray-400 mt-1">${published.toLocaleDateString()}</div>
-      </a>
+      </div>
     `;
   })
-  .catch(() => {
-    ytContainer.innerHTML = `<p class="text-gray-400">Could not load latest video.</p>`;
-  });
 
 // Dark mode toggle
 const darkToggle = document.getElementById('dark-toggle');
