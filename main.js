@@ -18,26 +18,29 @@ fetch(`https://api.github.com/users/${username}/repos?per_page=100&sort=updated`
   .then(repos => {
     let totalStars = 0;
     const projectList = document.getElementById('project-list');
+    projectList.innerHTML = "";
     repos
       .filter(r => !r.fork)
       .sort((a, b) => b.stargazers_count - a.stargazers_count)
+      .slice(0, 9)
       .forEach(repo => {
         totalStars += repo.stargazers_count;
         const langBadge = repo.language
-          ? `<span class="bg-gray-200 dark:bg-gray-700 text-xs rounded px-2 py-1">${repo.language}</span>`
+          ? `<span class="inline-block bg-gradient-to-r from-purple-400 to-pink-400 text-white text-xs font-semibold rounded-full px-3 py-1 mr-2">${repo.language}</span>`
+          : '';
+        const starBadge = repo.stargazers_count > 0
+          ? `<span class="flex items-center text-yellow-400 text-sm font-semibold ml-2"><i data-feather="star" class="w-4 h-4"></i>${repo.stargazers_count}</span>`
           : '';
         projectList.innerHTML += `
-          <div class="bg-white dark:bg-gray-800 shadow rounded p-5 flex flex-col justify-between min-h-[180px]">
-            <div>
-              <a href="${repo.html_url}" target="_blank" class="text-xl font-semibold text-blue-700 dark:text-blue-300 hover:underline">${repo.name}</a>
-              <p class="mt-2 text-gray-700 dark:text-gray-300 text-sm">${repo.description || ''}</p>
-            </div>
+          <div class="bg-white/80 dark:bg-gradient-to-br dark:from-gray-800 dark:to-gray-900 rounded-3xl shadow-xl p-7 flex flex-col justify-between min-h-[220px] border-2 border-transparent hover:border-pink-400 hover:scale-105 transition duration-300">
+            <a href="${repo.html_url}" target="_blank" class="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-600 via-pink-500 to-red-400 hover:underline">${repo.name}</a>
+            <p class="mt-2 text-gray-800 dark:text-gray-200 text-base">${repo.description || ''}</p>
             <div class="flex items-center justify-between mt-4">
-              <div class="flex gap-2">
+              <div class="flex gap-2 items-center">
                 ${langBadge}
-                <span class="flex items-center gap-1 text-sm"><i data-feather="star" class="w-4 h-4"></i> ${repo.stargazers_count}</span>
+                ${starBadge}
               </div>
-              ${repo.homepage ? `<a href="${repo.homepage}" target="_blank" class="text-xs text-blue-600 dark:text-blue-400 underline">Live Demo</a>` : ''}
+              ${repo.homepage ? `<a href="${repo.homepage}" target="_blank" class="text-xs bg-pink-500 text-white px-3 py-1 rounded-full font-bold shadow hover:bg-pink-600 transition">Live Demo</a>` : ''}
             </div>
           </div>
         `;
