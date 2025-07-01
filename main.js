@@ -1,5 +1,10 @@
+const username = "CodewithD2";
+
+// GitHub profile and projects code remains unchanged...
+
+// Fetch latest YouTube video from channel using an RSS-to-JSON proxy
 const ytContainer = document.getElementById('youtube-latest');
-const ytRssUrl = "https://www.youtube.com/feeds/videos.xml?channel_id=UCo0qWmxZdc1FhAL5emRNzcA";
+const ytRssUrl = "https://www.youtube.com/feeds/videos.xml?channel_id=UCy9K__3J8QxzH2lZ9kqSeOA";
 const apiUrl = "https://api.rss2json.com/v1/api.json?rss_url=" + encodeURIComponent(ytRssUrl);
 
 fetch(apiUrl)
@@ -31,3 +36,5 @@ fetch(apiUrl)
   .catch(() => {
     ytContainer.innerHTML = `<p class="text-gray-400">Could not load latest video.</p>`;
   });
+
+// ...rest of your JS unchanged
