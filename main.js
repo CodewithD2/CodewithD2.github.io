@@ -49,7 +49,7 @@ fetch(`https://api.github.com/users/${username}/repos?per_page=100&sort=updated`
     feather.replace();
   });
 
-// Fetch latest YouTube video from channel (using RSS feed and embed in iframe)
+// Fetch and embed latest YouTube video
 const ytContainer = document.getElementById('youtube-latest');
 fetch("https://www.youtube.com/feeds/videos.xml?channel_id=UCy9K__3J8QxzH2lZ9kqSeOA")
   .then(res => res.text())
@@ -63,7 +63,7 @@ fetch("https://www.youtube.com/feeds/videos.xml?channel_id=UCy9K__3J8QxzH2lZ9kqS
     const videoId = entry.querySelector("yt\\:videoId, videoId").textContent;
     const title = entry.querySelector("title").textContent;
     const published = new Date(entry.querySelector("published").textContent);
-    const link = "https://www.youtube.com/watch?v=" + videoId;
+
     ytContainer.innerHTML = `
       <div class="w-full flex flex-col items-center">
         <div class="w-full aspect-video max-w-xl rounded-2xl overflow-hidden shadow-lg mb-4">
@@ -75,11 +75,14 @@ fetch("https://www.youtube.com/feeds/videos.xml?channel_id=UCy9K__3J8QxzH2lZ9kqS
             allowfullscreen
             class="w-full h-full"></iframe>
         </div>
-        <a href="${link}" target="_blank" class="text-lg font-semibold text-pink-300 hover:underline">${title}</a>
+        <a href="https://www.youtube.com/watch?v=${videoId}" target="_blank" class="text-lg font-semibold text-pink-300 hover:underline">${title}</a>
         <div class="text-xs text-gray-400 mt-1">${published.toLocaleDateString()}</div>
       </div>
     `;
   })
+  .catch(() => {
+    ytContainer.innerHTML = `<p class="text-gray-400">Could not load latest video.</p>`;
+  });
 
 // Dark mode toggle
 const darkToggle = document.getElementById('dark-toggle');
