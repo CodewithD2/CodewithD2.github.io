@@ -311,8 +311,9 @@ const addBtn = (lang, t, m, tr = '', ex = '') => {
   const on = inDeck(lang, t);
   return `<button class="icon ${on ? 'on' : ''}" data-add="${esc(t)}" data-l="${lang}" data-m="${esc(m)}" data-tr="${esc(tr)}" data-ex="${esc(ex)}" aria-label="ضيف لجدول الحفظ">${on ? '✓' : '➕'}</button>`;
 };
-const KIND = { story: '📚 قصة', speech: '🎤 خطاب', news: '📰 خبر' };
-const kindLabel = t => t.kind === 'news' ? (t.real ? '📰 خبر حقيقي' : '📰 خبر') : KIND[t.kind];
+const KIND = { story: '📚 قصة', speech: '🎤 خطاب', news: '📰 خبر', classic: '📜 أدب مشهور' };
+const kindLabel = t => t.kind === 'news' ? (t.real ? '📰 خبر حقيقي' : '📰 خبر') : t.kind === 'speech' && t.famous ? '🎤 خطاب مشهور' : KIND[t.kind];
+const tfMatch = (t, k) => k === 'all' || (k === 'famous' ? t.famous : k === 'story' ? (t.kind === 'story' || t.kind === 'classic') : t.kind === k);
 let tf = 'all', tfLang = '';
 
 // ---------- views ----------
@@ -435,16 +436,17 @@ const introHTML = (code, lines) => lines.map(([t, m]) => `<div class="ln"><div><
 function viewTexts(code) {
   const L = LANGS[code];
   if (tfLang !== code) { tf = 'all'; tfLang = code; }
-  const F = [['all', 'الكل'], ['story', '📚 قصص'], ['speech', '🎤 خطابات'], ['news', '📰 أخبار']];
-  const list = L.texts.map((t, i) => [t, i]).filter(([t]) => tf === 'all' || t.kind === tf);
+  const F = [['all', 'الكل'], ['famous', '⭐ مشهور'], ['story', '📚 قصص وأدب'], ['speech', '🎤 خطابات'], ['news', '📰 أخبار']];
+  const list = L.texts.map((t, i) => [t, i]).filter(([t]) => tfMatch(t, tf));
   const done = L.texts.filter((_, i) => read[code + '-' + i]).length;
   return `<div style="--c:${L.color}">${bar('📖 قصص وخطابات وأخبار', 'lang-' + code)}
   <p class="muted" style="margin:0 4px 12px">دوس على أي كلمة في النص تشوف معناها. ولما تخلّص، هيظهرلك كل كلمات النص عشان تضيفها لجدول الحفظ. الأخبار اللي عليها «حقيقي» معلوماتها حقيقية، والباقي مكتوب للتدريب عن مواقف بتحصل فعلًا. قريت ${ar(done)} من ${ar(L.texts.length)}.</p>
-  <div class="filters">${F.map(([k, l]) => `<button class="chip" data-tf="${k}" aria-pressed="${tf === k}">${l} <span style="opacity:.75">${k === 'all' ? L.texts.length : L.texts.filter(t => t.kind === k).length}</span></button>`).join('')}</div>
+  <div class="filters">${F.map(([k, l]) => `<button class="chip" data-tf="${k}" aria-pressed="${tf === k}">${l} <span style="opacity:.75">${L.texts.filter(t => tfMatch(t, k)).length}</span></button>`).join('')}</div>
   <div class="stack">${list.map(([t, i]) => `<button class="tile txt-item" data-go="read-${code}-${i}">
     <span class="te" aria-hidden="true">${t.emoji || '📄'}</span>
     <span class="tb"><span><span class="kind">${kindLabel(t)}</span> <span class="muted" style="font-size:14px">${t.level} · ${ar(t.s.length)} جمل · ${ar(Object.keys(t.v).length)} كلمة</span></span>
     <span class="t tx" style="text-align:left">${esc(t.title)}</span><span class="d tx" style="text-align:left">${esc(t.en)}</span>
+    ${t.src ? `<span class="d tx" style="text-align:left">✍️ ${esc(t.src)}</span>` : ''}
     ${read[code + '-' + i] ? '<span class="d" style="color:var(--good);font-weight:800">✅ قريته</span>' : ''}</span></button>`).join('')}</div></div>`;
 }
 
@@ -452,7 +454,9 @@ function viewRead(code, i) {
   const L = LANGS[code], T = L.texts[i];
   const words = s => s.split(/(\p{L}+)/u).map((p, j) => j % 2 ? `<button class="w ${inDeck(code, p) ? 'saved' : ''}" data-w="${esc(p)}">${esc(p)}</button>` : esc(p)).join('');
   return `<div style="--c:${L.color}" class="${prefs.trans ? '' : 'notrans'}">${bar(kindLabel(T), 'texts-' + code)}
-  <h2 class="tx" style="text-align:left;font-size:24px;margin-top:4px">${esc(T.title)}</h2>
+  <h2 class="tx" style="text-align:left;font-size:24px;margin-top:4px;margin-bottom:2px">${esc(T.title)}</h2>
+  ${T.src ? `<p class="tx muted" style="text-align:left;margin:0 4px 6px">✍️ ${esc(T.src)}</p>` : ''}
+  ${T.famous ? `<p class="muted" style="font-size:14px;margin:0 4px 12px">⭐ نص أصلي من الأدب المشهور، والكاتب متوفّي من زمان فالنص متاح للجميع. ${T.mem ? 'اتكتب من غير مراجعة على المصدر، فممكن يختلف عن الأصل في كلمة أو علامة صغيرة. ' : ''}${T.level === 'متقدم' ? 'لغته قديمة شوية، فمتقلقش لو فيه كلمات صعبة.' : ''}</p>` : ''}
   <div class="row" style="margin-bottom:12px">
     <button class="btn small main" data-sayall-text="${i}" data-l="${code}">🔊 اسمع النص</button>
     <button class="btn small" data-slowall-text="${i}" data-l="${code}">🐢 ببطء</button>
