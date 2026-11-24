@@ -1,0 +1,105 @@
+{
+ "code": "es",
+ "name": "الإسباني",
+ "native": "Español",
+ "flag": "🇪🇸",
+ "tts": "es-ES",
+ "color": "#E8590C",
+ "abcTitle": "الحروف والنطق",
+ "abcIntro": "الإسباني بيتكتب بنفس حروف الإنجليزي، بس فيه حروف وأصوات بتتنطق بشكل مختلف. أهم قاعدة: الإسباني بيتقري زي ما هو مكتوب بالظبط، وكل حرف متحرك ليه صوت واحد بس.",
+ "abc": [
+  {"l":"A E I O U","s":"a, e, i, o, u — always short and the same","ar":"آ، إ، إي، أو، أو","k":"new","ex":"casa · mesa · sí · todo · uno","m":"house · table · yes · all · one","note":"الحروف المتحركة صوتها ثابت دايمًا، مش زي الإنجليزي"},
+  {"l":"Ñ ñ","s":"ny, like 'canyon'","ar":"نيـ","k":"new","ex":"España · niño","m":"Spain · child"},
+  {"l":"J j","s":"strong h from the throat","ar":"خ خفيفة","k":"diff","ex":"jugo · trabajo","m":"juice · work"},
+  {"l":"G + e / i","s":"same as J (throat h)","ar":"خ خفيفة","k":"diff","ex":"gente · general","m":"people · general"},
+  {"l":"G + a / o / u","s":"hard g, like 'go'","ar":"ج مصرية","k":"same","ex":"gato · amigo","m":"cat · friend"},
+  {"l":"H h","s":"silent — never pronounced","ar":"مبتتنطقش","k":"diff","ex":"hola · hora","m":"hello · hour","note":"hola بتتقري «أولا»"},
+  {"l":"LL ll","s":"y, like 'yes'","ar":"ي","k":"diff","ex":"llamar · pollo","m":"to call · chicken"},
+  {"l":"R r","s":"one quick tap of the tongue","ar":"ر خفيفة","k":"diff","ex":"pero · caro","m":"but · expensive"},
+  {"l":"RR / R at start","s":"strong rolled r","ar":"ر مشددة","k":"diff","ex":"perro · rojo","m":"dog · red","note":"pero (لكن) غير perro (كلب)!"},
+  {"l":"V v","s":"almost like b","ar":"ب","k":"diff","ex":"vivir · vida","m":"to live · life"},
+  {"l":"Z z · C + e / i","s":"th in Spain, s in Latin America","ar":"ث (إسبانيا) أو س","k":"diff","ex":"zapato · cielo","m":"shoe · sky"},
+  {"l":"C + a/o/u · QU","s":"k (the u in qu is silent)","ar":"ك","k":"same","ex":"casa · queso","m":"house · cheese"},
+  {"l":"CH ch","s":"ch, like 'chair'","ar":"تش","k":"same","ex":"chocolate · noche","m":"chocolate · night"},
+  {"l":"Á É Í Ó Ú","s":"the accent shows which syllable is stressed","ar":"الضغط على الحرف ده","k":"new","ex":"café · música","m":"coffee · music"},
+  {"l":"¿ ¡","s":"upside-down marks open a question or exclamation","ar":"علامة بتبدأ السؤال","k":"new","ex":"¿Qué tal? · ¡Hola!","m":"How's it going? · Hello!"}
+ ],
+ "phrases": [
+  {"cat":"👋 التحية","items":[
+   ["Hola","Hello"],["Buenos días","Good morning"],["Buenas tardes","Good afternoon"],["Buenas noches","Good evening / Good night"],
+   ["¿Cómo estás?","How are you?"],["Estoy bien, gracias","I'm fine, thanks"],["¿Y tú?","And you?"],
+   ["Mucho gusto","Nice to meet you"],["Adiós","Goodbye"],["Hasta luego","See you later"],["Hasta mañana","See you tomorrow"]]},
+  {"cat":"🙏 الذوق","items":[
+   ["Por favor","Please"],["Gracias","Thank you"],["De nada","You're welcome"],["Perdón","Excuse me / Sorry"],["Lo siento","I'm sorry"],["Sí / No","Yes / No"]]},
+  {"cat":"❓ أسئلة","items":[
+   ["¿Cómo te llamas?","What's your name?"],["¿De dónde eres?","Where are you from?"],["¿Dónde está el baño?","Where is the bathroom?"],
+   ["¿Cuánto cuesta?","How much does it cost?"],["¿Qué hora es?","What time is it?"],["¿Hablas inglés?","Do you speak English?"],
+   ["¿Qué significa esto?","What does this mean?"],["¿Puedes repetir, por favor?","Can you repeat, please?"],["¿Puedes hablar más despacio?","Can you speak more slowly?"]]},
+  {"cat":"☕ كل يوم","items":[
+   ["No entiendo","I don't understand"],["Tengo hambre","I'm hungry"],["Tengo sed","I'm thirsty"],["Estoy cansado / cansada","I'm tired (m / f)"],
+   ["Me gusta","I like it"],["No me gusta","I don't like it"],["Quiero un café, por favor","I want a coffee, please"],["La cuenta, por favor","The check, please"],
+   ["Necesito ayuda","I need help"],["¡Vamos!","Let's go!"],["¡Claro!","Of course!"],["Vale","OK (Spain)"]]},
+  {"cat":"🔢 الأرقام","items":[
+   ["uno","one"],["dos","two"],["tres","three"],["cuatro","four"],["cinco","five"],["seis","six"],["siete","seven"],["ocho","eight"],["nueve","nine"],["diez","ten"],
+   ["veinte","twenty"],["cien","one hundred"],["mil","one thousand"]]}
+ ],
+ "texts": [
+  {"kind":"story","title":"El café de la mañana","en":"The morning coffee","level":"مبتدئ",
+   "s":[
+    ["Cada mañana, Ana va a un café pequeño.","Every morning, Ana goes to a small café."],
+    ["El café está cerca de su casa.","The café is near her house."],
+    ["Ella pide un café con leche y un pan dulce.","She orders a coffee with milk and a sweet bread."],
+    ["El camarero se llama Luis y siempre sonríe.","The waiter is called Luis and he always smiles."],
+    ["Hoy Luis le pregunta: «¿Qué tal tu día?»","Today Luis asks her: \"How is your day?\""],
+    ["Ana responde: «Muy bien, gracias. Hoy empiezo un trabajo nuevo.»","Ana answers: \"Very good, thanks. Today I start a new job.\""],
+    ["Luis dice: «¡Felicidades! El café es gratis hoy.»","Luis says: \"Congratulations! The coffee is free today.\""],
+    ["Ana está muy feliz.","Ana is very happy."]],
+   "v":{"cada":"each, every","mañana":"morning (also: tomorrow)","ana":"Ana (name)","va":"goes (ir = to go)","a":"to, at","un":"a, an","café":"coffee; café","pequeño":"small","el":"the","está":"is (estar — location / state)","cerca":"near","de":"of, from","su":"his, her, their","casa":"house, home","ella":"she","pide":"orders, asks for (pedir)","con":"with","leche":"milk","y":"and","pan":"bread","dulce":"sweet","camarero":"waiter","se":"himself/herself (se llama = is called)","llama":"calls (llamarse = to be called)","luis":"Luis (name)","siempre":"always","sonríe":"smiles (sonreír)","hoy":"today","le":"(to) him / her","pregunta":"asks (preguntar); question","qué":"what","tal":"such (¿qué tal? = how is…?)","tu":"your","día":"day","responde":"answers (responder)","muy":"very","bien":"well, good","gracias":"thank you","empiezo":"I start (empezar)","trabajo":"job, work","nuevo":"new","dice":"says (decir)","felicidades":"congratulations","es":"is (ser — identity / description)","gratis":"free (no cost)","feliz":"happy"}},
+  {"kind":"story","title":"Un sábado en Madrid","en":"A Saturday in Madrid","level":"مبتدئ",
+   "s":[
+    ["Pablo vive en Madrid con su familia.","Pablo lives in Madrid with his family."],
+    ["Los sábados, toda la familia sale a pasear.","On Saturdays, the whole family goes out for a walk."],
+    ["Primero visitan el parque del Retiro.","First they visit Retiro Park."],
+    ["Los niños juegan y los padres leen un libro.","The children play and the parents read a book."],
+    ["Después, comen en un restaurante típico.","Afterwards, they eat at a typical restaurant."],
+    ["A Pablo le gusta mucho la tortilla de patatas.","Pablo really likes the potato omelette."],
+    ["Por la tarde, vuelven a casa en metro.","In the afternoon, they go back home by metro."],
+    ["Están cansados, pero contentos.","They are tired, but happy."]],
+   "v":{"pablo":"Pablo (name)","vive":"lives (vivir)","en":"in, on, by","madrid":"Madrid","con":"with","su":"his, her, their","familia":"family","los":"the (plural)","sábados":"Saturdays","toda":"all, whole","la":"the","sale":"goes out (salir)","a":"to","pasear":"to walk, to stroll","primero":"first","visitan":"they visit (visitar)","el":"the","parque":"park","del":"of the (de + el)","retiro":"Retiro (park name; 'retreat')","niños":"children","juegan":"they play (jugar)","y":"and","padres":"parents","leen":"they read (leer)","un":"a, an","libro":"book","después":"afterwards, later","comen":"they eat (comer)","restaurante":"restaurant","típico":"typical","le":"(to) him / her","gusta":"pleases (gustar — me gusta = I like)","mucho":"a lot, much","tortilla":"omelette (Spanish tortilla)","de":"of","patatas":"potatoes","por":"in, for, through (por la tarde = in the afternoon)","tarde":"afternoon (also: late)","vuelven":"they return (volver)","casa":"home, house","metro":"metro, subway","están":"they are (estar)","cansados":"tired","pero":"but","contentos":"happy, glad"}},
+  {"kind":"speech","title":"Nunca es tarde para aprender","en":"It's never too late to learn","level":"متوسط",
+   "s":[
+    ["Queridos amigos, hoy quiero hablar de algo importante.","Dear friends, today I want to talk about something important."],
+    ["Muchas personas piensan que es tarde para aprender un idioma.","Many people think it is too late to learn a language."],
+    ["No es verdad.","It is not true."],
+    ["Nuestro cerebro puede aprender cosas nuevas a cualquier edad.","Our brain can learn new things at any age."],
+    ["El secreto es practicar un poco todos los días.","The secret is to practice a little every day."],
+    ["Diez minutos al día son mejores que dos horas una vez por semana.","Ten minutes a day are better than two hours once a week."],
+    ["Escuchen, repitan y no tengan miedo de cometer errores.","Listen, repeat, and don't be afraid of making mistakes."],
+    ["¡Ustedes pueden hacerlo!","You can do it!"]],
+   "v":{"queridos":"dear (plural)","amigos":"friends","hoy":"today","quiero":"I want (querer)","hablar":"to talk, to speak","de":"about, of","algo":"something","importante":"important","muchas":"many (feminine)","personas":"people, persons","piensan":"they think (pensar)","que":"that; than","es":"is (ser)","tarde":"late","para":"to, in order to, for","aprender":"to learn","un":"a, an","idioma":"language","no":"no, not","verdad":"truth (es verdad = it's true)","nuestro":"our","cerebro":"brain","puede":"can (poder)","cosas":"things","nuevas":"new (feminine plural)","a":"at, to","cualquier":"any","edad":"age","el":"the","secreto":"secret","practicar":"to practice","poco":"little (un poco = a little)","todos":"all, every (todos los días = every day)","los":"the (plural)","días":"days","diez":"ten","minutos":"minutes","al":"per, to the (a + el)","día":"day","son":"are (ser)","mejores":"better (plural)","dos":"two","horas":"hours","una":"one, a","vez":"time, occasion (una vez = once)","por":"per, for","semana":"week","escuchen":"listen! (you all)","repitan":"repeat! (you all)","y":"and","tengan":"have (you all) — no tengan miedo = don't be afraid","miedo":"fear","cometer":"to commit, to make (a mistake)","errores":"mistakes, errors","ustedes":"you (plural)","pueden":"you (all) can (poder)","hacerlo":"to do it (hacer + lo)"}},
+  {"kind":"news","title":"Nueva biblioteca en el centro de la ciudad","en":"New library in the city center","level":"متوسط",
+   "s":[
+    ["La ciudad abrió ayer una nueva biblioteca en el centro.","The city opened a new library downtown yesterday."],
+    ["El edificio tiene tres pisos y más de veinte mil libros.","The building has three floors and more than twenty thousand books."],
+    ["También hay una sala con computadoras para estudiantes.","There is also a room with computers for students."],
+    ["La entrada es gratis para todos.","Entry is free for everyone."],
+    ["La alcaldesa dijo: «Queremos más lectores en nuestra ciudad».","The mayor said: \"We want more readers in our city.\""],
+    ["La biblioteca abre de lunes a sábado, de nueve a ocho.","The library is open Monday to Saturday, from nine to eight."],
+    ["Muchos vecinos ya visitaron el lugar el primer día.","Many neighbors already visited the place on the first day."]],
+   "v":{"la":"the","ciudad":"city","abrió":"opened (abrir)","ayer":"yesterday","una":"a, one","nueva":"new","biblioteca":"library","en":"in","el":"the","centro":"center, downtown","edificio":"building","tiene":"has (tener)","tres":"three","pisos":"floors","y":"and","más":"more","de":"of, than, from","veinte":"twenty","mil":"thousand","libros":"books","también":"also, too","hay":"there is / there are","sala":"room, hall","con":"with","computadoras":"computers","para":"for","estudiantes":"students","entrada":"entrance, entry","es":"is (ser)","gratis":"free (no cost)","todos":"everyone, all","alcaldesa":"mayor (woman)","dijo":"said (decir)","queremos":"we want (querer)","lectores":"readers","nuestra":"our","abre":"opens (abrir)","lunes":"Monday","a":"to","sábado":"Saturday","nueve":"nine","ocho":"eight","muchos":"many","vecinos":"neighbors","ya":"already","visitaron":"they visited (visitar)","lugar":"place","primer":"first","día":"day"}}
+ ],
+ "me": {
+  "hello": "Hola, me llamo {name}.", "helloEn": "Hi, my name is {name}.",
+  "age": "Tengo {age} años.", "ageEn": "I am {age} years old.",
+  "from": "Soy de {country}. Soy {demonym}.", "fromEn": "I'm from {country_en}. I'm {demonym_en}.",
+  "live": "Vivo en {city}.", "liveEn": "I live in {city}.",
+  "job": "Soy {job}.", "jobEn": "I'm {job_en}.",
+  "likes": "Me gusta {hobbies}.", "likesEn": "I like {hobbies_en}.",
+  "and": "y",
+  "langs": "Hablo árabe e inglés, y ahora estoy aprendiendo español.", "langsEn": "I speak Arabic and English, and now I'm learning Spanish.",
+  "bye": "¡Mucho gusto!", "byeEn": "Nice to meet you!",
+  "countries": {"eg":["Egipto","egipcio","egipcia"],"sa":["Arabia Saudita","saudí","saudí"],"ae":["los Emiratos Árabes Unidos","emiratí","emiratí"],"jo":["Jordania","jordano","jordana"],"us":["Estados Unidos","estadounidense","estadounidense"]},
+  "jobs": {"engineer":["ingeniero","ingeniera"],"doctor":["médico","médica"],"teacher":["profesor","profesora"],"student":["estudiante","estudiante"],"programmer":["programador","programadora"],"accountant":["contador","contadora"],"designer":["diseñador","diseñadora"],"manager":["gerente","gerente"],"business":["empresario","empresaria"]},
+  "hobbies": {"read":"leer","travel":"viajar","cook":"cocinar","football":"jugar al fútbol","music":"escuchar música","movies":"ver películas","code":"programar","swim":"nadar"}
+ }
+}
