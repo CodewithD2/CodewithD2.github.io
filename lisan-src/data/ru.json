@@ -8,117 +8,1808 @@
  "abcTitle": "الحروف الروسية (الكيريلية)",
  "abcIntro": "الحروف الروسية ٣٣ حرف. متخافش منها: فيه حروف شبه الإنجليزي وبتتنطق زيه، وفيه حروف شكلها إنجليزي بس صوتها مختلف (دي اللي بتلخبط، فركّز عليها)، والباقي حروف جديدة. ابدأ بالمجموعة الأولى، وبعدها التانية، وبعدها التالتة.",
  "abc": [
-  {"l":"А а","s":"a, as in 'father'","ar":"آ","k":"same","ex":"мама","tr":"mama","m":"mom"},
-  {"l":"Б б","s":"b","ar":"ب","k":"new","ex":"банк","tr":"bank","m":"bank"},
-  {"l":"В в","s":"v","ar":"ڤ","k":"false","ex":"вода","tr":"voda","m":"water","note":"شكله B بس صوته V"},
-  {"l":"Г г","s":"g, as in 'go'","ar":"ج مصرية","k":"new","ex":"город","tr":"gorod","m":"city"},
-  {"l":"Д д","s":"d","ar":"د","k":"new","ex":"дом","tr":"dom","m":"house"},
-  {"l":"Е е","s":"ye, as in 'yes'","ar":"يِه","k":"false","ex":"еда","tr":"yeda","m":"food","note":"شكله E بس بيتنطق «يه»"},
-  {"l":"Ё ё","s":"yo, as in 'yogurt'","ar":"يو","k":"new","ex":"ёлка","tr":"yolka","m":"Christmas tree"},
-  {"l":"Ж ж","s":"zh, like 's' in 'measure'","ar":"ج شامية","k":"new","ex":"журнал","tr":"zhurnal","m":"magazine"},
-  {"l":"З з","s":"z","ar":"ز","k":"new","ex":"зима","tr":"zima","m":"winter","note":"شبه الرقم 3"},
-  {"l":"И и","s":"ee, as in 'see'","ar":"إي","k":"new","ex":"игра","tr":"igra","m":"game","note":"شبه N مقلوبة"},
-  {"l":"Й й","s":"short y, as in 'boy'","ar":"ي ساكنة","k":"new","ex":"мой","tr":"moy","m":"my"},
-  {"l":"К к","s":"k","ar":"ك","k":"same","ex":"кот","tr":"kot","m":"cat"},
-  {"l":"Л л","s":"l","ar":"ل","k":"new","ex":"лампа","tr":"lampa","m":"lamp"},
-  {"l":"М м","s":"m","ar":"م","k":"same","ex":"мир","tr":"mir","m":"world; peace"},
-  {"l":"Н н","s":"n","ar":"ن","k":"false","ex":"нос","tr":"nos","m":"nose","note":"شكله H بس صوته N"},
-  {"l":"О о","s":"o (sounds like 'a' when not stressed)","ar":"أو","k":"same","ex":"окно","tr":"okno","m":"window"},
-  {"l":"П п","s":"p","ar":"پ","k":"new","ex":"папа","tr":"papa","m":"dad"},
-  {"l":"Р р","s":"rolled r","ar":"ر","k":"false","ex":"рука","tr":"ruka","m":"hand","note":"شكله P بس صوته R"},
-  {"l":"С с","s":"s","ar":"س","k":"false","ex":"сок","tr":"sok","m":"juice","note":"شكله C بس صوته دايمًا S"},
-  {"l":"Т т","s":"t","ar":"ت","k":"same","ex":"такси","tr":"taksi","m":"taxi"},
-  {"l":"У у","s":"oo, as in 'food'","ar":"أوو","k":"false","ex":"утро","tr":"utro","m":"morning","note":"شكله y بس صوته OO"},
-  {"l":"Ф ф","s":"f","ar":"ف","k":"new","ex":"фото","tr":"foto","m":"photo"},
-  {"l":"Х х","s":"kh","ar":"خ","k":"false","ex":"хлеб","tr":"khleb","m":"bread","note":"شكله X بس صوته خ"},
-  {"l":"Ц ц","s":"ts, as in 'cats'","ar":"تس","k":"new","ex":"цирк","tr":"tsirk","m":"circus"},
-  {"l":"Ч ч","s":"ch, as in 'chair'","ar":"تش","k":"new","ex":"чай","tr":"chay","m":"tea","note":"شبه الرقم 4"},
-  {"l":"Ш ш","s":"sh","ar":"ش","k":"new","ex":"школа","tr":"shkola","m":"school"},
-  {"l":"Щ щ","s":"soft, long sh","ar":"ش ممدودة","k":"new","ex":"борщ","tr":"borshch","m":"borscht (soup)"},
-  {"l":"Ъ ъ","s":"hard sign — no sound, a short pause","ar":"مالوش صوت","k":"new","ex":"объект","tr":"ob\"yekt","m":"object"},
-  {"l":"Ы ы","s":"deep 'i' — say 'ee' with the tongue pulled back","ar":"إي من الزور","k":"new","ex":"сыр","tr":"syr","m":"cheese"},
-  {"l":"Ь ь","s":"soft sign — no sound, softens the letter before","ar":"بيليّن الحرف اللي قبله","k":"new","ex":"день","tr":"den'","m":"day"},
-  {"l":"Э э","s":"e, as in 'met'","ar":"إ","k":"new","ex":"это","tr":"eto","m":"this"},
-  {"l":"Ю ю","s":"yu, as in 'you'","ar":"يو","k":"new","ex":"юг","tr":"yug","m":"south"},
-  {"l":"Я я","s":"ya, as in 'yard'","ar":"يا","k":"new","ex":"яблоко","tr":"yabloko","m":"apple","note":"شبه R مقلوبة"}
+  {
+   "l": "А а",
+   "s": "a, as in 'father'",
+   "ar": "آ",
+   "k": "same",
+   "ex": "мама",
+   "tr": "mama",
+   "m": "mom"
+  },
+  {
+   "l": "Б б",
+   "s": "b",
+   "ar": "ب",
+   "k": "new",
+   "ex": "банк",
+   "tr": "bank",
+   "m": "bank"
+  },
+  {
+   "l": "В в",
+   "s": "v",
+   "ar": "ڤ",
+   "k": "false",
+   "ex": "вода",
+   "tr": "voda",
+   "m": "water",
+   "note": "شكله B بس صوته V"
+  },
+  {
+   "l": "Г г",
+   "s": "g, as in 'go'",
+   "ar": "ج مصرية",
+   "k": "new",
+   "ex": "город",
+   "tr": "gorod",
+   "m": "city"
+  },
+  {
+   "l": "Д д",
+   "s": "d",
+   "ar": "د",
+   "k": "new",
+   "ex": "дом",
+   "tr": "dom",
+   "m": "house"
+  },
+  {
+   "l": "Е е",
+   "s": "ye, as in 'yes'",
+   "ar": "يِه",
+   "k": "false",
+   "ex": "еда",
+   "tr": "yeda",
+   "m": "food",
+   "note": "شكله E بس بيتنطق «يه»"
+  },
+  {
+   "l": "Ё ё",
+   "s": "yo, as in 'yogurt'",
+   "ar": "يو",
+   "k": "new",
+   "ex": "ёлка",
+   "tr": "yolka",
+   "m": "Christmas tree"
+  },
+  {
+   "l": "Ж ж",
+   "s": "zh, like 's' in 'measure'",
+   "ar": "ج شامية",
+   "k": "new",
+   "ex": "журнал",
+   "tr": "zhurnal",
+   "m": "magazine"
+  },
+  {
+   "l": "З з",
+   "s": "z",
+   "ar": "ز",
+   "k": "new",
+   "ex": "зима",
+   "tr": "zima",
+   "m": "winter",
+   "note": "شبه الرقم 3"
+  },
+  {
+   "l": "И и",
+   "s": "ee, as in 'see'",
+   "ar": "إي",
+   "k": "new",
+   "ex": "игра",
+   "tr": "igra",
+   "m": "game",
+   "note": "شبه N مقلوبة"
+  },
+  {
+   "l": "Й й",
+   "s": "short y, as in 'boy'",
+   "ar": "ي ساكنة",
+   "k": "new",
+   "ex": "мой",
+   "tr": "moy",
+   "m": "my"
+  },
+  {
+   "l": "К к",
+   "s": "k",
+   "ar": "ك",
+   "k": "same",
+   "ex": "кот",
+   "tr": "kot",
+   "m": "cat"
+  },
+  {
+   "l": "Л л",
+   "s": "l",
+   "ar": "ل",
+   "k": "new",
+   "ex": "лампа",
+   "tr": "lampa",
+   "m": "lamp"
+  },
+  {
+   "l": "М м",
+   "s": "m",
+   "ar": "م",
+   "k": "same",
+   "ex": "мир",
+   "tr": "mir",
+   "m": "world; peace"
+  },
+  {
+   "l": "Н н",
+   "s": "n",
+   "ar": "ن",
+   "k": "false",
+   "ex": "нос",
+   "tr": "nos",
+   "m": "nose",
+   "note": "شكله H بس صوته N"
+  },
+  {
+   "l": "О о",
+   "s": "o (sounds like 'a' when not stressed)",
+   "ar": "أو",
+   "k": "same",
+   "ex": "окно",
+   "tr": "okno",
+   "m": "window"
+  },
+  {
+   "l": "П п",
+   "s": "p",
+   "ar": "پ",
+   "k": "new",
+   "ex": "папа",
+   "tr": "papa",
+   "m": "dad"
+  },
+  {
+   "l": "Р р",
+   "s": "rolled r",
+   "ar": "ر",
+   "k": "false",
+   "ex": "рука",
+   "tr": "ruka",
+   "m": "hand",
+   "note": "شكله P بس صوته R"
+  },
+  {
+   "l": "С с",
+   "s": "s",
+   "ar": "س",
+   "k": "false",
+   "ex": "сок",
+   "tr": "sok",
+   "m": "juice",
+   "note": "شكله C بس صوته دايمًا S"
+  },
+  {
+   "l": "Т т",
+   "s": "t",
+   "ar": "ت",
+   "k": "same",
+   "ex": "такси",
+   "tr": "taksi",
+   "m": "taxi"
+  },
+  {
+   "l": "У у",
+   "s": "oo, as in 'food'",
+   "ar": "أوو",
+   "k": "false",
+   "ex": "утро",
+   "tr": "utro",
+   "m": "morning",
+   "note": "شكله y بس صوته OO"
+  },
+  {
+   "l": "Ф ф",
+   "s": "f",
+   "ar": "ف",
+   "k": "new",
+   "ex": "фото",
+   "tr": "foto",
+   "m": "photo"
+  },
+  {
+   "l": "Х х",
+   "s": "kh",
+   "ar": "خ",
+   "k": "false",
+   "ex": "хлеб",
+   "tr": "khleb",
+   "m": "bread",
+   "note": "شكله X بس صوته خ"
+  },
+  {
+   "l": "Ц ц",
+   "s": "ts, as in 'cats'",
+   "ar": "تس",
+   "k": "new",
+   "ex": "цирк",
+   "tr": "tsirk",
+   "m": "circus"
+  },
+  {
+   "l": "Ч ч",
+   "s": "ch, as in 'chair'",
+   "ar": "تش",
+   "k": "new",
+   "ex": "чай",
+   "tr": "chay",
+   "m": "tea",
+   "note": "شبه الرقم 4"
+  },
+  {
+   "l": "Ш ш",
+   "s": "sh",
+   "ar": "ش",
+   "k": "new",
+   "ex": "школа",
+   "tr": "shkola",
+   "m": "school"
+  },
+  {
+   "l": "Щ щ",
+   "s": "soft, long sh",
+   "ar": "ش ممدودة",
+   "k": "new",
+   "ex": "борщ",
+   "tr": "borshch",
+   "m": "borscht (soup)"
+  },
+  {
+   "l": "Ъ ъ",
+   "s": "hard sign — no sound, a short pause",
+   "ar": "مالوش صوت",
+   "k": "new",
+   "ex": "объект",
+   "tr": "ob\"yekt",
+   "m": "object"
+  },
+  {
+   "l": "Ы ы",
+   "s": "deep 'i' — say 'ee' with the tongue pulled back",
+   "ar": "إي من الزور",
+   "k": "new",
+   "ex": "сыр",
+   "tr": "syr",
+   "m": "cheese"
+  },
+  {
+   "l": "Ь ь",
+   "s": "soft sign — no sound, softens the letter before",
+   "ar": "بيليّن الحرف اللي قبله",
+   "k": "new",
+   "ex": "день",
+   "tr": "den'",
+   "m": "day"
+  },
+  {
+   "l": "Э э",
+   "s": "e, as in 'met'",
+   "ar": "إ",
+   "k": "new",
+   "ex": "это",
+   "tr": "eto",
+   "m": "this"
+  },
+  {
+   "l": "Ю ю",
+   "s": "yu, as in 'you'",
+   "ar": "يو",
+   "k": "new",
+   "ex": "юг",
+   "tr": "yug",
+   "m": "south"
+  },
+  {
+   "l": "Я я",
+   "s": "ya, as in 'yard'",
+   "ar": "يا",
+   "k": "new",
+   "ex": "яблоко",
+   "tr": "yabloko",
+   "m": "apple",
+   "note": "شبه R مقلوبة"
+  }
  ],
  "phrases": [
-  {"cat":"👋 التحية","items":[
-   ["Привет","Hi","privet"],["Здравствуйте","Hello (formal)","zdravstvuyte"],["Доброе утро","Good morning","dobroye utro"],
-   ["Добрый день","Good afternoon","dobryy den'"],["Добрый вечер","Good evening","dobryy vecher"],["Как дела?","How are you?","kak dela?"],
-   ["Хорошо, спасибо","Fine, thanks","khorosho, spasibo"],["А у тебя?","And you?","a u tebya?"],["Очень приятно","Nice to meet you","ochen' priyatno"],
-   ["Пока","Bye","poka"],["До свидания","Goodbye","do svidaniya"],["До завтра","See you tomorrow","do zavtra"]]},
-  {"cat":"🙏 الذوق","items":[
-   ["Пожалуйста","Please / You're welcome","pozhaluysta"],["Спасибо","Thank you","spasibo"],["Извините","Excuse me / Sorry","izvinite"],["Да / Нет","Yes / No","da / net"]]},
-  {"cat":"❓ أسئلة","items":[
-   ["Как тебя зовут?","What's your name?","kak tebya zovut?"],["Откуда ты?","Where are you from?","otkuda ty?"],["Где туалет?","Where is the toilet?","gde tualet?"],
-   ["Сколько это стоит?","How much does it cost?","skol'ko eto stoit?"],["Который час?","What time is it?","kotoryy chas?"],
-   ["Ты говоришь по-английски?","Do you speak English?","ty govorish' po-angliyski?"],["Что это значит?","What does this mean?","chto eto znachit?"],
-   ["Повторите, пожалуйста","Repeat, please","povtorite, pozhaluysta"],["Говорите медленнее, пожалуйста","Speak more slowly, please","govorite medlenneye, pozhaluysta"]]},
-  {"cat":"☕ كل يوم","items":[
-   ["Я не понимаю","I don't understand","ya ne ponimayu"],["Я хочу есть","I'm hungry (I want to eat)","ya khochu yest'"],["Я хочу пить","I'm thirsty (I want to drink)","ya khochu pit'"],
-   ["Я устал / Я устала","I'm tired (m / f)","ya ustal / ya ustala"],["Мне нравится","I like it","mne nravitsya"],["Мне не нравится","I don't like it","mne ne nravitsya"],
-   ["Кофе, пожалуйста","Coffee, please","kofe, pozhaluysta"],["Счёт, пожалуйста","The check, please","schyot, pozhaluysta"],["Мне нужна помощь","I need help","mne nuzhna pomoshch'"],
-   ["Давай!","Let's go! / Come on!","davay!"],["Конечно","Of course","konechno"],["Хорошо","Good / OK","khorosho"]]},
-  {"cat":"🔢 الأرقام","items":[
-   ["один","one","odin"],["два","two","dva"],["три","three","tri"],["четыре","four","chetyre"],["пять","five","pyat'"],["шесть","six","shest'"],
-   ["семь","seven","sem'"],["восемь","eight","vosem'"],["девять","nine","devyat'"],["десять","ten","desyat'"],["двадцать","twenty","dvadtsat'"],["сто","one hundred","sto"],["тысяча","one thousand","tysyacha"]]}
+  {
+   "cat": "👋 التحية",
+   "items": [
+    [
+     "Привет",
+     "Hi",
+     "privet"
+    ],
+    [
+     "Здравствуйте",
+     "Hello (formal)",
+     "zdravstvuyte"
+    ],
+    [
+     "Доброе утро",
+     "Good morning",
+     "dobroye utro"
+    ],
+    [
+     "Добрый день",
+     "Good afternoon",
+     "dobryy den'"
+    ],
+    [
+     "Добрый вечер",
+     "Good evening",
+     "dobryy vecher"
+    ],
+    [
+     "Как дела?",
+     "How are you?",
+     "kak dela?"
+    ],
+    [
+     "Хорошо, спасибо",
+     "Fine, thanks",
+     "khorosho, spasibo"
+    ],
+    [
+     "А у тебя?",
+     "And you?",
+     "a u tebya?"
+    ],
+    [
+     "Очень приятно",
+     "Nice to meet you",
+     "ochen' priyatno"
+    ],
+    [
+     "Пока",
+     "Bye",
+     "poka"
+    ],
+    [
+     "До свидания",
+     "Goodbye",
+     "do svidaniya"
+    ],
+    [
+     "До завтра",
+     "See you tomorrow",
+     "do zavtra"
+    ]
+   ]
+  },
+  {
+   "cat": "🙏 الذوق",
+   "items": [
+    [
+     "Пожалуйста",
+     "Please / You're welcome",
+     "pozhaluysta"
+    ],
+    [
+     "Спасибо",
+     "Thank you",
+     "spasibo"
+    ],
+    [
+     "Извините",
+     "Excuse me / Sorry",
+     "izvinite"
+    ],
+    [
+     "Да / Нет",
+     "Yes / No",
+     "da / net"
+    ]
+   ]
+  },
+  {
+   "cat": "❓ أسئلة",
+   "items": [
+    [
+     "Как тебя зовут?",
+     "What's your name?",
+     "kak tebya zovut?"
+    ],
+    [
+     "Откуда ты?",
+     "Where are you from?",
+     "otkuda ty?"
+    ],
+    [
+     "Где туалет?",
+     "Where is the toilet?",
+     "gde tualet?"
+    ],
+    [
+     "Сколько это стоит?",
+     "How much does it cost?",
+     "skol'ko eto stoit?"
+    ],
+    [
+     "Который час?",
+     "What time is it?",
+     "kotoryy chas?"
+    ],
+    [
+     "Ты говоришь по-английски?",
+     "Do you speak English?",
+     "ty govorish' po-angliyski?"
+    ],
+    [
+     "Что это значит?",
+     "What does this mean?",
+     "chto eto znachit?"
+    ],
+    [
+     "Повторите, пожалуйста",
+     "Repeat, please",
+     "povtorite, pozhaluysta"
+    ],
+    [
+     "Говорите медленнее, пожалуйста",
+     "Speak more slowly, please",
+     "govorite medlenneye, pozhaluysta"
+    ]
+   ]
+  },
+  {
+   "cat": "☕ كل يوم",
+   "items": [
+    [
+     "Я не понимаю",
+     "I don't understand",
+     "ya ne ponimayu"
+    ],
+    [
+     "Я хочу есть",
+     "I'm hungry (I want to eat)",
+     "ya khochu yest'"
+    ],
+    [
+     "Я хочу пить",
+     "I'm thirsty (I want to drink)",
+     "ya khochu pit'"
+    ],
+    [
+     "Я устал / Я устала",
+     "I'm tired (m / f)",
+     "ya ustal / ya ustala"
+    ],
+    [
+     "Мне нравится",
+     "I like it",
+     "mne nravitsya"
+    ],
+    [
+     "Мне не нравится",
+     "I don't like it",
+     "mne ne nravitsya"
+    ],
+    [
+     "Кофе, пожалуйста",
+     "Coffee, please",
+     "kofe, pozhaluysta"
+    ],
+    [
+     "Счёт, пожалуйста",
+     "The check, please",
+     "schyot, pozhaluysta"
+    ],
+    [
+     "Мне нужна помощь",
+     "I need help",
+     "mne nuzhna pomoshch'"
+    ],
+    [
+     "Давай!",
+     "Let's go! / Come on!",
+     "davay!"
+    ],
+    [
+     "Конечно",
+     "Of course",
+     "konechno"
+    ],
+    [
+     "Хорошо",
+     "Good / OK",
+     "khorosho"
+    ]
+   ]
+  },
+  {
+   "cat": "🔢 الأرقام",
+   "items": [
+    [
+     "один",
+     "one",
+     "odin"
+    ],
+    [
+     "два",
+     "two",
+     "dva"
+    ],
+    [
+     "три",
+     "three",
+     "tri"
+    ],
+    [
+     "четыре",
+     "four",
+     "chetyre"
+    ],
+    [
+     "пять",
+     "five",
+     "pyat'"
+    ],
+    [
+     "шесть",
+     "six",
+     "shest'"
+    ],
+    [
+     "семь",
+     "seven",
+     "sem'"
+    ],
+    [
+     "восемь",
+     "eight",
+     "vosem'"
+    ],
+    [
+     "девять",
+     "nine",
+     "devyat'"
+    ],
+    [
+     "десять",
+     "ten",
+     "desyat'"
+    ],
+    [
+     "двадцать",
+     "twenty",
+     "dvadtsat'"
+    ],
+    [
+     "сто",
+     "one hundred",
+     "sto"
+    ],
+    [
+     "тысяча",
+     "one thousand",
+     "tysyacha"
+    ]
+   ]
+  }
  ],
  "texts": [
-  {"kind":"story","title":"Утро Ивана","en":"Ivan's morning","level":"مبتدئ",
-   "s":[
-    ["Иван просыпается в семь часов.","Ivan wakes up at seven o'clock."],
-    ["Он пьёт кофе и ест бутерброд.","He drinks coffee and eats a sandwich."],
-    ["Потом он идёт на работу.","Then he goes to work."],
-    ["Его офис находится недалеко от дома.","His office is not far from home."],
-    ["На улице холодно, и идёт снег.","It's cold outside, and it's snowing."],
-    ["Иван любит зиму, потому что она очень красивая.","Ivan loves winter because it is very beautiful."],
-    ["На работе его ждут коллеги.","At work, his colleagues are waiting for him."],
-    ["Они говорят: «Доброе утро, Иван!»","They say: \"Good morning, Ivan!\""]],
-   "v":{"иван":"Ivan (name)","просыпается":"wakes up (просыпаться)","в":"in, at","семь":"seven","часов":"o'clock, hours (час)","он":"he","пьёт":"drinks (пить)","кофе":"coffee","и":"and","ест":"eats (есть)","бутерброд":"sandwich","потом":"then, later","идёт":"goes, walks (идти); идёт снег = it's snowing","на":"to, on, at","работу":"work (работа — to work)","его":"his; him","офис":"office","находится":"is located (находиться)","недалеко":"not far","от":"from","дома":"home, house (дом — from home)","улице":"street (на улице = outside)","холодно":"(it is) cold","снег":"snow","любит":"loves (любить)","зиму":"winter (зима)","потому":"because (потому что)","что":"that; what (потому что = because)","она":"she; it","очень":"very","красивая":"beautiful","работе":"work (на работе = at work)","ждут":"(they) wait for (ждать)","коллеги":"colleagues","они":"they","говорят":"(they) say (говорить)","доброе":"good (доброе утро = good morning)","утро":"morning"}},
-  {"kind":"story","title":"Новый друг","en":"A new friend","level":"مبتدئ",
-   "s":[
-    ["Маша живёт в Москве.","Masha lives in Moscow."],
-    ["Она учится в университете.","She studies at the university."],
-    ["Однажды в библиотеке она встретила студента из Египта.","One day in the library she met a student from Egypt."],
-    ["Его зовут Омар.","His name is Omar."],
-    ["Омар изучает русский язык уже два года.","Omar has been studying Russian for two years already."],
-    ["Маша помогает ему с грамматикой, а он учит её арабскому.","Masha helps him with grammar, and he teaches her Arabic."],
-    ["Теперь они хорошие друзья.","Now they are good friends."]],
-   "v":{"маша":"Masha (name)","живёт":"lives (жить)","в":"in, at","москве":"Moscow (Москва — in Moscow)","она":"she","учится":"studies (учиться)","университете":"university (in the ~)","однажды":"once, one day","библиотеке":"library (in the ~)","встретила":"met (she) (встретить)","студента":"student (студент)","из":"from","египта":"Egypt (Египет — from Egypt)","его":"him; his","зовут":"(they) call — его зовут = his name is","омар":"Omar (name)","изучает":"studies (изучать)","русский":"Russian","язык":"language","уже":"already","два":"two","года":"years (год)","помогает":"helps (помогать)","ему":"(to) him","с":"with","грамматикой":"grammar (грамматика)","а":"and, while (contrast)","он":"he","учит":"teaches (учить)","её":"her","арабскому":"Arabic (to her — арабский)","теперь":"now","они":"they","хорошие":"good (plural)","друзья":"friends"}},
-  {"kind":"speech","title":"Учиться никогда не поздно","en":"It's never too late to learn","level":"متوسط",
-   "s":[
-    ["Дорогие друзья!","Dear friends!"],
-    ["Многие думают, что учить язык трудно.","Many people think that learning a language is hard."],
-    ["Да, это не просто, но это возможно.","Yes, it is not easy, but it is possible."],
-    ["Каждый день читайте, слушайте и говорите.","Every day, read, listen and speak."],
-    ["Не бойтесь ошибок.","Don't be afraid of mistakes."],
-    ["Ошибки — это часть учёбы.","Mistakes are part of learning."],
-    ["Маленький шаг каждый день — это большой успех через год.","A small step every day is a big success in a year."],
-    ["Удачи вам!","Good luck to you!"]],
-   "v":{"дорогие":"dear (plural)","друзья":"friends","многие":"many (people)","думают":"(they) think (думать)","что":"that","учить":"to learn; to teach","язык":"language","трудно":"(it is) difficult","да":"yes","это":"this, it (is)","не":"not","просто":"simple, easy","но":"but","возможно":"possible","каждый":"every, each","день":"day","читайте":"read! (читать)","слушайте":"listen! (слушать)","и":"and","говорите":"speak! (говорить)","бойтесь":"be afraid (бояться)","ошибок":"mistakes (of ~)","ошибки":"mistakes (ошибка)","часть":"part","учёбы":"studies, learning (учёба)","маленький":"small","шаг":"step","большой":"big","успех":"success","через":"in, after (time); through","год":"year","удачи":"(good) luck (удача)","вам":"(to) you"}},
-  {"kind":"news","title":"В городе открыли новый парк","en":"A new park opened in the city","level":"متوسط",
-   "s":[
-    ["Вчера в центре города открыли новый парк.","Yesterday a new park was opened in the city center."],
-    ["В парке есть озеро, детская площадка и много деревьев.","The park has a lake, a playground and many trees."],
-    ["Вход в парк бесплатный.","Entrance to the park is free."],
-    ["Мэр города сказал: «Это подарок для всех жителей».","The city's mayor said: \"This is a gift for all residents.\""],
-    ["Парк работает каждый день с восьми утра до десяти вечера.","The park is open every day from 8 a.m. to 10 p.m."],
-    ["В первый день парк посетили тысячи людей.","On the first day, thousands of people visited the park."]],
-   "v":{"вчера":"yesterday","в":"in, into","центре":"center (in the ~)","города":"city (of the ~ — город)","открыли":"(they) opened (открыть)","новый":"new","парк":"park","парке":"park (in the ~)","есть":"there is / has","озеро":"lake","детская":"children's","площадка":"ground, area (детская площадка = playground)","и":"and","много":"many, a lot","деревьев":"trees (of ~ — дерево)","вход":"entrance","бесплатный":"free (no cost)","мэр":"mayor","сказал":"said (he) (сказать)","это":"this (is)","подарок":"gift","для":"for","всех":"all (of ~)","жителей":"residents (житель)","работает":"works, is open (работать)","каждый":"every","день":"day","с":"from","восьми":"eight (восемь — from eight)","утра":"in the morning, a.m. (утро)","до":"until, to","десяти":"ten (десять — to ten)","вечера":"in the evening, p.m. (вечер)","первый":"first","посетили":"(they) visited (посетить)","тысячи":"thousands (тысяча)","людей":"people (люди)"}}
+  {
+   "kind": "story",
+   "title": "Утро Ивана",
+   "en": "Ivan's morning",
+   "level": "مبتدئ",
+   "s": [
+    [
+     "Иван просыпается в семь часов.",
+     "Ivan wakes up at seven o'clock."
+    ],
+    [
+     "Он пьёт кофе и ест бутерброд.",
+     "He drinks coffee and eats a sandwich."
+    ],
+    [
+     "Потом он идёт на работу.",
+     "Then he goes to work."
+    ],
+    [
+     "Его офис находится недалеко от дома.",
+     "His office is not far from home."
+    ],
+    [
+     "На улице холодно, и идёт снег.",
+     "It's cold outside, and it's snowing."
+    ],
+    [
+     "Иван любит зиму, потому что она очень красивая.",
+     "Ivan loves winter because it is very beautiful."
+    ],
+    [
+     "На работе его ждут коллеги.",
+     "At work, his colleagues are waiting for him."
+    ],
+    [
+     "Они говорят: «Доброе утро, Иван!»",
+     "They say: \"Good morning, Ivan!\""
+    ]
+   ],
+   "v": {
+    "иван": "Ivan (name)",
+    "просыпается": "wakes up (просыпаться)",
+    "в": "in, at",
+    "семь": "seven",
+    "часов": "o'clock, hours (час)",
+    "он": "he",
+    "пьёт": "drinks (пить)",
+    "кофе": "coffee",
+    "и": "and",
+    "ест": "eats (есть)",
+    "бутерброд": "sandwich",
+    "потом": "then, later",
+    "идёт": "goes, walks (идти); идёт снег = it's snowing",
+    "на": "to, on, at",
+    "работу": "work (работа — to work)",
+    "его": "his; him",
+    "офис": "office",
+    "находится": "is located (находиться)",
+    "недалеко": "not far",
+    "от": "from",
+    "дома": "home, house (дом — from home)",
+    "улице": "street (на улице = outside)",
+    "холодно": "(it is) cold",
+    "снег": "snow",
+    "любит": "loves (любить)",
+    "зиму": "winter (зима)",
+    "потому": "because (потому что)",
+    "что": "that; what (потому что = because)",
+    "она": "she; it",
+    "очень": "very",
+    "красивая": "beautiful",
+    "работе": "work (на работе = at work)",
+    "ждут": "(they) wait for (ждать)",
+    "коллеги": "colleagues",
+    "они": "they",
+    "говорят": "(they) say (говорить)",
+    "доброе": "good (доброе утро = good morning)",
+    "утро": "morning"
+   },
+   "emoji": "🌅"
+  },
+  {
+   "kind": "story",
+   "title": "Новый друг",
+   "en": "A new friend",
+   "level": "مبتدئ",
+   "s": [
+    [
+     "Маша живёт в Москве.",
+     "Masha lives in Moscow."
+    ],
+    [
+     "Она учится в университете.",
+     "She studies at the university."
+    ],
+    [
+     "Однажды в библиотеке она встретила студента из Египта.",
+     "One day in the library she met a student from Egypt."
+    ],
+    [
+     "Его зовут Омар.",
+     "His name is Omar."
+    ],
+    [
+     "Омар изучает русский язык уже два года.",
+     "Omar has been studying Russian for two years already."
+    ],
+    [
+     "Маша помогает ему с грамматикой, а он учит её арабскому.",
+     "Masha helps him with grammar, and he teaches her Arabic."
+    ],
+    [
+     "Теперь они хорошие друзья.",
+     "Now they are good friends."
+    ]
+   ],
+   "v": {
+    "маша": "Masha (name)",
+    "живёт": "lives (жить)",
+    "в": "in, at",
+    "москве": "Moscow (Москва — in Moscow)",
+    "она": "she",
+    "учится": "studies (учиться)",
+    "университете": "university (in the ~)",
+    "однажды": "once, one day",
+    "библиотеке": "library (in the ~)",
+    "встретила": "met (she) (встретить)",
+    "студента": "student (студент)",
+    "из": "from",
+    "египта": "Egypt (Египет — from Egypt)",
+    "его": "him; his",
+    "зовут": "(they) call — его зовут = his name is",
+    "омар": "Omar (name)",
+    "изучает": "studies (изучать)",
+    "русский": "Russian",
+    "язык": "language",
+    "уже": "already",
+    "два": "two",
+    "года": "years (год)",
+    "помогает": "helps (помогать)",
+    "ему": "(to) him",
+    "с": "with",
+    "грамматикой": "grammar (грамматика)",
+    "а": "and, while (contrast)",
+    "он": "he",
+    "учит": "teaches (учить)",
+    "её": "her",
+    "арабскому": "Arabic (to her — арабский)",
+    "теперь": "now",
+    "они": "they",
+    "хорошие": "good (plural)",
+    "друзья": "friends"
+   },
+   "emoji": "🤝"
+  },
+  {
+   "kind": "speech",
+   "title": "Учиться никогда не поздно",
+   "en": "It's never too late to learn",
+   "level": "متوسط",
+   "s": [
+    [
+     "Дорогие друзья!",
+     "Dear friends!"
+    ],
+    [
+     "Многие думают, что учить язык трудно.",
+     "Many people think that learning a language is hard."
+    ],
+    [
+     "Да, это не просто, но это возможно.",
+     "Yes, it is not easy, but it is possible."
+    ],
+    [
+     "Каждый день читайте, слушайте и говорите.",
+     "Every day, read, listen and speak."
+    ],
+    [
+     "Не бойтесь ошибок.",
+     "Don't be afraid of mistakes."
+    ],
+    [
+     "Ошибки — это часть учёбы.",
+     "Mistakes are part of learning."
+    ],
+    [
+     "Маленький шаг каждый день — это большой успех через год.",
+     "A small step every day is a big success in a year."
+    ],
+    [
+     "Удачи вам!",
+     "Good luck to you!"
+    ]
+   ],
+   "v": {
+    "дорогие": "dear (plural)",
+    "друзья": "friends",
+    "многие": "many (people)",
+    "думают": "(they) think (думать)",
+    "что": "that",
+    "учить": "to learn; to teach",
+    "язык": "language",
+    "трудно": "(it is) difficult",
+    "да": "yes",
+    "это": "this, it (is)",
+    "не": "not",
+    "просто": "simple, easy",
+    "но": "but",
+    "возможно": "possible",
+    "каждый": "every, each",
+    "день": "day",
+    "читайте": "read! (читать)",
+    "слушайте": "listen! (слушать)",
+    "и": "and",
+    "говорите": "speak! (говорить)",
+    "бойтесь": "be afraid (бояться)",
+    "ошибок": "mistakes (of ~)",
+    "ошибки": "mistakes (ошибка)",
+    "часть": "part",
+    "учёбы": "studies, learning (учёба)",
+    "маленький": "small",
+    "шаг": "step",
+    "большой": "big",
+    "успех": "success",
+    "через": "in, after (time); through",
+    "год": "year",
+    "удачи": "(good) luck (удача)",
+    "вам": "(to) you"
+   },
+   "emoji": "💪"
+  },
+  {
+   "kind": "news",
+   "title": "В городе открыли новый парк",
+   "en": "A new park opened in the city",
+   "level": "متوسط",
+   "s": [
+    [
+     "Вчера в центре города открыли новый парк.",
+     "Yesterday a new park was opened in the city center."
+    ],
+    [
+     "В парке есть озеро, детская площадка и много деревьев.",
+     "The park has a lake, a playground and many trees."
+    ],
+    [
+     "Вход в парк бесплатный.",
+     "Entrance to the park is free."
+    ],
+    [
+     "Мэр города сказал: «Это подарок для всех жителей».",
+     "The city's mayor said: \"This is a gift for all residents.\""
+    ],
+    [
+     "Парк работает каждый день с восьми утра до десяти вечера.",
+     "The park is open every day from 8 a.m. to 10 p.m."
+    ],
+    [
+     "В первый день парк посетили тысячи людей.",
+     "On the first day, thousands of people visited the park."
+    ]
+   ],
+   "v": {
+    "вчера": "yesterday",
+    "в": "in, into",
+    "центре": "center (in the ~)",
+    "города": "city (of the ~ — город)",
+    "открыли": "(they) opened (открыть)",
+    "новый": "new",
+    "парк": "park",
+    "парке": "park (in the ~)",
+    "есть": "there is / has",
+    "озеро": "lake",
+    "детская": "children's",
+    "площадка": "ground, area (детская площадка = playground)",
+    "и": "and",
+    "много": "many, a lot",
+    "деревьев": "trees (of ~ — дерево)",
+    "вход": "entrance",
+    "бесплатный": "free (no cost)",
+    "мэр": "mayor",
+    "сказал": "said (he) (сказать)",
+    "это": "this (is)",
+    "подарок": "gift",
+    "для": "for",
+    "всех": "all (of ~)",
+    "жителей": "residents (житель)",
+    "работает": "works, is open (работать)",
+    "каждый": "every",
+    "день": "day",
+    "с": "from",
+    "восьми": "eight (восемь — from eight)",
+    "утра": "in the morning, a.m. (утро)",
+    "до": "until, to",
+    "десяти": "ten (десять — to ten)",
+    "вечера": "in the evening, p.m. (вечер)",
+    "первый": "first",
+    "посетили": "(they) visited (посетить)",
+    "тысячи": "thousands (тысяча)",
+    "людей": "people (люди)"
+   },
+   "emoji": "🌳"
+  },
+  {
+   "kind": "story",
+   "title": "У врача",
+   "en": "At the doctor's",
+   "level": "مبتدئ",
+   "emoji": "🩺",
+   "s": [
+    [
+     "Уже три дня у Анны болит горло и высокая температура.",
+     "For three days now, Anna has had a sore throat and a high temperature."
+    ],
+    [
+     "Утром она звонит в поликлинику и записывается к врачу.",
+     "In the morning she calls the clinic and makes an appointment with a doctor."
+    ],
+    [
+     "Врач спрашивает: «На что жалуетесь?»",
+     "The doctor asks: \"What seems to be the problem?\""
+    ],
+    [
+     "Анна отвечает, что ей трудно глотать и она плохо спит.",
+     "Anna answers that it is hard for her to swallow and she sleeps badly."
+    ],
+    [
+     "Врач осматривает её и говорит, что это простуда.",
+     "The doctor examines her and says it is a cold."
+    ],
+    [
+     "Он советует пить горячий чай с мёдом и отдыхать несколько дней.",
+     "He advises drinking hot tea with honey and resting for a few days."
+    ],
+    [
+     "После врача Анна идёт в аптеку и покупает лекарство.",
+     "After the doctor, Anna goes to the pharmacy and buys medicine."
+    ]
+   ],
+   "v": {
+    "уже": "already",
+    "три": "three",
+    "дня": "days (день)",
+    "у": "at, by — у меня = I have",
+    "анны": "Anna's (Анна)",
+    "болит": "hurts (болеть)",
+    "горло": "throat",
+    "и": "and",
+    "высокая": "high",
+    "температура": "temperature",
+    "утром": "in the morning",
+    "она": "she",
+    "звонит": "calls (звонить)",
+    "в": "in, into",
+    "поликлинику": "clinic (поликлиника)",
+    "записывается": "signs up, makes an appointment (записываться)",
+    "к": "to, toward",
+    "врачу": "to the doctor (врач)",
+    "врач": "doctor",
+    "спрашивает": "asks (спрашивать)",
+    "на": "to, on, at",
+    "что": "that",
+    "жалуетесь": "(you) complain (жаловаться) — на что жалуетесь? = what's the problem?",
+    "анна": "Anna (name)",
+    "отвечает": "answers (отвечать); is responsible for (отвечать за)",
+    "ей": "(to) her",
+    "трудно": "(it is) difficult",
+    "глотать": "to swallow",
+    "плохо": "badly",
+    "спит": "sleeps (спать)",
+    "осматривает": "examines (осматривать)",
+    "её": "her",
+    "говорит": "says (говорить)",
+    "это": "this (is)",
+    "простуда": "a cold",
+    "он": "he",
+    "советует": "advises (советовать)",
+    "пить": "to drink",
+    "горячий": "hot",
+    "чай": "tea",
+    "с": "from",
+    "мёдом": "honey (мёд — with honey)",
+    "отдыхать": "to rest",
+    "несколько": "several, a few",
+    "дней": "days (день)",
+    "после": "after",
+    "врача": "doctor (врач — after the doctor)",
+    "идёт": "goes, walks (идти); идёт снег = it's snowing",
+    "аптеку": "pharmacy (аптека)",
+    "покупает": "buys (покупать)",
+    "лекарство": "medicine"
+   }
+  },
+  {
+   "kind": "story",
+   "title": "Квартира в Петербурге",
+   "en": "An apartment in St. Petersburg",
+   "level": "متوسط",
+   "emoji": "🏠",
+   "s": [
+    [
+     "Дмитрий получил новую работу в Санкт-Петербурге и ищет квартиру.",
+     "Dmitry got a new job in St. Petersburg and is looking for an apartment."
+    ],
+    [
+     "Каждый вечер он смотрит объявления в интернете.",
+     "Every evening he looks at listings online."
+    ],
+    [
+     "Квартиры в центре красивые, но очень дорогие.",
+     "Apartments in the center are beautiful, but very expensive."
+    ],
+    [
+     "Наконец он находит маленькую квартиру рядом с метро.",
+     "Finally he finds a small apartment near the metro."
+    ],
+    [
+     "В ней одна комната, светлая кухня и балкон.",
+     "It has one room, a bright kitchen and a balcony."
+    ],
+    [
+     "Аренда стоит сорок тысяч рублей в месяц.",
+     "The rent is forty thousand rubles a month."
+    ],
+    [
+     "В субботу Дмитрий подписывает договор и переезжает.",
+     "On Saturday Dmitry signs the contract and moves in."
+    ]
+   ],
+   "v": {
+    "дмитрий": "Dmitry (name)",
+    "получил": "got, received (получить)",
+    "новую": "new (новая)",
+    "работу": "work (работа — to work)",
+    "в": "in, into",
+    "санкт": "Saint (Санкт-Петербург)",
+    "петербурге": "Petersburg (in ~)",
+    "и": "and",
+    "ищет": "looks for (искать)",
+    "квартиру": "apartment (квартира)",
+    "каждый": "every",
+    "вечер": "evening",
+    "он": "he",
+    "смотрит": "looks, watches (смотреть)",
+    "объявления": "ads, listings",
+    "интернете": "internet (on the ~)",
+    "квартиры": "apartments",
+    "центре": "center (in the ~)",
+    "красивые": "beautiful (plural)",
+    "но": "but",
+    "очень": "very",
+    "дорогие": "dear (plural)",
+    "наконец": "finally",
+    "находит": "finds (находить)",
+    "маленькую": "small (маленькая)",
+    "рядом": "near (рядом с = next to)",
+    "с": "from",
+    "метро": "metro",
+    "ней": "her, it (в ней = in it)",
+    "одна": "one (feminine)",
+    "комната": "room",
+    "светлая": "bright",
+    "кухня": "kitchen",
+    "балкон": "balcony",
+    "аренда": "rent",
+    "стоит": "costs (стоить)",
+    "сорок": "forty",
+    "тысяч": "thousand (тысяча)",
+    "рублей": "rubles (рубль)",
+    "месяц": "month",
+    "субботу": "Saturday (в субботу = on Saturday)",
+    "подписывает": "signs (подписывать)",
+    "договор": "contract",
+    "переезжает": "moves house (переезжать)"
+   }
+  },
+  {
+   "kind": "story",
+   "title": "Потерянный телефон",
+   "en": "The lost phone",
+   "level": "مبتدئ",
+   "emoji": "📱",
+   "s": [
+    [
+     "Вечером Ольга вышла из автобуса и поняла, что у неё нет телефона.",
+     "In the evening Olga got off the bus and realized that she didn't have her phone."
+    ],
+    [
+     "Она очень испугалась, потому что там все её фотографии.",
+     "She got very scared, because all her photos are on it."
+    ],
+    [
+     "С телефона подруги она позвонила на свой номер.",
+     "From a friend's phone she called her own number."
+    ],
+    [
+     "Ответил мужчина: «Здравствуйте, я нашёл этот телефон в автобусе».",
+     "A man answered: \"Hello, I found this phone on the bus.\""
+    ],
+    [
+     "Они договорились встретиться в кафе через полчаса.",
+     "They agreed to meet at a café in half an hour."
+    ],
+    [
+     "Ольга получила телефон и угостила мужчину кофе.",
+     "Olga got her phone back and treated the man to a coffee."
+    ],
+    [
+     "«В мире ещё много добрых людей», — подумала она.",
+     "\"There are still many kind people in the world,\" she thought."
+    ]
+   ],
+   "v": {
+    "вечером": "in the evening",
+    "ольга": "Olga (name)",
+    "вышла": "got out, came out (she — выйти)",
+    "из": "from",
+    "автобуса": "bus (from the ~)",
+    "и": "and",
+    "поняла": "understood, realized (she — понять)",
+    "что": "that",
+    "у": "at, by — у меня = I have",
+    "неё": "her (у неё = she has)",
+    "нет": "no, there isn't",
+    "телефона": "phone (no ~)",
+    "она": "she",
+    "очень": "very",
+    "испугалась": "got scared (she — испугаться)",
+    "потому": "because (потому что)",
+    "там": "there",
+    "все": "all",
+    "её": "her",
+    "фотографии": "photos",
+    "с": "from",
+    "подруги": "friend's (подруга — female friend)",
+    "позвонила": "called (she — позвонить)",
+    "на": "to, on, at",
+    "свой": "one's own",
+    "номер": "number",
+    "ответил": "answered (he — ответить)",
+    "мужчина": "man",
+    "здравствуйте": "hello (formal)",
+    "я": "I",
+    "нашёл": "found (he — найти)",
+    "этот": "this",
+    "телефон": "phone",
+    "в": "in, into",
+    "автобусе": "bus (on the ~)",
+    "они": "they",
+    "договорились": "agreed (they — договориться)",
+    "встретиться": "to meet",
+    "кафе": "café",
+    "через": "in, after (time); through",
+    "полчаса": "half an hour",
+    "получила": "got, received (she — получить)",
+    "угостила": "treated (she — угостить)",
+    "мужчину": "man (мужчина)",
+    "кофе": "coffee",
+    "мире": "world (in the ~ — мир)",
+    "ещё": "still, more",
+    "много": "many, a lot",
+    "добрых": "kind (добрый)",
+    "людей": "people (люди)",
+    "подумала": "thought (she — подумать)"
+   }
+  },
+  {
+   "kind": "story",
+   "title": "Поездка на поезде",
+   "en": "A train trip",
+   "level": "متوسط",
+   "emoji": "🚄",
+   "s": [
+    [
+     "В пятницу Сергей едет из Москвы в Санкт-Петербург на поезде «Сапсан».",
+     "On Friday Sergey travels from Moscow to St. Petersburg on the Sapsan train."
+    ],
+    [
+     "Дорога занимает около четырёх часов.",
+     "The trip takes about four hours."
+    ],
+    [
+     "В вагоне тихо и удобно, есть розетки и вай-фай.",
+     "The carriage is quiet and comfortable, and there are sockets and Wi-Fi."
+    ],
+    [
+     "Сергей читает книгу, пьёт чай и смотрит в окно.",
+     "Sergey reads a book, drinks tea and looks out of the window."
+    ],
+    [
+     "За окном леса, поля и маленькие деревни.",
+     "Outside the window are forests, fields and small villages."
+    ],
+    [
+     "Вечером он приезжает на Московский вокзал, где его встречает сестра.",
+     "In the evening he arrives at Moskovsky Station, where his sister meets him."
+    ]
+   ],
+   "v": {
+    "в": "in, into",
+    "пятницу": "Friday (в пятницу = on Friday)",
+    "сергей": "Sergey (name)",
+    "едет": "travels, goes by vehicle (ехать)",
+    "из": "from",
+    "москвы": "Moscow (from ~)",
+    "санкт": "Saint (Санкт-Петербург)",
+    "петербург": "Petersburg",
+    "на": "to, on, at",
+    "поезде": "train (on the ~ — поезд)",
+    "сапсан": "Sapsan (high-speed train; 'peregrine falcon')",
+    "дорога": "road; the trip",
+    "занимает": "takes (time) (занимать)",
+    "около": "about, around",
+    "четырёх": "four (четыре — about four)",
+    "часов": "o'clock, hours (час)",
+    "вагоне": "railway car (in the ~ — вагон)",
+    "тихо": "quiet, quietly",
+    "и": "and",
+    "удобно": "comfortable, convenient",
+    "есть": "there is / has",
+    "розетки": "power sockets",
+    "вай": "Wi- (вай-фай)",
+    "фай": "-Fi (вай-фай = Wi-Fi)",
+    "читает": "reads (читать)",
+    "книгу": "book (книга)",
+    "пьёт": "drinks (пить)",
+    "чай": "tea",
+    "смотрит": "looks, watches (смотреть)",
+    "окно": "window",
+    "за": "behind; for (за окном = outside the window; за работу = let's work)",
+    "окном": "window (behind the ~)",
+    "леса": "forests (лес)",
+    "поля": "fields (поле)",
+    "маленькие": "small (plural)",
+    "деревни": "villages (деревня)",
+    "вечером": "in the evening",
+    "он": "he",
+    "приезжает": "arrives (приезжать)",
+    "московский": "Moscow (adj.) — Московский вокзал = Moskovsky Station",
+    "вокзал": "railway station",
+    "где": "where",
+    "его": "him; his",
+    "встречает": "meets (встречать)",
+    "сестра": "sister"
+   }
+  },
+  {
+   "kind": "speech",
+   "title": "Тост на свадьбе",
+   "en": "A wedding toast",
+   "level": "متوسط",
+   "emoji": "🥂",
+   "s": [
+    [
+     "Дорогие гости, добрый вечер!",
+     "Dear guests, good evening!"
+    ],
+    [
+     "Меня зовут Алексей, я брат невесты.",
+     "My name is Alexey, I am the bride's brother."
+    ],
+    [
+     "Я знаю Катю всю жизнь и никогда не видел её такой счастливой.",
+     "I have known Katya all my life and have never seen her so happy."
+    ],
+    [
+     "Андрей, спасибо, что ты заботишься о моей сестре.",
+     "Andrey, thank you for taking care of my sister."
+    ],
+    [
+     "Семья — это любовь, терпение и уважение.",
+     "Family is love, patience and respect."
+    ],
+    [
+     "Желаю вам долгой и счастливой жизни вместе!",
+     "I wish you a long and happy life together!"
+    ],
+    [
+     "Давайте поднимем бокалы за молодых!",
+     "Let's raise our glasses to the newlyweds!"
+    ]
+   ],
+   "v": {
+    "дорогие": "dear (plural)",
+    "гости": "guests",
+    "добрый": "good (добрый вечер = good evening)",
+    "вечер": "evening",
+    "меня": "me (меня зовут = my name is)",
+    "зовут": "(they) call — его зовут = his name is",
+    "алексей": "Alexey (name)",
+    "я": "I",
+    "брат": "brother",
+    "невесты": "bride's (невеста)",
+    "знаю": "I know (знать)",
+    "катю": "Katya (Катя)",
+    "всю": "all, whole (вся)",
+    "жизнь": "life",
+    "и": "and",
+    "никогда": "never",
+    "не": "not",
+    "видел": "saw, have seen (he — видеть)",
+    "её": "her",
+    "такой": "such, so",
+    "счастливой": "happy (счастливая)",
+    "андрей": "Andrey (name)",
+    "спасибо": "thank you",
+    "что": "that",
+    "ты": "you (informal)",
+    "заботишься": "(you) take care (заботиться о)",
+    "о": "about, of",
+    "моей": "my (моя)",
+    "сестре": "sister (about my ~)",
+    "семья": "family",
+    "это": "this (is)",
+    "любовь": "love",
+    "терпение": "patience",
+    "уважение": "respect",
+    "желаю": "I wish (желать)",
+    "вам": "(to) you",
+    "долгой": "long (долгая)",
+    "жизни": "life (жизнь)",
+    "вместе": "together",
+    "давайте": "let's",
+    "поднимем": "(let's) raise (поднять)",
+    "бокалы": "glasses (wine glasses)",
+    "за": "behind; for (за окном = outside the window; за работу = let's work)",
+    "молодых": "the newlyweds (молодые)"
+   }
+  },
+  {
+   "kind": "speech",
+   "title": "Речь на выпускном",
+   "en": "Graduation speech",
+   "level": "متوسط",
+   "emoji": "🎓",
+   "s": [
+    [
+     "Дорогие выпускники, преподаватели и родители!",
+     "Dear graduates, teachers and parents!"
+    ],
+    [
+     "Четыре года назад мы пришли в этот университет, полные сомнений.",
+     "Four years ago we came to this university full of doubts."
+    ],
+    [
+     "Мы учились по ночам, сдавали трудные экзамены и иногда ошибались.",
+     "We studied at night, took hard exams and sometimes made mistakes."
+    ],
+    [
+     "Но главное — это не оценки, а люди, которых мы встретили.",
+     "But the main thing is not the grades, but the people we met."
+    ],
+    [
+     "Спасибо нашим родителям, которые всегда верили в нас.",
+     "Thank you to our parents, who always believed in us."
+    ],
+    [
+     "Будущее не будет лёгким, но мы умеем работать и помогать друг другу.",
+     "The future will not be easy, but we know how to work and help each other."
+    ],
+    [
+     "Поздравляю всех нас!",
+     "Congratulations to all of us!"
+    ]
+   ],
+   "v": {
+    "дорогие": "dear (plural)",
+    "выпускники": "graduates",
+    "преподаватели": "teachers, lecturers",
+    "и": "and",
+    "родители": "parents",
+    "четыре": "four",
+    "года": "years (год)",
+    "назад": "ago, back",
+    "мы": "we",
+    "пришли": "came (we — прийти)",
+    "в": "in, into",
+    "этот": "this",
+    "университет": "university",
+    "полные": "full (plural)",
+    "сомнений": "doubts (сомнение)",
+    "учились": "studied (we — учиться)",
+    "по": "along, by (по ночам = at night)",
+    "ночам": "nights (по ночам = at night)",
+    "сдавали": "took (exams) (сдавать)",
+    "трудные": "hard (plural)",
+    "экзамены": "exams",
+    "иногда": "sometimes",
+    "ошибались": "made mistakes (ошибаться)",
+    "но": "but",
+    "главное": "the main thing",
+    "это": "this (is)",
+    "не": "not",
+    "оценки": "grades, marks",
+    "а": "and, while (contrast)",
+    "люди": "people",
+    "которых": "whom, which (который)",
+    "встретили": "met (we — встретить)",
+    "спасибо": "thank you",
+    "нашим": "our (to our ~)",
+    "родителям": "parents (to the ~)",
+    "которые": "who, which (plural)",
+    "всегда": "always",
+    "верили": "believed (they — верить)",
+    "нас": "us",
+    "будущее": "the future",
+    "будет": "will be (быть)",
+    "лёгким": "easy (лёгкий)",
+    "умеем": "we know how (уметь)",
+    "работать": "to work",
+    "помогать": "to help",
+    "друг": "friend; друг другу = each other",
+    "другу": "(to) friend (друг другу = each other)",
+    "поздравляю": "congratulations (I congratulate — поздравлять)",
+    "всех": "all (of ~)"
+   }
+  },
+  {
+   "kind": "speech",
+   "title": "Планёрка в понедельник",
+   "en": "The Monday meeting",
+   "level": "متوسط",
+   "emoji": "📊",
+   "s": [
+    [
+     "Доброе утро, коллеги! Начинаем совещание.",
+     "Good morning, colleagues! Let's start the meeting."
+    ],
+    [
+     "Сначала хочу сказать спасибо всем за хорошую работу на прошлой неделе.",
+     "First, I want to thank everyone for the good work last week."
+    ],
+    [
+     "Продажи выросли на десять процентов, и клиенты довольны.",
+     "Sales grew by ten percent, and the clients are satisfied."
+    ],
+    [
+     "На этой неделе у нас две задачи: закончить новый продукт и подготовить презентацию.",
+     "This week we have two tasks: finish the new product and prepare the presentation."
+    ],
+    [
+     "Марина отвечает за дизайн, а Павел — за тестирование.",
+     "Marina is responsible for design, and Pavel for testing."
+    ],
+    [
+     "Если есть вопросы, моя дверь всегда открыта.",
+     "If there are questions, my door is always open."
+    ],
+    [
+     "Всё, за работу!",
+     "That's all — let's get to work!"
+    ]
+   ],
+   "v": {
+    "доброе": "good (доброе утро = good morning)",
+    "утро": "morning",
+    "коллеги": "colleagues",
+    "начинаем": "we begin (начинать)",
+    "совещание": "meeting",
+    "сначала": "first, at first",
+    "хочу": "I want (хотеть)",
+    "сказать": "to say",
+    "спасибо": "thank you",
+    "всем": "(to) everyone",
+    "за": "behind; for (за окном = outside the window; за работу = let's work)",
+    "хорошую": "good (хорошая)",
+    "работу": "work (работа — to work)",
+    "на": "to, on, at",
+    "прошлой": "last (прошлая)",
+    "неделе": "week (неделя)",
+    "продажи": "sales",
+    "выросли": "grew (вырасти)",
+    "десять": "ten",
+    "процентов": "percent",
+    "и": "and",
+    "клиенты": "clients",
+    "довольны": "satisfied, pleased",
+    "этой": "this (эта)",
+    "у": "at, by — у меня = I have",
+    "нас": "us",
+    "две": "two (feminine)",
+    "задачи": "tasks",
+    "закончить": "to finish",
+    "новый": "new",
+    "продукт": "product",
+    "подготовить": "to prepare",
+    "презентацию": "presentation (презентация)",
+    "марина": "Marina (name)",
+    "отвечает": "answers (отвечать); is responsible for (отвечать за)",
+    "дизайн": "design",
+    "а": "and, while (contrast)",
+    "павел": "Pavel (name)",
+    "тестирование": "testing",
+    "если": "if",
+    "есть": "there is / has",
+    "вопросы": "questions",
+    "моя": "my (feminine)",
+    "дверь": "door",
+    "всегда": "always",
+    "открыта": "open",
+    "всё": "all; that's it"
+   }
+  },
+  {
+   "kind": "news",
+   "title": "Первый человек в космосе",
+   "en": "The first man in space",
+   "level": "متوسط",
+   "emoji": "🚀",
+   "s": [
+    [
+     "12 апреля 1961 года Юрий Гагарин стал первым человеком в космосе.",
+     "On April 12, 1961, Yuri Gagarin became the first person in space."
+    ],
+    [
+     "Он полетел на корабле «Восток-1» с космодрома Байконур.",
+     "He flew on the Vostok-1 spacecraft from the Baikonur Cosmodrome."
+    ],
+    [
+     "Полёт продолжался сто восемь минут.",
+     "The flight lasted one hundred and eight minutes."
+    ],
+    [
+     "Перед стартом Гагарин сказал знаменитое слово: «Поехали!»",
+     "Before the launch, Gagarin said the famous word: \"Let's go!\""
+    ],
+    [
+     "После полёта он стал героем во всём мире.",
+     "After the flight he became a hero all over the world."
+    ],
+    [
+     "Теперь 12 апреля в России отмечают День космонавтики.",
+     "Now Russia celebrates Cosmonautics Day on April 12."
+    ]
+   ],
+   "v": {
+    "апреля": "April (12 апреля = April 12)",
+    "года": "years (год)",
+    "юрий": "Yuri (name)",
+    "гагарин": "Gagarin",
+    "стал": "became (he — стать)",
+    "первым": "first (первый)",
+    "человеком": "person, man (человек)",
+    "в": "in, into",
+    "космосе": "space (in ~ — космос)",
+    "он": "he",
+    "полетел": "flew (полететь)",
+    "на": "to, on, at",
+    "корабле": "ship, spacecraft (корабль)",
+    "восток": "east; Vostok (spacecraft)",
+    "с": "from",
+    "космодрома": "cosmodrome (from the ~)",
+    "байконур": "Baikonur",
+    "полёт": "flight",
+    "продолжался": "lasted (продолжаться)",
+    "сто": "one hundred",
+    "восемь": "eight",
+    "минут": "minutes",
+    "перед": "before",
+    "стартом": "launch, start (перед стартом = before the launch)",
+    "сказал": "said (he) (сказать)",
+    "знаменитое": "famous",
+    "слово": "word",
+    "поехали": "let's go! (поехать)",
+    "после": "after",
+    "полёта": "flight (after the ~)",
+    "героем": "hero (герой)",
+    "во": "in (во всём мире = all over the world)",
+    "всём": "all, whole",
+    "мире": "world (in the ~ — мир)",
+    "теперь": "now",
+    "россии": "Russia (in ~)",
+    "отмечают": "(they) celebrate (отмечать)",
+    "день": "day",
+    "космонавтики": "cosmonautics (День космонавтики = Cosmonautics Day)"
+   },
+   "real": true
+  },
+  {
+   "kind": "news",
+   "title": "Озеро Байкал",
+   "en": "Lake Baikal",
+   "level": "متوسط",
+   "emoji": "🏞️",
+   "s": [
+    [
+     "Байкал — самое глубокое озеро в мире.",
+     "Baikal is the deepest lake in the world."
+    ],
+    [
+     "Оно находится в Сибири, и его глубина — 1642 метра.",
+     "It is in Siberia, and its depth is 1,642 meters."
+    ],
+    [
+     "В Байкале около двадцати процентов всей пресной воды на поверхности Земли.",
+     "Baikal holds about twenty percent of all the fresh surface water on Earth."
+    ],
+    [
+     "Зимой озеро замерзает, и лёд бывает очень прозрачным.",
+     "In winter the lake freezes, and the ice can be very clear."
+    ],
+    [
+     "Здесь живёт нерпа — тюлень, который есть только на Байкале.",
+     "The nerpa lives here — a seal found only in Baikal."
+    ],
+    [
+     "С 1996 года Байкал входит в список Всемирного наследия ЮНЕСКО.",
+     "Since 1996, Baikal has been on the UNESCO World Heritage List."
+    ]
+   ],
+   "v": {
+    "байкал": "Baikal",
+    "самое": "the most",
+    "глубокое": "deep",
+    "озеро": "lake",
+    "в": "in, into",
+    "мире": "world (in the ~ — мир)",
+    "оно": "it",
+    "находится": "is located (находиться)",
+    "сибири": "Siberia (in ~)",
+    "и": "and",
+    "его": "him; his",
+    "глубина": "depth",
+    "метра": "meters (метр)",
+    "байкале": "Baikal (in / on ~)",
+    "около": "about, around",
+    "двадцати": "twenty (двадцать — about / up to ~)",
+    "процентов": "percent",
+    "всей": "all (вся)",
+    "пресной": "fresh (water) (пресная)",
+    "воды": "water (of ~ — вода)",
+    "на": "to, on, at",
+    "поверхности": "surface (поверхность)",
+    "земли": "Earth (Земля)",
+    "зимой": "in winter",
+    "замерзает": "freezes (замерзать)",
+    "лёд": "ice",
+    "бывает": "happens to be, can be (бывать)",
+    "очень": "very",
+    "прозрачным": "clear, transparent",
+    "здесь": "here",
+    "живёт": "lives (жить)",
+    "нерпа": "nerpa (Baikal seal)",
+    "тюлень": "seal (animal)",
+    "который": "which, who",
+    "есть": "there is / has",
+    "только": "only",
+    "с": "from",
+    "года": "years (год)",
+    "входит": "enters; is part of (входить)",
+    "список": "list",
+    "всемирного": "world (всемирное наследие = World Heritage)",
+    "наследия": "heritage (наследие)",
+    "юнеско": "UNESCO"
+   },
+   "real": true
+  },
+  {
+   "kind": "news",
+   "title": "Снегопад в Москве",
+   "en": "Snowfall in Moscow",
+   "level": "مبتدئ",
+   "emoji": "❄️",
+   "s": [
+    [
+     "В выходные в Москве ожидается сильный снегопад.",
+     "A heavy snowfall is expected in Moscow at the weekend."
+    ],
+    [
+     "Синоптики говорят, что выпадет до двадцати сантиметров снега.",
+     "Forecasters say that up to twenty centimeters of snow will fall."
+    ],
+    [
+     "Температура опустится до минус пятнадцати градусов.",
+     "The temperature will drop to minus fifteen degrees."
+    ],
+    [
+     "Городские службы работают круглосуточно и убирают дороги.",
+     "City services work around the clock and clear the roads."
+    ],
+    [
+     "Водителям советуют оставить машину дома и ездить на метро.",
+     "Drivers are advised to leave the car at home and take the metro."
+    ],
+    [
+     "Школы и магазины будут работать в обычном режиме.",
+     "Schools and shops will work as usual."
+    ]
+   ],
+   "v": {
+    "в": "in, into",
+    "выходные": "the weekend",
+    "москве": "Moscow (Москва — in Moscow)",
+    "ожидается": "is expected (ожидаться)",
+    "сильный": "strong, heavy",
+    "снегопад": "snowfall",
+    "синоптики": "weather forecasters",
+    "говорят": "(they) say (говорить)",
+    "что": "that",
+    "выпадет": "will fall (выпасть)",
+    "до": "until, to",
+    "двадцати": "twenty (двадцать — about / up to ~)",
+    "сантиметров": "centimeters",
+    "снега": "snow (of ~)",
+    "температура": "temperature",
+    "опустится": "will drop (опуститься)",
+    "минус": "minus",
+    "пятнадцати": "fifteen (пятнадцать)",
+    "градусов": "degrees",
+    "городские": "city (adj., plural)",
+    "службы": "services",
+    "работают": "work (they — работать)",
+    "круглосуточно": "around the clock, 24 hours",
+    "и": "and",
+    "убирают": "clean, clear (убирать)",
+    "дороги": "roads",
+    "водителям": "(to) drivers",
+    "советуют": "(they) advise (советовать)",
+    "оставить": "to leave",
+    "машину": "car (машина)",
+    "дома": "home, house (дом — from home)",
+    "ездить": "to go (by vehicle), to ride",
+    "на": "to, on, at",
+    "метро": "metro",
+    "школы": "schools",
+    "магазины": "shops",
+    "будут": "will (be) (быть)",
+    "работать": "to work",
+    "обычном": "usual (обычный)",
+    "режиме": "mode (в обычном режиме = as usual)"
+   }
+  }
  ],
  "me": {
-  "hello": "Привет! Меня зовут {name}.", "helloEn": "Hi! My name is {name}.",
-  "age": "Мне {age} {years}.", "ageEn": "I am {age} years old.",
-  "from": "Я из {country}.", "fromEn": "I'm from {country_en}.",
-  "live": "Я живу в городе {city}.", "liveEn": "I live in the city of {city}.",
-  "job": "Я {job}.", "jobEn": "I'm {job_en}.",
-  "likes": "Я люблю {hobbies}.", "likesEn": "I like {hobbies_en}.",
+  "hello": "Привет! Меня зовут {name}.",
+  "helloEn": "Hi! My name is {name}.",
+  "age": "Мне {age} {years}.",
+  "ageEn": "I am {age} years old.",
+  "from": "Я из {country}.",
+  "fromEn": "I'm from {country_en}.",
+  "live": "Я живу в городе {city}.",
+  "liveEn": "I live in the city of {city}.",
+  "job": "Я {job}.",
+  "jobEn": "I'm {job_en}.",
+  "likes": "Я люблю {hobbies}.",
+  "likesEn": "I like {hobbies_en}.",
   "and": "и",
-  "langs": "Я говорю по-арабски и по-английски, а сейчас я учу русский язык.", "langsEn": "I speak Arabic and English, and now I'm learning Russian.",
-  "bye": "Очень приятно!", "byeEn": "Nice to meet you!",
-  "countries": {"eg":["Египта"],"sa":["Саудовской Аравии"],"ae":["ОАЭ"],"jo":["Иордании"],"us":["США"]},
-  "jobs": {"engineer":["инженер","инженер"],"doctor":["врач","врач"],"teacher":["учитель","учительница"],"student":["студент","студентка"],"programmer":["программист","программист"],"accountant":["бухгалтер","бухгалтер"],"designer":["дизайнер","дизайнер"],"manager":["менеджер","менеджер"],"business":["предприниматель","предпринимательница"]},
-  "hobbies": {"read":"читать","travel":"путешествовать","cook":"готовить","football":"играть в футбол","music":"слушать музыку","movies":"смотреть фильмы","code":"программировать","swim":"плавать"}
+  "langs": "Я говорю по-арабски и по-английски, а сейчас я учу русский язык.",
+  "langsEn": "I speak Arabic and English, and now I'm learning Russian.",
+  "bye": "Очень приятно!",
+  "byeEn": "Nice to meet you!",
+  "countries": {
+   "eg": [
+    "Египта"
+   ],
+   "sa": [
+    "Саудовской Аравии"
+   ],
+   "ae": [
+    "ОАЭ"
+   ],
+   "jo": [
+    "Иордании"
+   ],
+   "us": [
+    "США"
+   ]
+  },
+  "jobs": {
+   "engineer": [
+    "инженер",
+    "инженер"
+   ],
+   "doctor": [
+    "врач",
+    "врач"
+   ],
+   "teacher": [
+    "учитель",
+    "учительница"
+   ],
+   "student": [
+    "студент",
+    "студентка"
+   ],
+   "programmer": [
+    "программист",
+    "программист"
+   ],
+   "accountant": [
+    "бухгалтер",
+    "бухгалтер"
+   ],
+   "designer": [
+    "дизайнер",
+    "дизайнер"
+   ],
+   "manager": [
+    "менеджер",
+    "менеджер"
+   ],
+   "business": [
+    "предприниматель",
+    "предпринимательница"
+   ]
+  },
+  "hobbies": {
+   "read": "читать",
+   "travel": "путешествовать",
+   "cook": "готовить",
+   "football": "играть в футбол",
+   "music": "слушать музыку",
+   "movies": "смотреть фильмы",
+   "code": "программировать",
+   "swim": "плавать"
+  }
  }
 }
