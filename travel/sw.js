@@ -1,6 +1,6 @@
 // Kroti offline support. Everything is served from the cache first, so the app works with no internet.
 // The "download latest update" button in the app refreshes this cache; version.json is always read from the network.
-// build 1795507646135
+// build 1795507717044
 const CACHE = 'kroti-v1';
 const SHELL = ['./', './index.html', './manifest.json', './icon-192.png', './icon-512.png'];
 self.addEventListener('install', e => {

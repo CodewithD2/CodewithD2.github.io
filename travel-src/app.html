@@ -1,0 +1,515 @@
+<title>كروتي في أمريكا</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Cairo:wght@400;600;800&display=swap">
+<style>
+/* Layout: one phone-width column; home = big tiles, category = stacked phrase cards; "show" = full-screen sign for the other person */
+:root {
+  --bg: #EEF2F7;
+  --surface: #FFFFFF;
+  --ink: #142033;
+  --muted: #586579;
+  --line: #D8E0EA;
+  --accent: #1E6FD9;
+  --danger: #C62828;
+  --ar: 'Cairo', 'Noto Naskh Arabic', 'Segoe UI', Tahoma, sans-serif;
+  --en: 'Atkinson Hyperlegible', 'Segoe UI', Roboto, Arial, sans-serif;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #0E141D; --surface: #182230; --ink: #EDF2F8; --muted: #9DA9BA; --line: #2A3647; --accent: #5C9DF0; --danger: #F0645A; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #0E141D; --surface: #182230; --ink: #EDF2F8; --muted: #9DA9BA; --line: #2A3647; --accent: #5C9DF0; --danger: #F0645A; color-scheme: dark }
+
+* { box-sizing: border-box; }
+html, body { background: var(--bg); color: var(--ink); }
+body { margin: 0; font-family: var(--ar); font-size: 18px; line-height: 1.6; -webkit-tap-highlight-color: transparent; }
+#app { max-width: 640px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 0 48px; }
+button, input, textarea { font: inherit; color: inherit; }
+button { cursor: pointer; }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+[lang="en"] { font-family: var(--en); unicode-bidi: isolate; direction: ltr; }
+
+/* top bar */
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--bg); }
+.bar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--bg); display: flex; align-items: center; gap: 12px; padding-block: 12px; }
+.bar h1 { margin: 0; font-size: 24px; font-weight: 800; text-wrap: balance; flex: 1; min-width: 0; }
+.back { border: 0; background: var(--surface); border-radius: 14px; padding: 8px 16px; font-weight: 700; font-size: 18px; box-shadow: 0 1px 0 var(--line); }
+
+/* home */
+.hello { padding-block: 20px 8px; }
+.hello h1 { margin: 0; font-size: 30px; font-weight: 800; line-height: 1.3; }
+.hello p { margin: 4px 0 0; color: var(--muted); font-size: 20px; }
+.search { width: 100%; margin-block: 16px; padding: 14px 18px; border-radius: 16px; border: 2px solid var(--line); background: var(--surface); font-size: 19px; }
+.search:focus { border-color: var(--accent); outline: none; }
+.quick { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 22px; }
+.quick .sos { grid-column: 1 / -1; background: var(--danger); color: #fff; font-size: 22px; }
+.qbtn { border: 0; border-radius: 18px; padding: 16px; font-size: 20px; font-weight: 800; background: var(--surface); box-shadow: 0 1px 0 var(--line); display: flex; align-items: center; justify-content: center; gap: 10px; min-height: 64px; }
+.section-label { font-size: 18px; color: var(--muted); font-weight: 600; margin: 0 4px 10px; }
+.cats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.cat { border: 0; text-align: right; border-radius: 20px; padding: 16px; background: var(--surface); box-shadow: inset 0 -5px 0 var(--c); display: flex; flex-direction: column; gap: 2px; min-height: 120px; }
+.cat .e { font-size: 38px; line-height: 1.2; }
+.cat .t { font-size: 23px; font-weight: 800; line-height: 1.3; }
+.cat .n { font-size: 16px; color: var(--muted); }
+
+/* phrase card */
+.list { display: flex; flex-direction: column; gap: 14px; }
+.ph { background: var(--surface); border-radius: 22px; padding: 18px; border-top: 6px solid var(--c); display: flex; flex-direction: column; gap: 12px; }
+.ph-main { display: flex; gap: 14px; align-items: flex-start; }
+.ph .emo { font-size: 44px; line-height: 1; width: 66px; height: 66px; flex: none; border-radius: 50%; display: grid; place-items: center; background: color-mix(in srgb, var(--c) 14%, var(--surface)); }
+.ph .txt { min-width: 0; flex: 1; }
+.ph .en { margin: 0; font-size: 25px; font-weight: 700; line-height: 1.25; direction: ltr; text-align: left; overflow-wrap: anywhere; }
+.ph .pr { margin: 6px 0 0; color: var(--c); font-weight: 800; font-size: 22px; line-height: 1.4; }
+.ph .ar { margin: 4px 0 0; font-size: 26px; color: var(--ink); font-weight: 800; line-height: 1.4; }
+.reply { border-radius: 16px; background: color-mix(in srgb, var(--c) 10%, var(--surface)); padding: 10px 14px; display: flex; flex-direction: column; gap: 6px; }
+.reply .lbl { font-size: 17px; color: var(--muted); }
+.opt { display: flex; align-items: center; gap: 10px; border: 0; background: var(--surface); border-radius: 12px; padding: 8px 12px; text-align: right; }
+.opt b { direction: ltr; font-size: 19px; }
+.opt span { color: var(--ink); font-size: 20px; font-weight: 700; flex: 1; }
+.actions { display: grid; grid-template-columns: 1.4fr 1fr 1fr auto; gap: 8px; }
+.act { border: 0; border-radius: 14px; padding: 12px 6px; font-weight: 800; font-size: 18px; background: color-mix(in srgb, var(--c) 12%, var(--surface)); color: var(--ink); min-height: 52px; }
+.act.say { background: var(--c); color: #fff; font-size: 20px; }
+.act.fav { width: 52px; font-size: 22px; }
+.act.fav[aria-pressed="true"] { background: #F7C948; }
+.empty { text-align: center; color: var(--muted); padding: 40px 10px; }
+
+/* show-to-person overlay */
+.show { position: fixed; inset: 0; z-index: 50; background: var(--surface); display: flex; flex-direction: column; padding: calc(env(safe-area-inset-top, 0px) + 16px) max(20px, env(safe-area-inset-right, 0px)) calc(env(safe-area-inset-bottom, 0px) + 20px) max(20px, env(safe-area-inset-left, 0px)); }
+.show .hint { margin: 0; color: var(--muted); font-size: 15px; text-align: center; }
+.show .body { flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 18px; overflow-y: auto; text-align: center; min-height: 0; }
+.show .big-emo { font-size: 90px; line-height: 1; }
+.show .big-en { font-family: var(--en); font-weight: 700; font-size: clamp(34px, 10vw, 64px); line-height: 1.15; direction: ltr; overflow-wrap: anywhere; margin: 0; }
+.show .small-ar { font-size: 28px; font-weight: 700; color: var(--muted); margin: 0; }
+.show .lines { font-family: var(--en); direction: ltr; text-align: left; font-size: clamp(22px, 6vw, 32px); line-height: 1.4; margin: 0; width: 100%; }
+.show .lines div { padding-block: 6px; border-bottom: 1px solid var(--line); }
+.show .lines .lab { display: block; font-size: 15px; color: var(--muted); }
+.show .lines a { color: var(--accent); font-weight: 700; }
+.show .btns { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.show .btns button { border: 0; border-radius: 18px; padding: 16px; font-size: 20px; font-weight: 800; min-height: 64px; }
+.show .btns .say { background: var(--accent); color: #fff; }
+.show .btns .close { background: var(--bg); }
+
+/* my info form */
+.form { display: flex; flex-direction: column; gap: 14px; background: var(--surface); border-radius: 22px; padding: 18px; }
+.form label { display: flex; flex-direction: column; gap: 4px; font-weight: 700; }
+.form small { color: var(--muted); font-weight: 400; font-size: 14px; }
+.form input, .form textarea { border: 2px solid var(--line); border-radius: 14px; padding: 12px 14px; background: var(--bg); direction: ltr; text-align: left; font-family: var(--en); font-size: 19px; }
+.form textarea { min-height: 80px; resize: vertical; }
+.bigbtn { border: 0; width: 100%; margin-top: 16px; border-radius: 18px; padding: 16px; font-size: 21px; font-weight: 800; background: var(--accent); color: #fff; min-height: 64px; }
+.note { color: var(--muted); font-size: 15px; margin: 10px 4px 0; }
+
+.learn { align-self: flex-start; border: 2px solid var(--line); background: transparent; border-radius: 999px; padding: 4px 14px; font-size: 16px; font-weight: 700; color: var(--muted); }
+.learn[aria-pressed="true"] { border-color: #2F9E44; color: #2F9E44; background: color-mix(in srgb, #2F9E44 10%, var(--surface)); }
+.progress { background: var(--surface); border-radius: 18px; padding: 14px 16px; margin-bottom: 22px; }
+.pt { font-size: 18px; margin-bottom: 8px; }
+.pbar { height: 12px; border-radius: 99px; background: var(--bg); overflow: hidden; }
+.pbar i { display: block; height: 100%; background: #2F9E44; border-radius: 99px; }
+.clock { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; background: var(--surface); border-radius: 18px; padding: 14px 16px; margin-bottom: 12px; }
+.ck { display: flex; flex-direction: column; min-width: 0; }
+.ck .lbl { font-size: 15px; color: var(--muted); }
+.ck b { font-size: 26px; font-variant-numeric: tabular-nums; white-space: nowrap; display: flex; flex-direction: column; line-height: 1.3; }
+.ck b small { font-size: 15px; font-weight: 600; color: var(--muted); }
+.zsel { grid-column: 1 / -1; font-size: 15px; color: var(--muted); display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+.zsel select { font-size: 15px; padding: 6px 8px; border-radius: 10px; border: 1px solid var(--line); background: var(--bg); max-width: 100%; }
+.sosbox { background: var(--surface); border-radius: 22px; padding: 18px; border-top: 6px solid var(--danger); margin-bottom: 22px; font-size: 19px; }
+.sosbox ol { padding-inline-start: 22px; display: flex; flex-direction: column; gap: 8px; }
+.call911 { display: block; text-align: center; background: var(--danger); color: #fff; text-decoration: none; font-size: 30px; font-weight: 800; border-radius: 20px; padding: 18px; }
+.nums { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.num { border: 0; background: var(--surface); border-radius: 16px; padding: 10px 6px; display: flex; flex-direction: column; align-items: center; }
+.num b { font-family: var(--en); font-size: 30px; line-height: 1.2; }
+.num b.l { font-size: 24px; }
+.num span { text-align: center; line-height: 1.3; }
+.num span { font-size: 17px; color: #2F855A; font-weight: 700; }
+.note.big { font-size: 18px; color: var(--ink); margin: 0 4px 14px; }
+.bigbtn.soft { background: var(--surface); color: var(--ink); }
+.med { border: 0; padding: 0 0 14px; margin: 0; border-bottom: 2px dashed var(--line); display: flex; flex-direction: column; gap: 10px; }
+.med:last-child { border-bottom: 0; padding-bottom: 0; }
+.rm { align-self: flex-start; border: 0; background: transparent; color: var(--danger); font-weight: 700; font-size: 16px; }
+.upd { background: var(--surface); border-radius: 18px; padding: 14px 16px; margin-bottom: 12px; border: 2px solid transparent; }
+.upd.hot { border-color: #2F9E44; }
+.upd .bigbtn { margin-top: 0; background: #2F9E44; }
+.upd .bigbtn[disabled] { opacity: .6; }
+.umsg { margin: 10px 0 0; font-weight: 800; font-size: 18px; }
+.umeta { margin: 6px 0 0; color: var(--muted); font-size: 15px; }
+.badge { display: inline-block; background: #2F9E44; color: #fff; font-size: 14px; font-weight: 800; border-radius: 99px; padding: 0 10px; margin-bottom: 4px; }
+.qbtn.newb { grid-column: 1 / -1; background: #2F9E44; color: #fff; }
+.toast { position: fixed; left: 50%; transform: translateX(-50%); bottom: calc(env(safe-area-inset-bottom, 0px) + 24px); background: var(--ink); color: var(--bg); padding: 12px 20px; border-radius: 14px; font-weight: 700; z-index: 60; max-width: calc(100% - 32px); text-align: center; }
+@media (prefers-reduced-motion: no-preference) { .ph, .cat { transition: transform .12s; } .cat:active, .act:active, .qbtn:active { transform: scale(.97); } }
+</style>
+
+<div id="app" dir="rtl" lang="ar"></div>
+<div class="toast" id="toast" hidden></div>
+
+<script>
+const DATA = __DATA__;
+const PWA = __PWA__;
+const VERSION = __VERSION__;
+
+// ---------- helpers ----------
+const $ = s => document.querySelector(s);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+const store = {
+  get(k, d) { try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch { return d; } },
+  set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch {} }
+};
+document.documentElement.lang = 'ar'; document.documentElement.dir = 'rtl';
+
+// split "✈️ في المطار" into emoji + title
+DATA.forEach((c, ci) => {
+  const m = c.cat.match(/^(\S+)\s+(.*)$/);
+  c.emoji = m ? m[1] : '📌'; c.title = m ? m[2] : c.cat;
+  c.items.forEach(it => { it.id = it.en; it.ci = ci; });
+});
+const ALL = DATA.flatMap(c => c.items);
+const byId = id => ALL.find(i => i.id === id);
+const SOS = DATA.findIndex(c => c.cat.includes('الطوارئ'));
+
+let favs = store.get('favs', []);
+let me = store.get('me', {});
+let learned = store.get('learned', []);
+let meds = store.get('meds', []);
+let zone = store.get('zone', 'America/New_York');
+let newIds = store.get('newIds', []);
+
+// ---------- speech ----------
+let voices = [];
+function loadVoices() { try { voices = speechSynthesis.getVoices(); } catch {} if (typeof paintUpd === 'function') paintUpd(); }
+if ('speechSynthesis' in window) { loadVoices(); speechSynthesis.onvoiceschanged = loadVoices; }
+function say(text, slow) {
+  if (!('speechSynthesis' in window)) return toast('الصوت مش شغال على الموبايل ده');
+  const t = text.replace(/\.\.\./g, ' ').replace(/\s\/\s/g, '. ');
+  speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(t);
+  u.lang = 'en-US'; u.rate = slow ? 0.6 : 0.9;
+  const v = voices.find(v => v.lang === 'en-US' && /female|samantha|google/i.test(v.name)) || voices.find(v => v.lang === 'en-US') || voices.find(v => v.lang && v.lang.startsWith('en'));
+  if (v) u.voice = v;
+  speechSynthesis.speak(u);
+}
+
+let toastTimer;
+function toast(msg) { const t = $('#toast'); t.textContent = msg; t.hidden = false; clearTimeout(toastTimer); toastTimer = setTimeout(() => t.hidden = true, 2200); }
+
+// ---------- search ----------
+const norm = s => String(s).toLowerCase()
+  .replace(/[ً-ْـ]/g, '').replace(/[أإآ]/g, 'ا').replace(/ى/g, 'ي').replace(/ة/g, 'ه')
+  .replace(/[؟?!,.،]/g, ' ').replace(/\s+/g, ' ').trim();
+function search(q) {
+  const n = norm(q); if (!n) return [];
+  return ALL.filter(it => norm(it.en + ' ' + it.ar + ' ' + it.pr).includes(n));
+}
+
+// ---------- rendering ----------
+function card(it) {
+  const c = DATA[it.ci];
+  const fav = favs.includes(it.id);
+  const reply = it.re ? `<div class="reply"><div class="lbl">💬 ممكن تردّي (دوسي عشان تسمعي):</div>${it.re.map(([en, pr]) =>
+    `<button class="opt" data-say="${esc(en)}"><b lang="en">${esc(en)}</b><span>${esc(pr)}</span><span aria-hidden="true">🔊</span></button>`).join('')}</div>` : '';
+  return `<article class="ph" style="--c:${c.color}">
+    <div class="ph-main">
+      <div class="emo" aria-hidden="true">${it.e}</div>
+      <div class="txt">${newIds.includes(it.id) ? '<span class="badge">🆕 جديد</span>' : ''}
+        <p class="en" lang="en">${esc(it.en)}</p>
+        <p class="pr">${esc(it.pr)}</p>
+        <p class="ar">${esc(it.ar)}</p>
+      </div>
+    </div>${reply}
+    <button class="learn" data-learn="${esc(it.id)}" aria-pressed="${learned.includes(it.id)}">${learned.includes(it.id) ? '✅ حفظتها' : '⬜ حفظتها؟'}</button>
+    <div class="actions">
+      <button class="act say" data-say="${esc(it.en)}">🔊 اسمعي</button>
+      <button class="act" data-slow="${esc(it.en)}">🐢 ببطء</button>
+      <button class="act" data-show="${esc(it.id)}">📱 وريها</button>
+      <button class="act fav" data-fav="${esc(it.id)}" aria-pressed="${fav}" aria-label="احفظي">${fav ? '⭐' : '☆'}</button>
+    </div>
+  </article>`;
+}
+
+function bar(title) { return `<div class="bar"><button class="back" data-go="home">→ رجوع</button><h1>${title}</h1></div>`; }
+
+function viewHome() {
+  return `<div class="hello">
+      <h1>كروتي في أمريكا ✈️</h1>
+      <p>دوسي على أي جملة تسمعيها بالإنجليزي، أو دوسي «وريها» وورّي الموبايل للي قدامك.</p>
+    </div>
+    <input class="search" id="q" type="search" placeholder="🔍 دوّري… مثلاً: حمام، دكتور، فلوس" autocomplete="off">
+    <div id="results"></div>
+    <div id="homeBody">
+      <div class="quick">
+        <button class="qbtn sos" data-go="sos">🚨 طوارئ — 911</button>
+        <button class="qbtn" data-go="me">👤 بياناتي</button>
+        <button class="qbtn" data-go="meds">💊 أدويتي</button>
+        <button class="qbtn" data-go="num">🔢 الأرقام</button>
+        <button class="qbtn" data-go="fav">⭐ المحفوظة</button>
+        ${NEWS().length ? `<button class="qbtn newb" data-go="new">🆕 الجمل الجديدة (${NEWS().length})</button>` : ''}
+      </div>
+      ${updHTML()}
+      ${clockHTML()}
+      <div class="progress"><div class="pt"><span>✅ حفظتي <b>${learned.filter(id => byId(id)).length}</b> جملة من ${ALL.length}</span></div>
+        <div class="pbar"><i style="width:${Math.round(100 * learned.filter(id => byId(id)).length / ALL.length)}%"></i></div></div>
+      <p class="section-label">كل المواقف</p>
+      <div class="cats">${DATA.map((c, i) => `<button class="cat" style="--c:${c.color}" data-go="c${i}">
+        <span class="e" aria-hidden="true">${c.emoji}</span><span class="t">${esc(c.title)}</span><span class="n">${c.items.length} جملة</span></button>`).join('')}</div>
+    </div>`;
+}
+
+function viewCat(i) {
+  const c = DATA[i];
+  return bar(`${c.emoji} ${esc(c.title)}`) + `<div class="list">${c.items.map(card).join('')}</div>`;
+}
+
+function viewFav() {
+  const items = favs.map(byId).filter(Boolean);
+  return bar('⭐ المحفوظة') + (items.length ? `<div class="list">${items.map(card).join('')}</div>`
+    : `<p class="empty">لسه مفيش حاجة محفوظة.<br>دوسي على ☆ جنب أي جملة بتستخدميها كتير، وهتلاقيها هنا.</p>`);
+}
+
+const ME_FIELDS = [
+  ['name', 'اسمي', 'Full name', 'input'],
+  ['dname', 'اسم بنتي', 'Daughter\'s name', 'input'],
+  ['phone', 'رقم تليفون بنتي', '+1 ...', 'input'],
+  ['sname', 'اسم جوز بنتي', 'Son-in-law\'s name', 'input'],
+  ['sphone', 'رقم تليفون جوز بنتي', '+1 ...', 'input'],
+  ['addr', 'عنوان البيت في أمريكا', 'Street, City, State, ZIP', 'textarea'],
+  ['med', 'أدوية / أمراض / حساسية', 'e.g. Diabetes, high blood pressure. Medicine: ...', 'textarea']
+];
+function viewMe() {
+  return bar('👤 بياناتي') + `<form class="form" id="meForm">
+    ${ME_FIELDS.map(([k, l, ph, t]) => `<label for="me-${k}">${l} <small>اكتبيها بالإنجليزي</small>
+      ${t === 'input' ? `<input id="me-${k}" name="${k}" placeholder="${esc(ph)}" value="${esc(me[k] || '')}" ${/phone/.test(k) ? 'type="tel" inputmode="tel"' : ''}>`
+        : `<textarea id="me-${k}" name="${k}" placeholder="${esc(ph)}">${esc(me[k] || '')}</textarea>`}</label>`).join('')}
+  </form>
+  <button class="bigbtn" data-showme="1">📱 اعرضي بياناتي للي قدامك</button>
+  <p class="note">البيانات دي بتتحفظ على الموبايل ده بس، ومحدش تاني بيشوفها.</p>`;
+}
+
+// ---------- 911 ----------
+function viewSos() {
+  const first = DATA[SOS].items.slice(0, 4);
+  return bar('🚨 طوارئ — 911') + `<div class="sosbox">
+    <a class="call911" href="tel:911">📞 اتصلي بـ 911</a>
+    <p>رقم <b>911</b> للإسعاف والبوليس والمطافي، ومجاني من أي موبايل حتى لو مفيهوش رصيد.</p>
+    <ol>
+      <li>اتصلي وقولي على طول: <b lang="en">I speak Arabic</b> (آي سبيك أرابيك). هيجيبولك مترجم عربي على الخط ببلاش.</li>
+      <li>لو مش عارفة تقولي العنوان، دوسي <b>اعرضي العنوان</b> تحت، وورّي الشاشة لأي حد جنبك يقرأه لهم.</li>
+      <li>بعدها كلّمي بنتك على طول.</li>
+    </ol>
+    ${me.addr ? `<button class="bigbtn" data-showaddr="1">🏠 اعرضي العنوان</button>` : `<button class="bigbtn" data-go="me">✍️ اكتبي العنوان في «بياناتي» الأول</button>`}
+  </div>
+  <p class="section-label">جمل للطوارئ</p>
+  <div class="list">${first.map(card).join('')}</div>
+  <button class="bigbtn soft" data-go="c${SOS}">كل جمل الطوارئ والصحة ←</button>`;
+}
+function showAddr() {
+  openShow(`<div class="big-emo" aria-hidden="true">🏠</div><p class="small-ar" lang="en">Please send help to this address:</p><p class="big-en" lang="en" style="font-size:clamp(28px,8vw,46px)">${esc(me.addr).replace(/\n/g, '<br>')}</p>${me.phone ? `<p class="small-ar" lang="en">My daughter: ${esc(me.phone)}</p>` : ''}`, 'Please send help to this address. ' + me.addr);
+}
+
+// ---------- numbers ----------
+const NUMS = [[0,'زيرو','zero'],[1,'وان','one'],[2,'تو','two'],[3,'ثري','three'],[4,'فور','four'],[5,'فايف','five'],[6,'سيكس','six'],[7,'سيفن','seven'],[8,'إيت','eight'],[9,'ناين','nine'],[10,'تن','ten'],
+  [11,'إليفن','eleven'],[12,'تويلف','twelve'],[13,'ثيرتين','thirteen'],[14,'فورتين','fourteen'],[15,'فيفتين','fifteen'],[16,'سيكستين','sixteen'],[17,'سيفنتين','seventeen'],[18,'إيتين','eighteen'],[19,'ناينتين','nineteen'],[20,'توينتي','twenty'],
+  [30,'ثيرتي','thirty'],[40,'فورتي','forty'],[50,'فيفتي','fifty'],[60,'سيكستي','sixty'],[70,'سيفنتي','seventy'],[80,'إيتي','eighty'],[90,'ناينتي','ninety'],[100,'وان هاندرد','one hundred'],[1000,'وان ثاوزند','one thousand']];
+function viewNum() {
+  return bar('🔢 الأرقام') + `<p class="note big">دوسي على أي رقم عشان تسمعيه. خلّي بالك: <b>13</b> (ثيرتين) و<b>30</b> (ثيرتي) قريبين في الصوت، فلو مش متأكدة قولي <b lang="en">Can you write it?</b></p>
+  <div class="nums">${NUMS.map(([n, pr, en]) => `<button class="num" data-say="${en}"><b class="${n >= 100 ? 'l' : ''}">${n}</b><span>${pr}</span></button>`).join('')}</div>
+  <p class="section-label" style="margin-top:22px">الفلوس</p>
+  <div class="list">${DATA[DATA.findIndex(c => c.cat.includes('الفلوس'))].items.slice(0, 6).map(card).join('')}</div>`;
+}
+
+// ---------- medicines ----------
+function viewMeds() {
+  const rows = meds.length ? meds : [{ name: '', when: '', why: '' }];
+  return bar('💊 أدويتي') + `<p class="note big">اكتبي كل دوا في سطر <b>بالإنجليزي</b>، زي ما هو مكتوب على العلبة. لو الدوا خلص، اعرضي الشاشة دي في الصيدلية.</p>
+  <form class="form" id="medForm">${rows.map((m, i) => `<fieldset class="med" data-i="${i}">
+    <label for="med-name-${i}">💊 اسم الدوا والجرعة<input id="med-name-${i}" data-k="name" placeholder="e.g. Metformin 500 mg" value="${esc(m.name)}"></label>
+    <label for="med-when-${i}">🕐 باخده إمتى<input id="med-when-${i}" data-k="when" placeholder="e.g. Morning and night, after food" value="${esc(m.when)}"></label>
+    <label for="med-why-${i}">📝 علشان إيه<input id="med-why-${i}" data-k="why" placeholder="e.g. Diabetes" value="${esc(m.why)}"></label>
+    <button type="button" class="rm" data-rmmed="${i}">🗑️ امسحي الدوا ده</button>
+  </fieldset>`).join('')}</form>
+  <button class="bigbtn soft" data-addmed="1">➕ زوّدي دوا تاني</button>
+  <button class="bigbtn" data-showmeds="1">📱 اعرضي أدويتي في الصيدلية</button>
+  <p class="note">البيانات دي بتتحفظ على الموبايل ده بس.</p>`;
+}
+function showMeds() {
+  const list = meds.filter(m => m.name.trim());
+  if (!list.length) return toast('اكتبي اسم دوا الأول');
+  openShow(`<div class="big-emo" aria-hidden="true">💊</div><div class="lines"><div><b>${me.name ? esc(me.name) + ' — ' : ''}My medicines</b><span class="lab">I need the same medicine. Can you help me, please?</span></div>
+    ${list.map(m => `<div><b>${esc(m.name)}</b>${m.when ? `<span class="lab">When: ${esc(m.when)}</span>` : ''}${m.why ? `<span class="lab">For: ${esc(m.why)}</span>` : ''}</div>`).join('')}</div>`,
+    'I need the same medicine. Can you help me, please?');
+}
+
+// ---------- clock ----------
+const ZONES = [['America/New_York', 'نيويورك / الشرق (New York, Florida, Boston)'], ['America/Chicago', 'الوسط (Chicago, Texas)'], ['America/Denver', 'الجبال (Denver, Arizona)'], ['America/Los_Angeles', 'الغرب (California, Seattle)']];
+function fmt(tz) {
+  try {
+    const d = new Date();
+    const t = new Intl.DateTimeFormat('ar-EG-u-nu-latn', { timeZone: tz, hour: 'numeric', minute: '2-digit' }).format(d);
+    const w = new Intl.DateTimeFormat('ar-EG', { timeZone: tz, weekday: 'long' }).format(d);
+    return `${t}<small>${w}</small>`;
+  } catch { return '—'; }
+}
+function clockHTML() {
+  return `<div class="clock">
+    <div class="ck"><span class="lbl">🇺🇸 الساعة عندك</span><b id="ckUS">${fmt(zone)}</b></div>
+    <div class="ck"><span class="lbl">🇪🇬 الساعة في مصر</span><b id="ckEG">${fmt('Africa/Cairo')}</b></div>
+    <label class="zsel" for="zone">بنتي ساكنة في: <select id="zone">${ZONES.map(([z, l]) => `<option value="${z}" ${z === zone ? 'selected' : ''}>${l}</option>`).join('')}</select></label>
+  </div>`;
+}
+setInterval(() => { const a = $('#ckUS'), b = $('#ckEG'); if (a) a.innerHTML = fmt(zone); if (b) b.innerHTML = fmt('Africa/Cairo'); }, 20000);
+
+// ---------- download & update (installed app only) ----------
+const NEWS = () => newIds.map(byId).filter(Boolean);
+let updState = 'idle'; // idle | checking | available | latest | working | offline
+function voiceOK() { return voices.some(v => v.lang && v.lang.toLowerCase().startsWith('en') && v.localService !== false); }
+function verDate(v) { try { return new Intl.DateTimeFormat('ar-EG', { day: 'numeric', month: 'long', hour: 'numeric', minute: '2-digit' }).format(new Date(v)); } catch { return ''; } }
+function updHTML() {
+  if (!PWA) return '';
+  const msg = {
+    idle: '', checking: 'بدوّر على تحديث…', latest: '✅ عندك آخر نسخة',
+    available: '🆕 فيه جمل جديدة! دوسي الزرار عشان تحمّليها', working: '⏳ بحمّل… استني ثواني',
+    offline: '📴 مفيش إنترنت دلوقتي — التطبيق شغال عادي باللي متحمّل'
+  }[updState];
+  return `<div class="upd ${updState === 'available' ? 'hot' : ''}" id="upd">
+    <button class="bigbtn" data-update="1" ${updState === 'working' ? 'disabled' : ''}>🔄 حمّلي آخر تحديث</button>
+    ${msg ? `<p class="umsg">${msg}</p>` : ''}
+    <p class="umeta">النسخة اللي عندك: ${verDate(VERSION)} · ${ALL.length} جملة</p>
+    <p class="umeta">${voiceOK() ? '🔊 الصوت الإنجليزي موجود على الموبايل ✅' : '⚠️ لو الصوت مش شغال من غير نت: نزّلي الصوت الإنجليزي من إعدادات الموبايل (Text-to-speech)'}</p>
+  </div>`;
+}
+function paintUpd() { const u = $('#upd'); if (u) u.outerHTML = updHTML(); }
+async function checkUpdate() {
+  if (!PWA) return;
+  if (!navigator.onLine) { updState = 'offline'; return paintUpd(); }
+  try {
+    const r = await fetch('version.json?t=' + Date.now(), { cache: 'no-store' });
+    const j = await r.json();
+    updState = j.v > VERSION ? 'available' : 'latest';
+  } catch { updState = 'offline'; }
+  paintUpd();
+}
+async function downloadAll() {
+  if (!navigator.onLine) { updState = 'offline'; return paintUpd(); }
+  updState = 'working'; paintUpd();
+  try {
+    const c = await caches.open('kroti-v1');
+    for (const u of ['./', './index.html', './manifest.json', './icon-192.png', './icon-512.png']) {
+      const r = await fetch(u, { cache: 'reload' }); if (r.ok) await c.put(u, r);
+    }
+    const fl = document.querySelector('link[href*="fonts.googleapis"]');
+    if (fl) {
+      const css = await fetch(fl.href).then(r => { c.put(fl.href, r.clone()); return r.text(); });
+      for (const m of css.matchAll(/url\((https:[^)]+)\)/g)) { try { const r = await fetch(m[1]); if (r.ok) await c.put(m[1], r); } catch {} }
+    }
+    try { const reg = await navigator.serviceWorker.getRegistration(); if (reg) await reg.update(); } catch {}
+    store.set('knownIds', ALL.map(i => i.id));
+    store.set('justUpdated', true);
+    location.reload();
+  } catch (e) { updState = 'offline'; paintUpd(); toast('حصلت مشكلة في التحميل، جربي تاني وانتي على واي فاي'); }
+}
+function afterLoad() {
+  if (!PWA) return;
+  const known = store.get('knownIds', null);
+  if (store.get('justUpdated', false)) {
+    store.set('justUpdated', false);
+    const added = known ? ALL.filter(i => !known.includes(i.id)).map(i => i.id) : [];
+    if (added.length) { newIds = added; store.set('newIds', newIds); toast(`✅ اتحدّث! اتضاف ${added.length} جملة جديدة`); route(); }
+    else toast('✅ كل حاجة متحمّلة وشغالة من غير نت');
+  }
+  if (!known) store.set('knownIds', ALL.map(i => i.id));
+  checkUpdate();
+}
+window.addEventListener('online', checkUpdate);
+window.addEventListener('offline', () => { updState = 'offline'; paintUpd(); });
+
+// ---------- show overlay ----------
+function openShow(html, speakText) {
+  closeShow();
+  const d = document.createElement('div');
+  d.className = 'show'; d.id = 'show'; d.setAttribute('role', 'dialog'); d.dir = 'rtl';
+  d.innerHTML = `<p class="hint">ورّي الشاشة دي للي قدامك 👇</p><div class="body">${html}</div>
+    <div class="btns"><button class="say" data-say="${esc(speakText)}">🔊 اسمعي</button><button class="close" data-close="1">✕ رجوع</button></div>`;
+  document.body.appendChild(d);
+  document.body.style.overflow = 'hidden';
+}
+function closeShow() { const s = $('#show'); if (s) s.remove(); document.body.style.overflow = ''; }
+
+function showItem(it) {
+  const en = it.en.startsWith('My name is') && me.name ? 'My name is ' + me.name : it.en;
+  openShow(`<div class="big-emo" aria-hidden="true">${it.e}</div><p class="big-en" lang="en">${esc(en)}</p><p class="small-ar">${esc(it.ar)}</p>`, en);
+}
+function showMe() {
+  const rows = [];
+  if (me.name) rows.push(['My name', esc(me.name)]);
+  rows.push(['', 'I am from Egypt. I don\'t speak English well.']);
+  if (me.dname) rows.push(['I am visiting my daughter', esc(me.dname)]);
+  if (me.phone) rows.push(['Please call my daughter', `<a href="tel:${esc(me.phone.replace(/[^\d+]/g, ''))}">${esc(me.phone)}</a>`]);
+  if (me.sname) rows.push(['My son-in-law', esc(me.sname)]);
+  if (me.sphone) rows.push([me.phone ? 'Or call my son-in-law' : 'Please call my son-in-law', `<a href="tel:${esc(me.sphone.replace(/[^\d+]/g, ''))}">${esc(me.sphone)}</a>`]);
+  if (me.addr) rows.push(['Address', esc(me.addr).replace(/\n/g, '<br>')]);
+  if (me.med) rows.push(['Medical information', esc(me.med).replace(/\n/g, '<br>')]);
+  const speak = 'Hello. I am from Egypt and I don\'t speak English well.' + (me.dname ? ' I am visiting my daughter, ' + me.dname + '.' : '') + (me.phone ? ' Please call my daughter.' : '') + (me.sphone ? (me.phone ? ' Or call my son-in-law.' : ' Please call my son-in-law.') : '');
+  openShow(`<div class="big-emo" aria-hidden="true">🪪</div><div class="lines">${rows.map(([l, v]) => `<div>${l ? `<span class="lab">${l}</span>` : ''}${v}</div>`).join('')}</div>`, speak);
+}
+
+// ---------- router ----------
+function route() {
+  closeShow();
+  const h = location.hash.slice(1) || 'home';
+  let html;
+  if (/^c\d+$/.test(h) && DATA[+h.slice(1)]) html = viewCat(+h.slice(1));
+  else if (h === 'fav') html = viewFav();
+  else if (h === 'me') html = viewMe();
+  else if (h === 'sos') html = viewSos();
+  else if (h === 'new') html = bar('🆕 الجمل الجديدة') + (NEWS().length ? `<div class="list">${NEWS().map(card).join('')}</div>` : '<p class="empty">مفيش جمل جديدة دلوقتي.</p>');
+  else if (h === 'num') html = viewNum();
+  else if (h === 'meds') html = viewMeds();
+  else html = viewHome();
+  $('#app').innerHTML = html;
+  window.scrollTo(0, 0);
+}
+function go(h) { if (location.hash.slice(1) === h) route(); else location.hash = h; }
+window.addEventListener('hashchange', route);
+
+// ---------- events ----------
+document.addEventListener('click', e => {
+  const b = e.target.closest('button, a'); if (!b) return;
+  const d = b.dataset;
+  if (d.go) go(d.go);
+  else if (d.say) say(d.say, false);
+  else if (d.slow) say(d.slow, true);
+  else if (d.show) showItem(byId(d.show));
+  else if (d.close) closeShow();
+  else if (d.showme) showMe();
+  else if (d.showaddr) showAddr();
+  else if (d.update) downloadAll();
+  else if (d.showmeds) showMeds();
+  else if (d.addmed) { meds = [...(meds.length ? meds : [{ name: '', when: '', why: '' }]), { name: '', when: '', why: '' }]; store.set('meds', meds); route(); }
+  else if (d.rmmed) { meds.splice(+d.rmmed, 1); store.set('meds', meds); route(); }
+  else if (d.learn) {
+    const id = d.learn, on = !learned.includes(id);
+    learned = on ? [...learned, id] : learned.filter(x => x !== id);
+    store.set('learned', learned);
+    b.setAttribute('aria-pressed', on); b.textContent = on ? '✅ حفظتها' : '⬜ حفظتها؟';
+    if (on) toast('برافو عليكي! 👏 حفظتي ' + learned.length + ' جملة');
+  }
+  else if (d.fav) {
+    const id = d.fav, on = !favs.includes(id);
+    favs = on ? [...favs, id] : favs.filter(x => x !== id);
+    store.set('favs', favs);
+    b.setAttribute('aria-pressed', on); b.textContent = on ? '⭐' : '☆';
+    toast(on ? 'اتحفظت في ⭐ المحفوظة' : 'اتشالت من المحفوظة');
+  }
+});
+document.addEventListener('input', e => {
+  if (e.target.id === 'q') {
+    const q = e.target.value, res = search(q);
+    $('#homeBody').hidden = !!q.trim();
+    $('#results').innerHTML = !q.trim() ? '' : res.length ? `<div class="list">${res.map(card).join('')}</div>` : `<p class="empty">ملقتش حاجة بالكلمة دي. جربي كلمة تانية.</p>`;
+  }
+  if (e.target.closest('#meForm')) { me[e.target.name] = e.target.value; store.set('me', me); }
+  const mf = e.target.closest('.med');
+  if (mf) { const i = +mf.dataset.i; while (meds.length <= i) meds.push({ name: '', when: '', why: '' }); meds[i][e.target.dataset.k] = e.target.value; store.set('meds', meds); }
+});
+document.addEventListener('change', e => { if (e.target.id === 'zone') { zone = e.target.value; store.set('zone', zone); $('#ckUS').innerHTML = fmt(zone); } });
+document.addEventListener('submit', e => e.preventDefault());
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeShow(); });
+
+route();
+afterLoad();
+</script>
