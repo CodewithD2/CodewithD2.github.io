@@ -253,18 +253,52 @@ function addItem(o, inD = 1, quiet) {
 const dueList = lang => deck.filter(d => d.due <= Date.now() && (!lang || d.lang === lang)).sort((a, b) => a.due - b.due);
 
 // ---------- speech ----------
+// Never read a language with another language's voice: if the device has no voice for it, explain how to install one.
 let voices = [];
-function loadVoices() { try { voices = speechSynthesis.getVoices(); } catch {} }
+function loadVoices() { try { voices = speechSynthesis.getVoices() || []; } catch {} }
 if ('speechSynthesis' in window) { loadVoices(); speechSynthesis.onvoiceschanged = loadVoices; }
-const hasVoice = lang => voices.some(v => v.lang && v.lang.toLowerCase().startsWith(lang));
-function say(lang, text, slow) {
-  if (!('speechSynthesis' in window)) return toast('الصوت مش متاح على الجهاز ده');
+const norm = l => String(l || '').toLowerCase().replace('_', '-');
+const hasVoice = lang => voices.some(v => norm(v.lang).startsWith(lang));
+function pickVoice(lang) {
+  const want = norm(LANGS[lang].tts);
+  const ok = voices.filter(v => norm(v.lang).startsWith(lang));
+  const score = v => (norm(v.lang) === want ? 4 : 0) + (/natural|neural|premium|enhanced|google/i.test(v.name) ? 2 : 0) + (v.localService ? 1 : 0);
+  return ok.sort((x, y) => score(y) - score(x))[0] || null;
+}
+function voicesReady() {
+  if (voices.length) return Promise.resolve();
+  return new Promise(res => {
+    const t = setTimeout(res, 1500);
+    speechSynthesis.addEventListener?.('voiceschanged', () => { loadVoices(); clearTimeout(t); res(); }, { once: true });
+    loadVoices(); if (voices.length) { clearTimeout(t); res(); }
+  });
+}
+async function say(lang, text, slow) {
+  if (!('speechSynthesis' in window)) return voiceHelp(lang);
+  await voicesReady();
+  const v = pickVoice(lang);
+  if (!v) return voiceHelp(lang);
   speechSynthesis.cancel();
   const u = new SpeechSynthesisUtterance(String(text).replace(/\s\/\s/g, '. '));
-  u.lang = LANGS[lang].tts; u.rate = slow ? 0.6 : 0.9;
-  const v = voices.find(v => v.lang === LANGS[lang].tts) || voices.find(v => v.lang && v.lang.toLowerCase().startsWith(lang));
-  if (v) u.voice = v;
+  u.voice = v; u.lang = v.lang; u.rate = slow ? 0.6 : 0.9;
   speechSynthesis.speak(u);
+}
+function voiceHelp(lang) {
+  const L = LANGS[lang];
+  closeSheet();
+  const d = document.createElement('div'); d.id = 'sheetWrap';
+  d.innerHTML = `<div class="scrim" data-close="1"></div><div class="sheet" role="dialog" style="--c:${L.color}">
+    <b style="font-size:20px">🔇 الجهاز ده معندوش صوت ${L.name}</b>
+    <p style="margin:0">علشان كده مش هنقرأ الكلمة، لأن الصوت الإنجليزي هيقرأها غلط ويعلّمك نطق غلط. نزّل صوت <b class="tx">${L.native}</b> مرة واحدة ببلاش:</p>
+    <ul style="margin:0;padding-inline-start:20px;display:flex;flex-direction:column;gap:6px;font-size:15px">
+      <li><b>أندرويد:</b> الإعدادات ← Text-to-speech ← Speech Services by Google ← Install voice data ← ${L.native}</li>
+      <li><b>آيفون:</b> Settings ← Accessibility ← Spoken Content ← Voices ← ${L.native}</li>
+      <li><b>ويندوز:</b> Settings ← Time &amp; language ← Speech ← Add voices ← ${L.native}</li>
+      <li><b>ماك:</b> System Settings ← Accessibility ← Spoken Content ← System voice ← Manage Voices</li>
+    </ul>
+    <p class="muted" style="margin:0;font-size:14px">بعد ما تنزّله، اقفل التطبيق وافتحه تاني. أو افتحه من Chrome، لأنه فيه أصوات جوجل جاهزة.</p>
+    <button class="btn main" data-close="1">تمام</button></div>`;
+  document.body.appendChild(d);
 }
 
 // ---------- bits ----------
@@ -302,7 +336,7 @@ function viewHome() {
 function viewLang(code) {
   const L = LANGS[code], due = dueList(code).length, saved = deck.filter(d => d.lang === code).length;
   return `<div style="--c:${L.color}">${bar(`${L.flag} ${L.name}`)}
-  ${voices.length && !hasVoice(code) ? `<p class="warn">⚠️ الجهاز ده معندوش صوت ${L.name}. نزّله من الإعدادات: Text-to-speech ← Language ← ${L.native}.</p>` : ''}
+  ${!hasVoice(code) ? `<p class="warn">⚠️ الجهاز ده معندوش صوت ${L.name}، فالنطق مش هيشتغل. <button class="btn small" data-voicehelp="${code}">إزاي أنزّله؟</button></p>` : ''}
   <div class="tiles">
     <button class="tile ${due ? 'hot' : ''}" data-go="review-${code}"><span class="e">🔁</span><span class="t">راجع</span><span class="d">${due ? `${ar(due)} كلمة مستنياك` : `مفيش حاجة دلوقتي · ${ar(saved)} في جدولك`}</span></button>
     <button class="tile" data-go="abc-${code}"><span class="e">🔤</span><span class="t">${L.abcTitle}</span><span class="d">${ar(L.abc.length)} ${code === 'ru' ? 'حرف' : 'صوت'} بأمثلة</span></button>
@@ -625,7 +659,7 @@ function openSheet(code, i, w) {
     <button class="btn ghost" data-close="1">قفل</button></div>`;
   d.id = 'sheetWrap'; d.dataset.l = code; d.dataset.t = k; d.dataset.m = m; d.dataset.ex = ex;
   document.body.appendChild(d);
-  say(code, k);
+  if (pickVoice(code)) say(code, k);
 }
 function closeSheet() { const s = $('#sheetWrap'); if (s) s.remove(); }
 
@@ -691,6 +725,7 @@ document.addEventListener('click', e => {
   if (d.wf) { wf = d.wf; return route(); }
   if (d.del) { deck = deck.filter(x => x.id !== d.del); saveDeck(); toast('اتمسحت'); return route(); }
   if (d.update) return downloadAll();
+  if (d.voicehelp) return voiceHelp(d.voicehelp);
   if (d.copybk) { const t = $('#bk-out'); navigator.clipboard?.writeText(t.value).then(() => toast('✅ اتنسخت'), () => { t.select(); toast('النص متحدد — انسخه'); }) ?? (t.select(), toast('النص متحدد — انسخه')); return; }
   if (d.importbk) {
     try {

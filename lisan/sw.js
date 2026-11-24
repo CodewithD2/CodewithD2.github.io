@@ -1,4 +1,4 @@
-// Lisan offline support: cache first; the in-app update button refreshes the cache. build 1795513520954
+// Lisan offline support: cache first; the in-app update button refreshes the cache. build 1795513978767
 const CACHE = 'lisan-v1';
 const SHELL = ['./', './index.html', './manifest.json', './icon-192.png', './icon-512.png'];
 self.addEventListener('install', e => {
