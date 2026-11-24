@@ -5,10 +5,13 @@ const root = __dirname, site = path.join(root, '..', 'lisan');
 const LANGS = {};
 for (const f of fs.readdirSync(path.join(root, 'data')).filter(f => f.endsWith('.json')).sort()) {
   const L = JSON.parse(fs.readFileSync(path.join(root, 'data', f), 'utf8'));
-  // every word in every text must have a meaning
+  // every word in every text and quote must have a meaning
   L.texts.forEach(t => t.s.forEach(([s]) => (s.match(/\p{L}+/gu) || []).forEach(w => {
     if (!(w.toLowerCase() in t.v)) throw new Error(`${f}: "${t.title}" has no meaning for "${w}"`);
   })));
+  (L.quotes || []).forEach(q => (q.q.match(/\p{L}+/gu) || []).forEach(w => {
+    if (!(w.toLowerCase() in q.v)) throw new Error(`${f}: quote "${q.book}" has no meaning for "${w}"`);
+  }));
   LANGS[L.code] = L;
 }
 const VERSION = Date.now();
@@ -38,15 +41,15 @@ fs.writeFileSync(path.join(site, 'manifest.json'), JSON.stringify({
   icons: [{ src: 'icon-192.png', sizes: '192x192', type: 'image/png' }, { src: 'icon-512.png', sizes: '512x512', type: 'image/png', purpose: 'any maskable' }]
 }, null, 1));
 fs.writeFileSync(path.join(site, 'version.json'), JSON.stringify({ v: VERSION }));
-fs.writeFileSync(path.join(site, 'sw.js'), `// Lisan offline support: cache first; the in-app update button refreshes the cache. build ${VERSION}
-const CACHE = 'lisan-v1';
+fs.writeFileSync(path.join(site, 'sw.js'), `// Lisan offline support: fast cache + background revalidate; build ${VERSION}
+const CACHE = 'lisan-${VERSION}';
 const SHELL = ['./', './index.html', './manifest.json', './icon-192.png', './icon-512.png'];
 self.addEventListener('install', e => {
   e.waitUntil(caches.open(CACHE).then(c => Promise.all(SHELL.map(u => fetch(u, { cache: 'reload' }).then(r => r.ok && c.put(u, r)).catch(() => {})))));
   self.skipWaiting();
 });
 self.addEventListener('activate', e => {
-  e.waitUntil(caches.keys().then(ks => Promise.all(ks.filter(k => k !== CACHE).map(k => caches.delete(k)))).then(() => self.clients.claim()));
+  e.waitUntil(caches.keys().then(ks => Promise.all(ks.filter(k => k.startsWith('lisan-') && k !== CACHE).map(k => caches.delete(k)))).then(() => self.clients.claim()));
 });
 self.addEventListener('fetch', e => {
   const req = e.request;
@@ -54,9 +57,9 @@ self.addEventListener('fetch', e => {
   e.respondWith(caches.open(CACHE).then(async c => {
     const key = req.mode === 'navigate' ? './' : req;
     const hit = await c.match(key, { ignoreSearch: true });
+    const net = fetch(req).then(r => { if (r && (r.ok || r.type === 'opaque')) c.put(key, r.clone()); return r; }).catch(() => null);
     if (hit) return hit;
-    try { const r = await fetch(req); if (r && (r.ok || r.type === 'opaque')) c.put(key, r.clone()); return r; }
-    catch { return (await c.match('./')) || Response.error(); }
+    return (await net) || (await c.match('./')) || Response.error();
   }));
 });
 `);

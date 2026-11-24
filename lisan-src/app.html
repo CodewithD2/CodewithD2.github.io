@@ -1,9 +1,9 @@
 <title>لسان</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&family=Inter:wght@400;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Inter:wght@400;600;700&display=swap">
 <style>
-/* Layout: one phone-width column. Home → language hub → tools (letters, phrases, about me, reader, review, quiz). */
+/* Layout: one phone-width column. Home → language hub → tools (letters, phrases, topics, quotes & art, about me, reader, review, quiz). */
 :root {
   --bg: #EFF2F7;
   --surface: #FFFFFF;
@@ -21,6 +21,7 @@
   --bg: #0D121B; --surface: #172030; --ink: #EEF2F8; --muted: #9AA6B8; --line: #2A3547; --accent: #9C88FF; --good: #51CF66; --bad: #FF6B6B; color-scheme: dark } }
 :root[data-theme="dark"] {
   --bg: #0D121B; --surface: #172030; --ink: #EEF2F8; --muted: #9AA6B8; --line: #2A3547; --accent: #9C88FF; --good: #51CF66; --bad: #FF6B6B; color-scheme: dark }
+:root[data-theme="light"] { color-scheme: light; }
 
 * { box-sizing: border-box; }
 html, body { background: var(--bg); color: var(--ink); }
@@ -35,13 +36,17 @@ h2 { font-size: 19px; margin: 22px 4px 10px; }
 .stack { display: flex; flex-direction: column; gap: 12px; }
 
 body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--bg); }
-.bar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--bg); display: flex; align-items: center; gap: 12px; padding-block: 12px; }
-.bar h1 { margin: 0; font-size: 21px; font-weight: 800; flex: 1; min-width: 0; text-wrap: balance; }
-.back { border: 0; background: var(--surface); border-radius: 12px; padding: 6px 14px; font-weight: 700; box-shadow: 0 1px 0 var(--line); }
+.bar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--bg); display: flex; align-items: center; gap: 10px; padding-block: 12px; }
+.bar h1 { margin: 0; font-size: 21px; font-weight: 800; flex: 1; min-width: 0; text-wrap: balance; display: flex; align-items: center; gap: 8px; }
+.back { border: 0; background: var(--surface); border-radius: 12px; padding: 6px 14px; font-weight: 700; box-shadow: 0 1px 0 var(--line); white-space: nowrap; }
+.theme-btn { border: 0; width: 42px; height: 42px; border-radius: 12px; background: var(--surface); box-shadow: 0 1px 0 var(--line); font-size: 19px; display: grid; place-items: center; flex: none; }
 
-.hero { padding-block: 22px 6px; }
+.hero { padding-block: 22px 6px; display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
 .hero h1 { margin: 0; font-size: 34px; font-weight: 800; line-height: 1.2; }
 .hero p { margin: 4px 0 0; color: var(--muted); }
+
+.flg { display: inline-block; vertical-align: -0.15em; border-radius: 5px; box-shadow: 0 0 0 1px rgb(0 0 0 / .08); flex: none; }
+.lang .flg { width: 44px; height: 30px; border-radius: 7px; margin-bottom: 4px; }
 
 .panel { background: var(--surface); border-radius: 20px; padding: 16px; }
 .today { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 16px; }
@@ -50,6 +55,7 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 .stat span { color: var(--muted); font-size: 15px; }
 .btn { border: 0; border-radius: 14px; padding: 12px 16px; font-weight: 800; background: var(--surface); box-shadow: 0 1px 0 var(--line); min-height: 48px; }
 .btn.main { background: var(--c); color: #fff; box-shadow: none; }
+.btn.stop { background: var(--bad); color: #fff; box-shadow: none; }
 .btn.wide { width: 100%; }
 .btn.small { min-height: 38px; padding: 6px 12px; font-size: 15px; }
 .btn.ghost { background: transparent; box-shadow: inset 0 0 0 2px var(--line); }
@@ -57,9 +63,8 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 
 .langs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
 .lang { border: 0; border-radius: 22px; padding: 18px 16px; background: var(--surface); text-align: right; display: flex; flex-direction: column; gap: 2px; box-shadow: inset 0 -6px 0 var(--c); }
-.lang .f { font-size: 40px; line-height: 1.2; }
 .lang .n { font-size: 21px; font-weight: 800; }
-.lang .nt { font-family: var(--tx); color: var(--muted); font-size: 15px; }
+.lang .nt { font-family: var(--tx); color: var(--muted); font-size: 15px; direction: ltr; text-align: right; }
 .lang .p { font-size: 14px; color: var(--muted); margin-top: 6px; }
 
 .tiles { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
@@ -68,104 +73,137 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 .tile .t { font-weight: 800; font-size: 18px; }
 .tile .d { color: var(--muted); font-size: 14px; line-height: 1.4; }
 .tile.hot { background: var(--c); color: #fff; }
-.tile.hot .d { color: #fff; opacity: .85; }
-.plan { counter-reset: s; list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px; }
-.plan li { display: flex; gap: 10px; align-items: baseline; }
-.plan li::before { counter-increment: s; content: counter(s); font-family: var(--tx); font-weight: 700; color: var(--c); min-width: 1ch; }
-.warn { background: color-mix(in srgb, #F59F00 16%, var(--surface)); border-radius: 14px; padding: 10px 14px; font-size: 15px; }
+.tile.hot .d { color: #fff; opacity: .88; }
 
-/* letters */
-.filters { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 4px; margin-bottom: 12px; }
-.chip { border: 0; white-space: nowrap; border-radius: 99px; padding: 6px 14px; background: var(--surface); font-weight: 700; font-size: 15px; }
-.chip[aria-pressed="true"] { background: var(--c); color: #fff; }
+/* interactive daily plan */
+.plan { display: flex; flex-direction: column; gap: 8px; }
+.plan-step { border: 0; width: 100%; background: var(--bg); border-radius: 14px; padding: 10px 12px; display: flex; align-items: center; gap: 10px; text-align: right; transition: background .15s; }
+.plan-step.done { background: color-mix(in srgb, var(--good) 14%, var(--bg)); }
+.plan-step .chk { width: 26px; height: 26px; border-radius: 99px; display: grid; place-items: center; font-family: var(--tx); font-weight: 700; font-size: 14px; background: var(--surface); color: var(--c); box-shadow: inset 0 0 0 2px var(--line); flex: none; }
+.plan-step.done .chk { background: var(--good); color: #fff; box-shadow: none; }
+.plan-step .ptxt { flex: 1; font-size: 15px; }
+.plan-step .parr { color: var(--muted); font-weight: 800; }
+
+.warn { background: color-mix(in srgb, #F59F00 16%, var(--surface)); border-radius: 14px; padding: 10px 14px; font-size: 15px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; }
+
+/* letters & filter chips */
+.filters { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 12px; }
+.chip { border: 0; white-space: nowrap; border-radius: 99px; padding: 6px 12px; background: var(--surface); font-weight: 700; font-size: 14px; box-shadow: 0 1px 0 var(--line); }
+.chip[aria-pressed="true"] { background: var(--c); color: #fff; box-shadow: none; }
 .letters { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+@media (max-width: 420px) { .letters { grid-template-columns: 1fr; } }
 .letter { background: var(--surface); border-radius: 18px; padding: 14px; display: flex; flex-direction: column; gap: 4px; border-top: 5px solid var(--kc); min-width: 0; }
-.letter .big { font-family: var(--tx); font-size: 38px; font-weight: 700; line-height: 1.1; direction: ltr; text-align: left; }
+.letter .big { font-family: var(--tx); font-size: 34px; font-weight: 700; line-height: 1.15; direction: ltr; text-align: left; }
 .letter .snd { font-size: 15px; }
 .letter .snd b { font-size: 18px; }
-.letter .exw { border: 0; background: color-mix(in srgb, var(--kc) 12%, var(--surface)); border-radius: 12px; padding: 6px 10px; text-align: left; direction: ltr; }
-.letter .exw b { font-family: var(--tx); font-size: 18px; }
-.letter .exw small { display: block; color: var(--muted); font-family: var(--tx); }
+.letter .exw { border: 0; background: color-mix(in srgb, var(--kc) 12%, var(--surface)); border-radius: 12px; padding: 8px 10px; text-align: left; direction: ltr; margin-top: 2px; }
+.letter .exw b { font-family: var(--tx); font-size: 17px; }
+.letter .exw small { display: block; color: var(--muted); font-family: var(--tx); margin-top: 2px; }
 .letter .note { font-size: 14px; color: var(--muted); }
 .k-same { --kc: #2B8A3E; } .k-false { --kc: #E8590C; } .k-new { --kc: #5B3FD6; } .k-diff { --kc: #E8590C; }
-.legend { display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: 14px; color: var(--muted); margin: 0 4px 12px; }
-.legend i { display: inline-block; width: 10px; height: 10px; border-radius: 3px; background: var(--kc); margin-inline-end: 4px; }
 
-/* phrase rows */
-.ph { background: var(--surface); border-radius: 16px; padding: 12px 14px; display: flex; gap: 10px; align-items: center; }
-.ph .txt { flex: 1; min-width: 0; }
+/* bilingual meaning formatting */
+.m-bi { display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px 8px; }
+.m-ar { font-family: var(--ar); direction: rtl; unicode-bidi: isolate; font-weight: 600; color: var(--ink); }
+.m-en { font-family: var(--tx); direction: ltr; unicode-bidi: isolate; color: var(--muted); font-size: 0.92em; }
+
+/* phrase & specialized topic cards (LTR internal alignment so foreign phrase sits flush-left & buttons sit flush-right) */
+.ph { background: var(--surface); border-radius: 16px; padding: 12px 14px; display: flex; gap: 10px; align-items: center; direction: ltr; }
+.ph .txt { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
 .ph .t { font-family: var(--tx); font-weight: 700; font-size: 20px; direction: ltr; text-align: left; overflow-wrap: anywhere; }
-.ph .tr { font-family: var(--tx); color: var(--c); font-size: 15px; direction: ltr; text-align: left; }
-.ph .m { font-family: var(--tx); color: var(--muted); font-size: 16px; direction: ltr; text-align: left; transition: filter .15s; }
-.hide .ph .m:not(.open) { filter: blur(7px); cursor: pointer; }
-.icon { border: 0; width: 44px; height: 44px; flex: none; border-radius: 12px; background: color-mix(in srgb, var(--c) 12%, var(--surface)); font-size: 19px; }
+.ph .tr { font-family: var(--tx); color: var(--c); font-size: 14px; direction: ltr; text-align: left; }
+.ph .m { color: var(--muted); font-size: 15px; text-align: left; transition: filter .15s; }
+.ph .m .m-bi { direction: ltr; justify-content: flex-start; }
+.ph .ex-line { margin-top: 4px; padding-top: 6px; border-top: 1px dashed var(--line); font-family: var(--tx); font-size: 14px; color: var(--muted); display: flex; align-items: center; gap: 6px; }
+.ph .ex-line span { flex: 1; min-width: 0; }
+.ph .acts { display: flex; gap: 6px; flex: none; align-items: center; }
+.hide .ph .m:not(.open) { filter: blur(7px); cursor: pointer; user-select: none; }
+.icon { border: 0; width: 42px; height: 42px; flex: none; border-radius: 12px; background: color-mix(in srgb, var(--c) 12%, var(--surface)); font-size: 18px; display: grid; place-items: center; padding: 0; }
+.icon.sm { width: 32px; height: 32px; font-size: 14px; border-radius: 9px; }
 .icon.on { background: var(--good); color: #fff; }
+
+/* quotes & art */
+.qcard { background: var(--surface); border-radius: 20px; padding: 18px; display: flex; flex-direction: column; gap: 10px; border-inline-start: 5px solid var(--c); }
+.qcard .qsrc { font-family: var(--tx); font-size: 21px; font-weight: 700; line-height: 1.55; direction: ltr; text-align: left; }
+.qcard .qtr { font-family: var(--tx); font-size: 14px; color: var(--c); direction: ltr; text-align: left; }
+.qcard .qar { font-size: 17px; font-weight: 700; color: var(--ink); }
+.qcard .qen { font-family: var(--tx); font-size: 14px; color: var(--muted); direction: ltr; text-align: left; }
+.qcard .qmeta { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; padding-top: 8px; border-top: 1px solid var(--line); font-size: 14px; color: var(--muted); }
 
 /* reader */
 .txt-item { flex-direction: row; gap: 12px; align-items: center; min-height: 0; }
-.txt-item .te { font-size: 34px; width: 56px; height: 56px; flex: none; display: grid; place-items: center; border-radius: 16px; background: color-mix(in srgb, var(--c) 12%, var(--surface)); }
-.txt-item .tb { display: flex; flex-direction: column; flex: 1; min-width: 0; }
+.txt-item .te { font-size: 32px; width: 54px; height: 54px; flex: none; display: grid; place-items: center; border-radius: 16px; background: color-mix(in srgb, var(--c) 12%, var(--surface)); }
+.txt-item .tb { display: flex; flex-direction: column; flex: 1; min-width: 0; gap: 2px; }
 .kind { display: inline-block; font-size: 13px; font-weight: 800; border-radius: 99px; padding: 1px 10px; background: color-mix(in srgb, var(--c) 14%, var(--surface)); color: var(--c); }
 .reader { background: var(--surface); border-radius: 20px; padding: 18px; display: flex; flex-direction: column; gap: 14px; }
-.sent { display: flex; flex-direction: column; gap: 4px; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
-.sent:last-child { border-bottom: 0; padding-bottom: 0; }
-.sent .src { font-family: var(--tx); font-size: 22px; line-height: 1.6; direction: ltr; text-align: left; }
-.w { cursor: pointer; border-radius: 6px; padding: 0 1px; background: transparent; border: 0; font: inherit; color: inherit; }
-.w:hover, .w.sel { background: color-mix(in srgb, var(--c) 18%, transparent); }
-.w.saved { text-decoration: underline 2px color-mix(in srgb, var(--good) 70%, transparent); text-underline-offset: 4px; }
-.sent .en { font-family: var(--tx); color: var(--muted); font-size: 16px; direction: ltr; text-align: left; }
-.sent .tools { display: flex; gap: 6px; }
+.sent { display: flex; flex-direction: column; gap: 5px; padding: 8px 10px 12px; margin-inline: -10px; border-radius: 12px; border-bottom: 1px solid var(--line); transition: background .2s; }
+.sent:last-child { border-bottom: 0; padding-bottom: 6px; }
+.sent.speaking { background: color-mix(in srgb, var(--c) 13%, var(--surface)); }
+.sent .src { font-family: var(--tx); font-size: 21px; line-height: 1.6; direction: ltr; text-align: left; }
+.w { cursor: pointer; border-radius: 6px; padding: 0 2px; background: transparent; border: 0; font: inherit; color: inherit; }
+.w:hover, .w.sel { background: color-mix(in srgb, var(--c) 20%, transparent); }
+.w.saved { text-decoration: underline 2px color-mix(in srgb, var(--good) 75%, transparent); text-underline-offset: 4px; }
+.sent .en { color: var(--muted); font-size: 16px; }
+.sent .tools { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 2px; }
 .notrans .sent .en:not(.open) { display: none; }
 
 /* vocab after reading */
 .vrow { display: flex; align-items: center; gap: 10px; background: var(--surface); border-radius: 14px; padding: 8px 12px; }
 .vrow input { width: 22px; height: 22px; flex: none; accent-color: var(--c); }
 .vrow .vw { font-family: var(--tx); font-weight: 700; font-size: 18px; min-width: 0; }
-.vrow .vm { font-family: var(--tx); color: var(--muted); font-size: 15px; flex: 1; min-width: 0; direction: ltr; text-align: left; }
+.vrow .vm { color: var(--muted); font-size: 15px; flex: 1; min-width: 0; }
 .vrow .in { font-size: 13px; color: var(--good); font-weight: 800; white-space: nowrap; }
-.sticky-foot { position: sticky; bottom: 0; background: var(--bg); padding-block: 12px calc(env(safe-area-inset-bottom, 0px) + 8px); display: flex; flex-direction: column; gap: 8px; }
+.sticky-foot { position: sticky; bottom: 0; background: var(--bg); padding-block: 12px calc(env(safe-area-inset-bottom, 0px) + 8px); display: flex; flex-direction: column; gap: 8px; box-shadow: 0 -8px 16px var(--bg); }
 
 /* review card */
-.flash { background: var(--surface); border-radius: 24px; padding: 28px 18px; text-align: center; display: flex; flex-direction: column; gap: 10px; align-items: center; min-height: 300px; justify-content: center; border-top: 6px solid var(--c); }
-.flash .front { font-family: var(--tx); font-size: clamp(28px, 8vw, 44px); font-weight: 700; direction: ltr; overflow-wrap: anywhere; }
-.flash .back { font-family: var(--tx); font-size: 22px; direction: ltr; }
+.flash { background: var(--surface); border-radius: 24px; padding: 26px 18px; text-align: center; display: flex; flex-direction: column; gap: 10px; align-items: center; min-height: 290px; justify-content: center; border-top: 6px solid var(--c); }
+.flash .front { font-family: var(--tx); font-size: clamp(26px, 7.5vw, 42px); font-weight: 700; direction: ltr; overflow-wrap: anywhere; }
+.flash .front.ar-prompt { font-family: var(--ar); direction: rtl; font-size: clamp(22px, 6vw, 32px); }
+.flash .back { font-size: 21px; }
+.flash .back .m-bi { justify-content: center; flex-direction: column; align-items: center; }
 .flash .ctx { font-family: var(--tx); color: var(--muted); font-size: 15px; direction: ltr; }
+.flash .mnemo { background: color-mix(in srgb, #F59F00 15%, var(--surface)); padding: 6px 12px; border-radius: 10px; font-size: 15px; }
 .grade { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 12px; }
-.grade .no { background: var(--bad); color: #fff; }
-.grade .yes { background: var(--good); color: #fff; }
-.grade small { display: block; font-weight: 600; opacity: .85; font-size: 13px; }
+.grade .no { background: var(--bad); color: #fff; box-shadow: none; }
+.grade .yes { background: var(--good); color: #fff; box-shadow: none; }
+.grade small { display: block; font-weight: 600; opacity: .88; font-size: 13px; }
 .manual { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 8px; }
 .progress { height: 8px; background: var(--surface); border-radius: 99px; overflow: hidden; margin-bottom: 12px; }
-.progress i { display: block; height: 100%; background: var(--c); }
+.progress i { display: block; height: 100%; background: var(--c); transition: width .2s; }
 
 /* quiz */
 .opts { display: grid; gap: 10px; margin-top: 12px; }
-.opt { border: 2px solid var(--line); background: var(--surface); border-radius: 16px; padding: 14px; font-family: var(--tx); font-size: 18px; direction: ltr; text-align: left; }
+.opt { border: 2px solid var(--line); background: var(--surface); border-radius: 16px; padding: 14px; font-size: 17px; text-align: right; }
+.opt.ltr { font-family: var(--tx); direction: ltr; text-align: left; font-size: 18px; font-weight: 600; }
 .opt.right { border-color: var(--good); background: color-mix(in srgb, var(--good) 14%, var(--surface)); }
 .opt.wrong { border-color: var(--bad); background: color-mix(in srgb, var(--bad) 12%, var(--surface)); }
 
-/* words table */
+/* words table & search */
+.search { width: 100%; border: 2px solid var(--line); border-radius: 14px; padding: 10px 14px; background: var(--surface); margin-bottom: 10px; }
 .tbl { width: 100%; border-collapse: collapse; background: var(--surface); border-radius: 16px; overflow: hidden; }
-.tbl .acts { display: flex; flex-direction: column; gap: 6px; }
-.tbl .acts .icon { width: 38px; height: 38px; font-size: 16px; }
-.tbl td, .tbl th { padding: 8px 6px; border-bottom: 1px solid var(--line); text-align: right; vertical-align: middle; }
-.tbl th { font-size: 14px; color: var(--muted); font-weight: 600; }
+.tbl .acts { display: flex; gap: 5px; justify-content: flex-end; }
+.tbl .acts .icon { width: 34px; height: 34px; font-size: 15px; }
+@media (max-width: 500px) { .tbl .acts { flex-direction: column; align-items: center; } .tbl td, .tbl th { padding: 8px 6px; font-size: 14px; } }
+.tbl td, .tbl th { padding: 10px 8px; border-bottom: 1px solid var(--line); text-align: right; vertical-align: middle; overflow-wrap: anywhere; }
+.tbl th { font-size: 14px; color: var(--muted); font-weight: 700; }
 .tbl .tx { font-size: 16px; }
 .tbl tr:last-child td { border-bottom: 0; }
 .due-now { color: var(--bad); font-weight: 800; }
 .tblwrap { overflow-x: auto; border-radius: 16px; }
+.note-tag { display: inline-block; margin-top: 3px; font-size: 13px; color: var(--c); font-weight: 600; }
 
 /* forms */
 .form { display: flex; flex-direction: column; gap: 12px; }
 .form label { display: flex; flex-direction: column; gap: 4px; font-weight: 700; }
-.form input[type=text], .form input[type=number], .form select, textarea { border: 2px solid var(--line); border-radius: 12px; padding: 10px 12px; background: var(--bg); font-weight: 400; }
+.form input[type=text], .form input[type=number], .form select, textarea { border: 2px solid var(--line); border-radius: 12px; padding: 10px 12px; background: var(--bg); font-weight: 400; width: 100%; }
 .checks { display: flex; flex-wrap: wrap; gap: 8px; }
 .checks label { flex-direction: row; align-items: center; gap: 6px; background: var(--bg); border-radius: 99px; padding: 4px 12px; font-weight: 600; font-size: 15px; }
 .seg { display: flex; gap: 8px; }
 .seg label { flex: 1; flex-direction: row; justify-content: center; gap: 6px; background: var(--bg); border-radius: 12px; padding: 8px; }
 .intro { display: flex; flex-direction: column; gap: 10px; }
-.intro .ln { display: flex; gap: 10px; align-items: flex-start; }
-.intro .ln div { flex: 1; min-width: 0; }
+.intro .ln { display: flex; gap: 10px; align-items: center; direction: ltr; padding: 6px 8px; margin-inline: -8px; border-radius: 12px; transition: background .2s; }
+.intro .ln.speaking { background: color-mix(in srgb, var(--c) 13%, var(--surface)); }
+.intro .ln > div { flex: 1; min-width: 0; }
 .intro .ln .t { font-family: var(--tx); font-size: 19px; font-weight: 700; direction: ltr; text-align: left; }
 .intro .ln .m { font-family: var(--tx); font-size: 15px; color: var(--muted); direction: ltr; text-align: left; }
 
@@ -175,17 +213,17 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 .tip .how { margin-top: 6px; color: var(--c); font-weight: 700; font-size: 15px; }
 
 /* bottom sheet */
-.scrim { position: fixed; inset: 0; background: rgb(0 0 0 / .35); z-index: 40; }
-.sheet { position: fixed; left: 0; right: 0; bottom: 0; z-index: 41; background: var(--surface); border-radius: 22px 22px 0 0; padding: 18px max(18px, env(safe-area-inset-right, 0px)) calc(env(safe-area-inset-bottom, 0px) + 18px) max(18px, env(safe-area-inset-left, 0px)); max-width: 680px; margin: 0 auto; display: flex; flex-direction: column; gap: 10px; box-shadow: 0 -8px 30px rgb(0 0 0 / .15); }
-.sheet .word { font-family: var(--tx); font-size: 32px; font-weight: 700; direction: ltr; text-align: left; }
-.sheet .mean { font-family: var(--tx); font-size: 20px; direction: ltr; text-align: left; }
+.scrim { position: fixed; inset: 0; background: rgb(0 0 0 / .4); z-index: 40; }
+.sheet { position: fixed; left: 0; right: 0; bottom: 0; z-index: 41; background: var(--surface); border-radius: 22px 22px 0 0; padding: 18px max(18px, env(safe-area-inset-right, 0px)) calc(env(safe-area-inset-bottom, 0px) + 18px) max(18px, env(safe-area-inset-left, 0px)); max-width: 680px; margin: 0 auto; display: flex; flex-direction: column; gap: 10px; box-shadow: 0 -8px 30px rgb(0 0 0 / .2); max-height: 90vh; overflow-y: auto; }
+.sheet .word { font-family: var(--tx); font-size: 30px; font-weight: 700; direction: ltr; text-align: left; }
+.sheet .mean { font-size: 19px; }
 
-.toast { position: fixed; left: 50%; transform: translateX(-50%); bottom: calc(env(safe-area-inset-bottom, 0px) + 24px); background: var(--ink); color: var(--bg); padding: 10px 18px; border-radius: 14px; font-weight: 700; z-index: 60; max-width: calc(100% - 32px); text-align: center; }
+.toast { position: fixed; left: 50%; transform: translateX(-50%); bottom: calc(env(safe-area-inset-bottom, 0px) + 24px); background: var(--ink); color: var(--bg); padding: 10px 18px; border-radius: 14px; font-weight: 700; z-index: 60; max-width: calc(100% - 32px); text-align: center; box-shadow: 0 6px 20px rgb(0 0 0 / .22); }
 .empty { text-align: center; color: var(--muted); padding: 30px 10px; }
 .upd { margin-top: 22px; }
 .upd .btn { background: var(--good); color: #fff; box-shadow: none; }
-.umeta { margin: 6px 0 0; color: var(--muted); font-size: 14px; }
-@media (prefers-reduced-motion: no-preference) { .tile:active, .lang:active, .btn:active, .opt:active { transform: scale(.98); } }
+.umeta { margin: 6px 0 0; color: var(--muted); font-size: 14px; display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+@media (prefers-reduced-motion: no-preference) { .tile:active, .lang:active, .btn:active, .opt:active, .plan-step:active { transform: scale(.98); } }
 </style>
 
 <div id="app" dir="rtl" lang="ar"></div>
@@ -210,6 +248,27 @@ const shuffle = a => { a = [...a]; for (let i = a.length - 1; i > 0; i--) { cons
 let toastTimer;
 function toast(m) { const t = $('#toast'); t.textContent = m; t.hidden = false; clearTimeout(toastTimer); toastTimer = setTimeout(() => t.hidden = true, 2400); }
 const ar = n => String(n);
+const biLang = L => L.name.startsWith('ال') ? 'بال' + L.name.slice(2) : 'بـ' + L.name;
+
+// Crisp SVG flags so Windows & offline devices never render ugly "ES" / "RU" regional letters
+function flagSVG(code, w = 24, h = 17) {
+  if (code === 'es') return `<svg class="flg" width="${w}" height="${h}" viewBox="0 0 24 16" aria-hidden="true"><rect width="24" height="16" fill="#AA151B"/><rect y="4" width="24" height="8" fill="#F1BF00"/></svg>`;
+  if (code === 'ru') return `<svg class="flg" width="${w}" height="${h}" viewBox="0 0 24 16" aria-hidden="true"><rect width="24" height="5.4" fill="#FFF"/><rect y="5.3" width="24" height="5.4" fill="#0039A6"/><rect y="10.6" width="24" height="5.4" fill="#D52B1E"/></svg>`;
+  return `<span>${esc(LANGS[code]?.flag || '🌐')}</span>`;
+}
+
+// Render bilingual "عربي — English" cleanly when present, or LTR English fallback
+function fmtMean(m) {
+  const s = String(m ?? '');
+  const idx = s.indexOf(' — ');
+  if (idx > 0 && /[\u0600-\u06FF]/.test(s.slice(0, idx))) {
+    const arPart = s.slice(0, idx), enPart = s.slice(idx + 3);
+    return `<span class="m-bi"><span class="m-ar">${esc(arPart)}</span><span class="m-en">${esc(enPart)}</span></span>`;
+  }
+  if (/[\u0600-\u06FF]/.test(s)) return `<span class="m-ar">${esc(s)}</span>`;
+  return `<span class="tx">${esc(s)}</span>`;
+}
+
 function inDays(ms) {
   const d = (ms - Date.now()) / DAY;
   if (d <= 0) return '<span class="due-now">دلوقتي</span>';
@@ -225,17 +284,45 @@ function inDays(ms) {
 const ivLabel = days => days === 1 ? 'بكرة' : days < 7 ? `بعد ${ar(days)} أيام` : days === 7 ? 'بعد أسبوع' : days === 14 ? 'بعد أسبوعين' : days === 30 ? 'بعد شهر' : `بعد ${ar(Math.round(days / 30))} شهور`;
 
 // ---------- state ----------
-let deck = store.get('deck', []);          // [{id, lang, t, m, tr, ex, added, due, lvl}]
+let deck = store.get('deck', []);          // [{id, lang, t, m, tr, ex, note, added, due, lvl}]
 let profile = store.get('profile', { gender: 'm', country: 'eg', job: 'engineer', hobbies: ['read', 'travel'] });
 let read = store.get('read', {});          // {"es-0": timestamp}
 let days = store.get('days', []);          // ["2026-11-24", ...]
-let prefs = store.get('prefs', { hidePh: false, trans: true });
+let prefs = Object.assign({ hidePh: false, hideTopic: false, trans: true, theme: '', revDir: 'normal' }, store.get('prefs', {}));
+let daily = store.get('daily', {});        // {"2026-11-25": {"es": {rev:1, read:1, me:1, quiz:1}}}
+
+function isDark() {
+  return prefs.theme === 'dark' || (!prefs.theme && matchMedia?.('(prefers-color-scheme: dark)').matches);
+}
+function applyTheme() {
+  if (prefs.theme) document.documentElement.dataset.theme = prefs.theme;
+  else delete document.documentElement.dataset.theme;
+}
+applyTheme();
+
 const saveDeck = () => store.set('deck', deck);
-const idOf = (lang, t) => lang + '|' + t.toLowerCase();
-const inDeck = (lang, t) => deck.some(d => d.id === idOf(lang, t));
+const idOf = (lang, t) => lang + '|' + String(t).trim().toLowerCase();
+const findDeck = (lang, t) => deck.find(d => d.id === idOf(lang, t));
+const inDeck = (lang, t) => !!findDeck(lang, t);
+const todayKey = () => new Date().toLocaleDateString('en-CA');
+
 function markDay() {
-  const k = new Date().toLocaleDateString('en-CA');
+  const k = todayKey();
   if (!days.includes(k)) { days.push(k); store.set('days', days); }
+}
+function markStep(lang, step) {
+  if (!lang || !LANGS[lang]) return;
+  const k = todayKey();
+  daily[k] = daily[k] || {};
+  daily[k][lang] = daily[k][lang] || {};
+  if (!daily[k][lang][step]) {
+    daily[k][lang][step] = 1;
+    store.set('daily', daily);
+    markDay();
+  }
+}
+function getSteps(lang) {
+  return (daily[todayKey()] && daily[todayKey()][lang]) || {};
 }
 function streak() {
   let n = 0; const d = new Date();
@@ -247,17 +334,23 @@ function addItem(o, inD = 1, quiet) {
   const id = idOf(o.lang, o.t);
   const ex = deck.find(d => d.id === id);
   const due = Date.now() + inD * DAY;
-  if (ex) { ex.due = Math.min(ex.due, due); saveDeck(); if (!quiet) toast('موجودة في جدولك، وقرّبت ميعاد مراجعتها'); return false; }
-  deck.push({ id, lang: o.lang, t: o.t, m: o.m, tr: o.tr || '', ex: o.ex || '', added: Date.now(), due, lvl: 0 });
+  if (ex) {
+    ex.due = Math.min(ex.due, due);
+    if (o.note !== undefined && o.note.trim()) ex.note = o.note.trim();
+    saveDeck();
+    if (!quiet) toast('موجودة في جدولك، وقرّبت ميعاد مراجعتها');
+    return false;
+  }
+  deck.push({ id, lang: o.lang, t: o.t.trim(), m: o.m.trim(), tr: o.tr || '', ex: o.ex || '', note: (o.note || '').trim(), added: Date.now(), due, lvl: 0 });
   saveDeck(); markDay();
   if (!quiet) toast(`✅ اتضافت — هتراجعها ${ivLabel(inD)}`);
   return true;
 }
 const dueList = lang => deck.filter(d => d.due <= Date.now() && (!lang || d.lang === lang)).sort((a, b) => a.due - b.due);
 
-// ---------- speech ----------
-// Never read a language with another language's voice: if the device has no voice for it, explain how to install one.
+// ---------- speech (single & sentence-by-sentence queue) ----------
 let voices = [];
+let seq = null; // { key, lang, list: [{text, sel}], idx, slow }
 function loadVoices() { try { voices = speechSynthesis.getVoices() || []; } catch {} }
 if ('speechSynthesis' in window) { loadVoices(); speechSynthesis.onvoiceschanged = loadVoices; }
 const norm = l => String(l || '').toLowerCase().replace('_', '-');
@@ -271,20 +364,60 @@ function pickVoice(lang) {
 function voicesReady() {
   if (voices.length) return Promise.resolve();
   return new Promise(res => {
-    const t = setTimeout(res, 1500);
+    const t = setTimeout(res, 1200);
     speechSynthesis.addEventListener?.('voiceschanged', () => { loadVoices(); clearTimeout(t); res(); }, { once: true });
     loadVoices(); if (voices.length) { clearTimeout(t); res(); }
   });
 }
+function stopSpeech() {
+  seq = null;
+  try { speechSynthesis.cancel(); } catch {}
+  document.querySelectorAll('.speaking').forEach(el => el.classList.remove('speaking'));
+  document.querySelectorAll('[data-orig-label]').forEach(b => {
+    b.textContent = b.dataset.origLabel;
+    b.classList.remove('stop');
+    delete b.dataset.origLabel;
+  });
+}
 async function say(lang, text, slow) {
+  stopSpeech();
   if (!('speechSynthesis' in window)) return voiceHelp(lang);
   await voicesReady();
   const v = pickVoice(lang);
   if (!v) return voiceHelp(lang);
-  speechSynthesis.cancel();
   const u = new SpeechSynthesisUtterance(String(text).replace(/\s\/\s/g, '. '));
-  u.voice = v; u.lang = v.lang; u.rate = slow ? 0.6 : 0.9;
+  u.voice = v; u.lang = v.lang; u.rate = slow ? 0.58 : 0.9;
   speechSynthesis.speak(u);
+}
+async function playSeq(key, btn, lang, list, slow) {
+  if (seq && seq.key === key) { stopSpeech(); return; }
+  stopSpeech();
+  if (!('speechSynthesis' in window)) return voiceHelp(lang);
+  await voicesReady();
+  const v = pickVoice(lang);
+  if (!v) return voiceHelp(lang);
+  if (!list.length) return;
+  if (btn && !btn.dataset.origLabel) {
+    btn.dataset.origLabel = btn.textContent;
+    btn.textContent = '⏹️ وقّف الصوت';
+    btn.classList.add('stop');
+  }
+  const cur = { key, lang, list, idx: 0, slow };
+  seq = cur;
+  const step = () => {
+    if (seq !== cur) return;
+    document.querySelectorAll('.speaking').forEach(el => el.classList.remove('speaking'));
+    if (cur.idx >= cur.list.length) { stopSpeech(); return; }
+    const item = cur.list[cur.idx];
+    const row = item.sel ? document.querySelector(item.sel) : null;
+    if (row) { row.classList.add('speaking'); row.scrollIntoView?.({ behavior: 'smooth', block: 'nearest' }); }
+    const u = new SpeechSynthesisUtterance(String(item.text).replace(/\s\/\s/g, '. '));
+    u.voice = v; u.lang = v.lang; u.rate = slow ? 0.58 : 0.9;
+    u.onend = () => { if (seq === cur) { cur.idx++; step(); } };
+    u.onerror = () => { if (seq === cur) stopSpeech(); };
+    speechSynthesis.speak(u);
+  };
+  step();
 }
 function voiceHelp(lang) {
   const L = LANGS[lang];
@@ -292,34 +425,36 @@ function voiceHelp(lang) {
   const d = document.createElement('div'); d.id = 'sheetWrap';
   d.innerHTML = `<div class="scrim" data-close="1"></div><div class="sheet" role="dialog" style="--c:${L.color}">
     <b style="font-size:20px">🔇 الجهاز ده معندوش صوت ${L.name}</b>
-    <p style="margin:0">علشان كده مش هنقرأ الكلمة، لأن الصوت الإنجليزي هيقرأها غلط ويعلّمك نطق غلط. نزّل صوت <b class="tx">${L.native}</b> مرة واحدة ببلاش:</p>
-    <ul style="margin:0;padding-inline-start:20px;display:flex;flex-direction:column;gap:6px;font-size:15px">
-      <li><b>أندرويد:</b> الإعدادات ← Text-to-speech ← Speech Services by Google ← Install voice data ← ${L.native}</li>
-      <li><b>آيفون:</b> Settings ← Accessibility ← Spoken Content ← Voices ← ${L.native}</li>
-      <li><b>ويندوز:</b> Settings ← Time &amp; language ← Speech ← Add voices ← ${L.native}</li>
-      <li><b>ماك:</b> System Settings ← Accessibility ← Spoken Content ← System voice ← Manage Voices</li>
+    <p style="margin:0">علشان كده مش هنقرأ الكلمة، لأن الصوت الإنجليزي هيقرأها غلط ويعلّمك نطق غلط. نزّل صوت <b class="tx">${esc(L.native)}</b> مرة واحدة ببلاش:</p>
+    <ul style="margin:0;padding-inline-start:20px;display:flex;flex-direction:column;gap:8px;font-size:15px">
+      <li><b>أندرويد (الإعدادات):</b><div class="tx">Settings → Text-to-speech → Speech Services by Google → Install voice data → ${esc(L.native)}</div></li>
+      <li><b>آيفون:</b><div class="tx">Settings → Accessibility → Spoken Content → Voices → ${esc(L.native)}</div></li>
+      <li><b>ويندوز:</b><div class="tx">Settings → Time &amp; language → Speech → Add voices → ${esc(L.native)}</div></li>
+      <li><b>ماك:</b><div class="tx">System Settings → Accessibility → Spoken Content → System voice → Manage Voices</div></li>
     </ul>
     <p class="muted" style="margin:0;font-size:14px">بعد ما تنزّله، اقفل التطبيق وافتحه تاني. أو افتحه من Chrome، لأنه فيه أصوات جوجل جاهزة.</p>
     <button class="btn main" data-close="1">تمام</button></div>`;
   document.body.appendChild(d);
 }
 
-// ---------- bits ----------
-const bar = (title, back = 'home') => `<div class="bar"><button class="back" data-go="${back}">→ رجوع</button><h1>${title}</h1></div>`;
-const sayBtn = (lang, t, label = '🔊') => `<button class="icon" data-say="${esc(t)}" data-l="${lang}" aria-label="اسمع">${label}</button>`;
+// ---------- UI bits ----------
+const themeBtn = () => `<button class="theme-btn" data-theme-toggle="1" aria-label="تبديل الإضاءة" title="الوضع الليلي / الفاتح">${isDark() ? '☀️' : '🌙'}</button>`;
+const bar = (title, back = 'home') => `<div class="bar"><button class="back" data-go="${back}">→ رجوع</button><h1>${title}</h1>${themeBtn()}</div>`;
+const sayBtn = (lang, t, label = '🔊', extraCls = '') => `<button class="icon ${extraCls}" data-say="${esc(t)}" data-l="${lang}" aria-label="اسمع">${label}</button>`;
+const slowBtn = (lang, t, extraCls = '') => `<button class="icon ${extraCls}" data-slow="${esc(t)}" data-l="${lang}" aria-label="اسمع ببطء" title="ببطء">🐢</button>`;
 const addBtn = (lang, t, m, tr = '', ex = '') => {
   const on = inDeck(lang, t);
   return `<button class="icon ${on ? 'on' : ''}" data-add="${esc(t)}" data-l="${lang}" data-m="${esc(m)}" data-tr="${esc(tr)}" data-ex="${esc(ex)}" aria-label="ضيف لجدول الحفظ">${on ? '✓' : '➕'}</button>`;
 };
-const KIND = { story: '📚 قصة', speech: '🎤 خطاب', news: '📰 خبر', classic: '📜 أدب مشهور' };
-const kindLabel = t => t.kind === 'news' ? (t.real ? '📰 خبر حقيقي' : '📰 خبر') : t.kind === 'speech' && t.famous ? '🎤 خطاب مشهور' : KIND[t.kind];
+const KIND = { story: '📚 قصة', speech: '🎤 خطاب', news: '📰 خبر', classic: '📜 أدب مشهور', art: '🎨 وصف لوحة' };
+const kindLabel = t => t.kind === 'news' ? (t.real ? '📰 خبر حقيقي' : '📰 خبر') : t.kind === 'speech' && t.famous ? '🎤 خطاب مشهور' : KIND[t.kind] || '📄 نص';
 const tfMatch = (t, k) => k === 'all' || (k === 'famous' ? t.famous : k === 'story' ? (t.kind === 'story' || t.kind === 'classic') : t.kind === k);
 let tf = 'all', tfLang = '';
 
 // ---------- views ----------
 function viewHome() {
   const due = dueList().length;
-  return `<div class="hero"><h1>لسان 🗣️</h1><p>اتعلم كلمات وجمل حقيقية، وراجعها في الوقت الصح عشان متنساهاش.</p></div>
+  return `<div class="hero"><div><h1>لسان 🗣️</h1><p>اتعلم كلمات وجمل حقيقية، وراجعها في الوقت الصح عشان متنساهاش.</p></div>${themeBtn()}</div>
   <div class="today">
     <div class="stat"><b>${ar(due)}</b><span>كلمة محتاجة مراجعة دلوقتي</span></div>
     <div class="stat"><b>🔥 ${ar(streak())}</b><span>يوم ورا بعض</span></div>
@@ -328,36 +463,52 @@ function viewHome() {
   <h2>اختار اللغة</h2>
   <div class="langs">${Object.values(LANGS).map(L => {
     const n = deck.filter(d => d.lang === L.code).length, r = L.texts.filter((_, i) => read[L.code + '-' + i]).length;
-    return `<button class="lang" style="--c:${L.color}" data-go="lang-${L.code}"><span class="f">${L.flag}</span><span class="n">${L.name}</span><span class="nt">${L.native}</span>
-      <span class="p">${ar(n)} كلمة في جدولك · قريت ${ar(r)} من ${ar(L.texts.length)} نصوص</span></button>`; }).join('')}</div>
+    const topicsCount = (L.topics || []).length;
+    return `<button class="lang" style="--c:${L.color}" data-go="lang-${L.code}">${flagSVG(L.code, 44, 30)}<span class="n">${L.name}</span><span class="nt">${L.native}</span>
+      <span class="p">${ar(n)} كلمة في جدولك · قريت ${ar(r)} من ${ar(L.texts.length)} نص · ${ar(topicsCount)} تخصصات</span></button>`; }).join('')}</div>
   <h2>أدواتك</h2>
   <div class="tiles">
-    <button class="tile" data-go="words"><span class="e">📋</span><span class="t">جدول الحفظ</span><span class="d">${ar(deck.length)} كلمة وجملة</span></button>
+    <button class="tile" data-go="words"><span class="e">📋</span><span class="t">جدول الحفظ</span><span class="d">${ar(deck.length)} كلمة وجملة · بحث وملاحظات</span></button>
     <button class="tile" data-go="tips"><span class="e">🧠</span><span class="t">طرق الحفظ</span><span class="d">إزاي تحفظ أسرع ومتنساش</span></button>
-    <button class="tile" data-go="backup"><span class="e">💾</span><span class="t">نسخة احتياطية</span><span class="d">احفظ تقدّمك أو انقله لجهاز تاني</span></button>
+    <button class="tile" data-go="backup"><span class="e">💾</span><span class="t">نسخة احتياطية</span><span class="d">نزّل ملف أو انسخ تقدّمك</span></button>
+    <button class="tile" data-theme-toggle="1"><span class="e">${isDark() ? '☀️' : '🌙'}</span><span class="t">${isDark() ? 'الوضع الفاتح' : 'الوضع الليلي'}</span><span class="d">بدّل إضاءة الشاشة لراحة عينك</span></button>
   </div>
   ${updHTML()}`;
 }
 
 function viewLang(code) {
   const L = LANGS[code], due = dueList(code).length, saved = deck.filter(d => d.lang === code).length;
-  return `<div style="--c:${L.color}">${bar(`${L.flag} ${L.name}`)}
-  ${!hasVoice(code) ? `<p class="warn">⚠️ الجهاز ده معندوش صوت ${L.name}، فالنطق مش هيشتغل. <button class="btn small" data-voicehelp="${code}">إزاي أنزّله؟</button></p>` : ''}
-  <div class="tiles">
+  const artCount = L.texts.filter(t => t.kind === 'art').length;
+  const quotesCount = (L.quotes || []).length;
+  const topicsWords = (L.topics || []).reduce((n, c) => n + c.items.length, 0);
+  const st = getSteps(code);
+  const doneCount = ['rev', 'read', 'me', 'quiz'].filter(k => st[k]).length;
+  const planSteps = [
+    ['rev', `review-${code}`, '<b>راجع</b> الكلمات اللي ميعادها جه (٥ دقايق)'],
+    ['read', `texts-${code}`, '<b>اقرا نص أو وصف لوحة</b> ودوس على الكلمات الصعبة (٥ دقايق)'],
+    ['me', `me-${code}`, '<b>قول تعريف نفسك</b> بصوت عالي من غير ما تبص (دقيقتين)'],
+    ['quiz', `quiz-${code}`, '<b>اختبر نفسك</b> ١٠ أسئلة سريعة (٣ دقايق)']
+  ];
+  return `<div style="--c:${L.color}">${bar(`${flagSVG(code, 28, 19)} <span>${L.name}</span>`)}
+  ${!hasVoice(code) ? `<div class="warn"><span>⚠️ الجهاز ده معندوش صوت ${L.name}، فالنطق مش هيشتغل.</span><button class="btn small" data-voicehelp="${code}">إزاي أنزّله؟</button></div>` : ''}
+  <div class="tiles" style="margin-top:10px">
     <button class="tile ${due ? 'hot' : ''}" data-go="review-${code}"><span class="e">🔁</span><span class="t">راجع</span><span class="d">${due ? `${ar(due)} كلمة مستنياك` : `مفيش حاجة دلوقتي · ${ar(saved)} في جدولك`}</span></button>
     <button class="tile" data-go="abc-${code}"><span class="e">🔤</span><span class="t">${L.abcTitle}</span><span class="d">${ar(L.abc.length)} ${code === 'ru' ? 'حرف' : 'صوت'} بأمثلة</span></button>
-    <button class="tile" data-go="phr-${code}"><span class="e">💬</span><span class="t">جمل كل يوم</span><span class="d">${ar(L.phrases.reduce((n, c) => n + c.items.length, 0))} جملة بالصوت</span></button>
-    <button class="tile" data-go="me-${code}"><span class="e">🙋</span><span class="t">عرّف نفسك</span><span class="d">اتكلم عن نفسك بالـ${L.name.replace('ال', '')}</span></button>
+    <button class="tile" data-go="phr-${code}"><span class="e">💬</span><span class="t">جمل كل يوم</span><span class="d">${ar(L.phrases.reduce((n, c) => n + c.items.length, 0))} جملة بالعربي والصوت</span></button>
+    <button class="tile" data-go="topics-${code}"><span class="e">🔬</span><span class="t">كلمات التخصصات</span><span class="d">${ar((L.topics || []).length)} مجالات · ${ar(topicsWords)} مصطلح علمي وعملي</span></button>
+    <button class="tile" data-go="quotes-${code}"><span class="e">🎨</span><span class="t">اقتباسات وفن</span><span class="d">${ar(quotesCount)} اقتباس روائي · ${ar(artCount)} لوحات مشروحة</span></button>
     <button class="tile" data-go="texts-${code}"><span class="e">📖</span><span class="t">قصص وخطابات وأخبار</span><span class="d">${ar(L.texts.length)} نص · دوس على أي كلمة واحفظها</span></button>
-    <button class="tile" data-go="quiz-${code}"><span class="e">🎯</span><span class="t">اختبرني</span><span class="d">١٠ أسئلة سريعة</span></button>
+    <button class="tile" data-go="me-${code}"><span class="e">🙋</span><span class="t">عرّف نفسك</span><span class="d">اتكلم عن نفسك ${biLang(L)}</span></button>
+    <button class="tile" data-go="quiz-${code}"><span class="e">🎯</span><span class="t">اختبرني</span><span class="d">١٠ أسئلة سريعة (عادي أو عكسي)</span></button>
   </div>
-  <h2>خطة اليوم (١٥ دقيقة)</h2>
-  <div class="panel"><ol class="plan">
-    <li><span><b>راجع</b> الكلمات اللي ميعادها جه (٥ دقايق).</span></li>
-    <li><span><b>اقرا نص</b> أو جزء منه، ودوس على الكلمات اللي متعرفهاش (٥ دقايق).</span></li>
-    <li><span><b>قول تعريف نفسك</b> بصوت عالي من غير ما تبص (دقيقتين).</span></li>
-    <li><span><b>اختبر نفسك</b> ١٠ أسئلة (٣ دقايق).</span></li>
-  </ol></div></div>`;
+  <h2>خطة اليوم — ١٥ دقيقة (${ar(doneCount)} من ٤ ${doneCount === 4 ? '🎉' : ''})</h2>
+  <div class="panel"><div class="plan">
+    ${planSteps.map(([k, target, label], idx) => `<button class="plan-step ${st[k] ? 'done' : ''}" data-go="${target}">
+      <span class="chk">${st[k] ? '✓' : idx + 1}</span>
+      <span class="ptxt">${label}</span>
+      <span class="parr">←</span>
+    </button>`).join('')}
+  </div></div></div>`;
 }
 
 let abcFilter = 'all';
@@ -384,11 +535,103 @@ function viewPhr(code) {
   return `<div style="--c:${L.color}" class="${prefs.hidePh ? 'hide' : ''}">${bar('💬 جمل كل يوم', 'lang-' + code)}
   <button class="btn ${prefs.hidePh ? 'main' : 'ghost'} wide" data-hideph="1">${prefs.hidePh ? '🙈 وضع الاختبار شغال — دوس على المعنى عشان تشوفه' : '🙈 اختبر نفسك: خبّي المعنى'}</button>
   ${L.phrases.map(c => `<h2>${c.cat}</h2><div class="stack">${c.items.map(([t, m, tr]) => `<div class="ph">
-    <div class="txt"><div class="t">${esc(t)}</div>${tr ? `<div class="tr">${esc(tr)}</div>` : ''}<div class="m" data-reveal="1">${esc(m)}</div></div>
-    ${sayBtn(code, t)}${addBtn(code, t, m, tr)}</div>`).join('')}</div>`).join('')}</div>`;
+    <div class="txt"><div class="t">${esc(t)}</div>${tr ? `<div class="tr">${esc(tr)}</div>` : ''}<div class="m" data-reveal="1">${fmtMean(m)}</div></div>
+    <div class="acts">${sayBtn(code, t)}${slowBtn(code, t)}${addBtn(code, t, m, tr)}</div></div>`).join('')}</div>`).join('')}</div>`;
 }
 
-// about me
+// ---------- specialized topics (Physics, Chemistry, CS, Cooking, Accounting, Finance, Politics, Art, Medicine) ----------
+let topicQuery = '';
+function viewTopics(code) {
+  const L = LANGS[code], topics = L.topics || [];
+  return `<div style="--c:${L.color}">${bar('🔬 كلمات التخصصات', 'lang-' + code)}
+  <p class="muted" style="margin:0 4px 12px">اختار المجال اللي يهمّك في دراستك أو شغلك أو هواياتك. كل مصطلح معاه المعنى بالعربي والإنجليزي وجملة مثال ونطق عادي وبطيء واختبار خاص بيه.</p>
+  <div class="tiles">${topics.map(tp => {
+    const saved = tp.items.filter(it => inDeck(code, it.t)).length;
+    return `<button class="tile" data-go="topic-${code}-${tp.id}">
+      <span class="e">${tp.emoji}</span>
+      <span class="t">${esc(tp.title)}</span>
+      <span class="d">${esc(tp.desc)}</span>
+      <span class="d" style="margin-top:auto;padding-top:6px;font-weight:700;color:${saved ? 'var(--good)' : 'var(--c)'}">حفظت ${ar(saved)} من ${ar(tp.items.length)} مصطلح</span>
+    </button>`;
+  }).join('')}</div></div>`;
+}
+
+function viewTopic(code, topicId) {
+  const L = LANGS[code], tp = (L.topics || []).find(x => x.id === topicId);
+  if (!tp) return viewTopics(code);
+  const q = topicQuery.trim().toLowerCase();
+  const items = tp.items.filter(it => !q || it.t.toLowerCase().includes(q) || it.m.toLowerCase().includes(q) || (it.tr || '').toLowerCase().includes(q));
+  const unsaved = tp.items.filter(it => !inDeck(code, it.t)).length;
+  return `<div style="--c:${L.color}" class="${prefs.hideTopic ? 'hide' : ''}">${bar(`${tp.emoji} ${esc(tp.title)}`, 'topics-' + code)}
+  <p class="muted" style="margin:0 4px 10px">${esc(tp.desc)} — ${ar(tp.items.length)} مصطلح مع أمثلة عملية.</p>
+  <input class="search" type="text" id="topicSearch" value="${esc(topicQuery)}" placeholder="🔍 ابحث جوه قسم ${esc(tp.title)}…">
+  <div class="row" style="margin-bottom:12px">
+    <button class="btn small main" data-go="topicq-${code}-${tp.id}">🎯 اختبرني في ${esc(tp.title)}</button>
+    <button class="btn small ${prefs.hideTopic ? 'main' : 'ghost'}" data-hidetopic="1">${prefs.hideTopic ? '🙈 المعنى مخفي' : '🙈 خبّي المعنى'}</button>
+    ${unsaved ? `<button class="btn small ghost" data-addtopic="${tp.id}" data-l="${code}">➕ ضيف الكل (${ar(unsaved)})</button>` : ''}
+  </div>
+  <div class="stack" id="topicList">${items.length ? items.map(it => `<div class="ph">
+    <div class="txt">
+      <div class="t">${esc(it.t)}</div>
+      ${it.tr ? `<div class="tr">${esc(it.tr)}</div>` : ''}
+      <div class="m" data-reveal="1">${fmtMean(it.m)}</div>
+      ${it.ex ? `<div class="ex-line"><span>«${esc(it.ex)}»</span>${sayBtn(code, it.ex, '🔊', 'sm')}</div>` : ''}
+    </div>
+    <div class="acts">${sayBtn(code, it.t)}${slowBtn(code, it.t)}${addBtn(code, it.t, it.m, it.tr || '', it.ex || '')}</div>
+  </div>`).join('') : '<p class="empty">مفيش كلمة مطابقة للبحث ده.</p>'}</div></div>`;
+}
+
+// ---------- quotes & art hub ----------
+let qaTab = 'quotes', qaLang = '';
+function clickWords(s, code, attr) {
+  return s.split(/(\p{L}+)/u).map((p, j) => j % 2 ? `<button class="w ${inDeck(code, p) ? 'saved' : ''}" ${attr}="${esc(p)}">${esc(p)}</button>` : esc(p)).join('');
+}
+function viewQuotes(code) {
+  const L = LANGS[code];
+  if (qaLang !== code) { qaTab = 'quotes'; qaLang = code; }
+  const quotes = L.quotes || [];
+  const artTexts = L.texts.map((t, i) => [t, i]).filter(([t]) => t.kind === 'art');
+  const artPhrases = L.artPhrases || [];
+  const tabs = [
+    ['quotes', `📚 اقتباسات الكتب (${ar(quotes.length)})`],
+    ['paintings', `🖼️ وصف لوحات (${ar(artTexts.length)})`],
+    ['howto', `🖌️ عبارات وصف الفن (${ar(artPhrases.length)})`]
+  ];
+  let body = '';
+  if (qaTab === 'quotes') {
+    body = `<p class="muted" style="margin:0 4px 12px">اقتباسات أصلية من أشهر الروايات والكتب. <b>دوس على أي كلمة</b> جوه الاقتباس عشان تشوف معناها وتسمعها وتضيفها لجدولك، أو احفظ الاقتباس كله.</p>
+    <div class="stack">${quotes.map((q, qi) => `<div class="qcard" data-qbox="${code}-${qi}">
+      <div class="qsrc">«${clickWords(q.q, code, 'data-qw')}»</div>
+      ${q.tr ? `<div class="qtr">${esc(q.tr)}</div>` : ''}
+      <div class="qar">${esc(q.ar)}</div>
+      <div class="qen">${esc(q.en)}</div>
+      <div class="qmeta">
+        <span>📖 <b>${esc(q.book)}</b> · <span class="tx">${esc(q.author)}</span></span>
+        <span class="row">${sayBtn(code, q.q)}${slowBtn(code, q.q)}${addBtn(code, q.q, `${q.ar} — ${q.en}`, q.tr || '', q.book)}</span>
+      </div>
+    </div>`).join('')}</div>`;
+  } else if (qaTab === 'paintings') {
+    body = `<p class="muted" style="margin:0 4px 12px">لوحات عالمية مشروحة جملة بجملة ${biLang(L)} عشان تتعلم توصف التكوين، الإضاءة، الألوان، والمشاعر. افتح أي لوحة ودوس على أي كلمة فيها.</p>
+    <div class="stack">${artTexts.map(([t, i]) => `<button class="tile txt-item" data-go="read-${code}-${i}">
+      <span class="te" aria-hidden="true">${t.emoji || '🖼️'}</span>
+      <span class="tb"><span><span class="kind">${kindLabel(t)}</span> <span class="muted" style="font-size:14px">${t.level} · ${ar(t.s.length)} جمل · ${ar(Object.keys(t.v).length)} كلمة</span></span>
+      <span class="t" style="font-size:18px">${esc(t.title)}</span><span class="d tx" style="text-align:left">${esc(t.en)}</span>
+      ${t.src ? `<span class="d tx" style="text-align:left">🎨 ${esc(t.src)}</span>` : ''}
+      ${read[code + '-' + i] ? '<span class="d" style="color:var(--good);font-weight:800">✅ قريته</span>' : ''}</span></button>`).join('')}</div>`;
+  } else {
+    body = `<p class="muted" style="margin:0 4px 12px">عبارات جاهزة تقدر تستخدمها عشان توصف أي لوحة أو صورة فنية تشوفها في متحف أو كتاب.</p>
+    <button class="btn ${prefs.hidePh ? 'main' : 'ghost'} wide" style="margin-bottom:12px" data-hideph="1">${prefs.hidePh ? '🙈 وضع الاختبار شغال — دوس على المعنى عشان تشوفه' : '🙈 اختبر نفسك: خبّي المعنى'}</button>
+    <div class="stack ${prefs.hidePh ? 'hide' : ''}">${artPhrases.map(([t, m]) => `<div class="ph">
+      <div class="txt"><div class="t">${esc(t)}</div><div class="m" data-reveal="1">${fmtMean(m)}</div></div>
+      <div class="acts">${sayBtn(code, t)}${slowBtn(code, t)}${addBtn(code, t, m)}</div>
+    </div>`).join('')}</div>`;
+  }
+  return `<div style="--c:${L.color}">${bar('🎨 اقتباسات وفن', 'lang-' + code)}
+  <div class="filters">${tabs.map(([k, l]) => `<button class="chip" data-qatab="${k}" aria-pressed="${qaTab === k}">${l}</button>`).join('')}</div>
+  ${body}</div>`;
+}
+
+// ---------- about me ----------
 const COUNTRY_EN = { eg: ['Egypt', 'Egyptian'], sa: ['Saudi Arabia', 'Saudi'], ae: ['the UAE', 'Emirati'], jo: ['Jordan', 'Jordanian'], us: ['the USA', 'American'] };
 const COUNTRY_AR = { eg: 'مصر', sa: 'السعودية', ae: 'الإمارات', jo: 'الأردن', us: 'أمريكا' };
 const JOB_EN = { engineer: ['an engineer', 'مهندس'], doctor: ['a doctor', 'دكتور'], teacher: ['a teacher', 'مدرّس'], student: ['a student', 'طالب'], programmer: ['a programmer', 'مبرمج'], accountant: ['an accountant', 'محاسب'], designer: ['a designer', 'مصمم'], manager: ['a manager', 'مدير'], business: ['a businessperson', 'رجل/سيدة أعمال'] };
@@ -414,58 +657,59 @@ function viewMe(code) {
   const L = LANGS[code], p = profile, lines = introLines(code);
   const opt = (obj, cur, lab) => Object.keys(obj).map(k => `<option value="${k}" ${k === cur ? 'selected' : ''}>${esc(lab(k))}</option>`).join('');
   return `<div style="--c:${L.color}">${bar('🙋 عرّف نفسك', 'lang-' + code)}
-  <p class="muted" style="margin:0 4px 12px">املا بياناتك مرة واحدة، والتطبيق يكتبلك تعريف نفسك بالـ${L.name.replace('ال', '')} مع الترجمة. اسمعه، وكرّره بصوتك لحد ما تقوله من غير ما تبص.</p>
+  <p class="muted" style="margin:0 4px 12px">املا بياناتك مرة واحدة، والتطبيق يكتبلك تعريف نفسك ${biLang(L)} مع الترجمة. اسمعه، وكرّره بصوتك لحد ما تقوله من غير ما تبص.</p>
   <div class="panel"><form class="form" id="meForm">
-    <label for="p-name">اسمك (بالإنجليزي)<input type="text" id="p-name" name="name" value="${esc(p.name)}" placeholder="Ahmed" autocomplete="off"></label>
+    <label for="p-name">اسمك (بالحروف اللاتينية)<input type="text" dir="ltr" id="p-name" name="name" value="${esc(p.name)}" placeholder="Ahmed" autocomplete="off"></label>
     <div class="seg"><label><input type="radio" name="gender" value="m" ${p.gender !== 'f' ? 'checked' : ''}> ذكر</label><label><input type="radio" name="gender" value="f" ${p.gender === 'f' ? 'checked' : ''}> أنثى</label></div>
-    <label for="p-age">سنّك<input type="number" id="p-age" name="age" min="5" max="99" value="${esc(p.age)}" placeholder="30"></label>
+    <label for="p-age">سنّك<input type="number" dir="ltr" id="p-age" name="age" min="5" max="99" value="${esc(p.age)}" placeholder="30"></label>
     <label for="p-country">من فين<select id="p-country" name="country">${opt(COUNTRY_AR, p.country, k => COUNTRY_AR[k])}</select></label>
-    <label for="p-city">ساكن في (اسم المدينة بالإنجليزي)<input type="text" id="p-city" name="city" value="${esc(p.city)}" placeholder="Cairo" autocomplete="off"></label>
+    <label for="p-city">ساكن في (اسم المدينة بالإنجليزي)<input type="text" dir="ltr" id="p-city" name="city" value="${esc(p.city)}" placeholder="Cairo" autocomplete="off"></label>
     <label for="p-job">شغلك<select id="p-job" name="job">${opt(JOB_EN, p.job, k => JOB_EN[k][1])}</select></label>
     <div><b>بتحب إيه؟ (اختار لحد ٣)</b><div class="checks" style="margin-top:6px">${Object.keys(HOB_EN).map(h => `<label><input type="checkbox" name="hobbies" value="${h}" ${(p.hobbies || []).includes(h) ? 'checked' : ''}> ${HOB_EN[h][1]}</label>`).join('')}</div></div>
   </form></div>
-  <h2>تعريفك بالـ${L.name.replace('ال', '')}</h2>
+  <h2>تعريفك ${biLang(L)}</h2>
   <div class="panel intro" id="introOut">${introHTML(code, lines)}</div>
   <div class="row" style="margin-top:12px">
     <button class="btn main" style="flex:1" data-sayall="${code}">🔊 اسمع التعريف كله</button>
     <button class="btn" style="flex:1" data-addintro="${code}">➕ ضيف الجمل لجدول الحفظ</button>
   </div></div>`;
 }
-const introHTML = (code, lines) => lines.map(([t, m]) => `<div class="ln"><div><div class="t">${esc(t)}</div><div class="m">${esc(m)}</div></div>${sayBtn(code, t)}</div>`).join('');
+const introHTML = (code, lines) => lines.map(([t, m], idx) => `<div class="ln" id="intro-ln-${idx}"><div><div class="t">${esc(t)}</div><div class="m">${esc(m)}</div></div>${sayBtn(code, t)}${slowBtn(code, t)}</div>`).join('');
 
+// ---------- texts & interactive reader ----------
 function viewTexts(code) {
   const L = LANGS[code];
   if (tfLang !== code) { tf = 'all'; tfLang = code; }
-  const F = [['all', 'الكل'], ['famous', '⭐ مشهور'], ['story', '📚 قصص وأدب'], ['speech', '🎤 خطابات'], ['news', '📰 أخبار']];
+  const F = [['all', 'الكل'], ['famous', '⭐ مشهور'], ['art', '🎨 لوحات فنية'], ['story', '📚 قصص وأدب'], ['speech', '🎤 خطابات'], ['news', '📰 أخبار']];
   const list = L.texts.map((t, i) => [t, i]).filter(([t]) => tfMatch(t, tf));
   const done = L.texts.filter((_, i) => read[code + '-' + i]).length;
-  return `<div style="--c:${L.color}">${bar('📖 قصص وخطابات وأخبار', 'lang-' + code)}
-  <p class="muted" style="margin:0 4px 12px">دوس على أي كلمة في النص تشوف معناها. ولما تخلّص، هيظهرلك كل كلمات النص عشان تضيفها لجدول الحفظ. الأخبار اللي عليها «حقيقي» معلوماتها حقيقية، والباقي مكتوب للتدريب عن مواقف بتحصل فعلًا. قريت ${ar(done)} من ${ar(L.texts.length)}.</p>
+  return `<div style="--c:${L.color}">${bar('📖 قصص ولوحات وخطابات', 'lang-' + code)}
+  <p class="muted" style="margin:0 4px 12px">دوس على أي كلمة في النص تشوف معناها. ولما تخلّص، هيظهرلك كل كلمات النص عشان تضيفها لجدول الحفظ. قريت ${ar(done)} من ${ar(L.texts.length)} نص.</p>
   <div class="filters">${F.map(([k, l]) => `<button class="chip" data-tf="${k}" aria-pressed="${tf === k}">${l} <span style="opacity:.75">${L.texts.filter(t => tfMatch(t, k)).length}</span></button>`).join('')}</div>
   <div class="stack">${list.map(([t, i]) => `<button class="tile txt-item" data-go="read-${code}-${i}">
     <span class="te" aria-hidden="true">${t.emoji || '📄'}</span>
     <span class="tb"><span><span class="kind">${kindLabel(t)}</span> <span class="muted" style="font-size:14px">${t.level} · ${ar(t.s.length)} جمل · ${ar(Object.keys(t.v).length)} كلمة</span></span>
-    <span class="t tx" style="text-align:left">${esc(t.title)}</span><span class="d tx" style="text-align:left">${esc(t.en)}</span>
+    <span class="t" style="font-size:18px">${esc(t.title)}</span><span class="d tx" style="text-align:left">${esc(t.en)}</span>
     ${t.src ? `<span class="d tx" style="text-align:left">✍️ ${esc(t.src)}</span>` : ''}
     ${read[code + '-' + i] ? '<span class="d" style="color:var(--good);font-weight:800">✅ قريته</span>' : ''}</span></button>`).join('')}</div></div>`;
 }
 
 function viewRead(code, i) {
   const L = LANGS[code], T = L.texts[i];
-  const words = s => s.split(/(\p{L}+)/u).map((p, j) => j % 2 ? `<button class="w ${inDeck(code, p) ? 'saved' : ''}" data-w="${esc(p)}">${esc(p)}</button>` : esc(p)).join('');
-  return `<div style="--c:${L.color}" class="${prefs.trans ? '' : 'notrans'}">${bar(kindLabel(T), 'texts-' + code)}
-  <h2 class="tx" style="text-align:left;font-size:24px;margin-top:4px;margin-bottom:2px">${esc(T.title)}</h2>
+  const backTarget = T.kind === 'art' && qaLang === code && qaTab === 'paintings' ? 'quotes-' + code : 'texts-' + code;
+  return `<div style="--c:${L.color}" class="${prefs.trans ? '' : 'notrans'}">${bar(kindLabel(T), backTarget)}
+  <h2 style="font-size:23px;margin-top:4px;margin-bottom:2px">${esc(T.title)}</h2>
   ${T.src ? `<p class="tx muted" style="text-align:left;margin:0 4px 6px">✍️ ${esc(T.src)}</p>` : ''}
   ${T.famous ? `<p class="muted" style="font-size:14px;margin:0 4px 12px">⭐ نص أصلي من الأدب المشهور، والكاتب متوفّي من زمان فالنص متاح للجميع. ${T.mem ? 'اتكتب من غير مراجعة على المصدر، فممكن يختلف عن الأصل في كلمة أو علامة صغيرة. ' : ''}${T.level === 'متقدم' ? 'لغته قديمة شوية، فمتقلقش لو فيه كلمات صعبة.' : ''}</p>` : ''}
   <div class="row" style="margin-bottom:12px">
-    <button class="btn small main" data-sayall-text="${i}" data-l="${code}">🔊 اسمع النص</button>
+    <button class="btn small main" data-sayall-text="${i}" data-l="${code}">🔊 اسمع النص جملة بجملة</button>
     <button class="btn small" data-slowall-text="${i}" data-l="${code}">🐢 ببطء</button>
     <button class="btn small ghost" data-trans="1">${prefs.trans ? '🙈 خبّي الترجمة' : '👁️ اظهر الترجمة'}</button>
   </div>
-  <div class="reader" data-text="${code}-${i}">${T.s.map(([s, e], k) => `<div class="sent">
-    <div class="src">${words(s)}</div>
-    <div class="en" id="en-${k}">${esc(e)}</div>
-    <div class="tools"><button class="btn small ghost" data-say="${esc(s)}" data-l="${code}">🔊 الجملة</button>${prefs.trans ? '' : `<button class="btn small ghost" data-showen="${k}">🇬🇧 الترجمة</button>`}</div>
+  <div class="reader" data-text="${code}-${i}">${T.s.map(([s, e], k) => `<div class="sent" id="sent-${k}">
+    <div class="src">${clickWords(s, code, 'data-w')}</div>
+    <div class="en" id="en-${k}">${fmtMean(e)}</div>
+    <div class="tools"><button class="btn small ghost" data-say="${esc(s)}" data-l="${code}">🔊 الجملة</button><button class="btn small ghost" data-slow="${esc(s)}" data-l="${code}">🐢 ببطء</button>${prefs.trans ? '' : `<button class="btn small ghost" data-showen="${k}">👁️ الترجمة</button>`}</div>
   </div>`).join('')}</div>
   <button class="btn main wide" style="margin-top:16px" data-go="vocab-${code}-${i}">✅ خلّصت القراية — وريني الكلمات</button></div>`;
 }
@@ -477,44 +721,65 @@ function textWords(code, i) {
 }
 function viewVocab(code, i) {
   const L = LANGS[code], T = L.texts[i];
-  if (!read[code + '-' + i]) { read[code + '-' + i] = Date.now(); store.set('read', read); markDay(); }
+  if (!read[code + '-' + i]) { read[code + '-' + i] = Date.now(); store.set('read', read); }
+  markStep(code, 'read'); markDay();
   const ws = textWords(code, i), fresh = ws.filter(w => !inDeck(code, w.t)).length;
   return `<div style="--c:${L.color}">${bar('📝 كلمات النص', 'read-' + code + '-' + i)}
-  <p class="panel" style="margin-top:0">برافو، خلّصت <b class="tx">${esc(T.title)}</b> 👏<br>النص فيه <b>${ar(ws.length)}</b> كلمة، منهم <b>${ar(fresh)}</b> مش في جدولك. شيل علامة ✓ من الكلمات اللي إنت عارفها، واختار إمتى تراجع الباقي.</p>
+  <p class="panel" style="margin-top:0">برافو، خلّصت <b>${esc(T.title)}</b> 👏<br>النص فيه <b>${ar(ws.length)}</b> كلمة، منهم <b>${ar(fresh)}</b> مش في جدولك. شيل علامة ✓ من الكلمات اللي إنت عارفها، واختار إمتى تراجع الباقي.</p>
   <div class="row" style="margin:12px 0"><button class="btn small ghost" data-vsel="all">اختار الكل</button><button class="btn small ghost" data-vsel="none">شيل الكل</button></div>
   <div class="stack" id="vlist">${ws.map(w => { const on = inDeck(code, w.t); return `<label class="vrow">
     <input type="checkbox" ${on ? 'disabled' : 'checked'} data-vt="${esc(w.t)}" data-vm="${esc(w.m)}" data-vex="${esc(w.ex)}">
-    <span class="vw tx">${esc(w.t)}</span><span class="vm">${esc(w.m)}</span>${on ? '<span class="in">✓ في جدولك</span>' : ''}
+    <span class="vw tx">${esc(w.t)}</span><span class="vm">${fmtMean(w.m)}</span>${on ? '<span class="in">✓ في جدولك</span>' : ''}
     ${sayBtn(code, w.t)}</label>`; }).join('')}</div>
   <div class="sticky-foot"><b>ضيف المختار لجدول الحفظ — راجعه:</b>
     <div class="manual" style="margin:0"><button class="btn main" data-vadd="1" data-l="${code}">بكرة</button><button class="btn" data-vadd="7" data-l="${code}">بعد أسبوع</button><button class="btn" data-vadd="30" data-l="${code}">بعد شهر</button></div></div></div>`;
 }
 
-// ---------- review ----------
+// ---------- review (supports Normal / Reverse / Mixed recall + Mnemonics) ----------
 let rv = null;
-function startReview(lang) { rv = { lang, queue: dueList(lang), i: 0, shown: false, ok: 0 }; }
+function startReview(lang) {
+  const q = dueList(lang).map((d, idx) => ({
+    ...d,
+    rev: prefs.revDir === 'reverse' ? true : prefs.revDir === 'mix' ? idx % 2 === 1 : false
+  }));
+  rv = { lang, queue: q, i: 0, shown: false, ok: 0 };
+}
+function dirChips() {
+  const modes = [['normal', 'أجنبي ← المعنى'], ['reverse', 'المعنى ← أجنبي 🗣️'], ['mix', 'كوكتيل 🔀']];
+  return `<div class="filters">${modes.map(([k, l]) => `<button class="chip" data-revdir="${k}" aria-pressed="${prefs.revDir === k}">${l}</button>`).join('')}</div>`;
+}
 function viewReview(lang) {
   if (!rv || rv.lang !== lang) startReview(lang);
   const L = lang ? LANGS[lang] : null, back = lang ? 'lang-' + lang : 'home';
   const head = bar('🔁 المراجعة' + (L ? ' — ' + L.name : ''), back);
   if (!rv.queue.length) {
+    if (lang) markStep(lang, 'rev');
     const next = deck.filter(d => !lang || d.lang === lang).sort((a, b) => a.due - b.due)[0];
-    return head + `<div class="flash"><div style="font-size:60px">🎉</div><b style="font-size:22px">مفيش حاجة تراجعها دلوقتي</b>
-      <p class="muted">${next ? `المراجعة الجاية: ${inDays(next.due)}` : 'ضيف كلمات من الجمل أو النصوص الأول.'}</p></div>`;
+    return head + dirChips() + `<div class="flash"><div style="font-size:60px">🎉</div><b style="font-size:22px">مفيش حاجة تراجعها دلوقتي</b>
+      <p class="muted">${next ? `المراجعة الجاية: ${inDays(next.due)}` : 'ضيف كلمات من الجمل أو التخصصات أو النصوص الأول.'}</p></div>`;
   }
   if (rv.i >= rv.queue.length) {
-    const n = rv.queue.length; rv = null; markDay();
+    const n = rv.queue.length;
+    if (lang) markStep(lang, 'rev');
+    else Object.keys(LANGS).forEach(c => { if (rv.queue.some(x => x.lang === c)) markStep(c, 'rev'); });
+    rv = null; markDay();
     return head + `<div class="flash"><div style="font-size:60px">✅</div><b style="font-size:22px">خلّصت المراجعة!</b><p class="muted">راجعت ${ar(n)} كلمة. ارجع بكرة تكمّل.</p>
       <button class="btn main" data-go="${back}">تمام</button></div>`;
   }
-  const it = rv.queue[rv.i], IL = LANGS[it.lang], nextD = IV[Math.min(it.lvl, IV.length - 1)];
-  return `<div style="--c:${IL.color}">${head}
+  const it = rv.queue[rv.i], live = deck.find(x => x.id === it.id) || it;
+  const IL = LANGS[it.lang], nextD = IV[Math.min(live.lvl, IV.length - 1)];
+  const isRev = !!it.rev;
+  return `<div style="--c:${IL.color}">${head}${dirChips()}
   <div class="progress"><i style="width:${Math.round(100 * rv.i / rv.queue.length)}%"></i></div>
-  <p class="muted" style="margin:0 4px 8px">${ar(rv.i + 1)} من ${ar(rv.queue.length)} · ${IL.flag} — فاكر معناها؟ قولها بصوتك الأول، وبعدين اكشف المعنى.</p>
+  <p class="muted" style="margin:0 4px 8px">${ar(rv.i + 1)} من ${ar(rv.queue.length)} · ${flagSVG(it.lang, 20, 14)} — ${isRev ? `تقدر تقول الكلمة دي ${biLang(IL)}؟ قولها بصوتك وبعدين اكشف.` : 'فاكر معناها؟ قولها بصوتك الأول، وبعدين اكشف المعنى.'}</p>
   <div class="flash">
-    <div class="front">${esc(it.t)}</div>${it.tr ? `<div class="ctx">${esc(it.tr)}</div>` : ''}
-    <div class="row" style="justify-content:center">${sayBtn(it.lang, it.t)}</div>
-    ${rv.shown ? `<div class="back">${esc(it.m)}</div>${it.ex && it.ex.toLowerCase() !== it.t.toLowerCase() ? `<div class="ctx">«${esc(it.ex)}»</div>` : ''}` : `<button class="btn main" data-reveal-card="1">👁️ اكشف المعنى</button>`}
+    ${isRev ? `<div class="front ar-prompt">${fmtMean(live.m)}</div>` : `<div class="front">${esc(live.t)}</div>${live.tr ? `<div class="ctx">${esc(live.tr)}</div>` : ''}<div class="row" style="justify-content:center">${sayBtn(it.lang, live.t)}${slowBtn(it.lang, live.t)}</div>`}
+    ${rv.shown ? `
+      ${isRev ? `<div class="front" style="margin-top:6px;color:var(--c)">${esc(live.t)}</div>${live.tr ? `<div class="ctx">${esc(live.tr)}</div>` : ''}<div class="row" style="justify-content:center">${sayBtn(it.lang, live.t)}${slowBtn(it.lang, live.t)}</div>` : `<div class="back">${fmtMean(live.m)}</div>`}
+      ${live.ex && live.ex.toLowerCase() !== live.t.toLowerCase() ? `<div class="ctx">«${esc(live.ex)}»</div>` : ''}
+      ${live.note ? `<div class="mnemo">💡 ${esc(live.note)}</div>` : ''}
+      <button class="btn small ghost" data-editnote="${esc(live.id)}">✏️ ${live.note ? 'عدّل الربط' : 'ضيف ربط يفكّرك'}</button>
+    ` : `<button class="btn main" data-reveal-card="1">👁️ ${isRev ? 'اكشف الكلمة' : 'اكشف المعنى'}</button>`}
   </div>
   ${rv.shown ? `<div class="grade"><button class="btn no" data-grade="no">❌ مكنتش فاكر<small>هتظهر تاني بعد ١٠ دقايق</small></button>
     <button class="btn yes" data-grade="yes">✅ كنت فاكر<small>المراجعة الجاية ${ivLabel(nextD)}</small></button></div>
@@ -524,7 +789,7 @@ function viewReview(lang) {
 function grade(g) {
   const it = rv.queue[rv.i], d = deck.find(x => x.id === it.id);
   if (d) {
-    if (g === 'no') { d.lvl = 0; d.due = Date.now() + 10 * 60 * 1000; rv.queue.push(d); }
+    if (g === 'no') { d.lvl = 0; d.due = Date.now() + 10 * 60 * 1000; rv.queue.push({ ...d, rev: it.rev }); }
     else if (g === 'yes') { const n = IV[Math.min(d.lvl, IV.length - 1)]; d.lvl = Math.min(d.lvl + 1, IV.length - 1); d.due = Date.now() + n * DAY; }
     else { const n = +g; d.due = Date.now() + n * DAY; d.lvl = Math.max(0, IV.findIndex(x => x >= n)); }
     saveDeck();
@@ -532,108 +797,180 @@ function grade(g) {
   rv.i++; rv.shown = false; route();
 }
 
-// ---------- quiz ----------
+// ---------- quiz (General, Letters, or Specialized Topic + Voice-aware) ----------
 let qz = null;
-function quizPool(code) {
-  const L = LANGS[code], pool = new Map();
+function quizPool(code, topicId) {
+  const L = LANGS[code];
+  if (topicId) {
+    const tp = (L.topics || []).find(x => x.id === topicId);
+    return tp ? tp.items.map(x => ({ t: x.t, m: x.m, tr: x.tr || '', ex: x.ex || '' })) : [];
+  }
+  const pool = new Map();
   deck.filter(d => d.lang === code).forEach(d => pool.set(d.t.toLowerCase(), { t: d.t, m: d.m, tr: d.tr }));
   if (pool.size < 12) {
     L.phrases.forEach(c => c.items.forEach(([t, m, tr]) => pool.has(t.toLowerCase()) || pool.set(t.toLowerCase(), { t, m, tr })));
+    (L.topics || []).forEach(tp => tp.items.slice(0, 4).forEach(x => pool.has(x.t.toLowerCase()) || pool.set(x.t.toLowerCase(), { t: x.t, m: x.m, tr: x.tr || '' })));
     L.texts.forEach(T => Object.entries(T.v).forEach(([t, m]) => pool.has(t) || pool.set(t, { t, m })));
   }
   return [...pool.values()];
 }
-function startQuiz(code, letters) {
-  const L = LANGS[code];
-  let pool = letters ? L.abc.map(x => ({ t: x.l, m: `${x.ar} — ${x.s}`, letter: 1 })) : quizPool(code);
-  const items = shuffle(pool).slice(0, 10);
-  qz = { code, letters, pool, items, i: 0, score: 0, picked: null, wrong: [],
+function startQuiz(code, mode = {}) {
+  const L = LANGS[code], letters = !!mode.letters, topicId = mode.topicId || '';
+  const canSpeak = hasVoice(code);
+  let pool = letters ? L.abc.map(x => ({ t: x.l, m: `${x.ar} — ${x.s}`, letter: 1 })) : quizPool(code, topicId);
+  const items = shuffle(pool).slice(0, Math.min(10, pool.length));
+  const key = `${code}|${letters ? 'abc' : topicId || 'gen'}|${prefs.revDir}`;
+  qz = { key, code, letters, topicId, pool, items, i: 0, score: 0, picked: null, wrong: [],
     qs: items.map((it, k) => {
-      const listen = !letters && k % 3 === 2;
+      // Only ask listening-only questions if the device actually has a TTS voice installed for this language!
+      const listen = !letters && canSpeak && k % 4 === 3;
+      const rev = !letters && !listen && (prefs.revDir === 'reverse' || (prefs.revDir === 'mix' && k % 2 === 1));
       const others = shuffle(pool.filter(p => p.t !== it.t && p.m !== it.m)).slice(0, 3);
-      return { it, listen, opts: shuffle([it, ...others]) };
+      return { it, listen, rev, opts: shuffle([it, ...others]) };
     }) };
 }
-function viewQuiz(code, letters) {
-  const L = LANGS[code], back = letters ? 'abc-' + code : 'lang-' + code;
-  if (!qz || qz.code !== code || !!qz.letters !== !!letters) startQuiz(code, letters);
-  const head = `<div style="--c:${L.color}">` + bar(letters ? '🎯 اختبار الحروف' : '🎯 اختبرني', back);
+function viewQuiz(code, mode = {}) {
+  const L = LANGS[code], letters = !!mode.letters, topicId = mode.topicId || '';
+  const tp = topicId ? (L.topics || []).find(x => x.id === topicId) : null;
+  const back = letters ? 'abc-' + code : topicId ? `topic-${code}-${topicId}` : 'lang-' + code;
+  const title = letters ? '🎯 اختبار الحروف' : tp ? `🎯 اختبار ${tp.title}` : '🎯 اختبرني';
+  const wantKey = `${code}|${letters ? 'abc' : topicId || 'gen'}|${prefs.revDir}`;
+  if (!qz || qz.key !== wantKey) startQuiz(code, mode);
+  const head = `<div style="--c:${L.color}">` + bar(title, back) + (letters ? '' : dirChips());
   if (qz.i >= qz.qs.length) {
-    const s = qz.score, n = qz.qs.length, w = qz.wrong.length; qz = null; markDay();
+    const s = qz.score, n = qz.qs.length, w = qz.wrong.length;
+    if (!letters) markStep(code, 'quiz');
+    qz = null; markDay();
     return head + `<div class="flash"><div style="font-size:60px">${s >= n * .8 ? '🏆' : s >= n / 2 ? '👍' : '💪'}</div>
       <b style="font-size:24px">${ar(s)} من ${ar(n)}</b>
       <p class="muted">${w && !letters ? `الكلمات اللي غلطت فيها (${ar(w)}) اتضافت لجدول الحفظ عشان تراجعها.` : s === n ? 'ممتاز! كلها صح.' : 'كمّل، وكل مرة هتبقى أحسن.'}</p>
-      <div class="row" style="justify-content:center"><button class="btn main" data-quiz-again="${letters ? 1 : 0}">جولة تانية</button><button class="btn" data-go="${back}">رجوع</button></div></div></div>`;
+      <div class="row" style="justify-content:center"><button class="btn main" data-quiz-again="1">جولة تانية</button><button class="btn" data-go="${back}">رجوع</button></div></div></div>`;
   }
   const q = qz.qs[qz.i], done = qz.picked !== null;
-  const label = o => q.listen ? o.t : o.m;
+  const promptLabel = q.listen ? 'اسمع واختار الكلمة' : letters ? 'الحرف ده بيتنطق إزاي؟' : q.rev ? `إيه معنى ده ${biLang(L)}؟` : 'معناها إيه؟';
   return head + `<div class="progress"><i style="width:${Math.round(100 * qz.i / qz.qs.length)}%"></i></div>
-  <p class="muted" style="margin:0 4px 8px">سؤال ${ar(qz.i + 1)} من ${ar(qz.qs.length)} · ${q.listen ? 'اسمع واختار الكلمة' : letters ? 'الحرف ده بيتنطق إزاي؟' : 'معناها إيه؟'}</p>
-  <div class="flash" style="min-height:180px">
-    ${q.listen ? `<button class="btn main" data-say="${esc(q.it.t)}" data-l="${code}" style="font-size:22px">🔊 اسمع تاني</button>` : `<div class="front">${esc(q.it.t)}</div>`}
-    ${!q.listen && !letters ? sayBtn(code, q.it.t) : ''}
+  <p class="muted" style="margin:0 4px 8px">سؤال ${ar(qz.i + 1)} من ${ar(qz.qs.length)} · ${promptLabel}</p>
+  <div class="flash" style="min-height:175px">
+    ${q.listen ? `<button class="btn main" data-say="${esc(q.it.t)}" data-l="${code}" style="font-size:20px">🔊 اسمع تاني</button>`
+      : q.rev ? `<div class="front ar-prompt">${fmtMean(q.it.m)}</div>`
+      : `<div class="front">${esc(q.it.t)}</div>`}
+    ${!q.listen && !letters && !q.rev ? `<div class="row" style="justify-content:center">${sayBtn(code, q.it.t)}${slowBtn(code, q.it.t)}</div>` : ''}
   </div>
   <div class="opts">${q.opts.map((o, k) => {
     const cls = done ? (o.t === q.it.t ? 'right' : k === qz.picked ? 'wrong' : '') : '';
-    return `<button class="opt ${cls}" data-pick="${k}" ${done ? 'disabled' : ''}>${esc(label(o))}</button>`; }).join('')}</div>
+    const isForeignOpt = q.listen || q.rev;
+    return `<button class="opt ${isForeignOpt ? 'ltr' : ''} ${cls}" data-pick="${k}" ${done ? 'disabled' : ''}>${isForeignOpt ? esc(o.t) : fmtMean(o.m)}</button>`; }).join('')}</div>
   ${done ? `<button class="btn main wide" style="margin-top:12px" data-qnext="1">${qz.i + 1 < qz.qs.length ? 'السؤال اللي بعده ←' : 'النتيجة'}</button>` : ''}</div>`;
 }
 function pick(k) {
   const q = qz.qs[qz.i]; if (qz.picked !== null) return;
   qz.picked = k;
   const ok = q.opts[k].t === q.it.t;
-  if (ok) qz.score++; else { qz.wrong.push(q.it); if (!qz.letters) addItem({ lang: qz.code, t: q.it.t, m: q.it.m, tr: q.it.tr }, 0, true); }
-  if (q.listen || !qz.letters) say(qz.code, q.it.t);
+  if (ok) qz.score++; else { qz.wrong.push(q.it); if (!qz.letters) addItem({ lang: qz.code, t: q.it.t, m: q.it.m, tr: q.it.tr, ex: q.it.ex }, 0, true); }
+  // Only auto-speak if device actually has a voice — never pop up voice installation modal after every quiz click!
+  if ((q.listen || !qz.letters) && hasVoice(qz.code)) say(qz.code, q.it.t);
   route();
 }
 
-// ---------- words table ----------
-let wf = 'all';
+// ---------- words table (Search + Status filters + Mnemonics + Manual Add) ----------
+let wf = 'all', wStat = 'all', wQuery = '', showAddForm = false;
 function viewWords() {
-  const list = deck.filter(d => wf === 'all' || d.lang === wf).sort((a, b) => a.due - b.due);
+  const q = wQuery.trim().toLowerCase();
+  const now = Date.now();
+  const list = deck.filter(d => {
+    if (wf !== 'all' && d.lang !== wf) return false;
+    if (wStat === 'due' && d.due > now) return false;
+    if (wStat === 'learn' && d.lvl >= 3) return false;
+    if (wStat === 'master' && d.lvl < 3) return false;
+    if (q && !(d.t.toLowerCase().includes(q) || d.m.toLowerCase().includes(q) || (d.note || '').toLowerCase().includes(q))) return false;
+    return true;
+  }).sort((a, b) => a.due - b.due);
+
+  const langChips = [['all', 'كل اللغات'], ...Object.values(LANGS).map(L => [L.code, `${L.name}`])];
+  const statChips = [['all', 'الكل'], ['due', '⏰ ميعادها دلوقتي'], ['learn', '🌱 بتعلّمها'], ['master', '⭐ متقنة']];
+
   return bar('📋 جدول الحفظ') + `
-  <div class="filters">${[['all', 'الكل'], ...Object.values(LANGS).map(L => [L.code, L.flag + ' ' + L.name])].map(([k, l]) => `<button class="chip" data-wf="${k}" aria-pressed="${wf === k}">${l}</button>`).join('')}</div>
+  <div class="row" style="margin-bottom:10px">
+    <input class="search" style="flex:1;margin:0" type="text" id="wordSearch" value="${esc(wQuery)}" placeholder="🔍 ابحث عن كلمة أو معنى أو ربط…">
+    <button class="btn small ${showAddForm ? 'main' : 'ghost'}" data-toggle-addword="1">➕ ضيف بإيدك</button>
+  </div>
+  ${showAddForm ? `<form class="panel form" id="customWordForm" style="margin-bottom:12px">
+    <b>➕ ضيف كلمة أو جملة جديدة</b>
+    <div class="row">
+      <select name="lang" style="flex:1">${Object.values(LANGS).map(L => `<option value="${L.code}" ${wf === L.code ? 'selected' : ''}>${L.name}</option>`).join('')}</select>
+      <input type="text" dir="ltr" name="t" placeholder="الكلمة أو الجملة (مثلاً: Hola)" required style="flex:2">
+    </div>
+    <input type="text" name="m" placeholder="المعنى بالعربي أو الإنجليزي" required>
+    <input type="text" name="note" placeholder="💡 ربط يفكّرك بيها (اختياري — مثلاً: شبه كلمة…)">
+    <button class="btn main" type="submit" data-save-custom="1">احفظ في الجدول</button>
+  </form>` : ''}
+  <div class="filters">${langChips.map(([k, l]) => `<button class="chip" data-wf="${k}" aria-pressed="${wf === k}">${k !== 'all' ? flagSVG(k, 18, 12) + ' ' : ''}${l}</button>`).join('')}</div>
+  <div class="filters">${statChips.map(([k, l]) => `<button class="chip" data-wstat="${k}" aria-pressed="${wStat === k}">${l}</button>`).join('')}</div>
   ${list.length ? `<div class="tblwrap"><table class="tbl"><thead><tr><th>الكلمة</th><th>المعنى</th><th>المراجعة</th><th></th></tr></thead><tbody>
-  ${list.map(d => `<tr><td><span class="tx"><b>${esc(d.t)}</b></span>${d.tr ? `<br><small class="tx muted">${esc(d.tr)}</small>` : ''}</td><td class="tx muted">${esc(d.m)}</td><td style="white-space:nowrap">${inDays(d.due)}</td>
-    <td><div class="acts">${sayBtn(d.lang, d.t)}<button class="icon" data-del="${esc(d.id)}" aria-label="امسح">🗑️</button></div></td></tr>`).join('')}
-  </tbody></table></div>` : '<p class="empty">جدولك فاضي. ضيف كلمات من «جمل كل يوم» أو من النصوص بزرار ➕.</p>'}`;
+  ${list.map(d => `<tr style="--c:${LANGS[d.lang]?.color || 'var(--accent)'}"><td><span class="tx"><b>${esc(d.t)}</b></span>${d.tr ? `<br><small class="tx muted">${esc(d.tr)}</small>` : ''}${d.note ? `<br><span class="note-tag">💡 ${esc(d.note)}</span>` : ''}</td><td>${fmtMean(d.m)}</td><td style="white-space:nowrap;font-size:14px">${inDays(d.due)}</td>
+    <td><div class="acts">${sayBtn(d.lang, d.t)}<button class="icon" data-editnote="${esc(d.id)}" aria-label="ربط أو ملاحظة" title="ضيف ربط">💡</button><button class="icon" data-del="${esc(d.id)}" aria-label="امسح">🗑️</button></div></td></tr>`).join('')}
+  </tbody></table></div>` : `<p class="empty">${deck.length ? 'مفيش كلمات مطابقة للفلتر أو البحث ده.' : 'جدولك فاضي. ضيف كلمات من «جمل كل يوم» أو «كلمات التخصصات» أو من النصوص بزرار ➕.'}</p>`}`;
 }
 
 function viewTips() {
   const T = [
     ['🔁 التكرار المتباعد', 'المخ بينسى الكلمة بعد يوم، فلو راجعتها قبل ما تنساها بتثبت أكتر. وكل مرة تفتكرها صح، المسافة بتكبر: بكرة، بعد ٣ أيام، أسبوع، أسبوعين، شهر.', 'ده اللي بيعمله «راجع» و«جدول الحفظ» لوحدهم.'],
-    ['🙈 افتكر قبل ما تبص', 'محاولة إنك تفتكر الكلمة من غير ما تشوف المعنى أقوى بكتير من إنك تقراها تاني. حتى لو غلطت.', 'شغّل «خبّي المعنى» في الجمل، و«اكشف المعنى» في المراجعة.'],
-    ['🗣️ قول بصوت عالي', 'اسمع الجملة وكرّرها وراها على طول بنفس الإيقاع (Shadowing). كده بتتعلم النطق وبتحفظ في نفس الوقت.', 'دوس 🔊 أو 🐢، وكرّر وراه ٣ مرات.'],
-    ['📖 الكلمة جوه جملة', 'الكلمة لوحدها بتتنسي، لكن جوه قصة أو جملة بتفتكرها بسهولة. علشان كده كل كلمة بتحفظها من نص بتتحفظ معاها الجملة.', 'اقرا النصوص ودوس على الكلمات.'],
-    ['🙋 ابدأ بنفسك', 'أسرع كلام هتحتاجه هو الكلام عن نفسك: اسمك، شغلك، بتحب إيه. احفظه كويس الأول وكأنه أغنية.', 'افتح «عرّف نفسك» وقوله كل يوم.'],
-    ['🖼️ اربط بصورة أو كلمة عربي', 'اعمل ربط مضحك: الروسي «сыр» (سير) يعني جبنة، فتخيّل جبنة ماشية في السير. كل ما يكون الربط غريب، بتفتكره أكتر.', 'لما تضيف كلمة، فكّر في ربط ليها قبل المراجعة.'],
-    ['⏱️ ١٥ دقيقة كل يوم أحسن من ساعتين مرة', 'الاستمرار أهم من الكمية. خلّي العدّاد 🔥 يكبر كل يوم.', 'اتبع «خطة اليوم» في صفحة اللغة.'],
-    ['🎯 اختبر نفسك', 'الاختبار مش للدرجة، ده طريقة حفظ. والكلمات اللي بتغلط فيها هي أهم كلمات تراجعها.', 'استخدم «اختبرني»، والغلط بيتضاف لوحده لجدولك.']
+    ['🗣️ راجع بالعكس عشان تتكلم', 'إنك تفهم الكلمة لما تشوفها حاجة، وإنك تفتكرها وإنت عايز تتكلم حاجة تانية خالص!', 'شغّل وضع «المعنى ← أجنبي 🗣️» في المراجعة والاختبار.'],
+    ['🙈 افتكر قبل ما تبص', 'محاولة إنك تفتكر الكلمة من غير ما تشوف المعنى أقوى بكتير من إنك تقراها تاني. حتى لو غلطت.', 'شغّل «خبّي المعنى» في الجمل والتخصصات، و«اكشف المعنى» في المراجعة.'],
+    ['🐢 اسمع بالراحة وكرّر بصوت عالي', 'اسمع الجملة ببطء الأول وبعدين بالسرعة الطبيعية وكرّرها بنفس الإيقاع (Shadowing).', 'دوس 🐢 وبعدين 🔊، وتابع الجملة المظللة في النصوص.'],
+    ['🎨 اوصف لوحة أو احفظ اقتباس', 'لما تحفظ جملة أدبية جميلة أو تتعلم توصف صورة قدامك (الألوان، الخلفية، المشاعر)، لسانك بيتفك في المحادثة الحقيقية.', 'افتح «اقتباسات وفن» ودوس على أي كلمة جديدة.'],
+    ['🖼️ اربط بصورة أو كلمة عربي', 'اعمل ربط مضحك: الروسي «сыр» (سير) يعني جبنة، فتخيّل جبنة ماشية في السير. كل ما يكون الربط غريب، بتفتكره أكتر.', 'دوس زرار 💡 جنب أي كلمة في جدولك أو المراجعة واكتب الربط بتاعك.'],
+    ['⏱️ ١٥ دقيقة كل يوم أحسن من ساعتين مرة', 'الاستمرار أهم من الكمية. خلّي العدّاد 🔥 يكبر كل يوم.', 'كمّل الـ ٤ خطوات التفاعلية في «خطة اليوم» في صفحة اللغة.']
   ];
   return bar('🧠 طرق الحفظ') + `<div class="stack">${T.map(([h, p, how]) => `<div class="tip"><h3>${h}</h3><p>${p}</p><p class="how">← ${how}</p></div>`).join('')}</div>`;
 }
 
 function viewBackup() {
-  const data = JSON.stringify({ deck, profile, read, days });
+  const data = JSON.stringify({ deck, profile, read, days, prefs, daily });
   return bar('💾 نسخة احتياطية') + `<div class="stack">
-  <div class="panel"><b>احفظ تقدّمك</b><p class="muted" style="margin:4px 0 10px">كل تقدّمك متخزّن على الجهاز ده بس. انسخ النص ده وابعته لنفسك على الواتساب أو الإيميل، عشان لو غيّرت الموبايل.</p>
+  <div class="panel"><b>احفظ تقدّمك</b><p class="muted" style="margin:4px 0 10px">كل تقدّمك متخزّن على الجهاز ده بس. نزّل النسخة كملف أو انسخ النص وابعته لنفسك، عشان لو غيّرت الموبايل.</p>
     <textarea id="bk-out" readonly rows="4" style="width:100%;direction:ltr;font-family:monospace;font-size:12px">${esc(data)}</textarea>
-    <button class="btn main wide" style="margin-top:8px" data-copybk="1">📋 انسخ</button></div>
-  <div class="panel"><b>رجّع نسخة قديمة</b><p class="muted" style="margin:4px 0 10px">الصق النص اللي نسخته قبل كده. الكلمات هتتضاف على اللي عندك، ومش هيتمسح حاجة.</p>
+    <div class="row" style="margin-top:8px">
+      <button class="btn main" style="flex:1" data-dlbk="1">⬇️ نزّل ملف (.json)</button>
+      <button class="btn" style="flex:1" data-copybk="1">📋 انسخ النص</button>
+    </div></div>
+  <div class="panel"><b>رجّع نسخة قديمة</b><p class="muted" style="margin:4px 0 10px">ارفع ملف النسخة الاحتياطية أو الصق النص هنا. الكلمات هتتضاف على اللي عندك، ومش هيتمسح حاجة.</p>
+    <input type="file" id="bk-file" accept=".json,application/json" hidden>
+    <button class="btn ghost wide" style="margin-bottom:8px" data-pickbkfile="1">📂 اختار ملف نسخة احتياطية (.json)</button>
     <textarea id="bk-in" rows="4" style="width:100%;direction:ltr;font-family:monospace;font-size:12px" placeholder='{"deck":[...]}'></textarea>
-    <button class="btn wide" style="margin-top:8px" data-importbk="1">📥 رجّع النسخة</button></div></div>`;
+    <button class="btn wide" style="margin-top:8px" data-importbk="1">📥 رجّع النسخة من النص</button></div></div>`;
 }
 
-// ---------- download & update (installed app only) ----------
+function restoreJSON(raw) {
+  try {
+    const j = JSON.parse(raw); let n = 0;
+    (j.deck || []).forEach(x => {
+      if (!x.id) return;
+      const cur = deck.find(y => y.id === x.id);
+      if (!cur) { deck.push(x); n++; }
+      else if (x.note && !cur.note) cur.note = x.note;
+    });
+    saveDeck();
+    if (j.profile) { profile = { ...profile, ...j.profile }; store.set('profile', profile); }
+    if (j.read) { read = { ...j.read, ...read }; store.set('read', read); }
+    if (j.days) { days = [...new Set([...days, ...j.days])]; store.set('days', days); }
+    if (j.daily) { daily = { ...j.daily, ...daily }; store.set('daily', daily); }
+    if (j.prefs) { prefs = { ...prefs, ...j.prefs }; store.set('prefs', prefs); applyTheme(); }
+    toast(`✅ اترجعت — ${ar(n)} كلمة جديدة`); go('home');
+  } catch { toast('النص أو الملف ده مش نسخة صحيحة'); }
+}
+
+// ---------- download & update ----------
 let updState = 'idle';
 function updHTML() {
   if (!PWA) return '';
   const msg = { idle: '', latest: '✅ عندك آخر نسخة', available: '🆕 فيه محتوى جديد! دوس الزرار عشان تحمّله', working: '⏳ بحمّل…', offline: '📴 مفيش نت — التطبيق شغال باللي متحمّل' }[updState];
   const n = Object.values(LANGS).reduce((s, L) => s + L.texts.length, 0);
+  const qn = Object.values(LANGS).reduce((s, L) => s + (L.quotes || []).length, 0);
   return `<div class="panel upd" id="upd"><button class="btn wide" data-update="1" ${updState === 'working' ? 'disabled' : ''}>🔄 حمّل آخر تحديث</button>
     ${msg ? `<p style="margin:8px 0 0;font-weight:800">${msg}</p>` : ''}
-    <p class="umeta">النسخة: ${new Intl.DateTimeFormat('ar-EG-u-nu-latn', { day: 'numeric', month: 'long', hour: 'numeric', minute: '2-digit' }).format(new Date(VERSION))} · ${ar(n)} نصوص</p>
-    <p class="umeta">${Object.values(LANGS).map(L => `${L.flag} ${hasVoice(L.code) ? 'الصوت موجود ✅' : 'نزّل الصوت من الإعدادات ⚠️'}`).join(' · ')}</p></div>`;
+    <p class="umeta">النسخة: ${new Intl.DateTimeFormat('ar-EG-u-nu-latn', { day: 'numeric', month: 'long', hour: 'numeric', minute: '2-digit' }).format(new Date(VERSION))} · ${ar(n)} نص ولوحة · ${ar(qn)} اقتباس</p>
+    <p class="umeta">${Object.values(LANGS).map(L => `<span>${flagSVG(L.code, 18, 12)} ${hasVoice(L.code) ? 'الصوت موجود ✅' : 'نزّل الصوت من الإعدادات ⚠️'}</span>`).join(' · ')}</p></div>`;
 }
 function paintUpd() { const u = $('#upd'); if (u) u.outerHTML = updHTML(); }
 async function checkUpdate() {
@@ -647,7 +984,8 @@ async function downloadAll() {
   if (!navigator.onLine) { updState = 'offline'; return paintUpd(); }
   updState = 'working'; paintUpd();
   try {
-    const c = await caches.open('lisan-v1');
+    const cacheName = 'lisan-' + VERSION;
+    const c = await caches.open(cacheName);
     for (const u of ['./', './index.html', './manifest.json', './icon-192.png', './icon-512.png']) { const r = await fetch(u, { cache: 'reload' }); if (r.ok) await c.put(u, r); }
     const fl = document.querySelector('link[href*="fonts.googleapis"]');
     if (fl) {
@@ -659,22 +997,35 @@ async function downloadAll() {
   } catch { updState = 'offline'; paintUpd(); toast('حصلت مشكلة، جرّب تاني وإنت على واي فاي'); }
 }
 
-// ---------- word sheet ----------
-function openSheet(code, i, w) {
+// ---------- word & mnemonic bottom sheets ----------
+function openWordSheet(code, rawWord, vocabMap, exSentence) {
   closeSheet();
-  const T = LANGS[code].texts[i], k = w.toLowerCase(), m = T.v[k] || '—';
-  const ex = (T.s.find(([s]) => (s.match(/\p{L}+/gu) || []).some(x => x.toLowerCase() === k)) || [''])[0];
-  const on = inDeck(code, k);
+  const k = rawWord.toLowerCase(), m = vocabMap[k] || '—';
+  const cur = findDeck(code, k);
   const d = document.createElement('div');
   d.innerHTML = `<div class="scrim" data-close="1"></div><div class="sheet" role="dialog" style="--c:${LANGS[code].color}">
-    <div class="row" style="align-items:center"><div class="word" style="flex:1">${esc(k)}</div>${sayBtn(code, k)}</div>
-    <div class="mean">${esc(m)}</div>
-    ${on ? '<p style="margin:0;color:var(--good);font-weight:800">✓ موجودة في جدول الحفظ</p>' : `<b>ضيفها لجدول الحفظ — راجعها:</b>
+    <div class="row" style="align-items:center"><div class="word" style="flex:1">${esc(k)}</div>${sayBtn(code, k)}${slowBtn(code, k)}</div>
+    <div class="mean">${fmtMean(m)}</div>
+    <input type="text" id="sh-note" value="${esc(cur?.note || '')}" placeholder="💡 اكتب ربط يفكّرك بيها (مثلاً: شبه كلمة…)" style="border:2px solid var(--line);border-radius:12px;padding:8px 12px;background:var(--bg)">
+    ${cur ? `<div class="row"><span style="flex:1;color:var(--good);font-weight:800;align-self:center">✓ موجودة في جدول الحفظ</span><button class="btn small main" data-savenote="${esc(cur.id)}">احفظ الربط</button></div>` : `<b>ضيفها لجدول الحفظ — راجعها:</b>
     <div class="manual" style="margin:0"><button class="btn main" data-sadd="1">بكرة</button><button class="btn" data-sadd="7">أسبوع</button><button class="btn" data-sadd="30">شهر</button></div>`}
     <button class="btn ghost" data-close="1">قفل</button></div>`;
-  d.id = 'sheetWrap'; d.dataset.l = code; d.dataset.t = k; d.dataset.m = m; d.dataset.ex = ex;
+  d.id = 'sheetWrap'; d.dataset.l = code; d.dataset.t = k; d.dataset.m = m; d.dataset.ex = exSentence || '';
   document.body.appendChild(d);
   if (pickVoice(code)) say(code, k);
+}
+function openNoteSheet(id) {
+  const item = deck.find(x => x.id === id); if (!item) return;
+  closeSheet();
+  const L = LANGS[item.lang] || { color: 'var(--accent)' };
+  const d = document.createElement('div'); d.id = 'sheetWrap';
+  d.innerHTML = `<div class="scrim" data-close="1"></div><div class="sheet" role="dialog" style="--c:${L.color}">
+    <b>💡 ربط شخصي للكلمة: <span class="tx">${esc(item.t)}</span></b>
+    <p class="muted" style="margin:0;font-size:14px">اربطها بكلمة عربي شبهها في الصوت أو بصورة مضحكة في خيالك عشان عمرك ما تنساها.</p>
+    <input type="text" id="sh-note" value="${esc(item.note || '')}" placeholder="مثلاً: сыр (سير) = جبنة ماشية في السير…" style="border:2px solid var(--line);border-radius:12px;padding:10px 12px;background:var(--bg)">
+    <div class="row"><button class="btn main" style="flex:1" data-savenote="${esc(item.id)}">احفظ</button><button class="btn ghost" data-close="1">إلغاء</button></div></div>`;
+  document.body.appendChild(d);
+  setTimeout(() => $('#sh-note')?.focus(), 50);
 }
 function closeSheet() { const s = $('#sheetWrap'); if (s) s.remove(); }
 
@@ -682,19 +1033,24 @@ function closeSheet() { const s = $('#sheetWrap'); if (s) s.remove(); }
 function route() {
   closeSheet();
   const h = location.hash.slice(1) || 'home';
-  const [v, a, b] = h.split('-');
+  const parts = h.split('-');
+  const v = parts[0], a = parts[1], b = parts.slice(2).join('-');
   const L = a && LANGS[a];
   let html;
   if (v === 'lang' && L) html = viewLang(a);
   else if (v === 'abc' && L) html = viewAbc(a);
-  else if (v === 'abcq' && L) html = viewQuiz(a, true);
+  else if (v === 'abcq' && L) html = viewQuiz(a, { letters: true });
   else if (v === 'phr' && L) html = viewPhr(a);
-  else if (v === 'me' && L) html = viewMe(a);
+  else if (v === 'topics' && L) html = viewTopics(a);
+  else if (v === 'topic' && L && b) html = viewTopic(a, b);
+  else if (v === 'topicq' && L && b) html = viewQuiz(a, { topicId: b });
+  else if (v === 'quotes' && L) html = viewQuotes(a);
+  else if (v === 'me' && L) { markStep(a, 'me'); html = viewMe(a); }
   else if (v === 'texts' && L) html = viewTexts(a);
   else if (v === 'read' && L && L.texts[+b]) html = viewRead(a, +b);
   else if (v === 'vocab' && L && L.texts[+b]) html = viewVocab(a, +b);
   else if (v === 'review') html = viewReview(L ? a : null);
-  else if (v === 'quiz' && L) html = viewQuiz(a, false);
+  else if (v === 'quiz' && L) html = viewQuiz(a, {});
   else if (v === 'words') html = viewWords();
   else if (v === 'tips') html = viewTips();
   else if (v === 'backup') html = viewBackup();
@@ -702,7 +1058,14 @@ function route() {
   $('#app').innerHTML = html;
 }
 let lastHash = '';
-function onHash() { const h = location.hash; if (h.split('-')[0] !== lastHash.split('-')[0] || h !== lastHash) window.scrollTo(0, 0); if (!h.startsWith('#review')) rv = null; if (!h.startsWith('#quiz') && !h.startsWith('#abcq')) qz = null; lastHash = h; route(); }
+function onHash() {
+  stopSpeech();
+  const h = location.hash;
+  if (h !== lastHash) { topicQuery = ''; window.scrollTo(0, 0); }
+  if (!h.startsWith('#review')) rv = null;
+  if (!h.startsWith('#quiz') && !h.startsWith('#abcq') && !h.startsWith('#topicq')) qz = null;
+  lastHash = h; route();
+}
 function go(h) { if (location.hash.slice(1) === h) route(); else location.hash = h; }
 window.addEventListener('hashchange', onHash);
 
@@ -712,17 +1075,69 @@ document.addEventListener('click', e => {
   const d = b.dataset;
   if (d.reveal) { b.classList.add('open'); return; }
   if (d.close) return closeSheet();
+  if (d.themeToggle) {
+    prefs.theme = isDark() ? 'light' : 'dark';
+    store.set('prefs', prefs); applyTheme(); return route();
+  }
   if (d.go) return go(d.go);
-  if (d.w) { const r = b.closest('.reader').dataset.text.split('-'); document.querySelectorAll('.w.sel').forEach(x => x.classList.remove('sel')); b.classList.add('sel'); return openSheet(r[0], +r[1], d.w); }
-  if (d.say !== undefined && d.l) return say(d.l, d.say);
-  if (d.sayallText !== undefined) return say(d.l, LANGS[d.l].texts[+d.sayallText].s.map(x => x[0]).join(' '));
-  if (d.slowallText !== undefined) return say(d.l, LANGS[d.l].texts[+d.slowallText].s.map(x => x[0]).join(' '), true);
-  if (d.sayall) return say(d.sayall, introLines(d.sayall).map(x => x[0]).join(' '));
+  if (d.w) {
+    const [code, idx] = b.closest('.reader').dataset.text.split('-');
+    const T = LANGS[code].texts[+idx], k = d.w.toLowerCase();
+    const ex = (T.s.find(([s]) => (s.match(/\p{L}+/gu) || []).some(x => x.toLowerCase() === k)) || [''])[0];
+    document.querySelectorAll('.w.sel').forEach(x => x.classList.remove('sel')); b.classList.add('sel');
+    return openWordSheet(code, d.w, T.v, ex);
+  }
+  if (d.qw) {
+    const [code, qi] = b.closest('[data-qbox]').dataset.qbox.split('-');
+    const Q = LANGS[code].quotes[+qi];
+    document.querySelectorAll('.w.sel').forEach(x => x.classList.remove('sel')); b.classList.add('sel');
+    return openWordSheet(code, d.qw, Q.v, Q.q);
+  }
+  if (d.say !== undefined && d.l) return say(d.l, d.say, false);
+  if (d.slow !== undefined && d.l) return say(d.l, d.slow, true);
+  if (d.sayallText !== undefined) {
+    const T = LANGS[d.l].texts[+d.sayallText];
+    return playSeq(`txt-${d.l}-${d.sayallText}`, b, d.l, T.s.map((x, k) => ({ text: x[0], sel: `#sent-${k}` })), false);
+  }
+  if (d.slowallText !== undefined) {
+    const T = LANGS[d.l].texts[+d.slowallText];
+    return playSeq(`txtslow-${d.l}-${d.slowallText}`, b, d.l, T.s.map((x, k) => ({ text: x[0], sel: `#sent-${k}` })), true);
+  }
+  if (d.sayall) {
+    markStep(d.sayall, 'me');
+    const lines = introLines(d.sayall);
+    return playSeq(`me-${d.sayall}`, b, d.sayall, lines.map((x, k) => ({ text: x[0], sel: `#intro-ln-${k}` })), false);
+  }
   if (d.add !== undefined) { const ok = addItem({ lang: d.l, t: d.add, m: d.m, tr: d.tr, ex: d.ex }, 1); if (ok !== undefined) { b.classList.add('on'); b.textContent = '✓'; } return; }
-  if (d.sadd) { const w = $('#sheetWrap').dataset; addItem({ lang: w.l, t: w.t, m: w.m, ex: w.ex }, +d.sadd); const btn = document.querySelector('.w.sel'); closeSheet(); document.querySelectorAll('.w').forEach(x => { if (x.dataset.w.toLowerCase() === w.t) x.classList.add('saved'); }); return; }
-  if (d.addintro) { let n = 0; introLines(d.addintro).forEach(([t, m]) => { if (!t.includes('…') && addItem({ lang: d.addintro, t, m }, 1, true)) n++; }); toast(n ? `✅ اتضاف ${ar(n)} جملة — هتراجعهم بكرة` : 'الجمل دي موجودة في جدولك'); return; }
+  if (d.sadd) {
+    const w = $('#sheetWrap').dataset, note = ($('#sh-note')?.value || '').trim();
+    addItem({ lang: w.l, t: w.t, m: w.m, ex: w.ex, note }, +d.sadd);
+    closeSheet();
+    document.querySelectorAll('.w').forEach(x => { const rw = x.dataset.w || x.dataset.qw || ''; if (rw.toLowerCase() === w.t) x.classList.add('saved'); });
+    return;
+  }
+  if (d.editnote) return openNoteSheet(d.editnote);
+  if (d.savenote) {
+    const item = deck.find(x => x.id === d.savenote);
+    if (item) { item.note = ($('#sh-note')?.value || '').trim(); saveDeck(); toast('✅ اتحفظ الربط'); }
+    closeSheet(); return route();
+  }
+  if (d.addintro) {
+    markStep(d.addintro, 'me');
+    let n = 0; introLines(d.addintro).forEach(([t, m]) => { if (!t.includes('…') && addItem({ lang: d.addintro, t, m }, 1, true)) n++; });
+    toast(n ? `✅ اتضاف ${ar(n)} جملة — هتراجعهم بكرة` : 'الجمل دي موجودة في جدولك'); return;
+  }
+  if (d.addtopic) {
+    const tp = (LANGS[d.l].topics || []).find(x => x.id === d.addtopic);
+    if (!tp) return;
+    let n = 0; tp.items.forEach(it => { if (addItem({ lang: d.l, t: it.t, m: it.m, tr: it.tr || '', ex: it.ex || '' }, 1, true)) n++; });
+    toast(n ? `✅ اتضاف ${ar(n)} مصطلح لجدولك` : 'كل كلمات القسم ده في جدولك بالفعل'); return route();
+  }
   if (d.abcf) { abcFilter = d.abcf; return route(); }
+  if (d.qatab) { qaTab = d.qatab; markStep(qaLang, 'read'); return route(); }
   if (d.hideph) { prefs.hidePh = !prefs.hidePh; store.set('prefs', prefs); return route(); }
+  if (d.hidetopic) { prefs.hideTopic = !prefs.hideTopic; store.set('prefs', prefs); return route(); }
+  if (d.revdir) { prefs.revDir = d.revdir; store.set('prefs', prefs); rv = null; qz = null; return route(); }
   if (d.trans) { prefs.trans = !prefs.trans; store.set('prefs', prefs); return route(); }
   if (d.showen) { $('#en-' + d.showen).classList.add('open'); b.remove(); return; }
   if (d.vsel) { document.querySelectorAll('#vlist input:not(:disabled)').forEach(c => c.checked = d.vsel === 'all'); return; }
@@ -735,26 +1150,25 @@ document.addEventListener('click', e => {
   if (d.revealCard) { rv.shown = true; return route(); }
   if (d.grade) return grade(d.grade);
   if (d.pick) return pick(+d.pick);
-  if (d.qnext) { qz.i++; qz.picked = null; route(); window.scrollTo(0, 0); if (qz && qz.qs[qz.i] && qz.qs[qz.i].listen) say(qz.code, qz.qs[qz.i].it.t); return; }
+  if (d.qnext) { qz.i++; qz.picked = null; route(); window.scrollTo(0, 0); if (qz && qz.qs[qz.i] && qz.qs[qz.i].listen && hasVoice(qz.code)) say(qz.code, qz.qs[qz.i].it.t); return; }
   if (d.quizAgain !== undefined) { qz = null; return route(); }
   if (d.wf) { wf = d.wf; return route(); }
+  if (d.wstat) { wStat = d.wstat; return route(); }
+  if (d.toggleAddword) { showAddForm = !showAddForm; return route(); }
   if (d.tf) { tf = d.tf; return route(); }
   if (d.del) { deck = deck.filter(x => x.id !== d.del); saveDeck(); toast('اتمسحت'); return route(); }
   if (d.update) return downloadAll();
   if (d.voicehelp) return voiceHelp(d.voicehelp);
   if (d.copybk) { const t = $('#bk-out'); navigator.clipboard?.writeText(t.value).then(() => toast('✅ اتنسخت'), () => { t.select(); toast('النص متحدد — انسخه'); }) ?? (t.select(), toast('النص متحدد — انسخه')); return; }
-  if (d.importbk) {
-    try {
-      const j = JSON.parse($('#bk-in').value); let n = 0;
-      (j.deck || []).forEach(x => { if (x.id && !deck.some(y => y.id === x.id)) { deck.push(x); n++; } });
-      saveDeck();
-      if (j.profile && !profile.name) { profile = j.profile; store.set('profile', profile); }
-      if (j.read) { read = { ...j.read, ...read }; store.set('read', read); }
-      if (j.days) { days = [...new Set([...days, ...j.days])]; store.set('days', days); }
-      toast(`✅ اترجعت — ${ar(n)} كلمة جديدة`); go('home');
-    } catch { toast('النص ده مش نسخة صحيحة'); }
+  if (d.dlbk) {
+    const blob = new Blob([$('#bk-out').value], { type: 'application/json' });
+    const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = `lisan-backup-${todayKey()}.json`;
+    a.click(); setTimeout(() => URL.revokeObjectURL(a.href), 1000); toast('⬇️ نزل ملف النسخة الاحتياطية'); return;
   }
+  if (d.pickbkfile) { $('#bk-file')?.click(); return; }
+  if (d.importbk) return restoreJSON($('#bk-in').value);
 });
+
 function syncProfile() {
   const f = $('#meForm'); if (!f) return;
   const fd = new FormData(f);
@@ -763,13 +1177,56 @@ function syncProfile() {
   const code = location.hash.split('-')[1];
   $('#introOut').innerHTML = introHTML(code, introLines(code));
 }
-document.addEventListener('input', e => { if (e.target.closest('#meForm')) syncProfile(); });
+document.addEventListener('input', e => {
+  if (e.target.closest('#meForm')) return syncProfile();
+  if (e.target.id === 'wordSearch') {
+    wQuery = e.target.value;
+    const pos = e.target.selectionStart;
+    route();
+    const inp = $('#wordSearch'); if (inp) { inp.focus(); inp.setSelectionRange(pos, pos); }
+    return;
+  }
+  if (e.target.id === 'topicSearch') {
+    topicQuery = e.target.value;
+    const pos = e.target.selectionStart;
+    route();
+    const inp = $('#topicSearch'); if (inp) { inp.focus(); inp.setSelectionRange(pos, pos); }
+  }
+});
 document.addEventListener('change', e => {
+  if (e.target.id === 'bk-file' && e.target.files?.[0]) {
+    e.target.files[0].text().then(txt => restoreJSON(txt));
+    return;
+  }
   if (e.target.name === 'hobbies' && document.querySelectorAll('#meForm input[name=hobbies]:checked').length > 3) { e.target.checked = false; toast('اختار ٣ بس'); }
   if (e.target.closest('#meForm')) syncProfile();
 });
-document.addEventListener('submit', e => e.preventDefault());
-document.addEventListener('keydown', e => { if (e.key === 'Escape') closeSheet(); });
+document.addEventListener('submit', e => {
+  e.preventDefault();
+  if (e.target.id === 'customWordForm') {
+    const fd = new FormData(e.target);
+    const lang = fd.get('lang'), t = (fd.get('t') || '').trim(), m = (fd.get('m') || '').trim(), note = (fd.get('note') || '').trim();
+    if (!t || !m) return toast('اكتب الكلمة ومعناها الأول');
+    addItem({ lang, t, m, note }, 1);
+    showAddForm = false; route();
+  }
+});
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') return closeSheet();
+  if (e.target.matches('input, textarea, select') || $('#sheetWrap')) return;
+  if (rv && rv.i < rv.queue.length) {
+    if (e.code === 'Space') { e.preventDefault(); if (!rv.shown) { rv.shown = true; route(); } }
+    else if (rv.shown && e.key === '1') grade('no');
+    else if (rv.shown && e.key === '2') grade('yes');
+  } else if (qz && qz.i < qz.qs.length) {
+    if (qz.picked === null && ['1', '2', '3', '4'].includes(e.key)) {
+      const idx = +e.key - 1; if (qz.qs[qz.i].opts[idx]) pick(idx);
+    } else if (qz.picked !== null && (e.key === 'Enter' || e.code === 'Space')) {
+      e.preventDefault();
+      document.querySelector('[data-qnext]')?.click();
+    }
+  }
+});
 
 lastHash = location.hash;
 route();

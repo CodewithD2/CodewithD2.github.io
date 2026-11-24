@@ -138,47 +138,47 @@
    "items": [
     [
      "Hola",
-     "Hello"
+     "أهلاً — Hello"
     ],
     [
      "Buenos días",
-     "Good morning"
+     "صباح الخير — Good morning"
     ],
     [
      "Buenas tardes",
-     "Good afternoon"
+     "مساء الخير (بعد الضهر) — Good afternoon"
     ],
     [
      "Buenas noches",
-     "Good evening / Good night"
+     "مساء الخير / تصبح على خير — Good evening / Good night"
     ],
     [
      "¿Cómo estás?",
-     "How are you?"
+     "عامل إيه؟ — How are you?"
     ],
     [
      "Estoy bien, gracias",
-     "I'm fine, thanks"
+     "الحمد لله كويس، شكراً — I'm fine, thanks"
     ],
     [
      "¿Y tú?",
-     "And you?"
+     "وإنت؟ — And you?"
     ],
     [
      "Mucho gusto",
-     "Nice to meet you"
+     "فرصة سعيدة / تشرفت بيك — Nice to meet you"
     ],
     [
      "Adiós",
-     "Goodbye"
+     "مع السلامة — Goodbye"
     ],
     [
      "Hasta luego",
-     "See you later"
+     "أشوفك بعدين — See you later"
     ],
     [
      "Hasta mañana",
-     "See you tomorrow"
+     "أشوفك بكرة — See you tomorrow"
     ]
    ]
   },
@@ -187,27 +187,27 @@
    "items": [
     [
      "Por favor",
-     "Please"
+     "من فضلك — Please"
     ],
     [
      "Gracias",
-     "Thank you"
+     "شكراً — Thank you"
     ],
     [
      "De nada",
-     "You're welcome"
+     "العفو — You're welcome"
     ],
     [
      "Perdón",
-     "Excuse me / Sorry"
+     "لو سمحت / آسف — Excuse me / Sorry"
     ],
     [
      "Lo siento",
-     "I'm sorry"
+     "أنا آسف — I'm sorry"
     ],
     [
      "Sí / No",
-     "Yes / No"
+     "أيوه / لأ — Yes / No"
     ]
    ]
   },
@@ -216,15 +216,15 @@
    "items": [
     [
      "¿Cómo te llamas?",
-     "What's your name?"
+     "اسمك إيه؟ — What's your name?"
     ],
     [
      "¿De dónde eres?",
-     "Where are you from?"
+     "إنت منين؟ — Where are you from?"
     ],
     [
      "¿Dónde está el baño?",
-     "Where is the bathroom?"
+     "فين الحمام؟ — Where is the bathroom?"
     ],
     [
      "¿Cuánto cuesta?",
@@ -232,23 +232,23 @@
     ],
     [
      "¿Qué hora es?",
-     "What time is it?"
+     "الساعة كام؟ — What time is it?"
     ],
     [
      "¿Hablas inglés?",
-     "Do you speak English?"
+     "بتتكلم إنجليزي؟ — Do you speak English?"
     ],
     [
      "¿Qué significa esto?",
-     "What does this mean?"
+     "ده معناه إيه؟ — What does this mean?"
     ],
     [
      "¿Puedes repetir, por favor?",
-     "Can you repeat, please?"
+     "ممكن تعيد من فضلك؟ — Can you repeat, please?"
     ],
     [
      "¿Puedes hablar más despacio?",
-     "Can you speak more slowly?"
+     "ممكن تتكلم أبطأ شوية؟ — Can you speak more slowly?"
     ]
    ]
   },
@@ -257,51 +257,51 @@
    "items": [
     [
      "No entiendo",
-     "I don't understand"
+     "أنا مش فاهم — I don't understand"
     ],
     [
      "Tengo hambre",
-     "I'm hungry"
+     "أنا جعان — I'm hungry"
     ],
     [
      "Tengo sed",
-     "I'm thirsty"
+     "أنا عطشان — I'm thirsty"
     ],
     [
      "Estoy cansado / cansada",
-     "I'm tired (m / f)"
+     "أنا تعبان / تعبانة — I'm tired (m / f)"
     ],
     [
      "Me gusta",
-     "I like it"
+     "عاجبني — I like it"
     ],
     [
      "No me gusta",
-     "I don't like it"
+     "مش عاجبني — I don't like it"
     ],
     [
      "Quiero un café, por favor",
-     "I want a coffee, please"
+     "عايز قهوة من فضلك — I want a coffee, please"
     ],
     [
      "La cuenta, por favor",
-     "The check, please"
+     "الحساب من فضلك — The check, please"
     ],
     [
      "Necesito ayuda",
-     "I need help"
+     "محتاج مساعدة — I need help"
     ],
     [
      "¡Vamos!",
-     "Let's go!"
+     "يلا بينا! — Let's go!"
     ],
     [
      "¡Claro!",
-     "Of course!"
+     "طبعاً! — Of course!"
     ],
     [
      "Vale",
-     "OK (Spain)"
+     "تمام / ماشي — OK (Spain)"
     ]
    ]
   },
@@ -310,55 +310,55 @@
    "items": [
     [
      "uno",
-     "one"
+     "واحد (١) — one"
     ],
     [
      "dos",
-     "two"
+     "اتنين (٢) — two"
     ],
     [
      "tres",
-     "three"
+     "تلاتة (٣) — three"
     ],
     [
      "cuatro",
-     "four"
+     "أربعة (٤) — four"
     ],
     [
      "cinco",
-     "five"
+     "خمسة (٥) — five"
     ],
     [
      "seis",
-     "six"
+     "ستة (٦) — six"
     ],
     [
      "siete",
-     "seven"
+     "سبعة (٧) — seven"
     ],
     [
      "ocho",
-     "eight"
+     "تمانية (٨) — eight"
     ],
     [
      "nueve",
-     "nine"
+     "تسعة (٩) — nine"
     ],
     [
      "diez",
-     "ten"
+     "عشرة (١٠) — ten"
     ],
     [
      "veinte",
-     "twenty"
+     "عشرين (٢٠) — twenty"
     ],
     [
      "cien",
-     "one hundred"
+     "مية (١٠٠) — one hundred"
     ],
     [
      "mil",
-     "one thousand"
+     "ألف (١٠٠٠) — one thousand"
     ]
    ]
   }
@@ -2319,6 +2319,281 @@
     "más": "more",
     "piedra": "stone (piedra del molino = millstone)"
    }
+  },
+  {
+   "kind": "art",
+   "title": "Las Meninas — وصف لوحة الوصيفات",
+   "en": "Describing Velázquez's Las Meninas (1656)",
+   "level": "متوسط",
+   "emoji": "🖼️",
+   "src": "Diego Velázquez · 1656 · Museo del Prado",
+   "s": [
+    [
+     "Este famoso cuadro muestra una sala grande del palacio real de Madrid.",
+     "هذه اللوحة الشهيرة تُظهر قاعة كبيرة في القصر الملكي بمدريد. — This famous painting shows a large room in the royal palace of Madrid."
+    ],
+    [
+     "En el centro está la pequeña princesa Margarita con un vestido blanco y brillante.",
+     "في المنتصف تقف الأميرة الصغيرة مارغريتا بفستان أبيض لامع. — In the center stands the little princess Margarita in a bright white dress."
+    ],
+    [
+     "A su alrededor vemos a las meninas, que son sus damas de honor.",
+     "حولها نرى الوصيفات، وهنّ مرافقاتها في البلاط. — Around her we see the meninas, who are her maids of honor."
+    ],
+    [
+     "A la izquierda, el propio Velázquez sostiene un pincel frente a un gran lienzo.",
+     "على اليسار، يمسك فيلاثكيث نفسه بفرشاة أمام لوحة قماشية ضخمة. — On the left, Velázquez himself holds a brush in front of a large canvas."
+    ],
+    [
+     "Al fondo, un espejo refleja los rostros del rey y la reina.",
+     "في الخلفية، تعكس مرآة وجهَي الملك والملكة. — In the background, a mirror reflects the faces of the king and queen."
+    ],
+    [
+     "La luz entra por la ventana lateral y crea una sensación profunda de espacio real.",
+     "يدخل الضوء من النافذة الجانبية ويخلق إحساساً عميقاً بالفضاء الحقيقي. — Light enters through the side window and creates a deep sense of real space."
+    ]
+   ],
+   "v": {
+    "este": "هذا — this",
+    "famoso": "شهير — famous",
+    "cuadro": "لوحة فنية — painting, picture",
+    "muestra": "يُظهر، يعرض (mostrar) — shows",
+    "una": "واحدة (أداة نكرة) — a, an",
+    "sala": "قاعة، صالة — room, hall",
+    "grande": "كبيرة — large, big",
+    "del": "من الـ (de + el) — of the",
+    "palacio": "قصر — palace",
+    "real": "ملكي؛ حقيقي — royal; real",
+    "de": "من، لـ — of, from",
+    "madrid": "مدريد — Madrid",
+    "en": "في — in, on",
+    "el": "الـ — the",
+    "centro": "المنتصف، المركز — center",
+    "está": "توجد، تقف (estar) — is, stands",
+    "la": "الـ — the",
+    "pequeña": "الصغيرة — little, small",
+    "princesa": "أميرة — princess",
+    "margarita": "مارغريتا (اسم الأميرة) — Margarita",
+    "con": "بـ، مع — with",
+    "un": "واحد (أداة نكرة) — a, an",
+    "vestido": "فستان، ثوب — dress",
+    "blanco": "أبيض — white",
+    "y": "و — and",
+    "brillante": "لامع، مشرق — bright, shining",
+    "a": "على، عند — at, to",
+    "su": "ـها، خاصتها — her, its",
+    "alrededor": "حول (a su alrededor = حولها) — around",
+    "vemos": "نرى (ver) — we see",
+    "las": "الـ (جمع مؤنث) — the",
+    "meninas": "الوصيفات — maids of honor",
+    "que": "اللاتي، أن — who, that",
+    "son": "يكُنّ، هم (ser) — are",
+    "sus": "ـها (للجمع) — her (plural)",
+    "damas": "سيدات، وصيفات — ladies",
+    "honor": "شرف (damas de honor = وصيفات الشرف) — honor",
+    "izquierda": "اليسار (a la izquierda = على اليسار) — left",
+    "propio": "نفسه — himself, own",
+    "velázquez": "فيلاثكيث (الرسام الإسباني) — Velázquez",
+    "sostiene": "يمسك، يحمل (sostener) — holds",
+    "pincel": "فرشاة رسم — paintbrush",
+    "frente": "أمام (frente a = أمام) — in front of",
+    "gran": "كبير، ضخم — large, great",
+    "lienzo": "لوحة قماشية (كانفاس) — canvas",
+    "al": "في الـ (a + el) — in the, to the",
+    "fondo": "الخلفية، العمق (al fondo = في الخلفية) — background, bottom",
+    "espejo": "مرآة — mirror",
+    "refleja": "تعكس (reflejar) — reflects",
+    "los": "الـ (جمع مذكر) — the",
+    "rostros": "وجوه، ملامح — faces",
+    "rey": "الملك — king",
+    "reina": "الملكة — queen",
+    "luz": "الضوء، النور — light",
+    "entra": "يدخل (entrar) — enters",
+    "por": "عبر، من خلال — through, by",
+    "ventana": "نافذة، شباك — window",
+    "lateral": "جانبية — side, lateral",
+    "crea": "يخلق، يصنع (crear) — creates",
+    "sensación": "إحساس، شعور — sensation, feeling",
+    "profunda": "عميقة — deep",
+    "espacio": "فضاء، مساحة — space"
+   }
+  },
+  {
+   "kind": "art",
+   "title": "La persistencia de la memoria — الساعات الذائبة",
+   "en": "Describing Dalí's The Persistence of Memory (1931)",
+   "level": "متوسط",
+   "emoji": "🕰️",
+   "src": "Salvador Dalí · 1931 · MoMA",
+   "s": [
+    [
+     "En esta pintura surrealista vemos un paisaje silencioso junto al mar.",
+     "في هذه اللوحة السريالية نرى مشهداً طبيعياً صامتاً بجوار البحر. — In this surrealist painting we see a silent landscape by the sea."
+    ],
+    [
+     "Tres relojes blandos se derriten lentamente como si fueran de queso al sol.",
+     "ثلاث ساعات لينة تذوب ببطء كأنها مصنوعة من الجبن تحت الشمس. — Three soft watches melt slowly as if they were made of cheese in the sun."
+    ],
+    [
+     "Uno de los relojes cuelga de la rama seca de un árbol sin hojas.",
+     "إحدى الساعات تتدلى من الغصن الجاف لشجرة بلا أوراق. — One of the watches hangs from the dry branch of a leafless tree."
+    ],
+    [
+     "Al fondo brillan unas rocas doradas bajo un cielo claro y tranquilo.",
+     "في الخلفية تلمع صخور ذهبية تحت سماء صافية وهادئة. — In the background golden cliffs shine beneath a clear, calm sky."
+    ],
+    [
+     "Con esta imagen extraña, Dalí nos invita a pensar que el tiempo no es rígido, sino relativo como en los sueños.",
+     "بهذه الصورة الغريبة يدعونا دالي للتفكير بأن الزمن ليس جامداً، بل نسبي كما في الأحلام. — With this strange image, Dalí invites us to think that time is not rigid, but relative as in dreams."
+    ]
+   ],
+   "v": {
+    "en": "في — in",
+    "esta": "هذه — this",
+    "pintura": "لوحة، رسمة — painting",
+    "surrealista": "سريالية — surrealist",
+    "vemos": "نرى (ver) — we see",
+    "un": "واحد (نكرة) — a",
+    "paisaje": "منظر طبيعي — landscape",
+    "silencioso": "صامت، هادئ — silent",
+    "junto": "بجوار (junto a = بجانب) — next to",
+    "al": "الـ (a + el) — the",
+    "mar": "البحر — sea",
+    "tres": "ثلاث — three",
+    "relojes": "ساعات — watches, clocks",
+    "blandos": "لينة، طرية — soft",
+    "se": "تنـ (فعل انعكاسي) — (reflexive)",
+    "derriten": "تذوب، تنصهر (derretirse) — melt",
+    "lentamente": "ببطء — slowly",
+    "como": "مثل، كـ — like, as",
+    "si": "لو (como si = كأنما) — if",
+    "fueran": "كانت (ser) — were",
+    "de": "من — of",
+    "queso": "جبن — cheese",
+    "sol": "الشمس — sun",
+    "uno": "واحدة — one",
+    "los": "الـ — the",
+    "cuelga": "تتدلى، تتعلق (colgar) — hangs",
+    "la": "الـ — the",
+    "rama": "غصن، فرع — branch",
+    "seca": "جافة، يابسة — dry",
+    "árbol": "شجرة — tree",
+    "sin": "بدون، بلا — without",
+    "hojas": "أوراق شجر — leaves",
+    "fondo": "الخلفية (al fondo = في الخلفية) — background",
+    "brillan": "تلمع، تشرق (brillar) — shine",
+    "unas": "بعض — some",
+    "rocas": "صخور — rocks, cliffs",
+    "doradas": "ذهبية — golden",
+    "bajo": "تحت — under, beneath",
+    "cielo": "سماء — sky",
+    "claro": "صافٍ، فاتح — clear, bright",
+    "y": "و — and",
+    "tranquilo": "هادئ — calm, quiet",
+    "con": "بـ، مع — with",
+    "imagen": "صورة، مشهد — image",
+    "extraña": "غريبة — strange",
+    "dalí": "سلفادور دالي — Dalí",
+    "nos": "ـنا، إيانا — us",
+    "invita": "يدعو (invitar) — invites",
+    "a": "إلى — to",
+    "pensar": "التفكير — to think",
+    "que": "أن — that",
+    "el": "الـ — the",
+    "tiempo": "الزمن، الوقت — time",
+    "no": "ليس — not",
+    "es": "هو، يكون — is",
+    "rígido": "جامد، صلب — rigid",
+    "sino": "بل — but rather",
+    "relativo": "نسبي — relative",
+    "sueños": "أحلام — dreams"
+   }
+  },
+  {
+   "kind": "art",
+   "title": "Guernica — لوحة غرنيكا ضد الحرب",
+   "en": "Describing Picasso's Guernica (1937)",
+   "level": "متوسط",
+   "emoji": "🕊️",
+   "src": "Pablo Picasso · 1937 · Museo Reina Sofía",
+   "s": [
+    [
+     "Guernica es un mural enorme pintado solo en blanco, negro y tonos grises.",
+     "غرنيكا جدارية ضخمة مرسومة فقط بالأبيض والأسود ودرجات الرمادي. — Guernica is a huge mural painted only in white, black, and shades of gray."
+    ],
+    [
+     "Picasso prescindió del color para expresar el dolor de una ciudad bombardeada.",
+     "استغنى بيكاسو عن الألوان ليُعبّر عن ألم مدينة تعرّضت للقصف. — Picasso left out color to express the pain of a bombed city."
+    ],
+    [
+     "En el centro grita un caballo herido bajo una lámpara que parece un ojo abierto.",
+     "في المنتصف يصرخ حصان جريح تحت مصباح يشبه عيناً مفتوحة. — In the center a wounded horse screams beneath a lamp that looks like an open eye."
+    ],
+    [
+     "A la izquierda, una madre llora mirando al cielo con su hijo en brazos.",
+     "على اليسار تبكي أم وهي تنظر إلى السماء حاملة طفلها بين ذراعيها. — On the left, a mother weeps looking at the sky with her child in her arms."
+    ],
+    [
+     "Hoy el cuadro es un símbolo universal contra la guerra y la violencia.",
+     "اليوم تُعد اللوحة رمزاً عالمياً ضد الحرب والعنف. — Today the painting is a universal symbol against war and violence."
+    ]
+   ],
+   "v": {
+    "guernica": "غرنيكا (مدينة في إقليم الباسك واسم اللوحة) — Guernica",
+    "es": "هي، تكون — is",
+    "un": "واحد (نكرة) — a",
+    "mural": "جدارية، لوحة جدارية — mural",
+    "enorme": "ضخمة، هائلة — huge, enormous",
+    "pintado": "مرسومة — painted",
+    "solo": "فقط — only",
+    "en": "بـ، في — in",
+    "blanco": "أبيض — white",
+    "negro": "أسود — black",
+    "y": "و — and",
+    "tonos": "درجات لونية — shades, tones",
+    "grises": "رمادية — gray",
+    "picasso": "بابلو بيكاسو — Picasso",
+    "prescindió": "استغنى، تخلّى (prescindir) — did without, left out",
+    "del": "عن الـ (de + el) — of the",
+    "color": "اللون — color",
+    "para": "لكي، من أجل — to, in order to",
+    "expresar": "يُعبّر عن — to express",
+    "el": "الـ — the",
+    "dolor": "الألم — pain, grief",
+    "de": "لـ، من — of",
+    "una": "واحدة — a",
+    "ciudad": "مدينة — city",
+    "bombardeada": "مقصوفة بالقنابل — bombed",
+    "centro": "المنتصف، المركز — center",
+    "grita": "يصرخ (gritar) — screams, cries out",
+    "caballo": "حصان — horse",
+    "herido": "جريح، مصاب — wounded",
+    "bajo": "تحت — under",
+    "lámpara": "مصباح — lamp",
+    "que": "الذي — that",
+    "parece": "يشبه، يبدو (parecer) — looks like, seems",
+    "ojo": "عين — eye",
+    "abierto": "مفتوحة — open",
+    "a": "على، إلى — on, to",
+    "la": "الـ — the",
+    "izquierda": "اليسار — left",
+    "madre": "أم — mother",
+    "llora": "تبكي (llorar) — cries, weeps",
+    "mirando": "وهي تنظر (mirar) — looking",
+    "al": "إلى الـ — at the",
+    "cielo": "السماء — sky",
+    "con": "مع، بـ — with",
+    "su": "ـها — her",
+    "hijo": "ابن، طفل — son, child",
+    "brazos": "ذراعين (en brazos = بين ذراعيها) — arms",
+    "hoy": "اليوم — today",
+    "cuadro": "اللوحة — painting",
+    "símbolo": "رمز — symbol",
+    "universal": "عالمي — universal",
+    "contra": "ضد — against",
+    "guerra": "الحرب — war",
+    "violencia": "العنف — violence"
+   }
   }
  ],
  "me": {
@@ -2414,5 +2689,1048 @@
    "code": "programar",
    "swim": "nadar"
   }
- }
+ },
+ "quotes": [
+  {
+   "q": "La libertad, Sancho, es uno de los más preciosos dones que a los hombres dieron los cielos.",
+   "ar": "الحرية يا سانشو هي واحدة من أثمن الهدايا التي منحتها السماء للبشر.",
+   "en": "Freedom, Sancho, is one of the most precious gifts that heaven has bestowed upon men.",
+   "book": "Don Quijote de la Mancha — دون كيخوته",
+   "author": "Miguel de Cervantes · 1615",
+   "v": {
+    "la": "الـ (للمؤنث) — the",
+    "libertad": "الحرية — freedom, liberty",
+    "sancho": "سانشو (اسم رفيق دون كيخوته) — Sancho",
+    "es": "هي / يكون (ser) — is",
+    "uno": "واحد — one",
+    "de": "من — of, from",
+    "los": "الـ (جمع مذكر) — the (plural)",
+    "más": "الأكثر — most, more",
+    "preciosos": "ثمينة، غالية — precious",
+    "dones": "هبات، عطايا (مفردها don) — gifts",
+    "que": "التي — that, which",
+    "a": "إلى، لـ — to",
+    "hombres": "البشر، الرجال — men, humans",
+    "dieron": "أعطت، منحت (dar) — gave",
+    "cielos": "السماوات — heavens, skies"
+   }
+  },
+  {
+   "q": "El que lee mucho y anda mucho, ve mucho y sabe mucho.",
+   "ar": "من يقرأ كثيراً ويسافر كثيراً، يرى كثيراً ويعرف كثيراً.",
+   "en": "He who reads much and walks much, sees much and knows much.",
+   "book": "Don Quijote de la Mancha — دون كيخوته",
+   "author": "Miguel de Cervantes · 1615",
+   "v": {
+    "el": "الذي (el que = مَن) — he (el que = he who)",
+    "que": "الذي — who, that",
+    "lee": "يقرأ (leer) — reads",
+    "mucho": "كثيراً — much, a lot",
+    "y": "و — and",
+    "anda": "يمشي، يتجوّل (andar) — walks, travels",
+    "ve": "يرى (ver) — sees",
+    "sabe": "يعرف (saber) — knows"
+   }
+  },
+  {
+   "q": "El secreto de una buena vejez no es otra cosa que un pacto honrado con la soledad.",
+   "ar": "سر الشيخوخة الطيبة ليس سوى عهد صادق مع العزلة.",
+   "en": "The secret of a good old age is simply an honorable pact with solitude.",
+   "book": "Cien años de soledad — مئة عام من العزلة",
+   "author": "Gabriel García Márquez · 1967",
+   "v": {
+    "el": "الـ — the",
+    "secreto": "السر — secret",
+    "de": "لـ، من — of",
+    "una": "واحدة (أداة نكرة للمؤنث) — a, an",
+    "buena": "طيبة، جيدة — good",
+    "vejez": "الشيخوخة، الكِبَر — old age",
+    "no": "ليس، لا — not",
+    "es": "هو، يكون (ser) — is",
+    "otra": "أخرى — other, another",
+    "cosa": "شيء (no es otra cosa que = ليس سوى) — thing",
+    "que": "إلا، من — than, that",
+    "un": "واحد (أداة نكرة للمذكر) — a, an",
+    "pacto": "عهد، اتفاق — pact, agreement",
+    "honrado": "صادق، شريف — honorable, honest",
+    "con": "مع — with",
+    "la": "الـ — the",
+    "soledad": "العزلة، الوحدة — solitude"
+   }
+  },
+  {
+   "q": "La vida no es la que uno vivió, sino la que uno recuerda y cómo la recuerda para contarla.",
+   "ar": "الحياة ليست ما عاشه المرء، بل ما يتذكره وكيف يتذكره ليرويه.",
+   "en": "Life is not what one lived, but what one remembers and how one remembers it in order to recount it.",
+   "book": "Vivir para contarla — عشتُ لأروي",
+   "author": "Gabriel García Márquez · 2002",
+   "v": {
+    "la": "الـ / إياها — the / it",
+    "vida": "الحياة — life",
+    "no": "ليست — not",
+    "es": "هي (ser) — is",
+    "que": "التي — that, what",
+    "uno": "المرء، الواحد — one",
+    "vivió": "عاش (vivir) — lived",
+    "sino": "بل، ولكن — but rather",
+    "recuerda": "يتذكر (recordar) — remembers",
+    "y": "و — and",
+    "cómo": "كيف — how",
+    "para": "لكي، من أجل — in order to, for",
+    "contarla": "يرويها، يحكيها (contar + la) — to tell it"
+   }
+  },
+  {
+   "q": "Siempre imaginé que el Paraíso sería algún tipo de biblioteca.",
+   "ar": "لطالما تخيّلت أن الجنة ستكون نوعاً من المكتبات.",
+   "en": "I have always imagined that Paradise will be a kind of library.",
+   "book": "Poema de los dones — قصيدة الهبات",
+   "author": "Jorge Luis Borges · 1960",
+   "v": {
+    "siempre": "دائماً، لطالما — always",
+    "imaginé": "تخيّلتُ (imaginar) — I imagined",
+    "que": "أن — that",
+    "el": "الـ — the",
+    "paraíso": "الجنة، الفردوس — Paradise",
+    "sería": "سيكون (ser) — would be",
+    "algún": "نوع ما، أي — some",
+    "tipo": "نوع، طراز — kind, type",
+    "de": "من — of",
+    "biblioteca": "مكتبة — library"
+   }
+  },
+  {
+   "q": "Cada libro, cada volumen que ves, tiene alma. El alma de quien lo escribió, y el alma de quienes lo leyeron.",
+   "ar": "كل كتاب وكل مجلد تراه له روح؛ روح من كتبه، وروح كل من قرأه.",
+   "en": "Every book, every volume you see here, has a soul. The soul of the person who wrote it and of those who read it.",
+   "book": "La sombra del viento — ظل الريح",
+   "author": "Carlos Ruiz Zafón · 2001",
+   "v": {
+    "cada": "كل — each, every",
+    "libro": "كتاب — book",
+    "volumen": "مجلد — volume",
+    "que": "الذي — that",
+    "ves": "تراه (ver) — you see",
+    "tiene": "له، يملك (tener) — has",
+    "alma": "روح — soul",
+    "el": "الـ — the",
+    "de": "لـ، من — of",
+    "quien": "مَن (للمفرد) — who, whoever",
+    "lo": "ـه، إياه — it",
+    "escribió": "كتبه (escribir) — wrote",
+    "y": "و — and",
+    "quienes": "الذين (جمع quien) — those who",
+    "leyeron": "قرأوه (leer) — they read"
+   }
+  },
+  {
+   "q": "Andábamos sin buscarnos, pero sabiendo que andábamos para encontrarnos.",
+   "ar": "كنا نمضي دون أن يبحث أحدنا عن الآخر، لكننا كنا نعلم أننا نمضي لنلتقي.",
+   "en": "We walked without looking for each other, yet knowing we walked in order to find each other.",
+   "book": "Rayuela — الحجلة",
+   "author": "Julio Cortázar · 1963",
+   "v": {
+    "andábamos": "كنا نمشي / نمضي (andar) — we walked",
+    "sin": "بدون — without",
+    "buscarnos": "أن نبحث عن بعضنا (buscar + nos) — looking for each other",
+    "pero": "لكن — but",
+    "sabiendo": "ونحن نعلم (saber) — knowing",
+    "que": "أننا — that",
+    "para": "لكي — in order to",
+    "encontrarnos": "نلتقي، نجد بعضنا (encontrar + nos) — to find each other"
+   }
+  },
+  {
+   "q": "Caminante, no hay camino, se hace camino al andar.",
+   "ar": "أيها المسافر، ليس هناك طريق جاهز؛ الطريق يُصنع بالمشي فيه.",
+   "en": "Traveler, there is no path; the path is made by walking.",
+   "book": "Proverbios y cantares — أمثال وأغنيات",
+   "author": "Antonio Machado · 1912",
+   "v": {
+    "caminante": "أيها السائر، المسافر — traveler, walker",
+    "no": "لا — no, not",
+    "hay": "يوجد — there is",
+    "camino": "طريق — path, road",
+    "se": "يُـ (للمبني للمجهول) — (passive marker)",
+    "hace": "يُصنع (hacer) — is made",
+    "al": "عند (a + el) — upon, by",
+    "andar": "المشي، السير — walking"
+   }
+  },
+  {
+   "q": "Podrán cortar todas las flores, pero no podrán detener la primavera.",
+   "ar": "قد يقدرون على قطع كل الأزهار، لكنهم لن يقدروا على إيقاف الربيع.",
+   "en": "They can cut all the flowers, but they cannot stop the spring.",
+   "book": "Poemas y discursos — قصائد وخطب",
+   "author": "Pablo Neruda",
+   "v": {
+    "podrán": "سيستطيعون (poder) — they will be able to",
+    "cortar": "قطع — to cut",
+    "todas": "كل، جميع — all",
+    "las": "الـ (جمع مؤنث) — the",
+    "flores": "الأزهار — flowers",
+    "pero": "لكن — but",
+    "no": "لن، لا — not",
+    "detener": "إيقاف، منع — to stop, halt",
+    "la": "الـ — the",
+    "primavera": "الربيع — spring"
+   }
+  },
+  {
+   "q": "Cuando creíamos que teníamos todas las respuestas, de pronto cambiaron todas las preguntas.",
+   "ar": "عندما ظننا أننا نملك كل الإجابات، تغيّرت فجأة كل الأسئلة.",
+   "en": "Just when we thought we had all the answers, suddenly all the questions changed.",
+   "book": "Preguntas al azar — أسئلة عابرة",
+   "author": "Mario Benedetti",
+   "v": {
+    "cuando": "عندما — when",
+    "creíamos": "كنا نظن / نعتقد (creer) — we believed, thought",
+    "que": "أن — that",
+    "teníamos": "كنا نملك (tener) — we had",
+    "todas": "كل — all",
+    "las": "الـ — the",
+    "respuestas": "الإجابات — answers",
+    "de": "من (de pronto = فجأة) — (de pronto = suddenly)",
+    "pronto": "فجأة — suddenly, soon",
+    "cambiaron": "تغيّرت (cambiar) — changed",
+    "preguntas": "الأسئلة — questions"
+   }
+  }
+ ],
+ "artPhrases": [
+  [
+   "Este cuadro fue pintado por…",
+   "هذه اللوحة رسمها… — This painting was painted by…"
+  ],
+  [
+   "En primer plano vemos…",
+   "في المقدمة نرى… — In the foreground we see…"
+  ],
+  [
+   "Al fondo aparece…",
+   "في الخلفية يظهر… — In the background appears…"
+  ],
+  [
+   "En el centro de la composición…",
+   "في قلب التكوين الفني… — In the center of the composition…"
+  ],
+  [
+   "El artista usa colores cálidos y fríos.",
+   "يستخدم الفنان ألواناً دافئة وباردة. — The artist uses warm and cool colors."
+  ],
+  [
+   "La luz entra desde la derecha.",
+   "الضوء يدخل من جهة اليمين. — The light enters from the right."
+  ],
+  [
+   "El contraste entre la luz y la sombra…",
+   "التباين بين الضوء والظل… — The contrast between light and shadow…"
+  ],
+  [
+   "Las pinceladas son suaves y precisas.",
+   "ضربات الفرشاة ناعمة ودقيقة. — The brushstrokes are soft and precise."
+  ],
+  [
+   "La obra transmite calma y misterio.",
+   "العمل الفني ينقل شعوراً بالهدوء والغموض. — The work conveys calm and mystery."
+  ],
+  [
+   "Esta pintura simboliza el paso del tiempo.",
+   "هذه اللوحة ترمز إلى مرور الزمن. — This painting symbolizes the passage of time."
+  ]
+ ],
+ "topics": [
+  {
+   "id": "physics",
+   "emoji": "⚛️",
+   "title": "الفيزياء",
+   "desc": "الحركة، الطاقة، الضوء، والذرة",
+   "items": [
+    {
+     "t": "la gravedad",
+     "m": "الجاذبية — gravity",
+     "ex": "La gravedad mantiene los planetas en órbita."
+    },
+    {
+     "t": "la velocidad",
+     "m": "السرعة — velocity, speed",
+     "ex": "La velocidad de la luz es constante en el vacío."
+    },
+    {
+     "t": "la aceleración",
+     "m": "التسارع / العجلة — acceleration",
+     "ex": "La fuerza es igual a la masa por la aceleración."
+    },
+    {
+     "t": "la fuerza",
+     "m": "القوة — force",
+     "ex": "Toda fuerza tiene una reacción igual y opuesta."
+    },
+    {
+     "t": "la masa",
+     "m": "الكتلة — mass",
+     "ex": "La masa de un objeto no cambia en la Luna."
+    },
+    {
+     "t": "la energía cinética",
+     "m": "طاقة الحركة — kinetic energy",
+     "ex": "Un coche en movimiento tiene energía cinética."
+    },
+    {
+     "t": "la onda",
+     "m": "الموجة — wave",
+     "ex": "El sonido viaja en forma de ondas."
+    },
+    {
+     "t": "la frecuencia",
+     "m": "التردد — frequency",
+     "ex": "La frecuencia se mide en hercios."
+    },
+    {
+     "t": "el campo magnético",
+     "m": "المجال المغناطيسي — magnetic field",
+     "ex": "La Tierra tiene un campo magnético protector."
+    },
+    {
+     "t": "la corriente eléctrica",
+     "m": "التيار الكهربي — electric current",
+     "ex": "La corriente eléctrica fluye por el cable de cobre."
+    },
+    {
+     "t": "la presión",
+     "m": "الضغط — pressure",
+     "ex": "La presión atmosférica disminuye con la altura."
+    },
+    {
+     "t": "el rozamiento",
+     "m": "الاحتكاك — friction",
+     "ex": "El hielo reduce el rozamiento bajo los pies."
+    },
+    {
+     "t": "el átomo",
+     "m": "الذرة — atom",
+     "ex": "El núcleo del átomo contiene protones y neutrones."
+    },
+    {
+     "t": "la radiación",
+     "m": "الإشعاع — radiation",
+     "ex": "El sol emite radiación ultravioleta."
+    },
+    {
+     "t": "el vacío",
+     "m": "الفراغ — vacuum",
+     "ex": "En el vacío del espacio no hay sonido."
+    },
+    {
+     "t": "la termodinámica",
+     "m": "الديناميكا الحرارية — thermodynamics",
+     "ex": "La energía no se crea ni se destruye."
+    }
+   ]
+  },
+  {
+   "id": "chemistry",
+   "emoji": "🧪",
+   "title": "الكيمياء",
+   "desc": "العناصر، التفاعلات، المحاليل، والروابط",
+   "items": [
+    {
+     "t": "el elemento químico",
+     "m": "العنصر الكيميائي — chemical element",
+     "ex": "El oxígeno es un elemento químico esencial."
+    },
+    {
+     "t": "la molécula",
+     "m": "الجزيء — molecule",
+     "ex": "Una molécula de agua tiene dos átomos de hidrógeno."
+    },
+    {
+     "t": "el compuesto",
+     "m": "المركّب — compound",
+     "ex": "La sal de mesa es un compuesto de sodio y cloro."
+    },
+    {
+     "t": "la reacción química",
+     "m": "التفاعل الكيميائي — chemical reaction",
+     "ex": "La combustión es una reacción química rápida."
+    },
+    {
+     "t": "el ácido",
+     "m": "الحمض — acid",
+     "ex": "El limón contiene ácido cítrico."
+    },
+    {
+     "t": "la base",
+     "m": "القاعدة / القلوي — base",
+     "ex": "Un ácido y una base forman sal y agua."
+    },
+    {
+     "t": "la disolución",
+     "m": "المحلول — solution",
+     "ex": "Mezclamos el azúcar en agua para hacer una disolución."
+    },
+    {
+     "t": "el catalizador",
+     "m": "العامل الحفّاز — catalyst",
+     "ex": "El catalizador acelera la reacción sin consumirse."
+    },
+    {
+     "t": "el enlace covalente",
+     "m": "الرابطة التساهمية — covalent bond",
+     "ex": "Los átomos comparten electrones en un enlace covalente."
+    },
+    {
+     "t": "la oxidación",
+     "m": "الأكسدة / الصدأ — oxidation",
+     "ex": "La oxidación del hierro produce herrumbre."
+    },
+    {
+     "t": "la tabla periódica",
+     "m": "الجدول الدوري — periodic table",
+     "ex": "El oro tiene el símbolo Au en la tabla periódica."
+    },
+    {
+     "t": "el estado líquido",
+     "m": "الحالة السائلة — liquid state",
+     "ex": "El mercurio está en estado líquido a temperatura ambiente."
+    },
+    {
+     "t": "la evaporación",
+     "m": "التبخّر — evaporation",
+     "ex": "El calor acelera la evaporación del agua."
+    },
+    {
+     "t": "la concentración",
+     "m": "التركيز — concentration",
+     "ex": "Medimos la concentración de sal en el laboratorio."
+    },
+    {
+     "t": "el tubo de ensayo",
+     "m": "أنبوبة اختبار — test tube",
+     "ex": "Vierte unas gotas en el tubo de ensayo."
+    },
+    {
+     "t": "el equilibrio químico",
+     "m": "الاتزان الكيميائي — chemical equilibrium",
+     "ex": "La reacción alcanzó el equilibrio químico."
+    }
+   ]
+  },
+  {
+   "id": "cs",
+   "emoji": "💻",
+   "title": "علوم الحاسب والبرمجة",
+   "desc": "الكود، الخوارزميات، قواعد البيانات، والشبكات",
+   "items": [
+    {
+     "t": "el algoritmo",
+     "m": "الخوارزمية — algorithm",
+     "ex": "Este algoritmo ordena la lista en milisegundos."
+    },
+    {
+     "t": "la estructura de datos",
+     "m": "هيكل البيانات — data structure",
+     "ex": "Un árbol binario es una estructura de datos eficiente."
+    },
+    {
+     "t": "el código fuente",
+     "m": "الكود المصدري — source code",
+     "ex": "Subimos el código fuente al repositorio."
+    },
+    {
+     "t": "la base de datos",
+     "m": "قاعدة البيانات — database",
+     "ex": "La base de datos guarda los perfiles de los usuarios."
+    },
+    {
+     "t": "el servidor",
+     "m": "الخادم (السيرفر) — server",
+     "ex": "El servidor responde a miles de peticiones por segundo."
+    },
+    {
+     "t": "la interfaz de usuario",
+     "m": "واجهة المستخدم — user interface (UI)",
+     "ex": "La interfaz de usuario debe ser clara y rápida."
+    },
+    {
+     "t": "la variable",
+     "m": "المتغيّر — variable",
+     "ex": "Declara una variable para guardar el resultado."
+    },
+    {
+     "t": "la función",
+     "m": "الدالة — function",
+     "ex": "Esta función recibe dos números y devuelve la suma."
+    },
+    {
+     "t": "el bucle",
+     "m": "الحلقة التكرارية (Loop) — loop",
+     "ex": "Cuidado con crear un bucle infinito."
+    },
+    {
+     "t": "el error / el fallo",
+     "m": "خطأ برمجي (Bug) — bug, error",
+     "ex": "Encontré un error en la línea cuarenta."
+    },
+    {
+     "t": "depurar",
+     "m": "تصحيح الأخطاء (Debug) — to debug",
+     "ex": "Necesito depurar el programa antes de publicarlo."
+    },
+    {
+     "t": "la nube",
+     "m": "السحابة الإلكترونية — the cloud",
+     "ex": "Hacemos copias de seguridad en la nube."
+    },
+    {
+     "t": "el cifrado",
+     "m": "التشفير — encryption",
+     "ex": "El cifrado protege las contraseñas de los clientes."
+    },
+    {
+     "t": "la inteligencia artificial",
+     "m": "الذكاء الاصطناعي — artificial intelligence",
+     "ex": "La inteligencia artificial aprende de grandes volúmenes de datos."
+    },
+    {
+     "t": "la red",
+     "m": "الشبكة — network",
+     "ex": "La conexión a la red es muy estable hoy."
+    },
+    {
+     "t": "el sistema operativo",
+     "m": "نظام التشغيل — operating system",
+     "ex": "Linux es un sistema operativo de código abierto."
+    }
+   ]
+  },
+  {
+   "id": "cooking",
+   "emoji": "🍳",
+   "title": "الطبخ والمطبخ",
+   "desc": "المكونات، طرق الطهي، التوابل، وأدوات المطبخ",
+   "items": [
+    {
+     "t": "la receta",
+     "m": "وصفة الطبخ — recipe",
+     "ex": "Esta es la receta tradicional de mi abuela."
+    },
+    {
+     "t": "los ingredientes",
+     "m": "المكونات / المقادير — ingredients",
+     "ex": "Prepara todos los ingredientes antes de empezar."
+    },
+    {
+     "t": "hervir",
+     "m": "يغلي / يسلق — to boil",
+     "ex": "Deja hervir el agua con un poco de sal."
+    },
+    {
+     "t": "freír",
+     "m": "يقلي — to fry",
+     "ex": "Vamos a freír las patatas en aceite de oliva."
+    },
+    {
+     "t": "hornear",
+     "m": "يخبز في الفرن — to bake, roast",
+     "ex": "Hay que hornear el pan durante treinta minutos."
+    },
+    {
+     "t": "cortar en trozos",
+     "m": "يقطّع لقطع — to chop, cut into pieces",
+     "ex": "Corta la cebolla en trozos pequeños."
+    },
+    {
+     "t": "mezclar",
+     "m": "يخلط / يقلّب — to mix, stir",
+     "ex": "Mezcla la harina con los huevos suavemente."
+    },
+    {
+     "t": "a fuego lento",
+     "m": "على نار هادئة — on low heat, simmer",
+     "ex": "Cocina la salsa a fuego lento durante una hora."
+    },
+    {
+     "t": "el ajo y la cebolla",
+     "m": "الثوم والبصل — garlic and onion",
+     "ex": "El sofrito lleva ajo, cebolla y tomate."
+    },
+    {
+     "t": "la pimienta negra",
+     "m": "الفلفل الأسود — black pepper",
+     "ex": "Añade sal y pimienta negra al gusto."
+    },
+    {
+     "t": "el aceite de oliva",
+     "m": "زيت الزيتون — olive oil",
+     "ex": "España es famosa por su aceite de oliva."
+    },
+    {
+     "t": "la sartén",
+     "m": "المقلاة (الطاسة) — frying pan",
+     "ex": "Calienta la sartén antes de echar la carne."
+    },
+    {
+     "t": "la olla",
+     "m": "الحلة / القدر — pot",
+     "ex": "La sopa está hirviendo en la olla grande."
+    },
+    {
+     "t": "la masa",
+     "m": "العجينة — dough",
+     "ex": "Deja reposar la masa media hora."
+    },
+    {
+     "t": "el sabor",
+     "m": "الطعم / النكهة — flavor, taste",
+     "ex": "El comino le da un sabor increíble al plato."
+    },
+    {
+     "t": "probar",
+     "m": "يتذوق — to taste, try",
+     "ex": "Prueba la sopa para ver si le falta sal."
+    }
+   ]
+  },
+  {
+   "id": "accounting",
+   "emoji": "🧾",
+   "title": "المحاسبة",
+   "desc": "الميزانية، القيود، الضرائب، والتقارير المالية",
+   "items": [
+    {
+     "t": "el balance general",
+     "m": "الميزانية العمومية — balance sheet",
+     "ex": "El balance general refleja la situación de la empresa."
+    },
+    {
+     "t": "los activos",
+     "m": "الأصول — assets",
+     "ex": "Los edificios y el efectivo son activos."
+    },
+    {
+     "t": "los pasivos",
+     "m": "الخصوم / الالتزامات — liabilities",
+     "ex": "Las deudas bancarias figuran en los pasivos."
+    },
+    {
+     "t": "el patrimonio neto",
+     "m": "حقوق الملكية / صافي القيمة — equity, net worth",
+     "ex": "El activo menos el pasivo es el patrimonio neto."
+    },
+    {
+     "t": "los ingresos",
+     "m": "الإيرادات — revenue, income",
+     "ex": "Los ingresos aumentaron un quince por ciento este trimestre."
+    },
+    {
+     "t": "los gastos",
+     "m": "المصروفات — expenses",
+     "ex": "Debemos reducir los gastos operativos."
+    },
+    {
+     "t": "el beneficio neto",
+     "m": "صافي الربح — net profit",
+     "ex": "La empresa cerró el año con buen beneficio neto."
+    },
+    {
+     "t": "la factura",
+     "m": "الفاتورة — invoice",
+     "ex": "Envía la factura al cliente antes del viernes."
+    },
+    {
+     "t": "la auditoría",
+     "m": "المراجعة / التدقيق المالي — audit",
+     "ex": "La auditoría externa empieza la próxima semana."
+    },
+    {
+     "t": "el flujo de caja",
+     "m": "التدفق النقدي — cash flow",
+     "ex": "Un flujo de caja positivo es vital para sobrevivir."
+    },
+    {
+     "t": "el asiento contable",
+     "m": "القيد المحاسبي — journal entry",
+     "ex": "Registra cada pago con su asiento contable."
+    },
+    {
+     "t": "el debe y el haber",
+     "m": "المدين والدائن — debit and credit",
+     "ex": "El debe y el haber siempre deben cuadrar."
+    },
+    {
+     "t": "el impuesto",
+     "m": "الضريبة — tax",
+     "ex": "El impuesto sobre el valor añadido se paga cada trimestre."
+    },
+    {
+     "t": "la amortización",
+     "m": "الإهلاك / الاستهلاك — depreciation, amortization",
+     "ex": "Calculamos la amortización anual de la maquinaria."
+    },
+    {
+     "t": "el presupuesto",
+     "m": "الموازنة التقديرية — budget",
+     "ex": "Aprobamos el presupuesto para el nuevo proyecto."
+    },
+    {
+     "t": "el estado de resultados",
+     "m": "قائمة الدخل (الأرباح والخسائر) — income statement",
+     "ex": "Revisa el estado de resultados del último mes."
+    }
+   ]
+  },
+  {
+   "id": "economics",
+   "emoji": "📈",
+   "title": "المال والاقتصاد",
+   "desc": "الأسواق، التضخم، الاستثمار، والبنوك",
+   "items": [
+    {
+     "t": "la inflación",
+     "m": "التضخم — inflation",
+     "ex": "La inflación reduce el poder adquisitivo del dinero."
+    },
+    {
+     "t": "la tasa de interés",
+     "m": "سعر الفائدة — interest rate",
+     "ex": "El banco central subió la tasa de interés."
+    },
+    {
+     "t": "la oferta y la demanda",
+     "m": "العرض والطلب — supply and demand",
+     "ex": "Los precios dependen de la oferta y la demanda."
+    },
+    {
+     "t": "la inversión",
+     "m": "الاستثمار — investment",
+     "ex": "La educación es la mejor inversión a largo plazo."
+    },
+    {
+     "t": "las acciones",
+     "m": "الأسهم — stocks, shares",
+     "ex": "Compró acciones de empresas tecnológicas."
+    },
+    {
+     "t": "los bonos",
+     "m": "السندات — bonds",
+     "ex": "Los bonos del Estado suelen tener menor riesgo."
+    },
+    {
+     "t": "el mercado bursátil",
+     "m": "سوق الأوراق المالية (البورصة) — stock market",
+     "ex": "El mercado bursátil abrió hoy al alza."
+    },
+    {
+     "t": "el producto interno bruto",
+     "m": "الناتج المحلي الإجمالي (PIB) — GDP",
+     "ex": "El producto interno bruto creció un tres por ciento."
+    },
+    {
+     "t": "el tipo de cambio",
+     "m": "سعر الصرف — exchange rate",
+     "ex": "¿Cuál es el tipo de cambio del euro hoy?"
+    },
+    {
+     "t": "la recesión",
+     "m": "الركود الاقتصادي — recession",
+     "ex": "El país evitó caer en una recesión."
+    },
+    {
+     "t": "el préstamo",
+     "m": "القرض — loan",
+     "ex": "Pidió un préstamo para abrir su propio negocio."
+    },
+    {
+     "t": "el ahorro",
+     "m": "الادخار — savings",
+     "ex": "El hábito del ahorro da tranquilidad financiera."
+    },
+    {
+     "t": "la deuda pública",
+     "m": "الدَّين العام — public debt",
+     "ex": "El gobierno busca controlar la deuda pública."
+    },
+    {
+     "t": "la liquidez",
+     "m": "السيولة المالية — liquidity",
+     "ex": "El fondo cuenta con suficiente liquidez."
+    },
+    {
+     "t": "el desempleo",
+     "m": "البطالة — unemployment",
+     "ex": "La tasa de desempleo bajó en verano."
+    },
+    {
+     "t": "la rentabilidad",
+     "m": "العائد / الربحية — profitability, return",
+     "ex": "Buscamos proyectos con buena rentabilidad."
+    }
+   ]
+  },
+  {
+   "id": "politics",
+   "emoji": "🏛️",
+   "title": "السياسة والعلاقات الدولية",
+   "desc": "الدولة، الانتخابات، القانون، والدبلوماسية",
+   "items": [
+    {
+     "t": "la constitución",
+     "m": "الدستور — constitution",
+     "ex": "La constitución garantiza los derechos de los ciudadanos."
+    },
+    {
+     "t": "las elecciones",
+     "m": "الانتخابات — elections",
+     "ex": "Las elecciones generales se celebran cada cuatro años."
+    },
+    {
+     "t": "el parlamento",
+     "m": "البرلمان — parliament",
+     "ex": "El parlamento debate hoy una nueva ley."
+    },
+    {
+     "t": "el gobierno",
+     "m": "الحكومة — government",
+     "ex": "El gobierno anunció medidas económicas."
+    },
+    {
+     "t": "la oposición",
+     "m": "المعارضة — opposition",
+     "ex": "La oposición pidió explicaciones al ministro."
+    },
+    {
+     "t": "votar",
+     "m": "يصوّت / ينتخب — to vote",
+     "ex": "Millones de personas acudieron a votar."
+    },
+    {
+     "t": "la democracia",
+     "m": "الديمقراطية — democracy",
+     "ex": "La libertad de prensa fortalece la democracia."
+    },
+    {
+     "t": "la soberanía",
+     "m": "السيادة — sovereignty",
+     "ex": "Cada nación defiende su soberanía."
+    },
+    {
+     "t": "la diplomacia",
+     "m": "الدبلوماسية — diplomacy",
+     "ex": "El conflicto se resolvió mediante la diplomacia."
+    },
+    {
+     "t": "el tratado",
+     "m": "المعاهدة / الاتفاقية — treaty",
+     "ex": "Ambos países firmaron un tratado de paz."
+    },
+    {
+     "t": "la embajada",
+     "m": "السفارة — embassy",
+     "ex": "Renové mi pasaporte en la embajada."
+    },
+    {
+     "t": "las sanciones",
+     "m": "العقوبات — sanctions",
+     "ex": "El consejo discutió levantar las sanciones."
+    },
+    {
+     "t": "los derechos humanos",
+     "m": "حقوق الإنسان — human rights",
+     "ex": "El respeto a los derechos humanos es fundamental."
+    },
+    {
+     "t": "la política exterior",
+     "m": "السياسة الخارجية — foreign policy",
+     "ex": "El ministro presentó las prioridades de política exterior."
+    },
+    {
+     "t": "el proyecto de ley",
+     "m": "مشروع قانون — bill, draft law",
+     "ex": "El proyecto de ley fue aprobado por mayoría."
+    },
+    {
+     "t": "el ciudadano",
+     "m": "المواطن — citizen",
+     "ex": "Todo ciudadano es igual ante la ley."
+    }
+   ]
+  },
+  {
+   "id": "art_lit",
+   "emoji": "🎨",
+   "title": "الفنون والأدب",
+   "desc": "مصطلحات الرسم، اللوحات، الرواية، والنقد الأدبي",
+   "items": [
+    {
+     "t": "el lienzo",
+     "m": "اللوحة القماشية (الكانفاس) — canvas",
+     "ex": "El pintor preparó un lienzo en blanco."
+    },
+    {
+     "t": "la pincelada",
+     "m": "ضربة الفرشاة — brushstroke",
+     "ex": "Se notan las pinceladas rápidas de Van Gogh."
+    },
+    {
+     "t": "el retrato",
+     "m": "البورتريه (صورة شخصية) — portrait",
+     "ex": "Velázquez pintó retratos de gran realismo."
+    },
+    {
+     "t": "el paisaje",
+     "m": "منظر طبيعي — landscape",
+     "ex": "Este museo tiene una sala dedicada al paisaje."
+    },
+    {
+     "t": "la perspectiva",
+     "m": "المنظور الفني — perspective",
+     "ex": "La perspectiva da sensación de profundidad."
+    },
+    {
+     "t": "la luz y la sombra",
+     "m": "الضوء والظل — light and shadow",
+     "ex": "El juego de la luz y la sombra crea dramatismo."
+    },
+    {
+     "t": "la obra maestra",
+     "m": "التحفة الفنية — masterpiece",
+     "ex": "El Quijote es una obra maestra de la literatura."
+    },
+    {
+     "t": "la novela",
+     "m": "الرواية — novel",
+     "ex": "Estoy leyendo una novela latinoamericana."
+    },
+    {
+     "t": "el protagonista",
+     "m": "بطل الرواية / القصة — protagonist, main character",
+     "ex": "El protagonista viaja en busca de su pasado."
+    },
+    {
+     "t": "la trama",
+     "m": "الحبكة الدرامية — plot",
+     "ex": "La trama de la novela te atrapa desde el inicio."
+    },
+    {
+     "t": "el capítulo",
+     "m": "الفصل (في كتاب) — chapter",
+     "ex": "Leí dos capítulos antes de dormir."
+    },
+    {
+     "t": "la metáfora",
+     "m": "الاستعارة — metaphor",
+     "ex": "El poeta usa el mar como metáfora de la vida."
+    },
+    {
+     "t": "el narrador",
+     "m": "الراوي — narrator",
+     "ex": "El narrador cuenta la historia en primera persona."
+    },
+    {
+     "t": "la escultura",
+     "m": "النحت / التمثال — sculpture",
+     "ex": "La escultura fue tallada en mármol blanco."
+    },
+    {
+     "t": "la exposición",
+     "m": "المعرض الفني — exhibition",
+     "ex": "Mañana inauguran una exposición de arte moderno."
+    },
+    {
+     "t": "el simbolismo",
+     "m": "الرمزية — symbolism",
+     "ex": "Cada objeto del cuadro tiene un rico simbolismo."
+    }
+   ]
+  },
+  {
+   "id": "health",
+   "emoji": "🩺",
+   "title": "الطب والصحة",
+   "desc": "الجسم، الأعراض، التشخيص، والعلاج",
+   "items": [
+    {
+     "t": "el síntoma",
+     "m": "العَرَض المرضي — symptom",
+     "ex": "La fiebre es un síntoma común de infección."
+    },
+    {
+     "t": "el diagnóstico",
+     "m": "التشخيص — diagnosis",
+     "ex": "Un diagnóstico temprano facilita el tratamiento."
+    },
+    {
+     "t": "el tratamiento",
+     "m": "العلاج — treatment",
+     "ex": "El paciente respondió muy bien al tratamiento."
+    },
+    {
+     "t": "la receta médica",
+     "m": "الروشتة الطبية — medical prescription",
+     "ex": "Este antibiótico requiere receta médica."
+    },
+    {
+     "t": "el sistema inmunológico",
+     "m": "الجهاز المناعي — immune system",
+     "ex": "Dormir bien fortalece el sistema inmunológico."
+    },
+    {
+     "t": "la presión arterial",
+     "m": "ضغط الدم — blood pressure",
+     "ex": "El médico me midió la presión arterial."
+    },
+    {
+     "t": "el análisis de sangre",
+     "m": "تحليل الدم — blood test",
+     "ex": "Debes ir en ayunas para el análisis de sangre."
+    },
+    {
+     "t": "la vacuna",
+     "m": "اللقاح / التطعيم — vaccine",
+     "ex": "La vacuna previene enfermedades graves."
+    },
+    {
+     "t": "la inflamación",
+     "m": "الالتهاب — inflammation",
+     "ex": "El hielo ayuda a bajar la inflamación."
+    },
+    {
+     "t": "la urgencia",
+     "m": "الطوارئ — emergency",
+     "ex": "Acudimos a la sala de urgencias del hospital."
+    },
+    {
+     "t": "la cirugía",
+     "m": "العملية الجراحية — surgery",
+     "ex": "La cirugía duró menos de dos horas."
+    },
+    {
+     "t": "la recuperación",
+     "m": "التعافي / النقاهة — recovery",
+     "ex": "Te deseo una pronta recuperación."
+    },
+    {
+     "t": "el corazón y los pulmones",
+     "m": "القلب والرئتان — heart and lungs",
+     "ex": "El médico escuchó el corazón y los pulmones."
+    },
+    {
+     "t": "el dolor de cabeza",
+     "m": "الصداع — headache",
+     "ex": "Tengo un leve dolor de cabeza."
+    },
+    {
+     "t": "la nutrición",
+     "m": "التغذية — nutrition",
+     "ex": "La buena nutrición es clave para la salud."
+    },
+    {
+     "t": "la prevención",
+     "m": "الوقاية — prevention",
+     "ex": "Más vale la prevención que curar."
+    }
+   ]
+  }
+ ]
 }
