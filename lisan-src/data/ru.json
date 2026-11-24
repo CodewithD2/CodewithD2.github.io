@@ -1726,6 +1726,482 @@
     "обычном": "usual (обычный)",
     "режиме": "mode (в обычном режиме = as usual)"
    }
+  },
+  {
+   "kind": "classic",
+   "title": "Анна Каренина: начало",
+   "en": "Anna Karenina: the opening",
+   "level": "متقدم",
+   "emoji": "🚂",
+   "src": "Лев Толстой · 1877",
+   "famous": true,
+   "mem": true,
+   "s": [
+    [
+     "Все счастливые семьи похожи друг на друга, каждая несчастливая семья несчастлива по-своему.",
+     "All happy families are alike; each unhappy family is unhappy in its own way."
+    ],
+    [
+     "Всё смешалось в доме Облонских.",
+     "Everything was in confusion in the Oblonskys' house."
+    ],
+    [
+     "Жена узнала, что муж был в связи с бывшею в их доме француженкою-гувернанткой, и объявила мужу, что не может жить с ним в одном доме.",
+     "The wife had found out that the husband was having an affair with the French governess who had been in their house, and she told her husband that she could not live in the same house with him."
+    ]
+   ],
+   "v": {
+    "все": "all",
+    "счастливые": "happy (plural)",
+    "семьи": "families",
+    "похожи": "alike, similar",
+    "друг": "friend; друг другу = each other",
+    "на": "to, on, at",
+    "друга": "(each) other (друг на друга = like each other)",
+    "каждая": "each, every (feminine)",
+    "несчастливая": "unhappy",
+    "семья": "family",
+    "несчастлива": "is unhappy",
+    "по": "along, by (по ночам = at night)",
+    "своему": "its own (по-своему = in its own way)",
+    "всё": "all; that's it",
+    "смешалось": "got mixed up, was in confusion (смешаться)",
+    "в": "in, into",
+    "доме": "house (in the ~ — дом)",
+    "облонских": "the Oblonskys' (family name)",
+    "жена": "wife",
+    "узнала": "found out (she — узнать)",
+    "что": "that",
+    "муж": "husband",
+    "был": "was (he — быть)",
+    "связи": "connection; affair (был в связи = had an affair)",
+    "с": "from",
+    "бывшею": "who had been (old form of бывшей)",
+    "их": "their",
+    "француженкою": "Frenchwoman (old form — француженкой)",
+    "гувернанткой": "governess",
+    "и": "and",
+    "объявила": "announced, told (she — объявить)",
+    "мужу": "(to) husband",
+    "не": "not",
+    "может": "can (мочь)",
+    "жить": "to live",
+    "ним": "him (с ним = with him)",
+    "одном": "one, the same (в одном доме = in the same house)"
+   }
+  },
+  {
+   "kind": "classic",
+   "title": "Сказка о рыбаке и рыбке",
+   "en": "The Tale of the Fisherman and the Fish",
+   "level": "متوسط",
+   "emoji": "🐟",
+   "src": "Александр Пушкин · 1833",
+   "famous": true,
+   "mem": true,
+   "s": [
+    [
+     "Жил старик со своею старухой у самого синего моря;",
+     "There lived an old man with his old wife by the very blue sea;"
+    ],
+    [
+     "Они жили в ветхой землянке ровно тридцать лет и три года.",
+     "They lived in a run-down mud hut for exactly thirty years and three years."
+    ],
+    [
+     "Старик ловил неводом рыбу, старуха пряла свою пряжу.",
+     "The old man caught fish with a net, the old woman spun her yarn."
+    ],
+    [
+     "Раз он в море закинул невод, — пришёл невод с одною тиной.",
+     "Once he cast his net into the sea — the net came back with nothing but slime."
+    ],
+    [
+     "Он в другой раз закинул невод, — пришёл невод с травой морскою.",
+     "He cast his net a second time — the net came back with seaweed."
+    ],
+    [
+     "В третий раз закинул он невод, — пришёл невод с одною рыбкой, с непростою рыбкой, — золотою.",
+     "The third time he cast his net — the net came back with one little fish, not an ordinary fish — a golden one."
+    ]
+   ],
+   "v": {
+    "жил": "lived (he — жить)",
+    "старик": "old man",
+    "со": "with (form of с)",
+    "своею": "his own (old form — своей)",
+    "старухой": "old woman (with ~)",
+    "у": "at, by — у меня = I have",
+    "самого": "the very",
+    "синего": "blue (синий)",
+    "моря": "sea (of the ~ — море)",
+    "они": "they",
+    "жили": "lived (they)",
+    "в": "in, into",
+    "ветхой": "old, run-down",
+    "землянке": "dugout, mud hut",
+    "ровно": "exactly",
+    "тридцать": "thirty",
+    "лет": "years",
+    "и": "and",
+    "три": "three",
+    "года": "years (год)",
+    "ловил": "caught (ловить)",
+    "неводом": "with a fishing net (невод)",
+    "рыбу": "fish (рыба)",
+    "старуха": "old woman",
+    "пряла": "spun (thread) (прясть)",
+    "свою": "her own",
+    "пряжу": "yarn",
+    "раз": "once; time (в другой раз = another time)",
+    "он": "he",
+    "море": "sea",
+    "закинул": "cast, threw (закинуть)",
+    "невод": "fishing net",
+    "пришёл": "came (прийти)",
+    "с": "from",
+    "одною": "only one, nothing but (old form — одной)",
+    "тиной": "slime, mud",
+    "другой": "another, the other",
+    "травой": "grass (трава); травой морскою = seaweed",
+    "морскою": "sea (adj., old form — морской)",
+    "третий": "third",
+    "рыбкой": "little fish (рыбка)",
+    "непростою": "not ordinary (old form — непростой)",
+    "золотою": "golden (old form — золотой)"
+   }
+  },
+  {
+   "kind": "classic",
+   "title": "Преступление и наказание: начало",
+   "en": "Crime and Punishment: the opening",
+   "level": "متقدم",
+   "emoji": "🌉",
+   "src": "Фёдор Достоевский · 1866",
+   "famous": true,
+   "mem": true,
+   "s": [
+    [
+     "В начале июля, в чрезвычайно жаркое время, под вечер, один молодой человек вышел из своей каморки, которую нанимал от жильцов в С — м переулке, на улицу и медленно, как бы в нерешимости, отправился к К — ну мосту.",
+     "At the beginning of July, during an extremely hot spell, towards evening, a young man came out of the tiny room he rented from tenants in S. Lane, onto the street, and slowly, as if undecided, set off towards K. Bridge."
+    ],
+    [
+     "Он благополучно избегнул встречи с своею хозяйкой на лестнице.",
+     "He successfully avoided meeting his landlady on the stairs."
+    ]
+   ],
+   "v": {
+    "в": "in, into",
+    "начале": "beginning (в начале = at the beginning)",
+    "июля": "July (of ~)",
+    "чрезвычайно": "extremely",
+    "жаркое": "hot",
+    "время": "time",
+    "под": "under; towards (под вечер = towards evening)",
+    "вечер": "evening",
+    "один": "one; a certain",
+    "молодой": "young",
+    "человек": "person, man",
+    "вышел": "came out, went out (выйти)",
+    "из": "from",
+    "своей": "his own",
+    "каморки": "tiny room, closet (каморка)",
+    "которую": "which (который)",
+    "нанимал": "rented (нанимать)",
+    "от": "from",
+    "жильцов": "tenants (жилец)",
+    "с": "with; С—м = S… (street name the author hides)",
+    "м": "(end of a street name the author hides: С—м = S…)",
+    "переулке": "lane, side street",
+    "на": "to, on, at",
+    "улицу": "street (на улицу = out to the street)",
+    "и": "and",
+    "медленно": "slowly",
+    "как": "how; as, like",
+    "бы": "(would; как бы = as if)",
+    "нерешимости": "indecision",
+    "отправился": "set off (отправиться)",
+    "к": "to, toward; К—н = K… (bridge name the author hides)",
+    "ну": "(end of a bridge name the author hides: К—н = K…)",
+    "мосту": "bridge (to the ~ — мост)",
+    "он": "he",
+    "благополучно": "successfully, safely",
+    "избегнул": "avoided (old form — избежал)",
+    "встречи": "meeting, encounter",
+    "своею": "his own (old form — своей)",
+    "хозяйкой": "landlady (хозяйка)",
+    "лестнице": "stairs (on the ~ — лестница)"
+   }
+  },
+  {
+   "kind": "classic",
+   "title": "Я помню чудное мгновенье",
+   "en": "I remember a wonderful moment",
+   "level": "متوسط",
+   "emoji": "🌹",
+   "src": "Александр Пушкин · 1825",
+   "famous": true,
+   "mem": true,
+   "s": [
+    [
+     "Я помню чудное мгновенье: передо мной явилась ты,",
+     "I remember a wonderful moment: you appeared before me,"
+    ],
+    [
+     "как мимолётное виденье, как гений чистой красоты.",
+     "like a fleeting vision, like a spirit of pure beauty."
+    ],
+    [
+     "В томленьях грусти безнадежной, в тревогах шумной суеты,",
+     "In the torments of hopeless sadness, in the worries of noisy bustle,"
+    ],
+    [
+     "звучал мне долго голос нежный и снились милые черты.",
+     "a gentle voice sounded to me for a long time, and I dreamed of dear features."
+    ]
+   ],
+   "v": {
+    "я": "I",
+    "помню": "I remember (помнить)",
+    "чудное": "wonderful, magical",
+    "мгновенье": "moment",
+    "передо": "before, in front of (form of перед)",
+    "мной": "me",
+    "явилась": "appeared (she — явиться)",
+    "ты": "you (informal)",
+    "как": "how; as, like",
+    "мимолётное": "fleeting",
+    "виденье": "vision",
+    "гений": "genius; spirit",
+    "чистой": "pure",
+    "красоты": "beauty (of ~)",
+    "в": "in, into",
+    "томленьях": "torments, longing",
+    "грусти": "sadness (of ~)",
+    "безнадежной": "hopeless",
+    "тревогах": "worries, alarms",
+    "шумной": "noisy",
+    "суеты": "bustle (of ~)",
+    "звучал": "sounded (звучать)",
+    "мне": "(to) me",
+    "долго": "for a long time",
+    "голос": "voice",
+    "нежный": "gentle, tender",
+    "и": "and",
+    "снились": "appeared in dreams (сниться)",
+    "милые": "dear, sweet",
+    "черты": "features (of a face)"
+   }
+  },
+  {
+   "kind": "classic",
+   "title": "Толстый и тонкий",
+   "en": "The Fat and the Thin",
+   "level": "متقدم",
+   "emoji": "🚉",
+   "src": "Антон Чехов · 1883",
+   "famous": true,
+   "mem": true,
+   "s": [
+    [
+     "На вокзале Николаевской железной дороги встретились два приятеля: один толстый, другой тонкий.",
+     "At the station of the Nikolaevsky Railway two friends met: one fat, the other thin."
+    ],
+    [
+     "Толстый только что пообедал на вокзале, и губы его, подёрнутые маслом, лоснились, как спелые вишни.",
+     "The fat one had just had dinner at the station, and his lips, coated with butter, shone like ripe cherries."
+    ],
+    [
+     "Пахло от него хересом и флёр-д'оранжем.",
+     "He smelled of sherry and orange blossom."
+    ],
+    [
+     "Тонкий же только что вышел из вагона и был навьючен чемоданами, узлами и картонками.",
+     "The thin one had just stepped off the train and was loaded down with suitcases, bundles and cardboard boxes."
+    ],
+    [
+     "Пахло от него ветчиной и кофейной гущей.",
+     "He smelled of ham and coffee grounds."
+    ]
+   ],
+   "v": {
+    "на": "to, on, at",
+    "вокзале": "railway station (at the ~)",
+    "николаевской": "Nikolaevsky (railway name)",
+    "железной": "iron (железная дорога = railway)",
+    "дороги": "roads",
+    "встретились": "met (they — встретиться)",
+    "два": "two",
+    "приятеля": "friends, pals (приятель)",
+    "один": "one; a certain",
+    "толстый": "fat",
+    "другой": "another, the other",
+    "тонкий": "thin",
+    "только": "only",
+    "что": "that",
+    "пообедал": "had dinner (пообедать)",
+    "и": "and",
+    "губы": "lips",
+    "его": "him; his",
+    "подёрнутые": "covered, coated",
+    "маслом": "butter, oil (with ~)",
+    "лоснились": "shone, were glossy (лосниться)",
+    "как": "how; as, like",
+    "спелые": "ripe",
+    "вишни": "cherries",
+    "пахло": "it smelled (пахнуть)",
+    "от": "from",
+    "него": "him (от него = from him)",
+    "хересом": "sherry (херес)",
+    "флёр": "flower (флёр-д'оранж = orange blossom perfume)",
+    "д": "d' (флёр-д'оранж = orange blossom)",
+    "оранжем": "orange (флёр-д'оранж = orange blossom)",
+    "же": "and, as for (emphasis)",
+    "вышел": "came out, went out (выйти)",
+    "из": "from",
+    "вагона": "railway car (from the ~)",
+    "был": "was (he — быть)",
+    "навьючен": "loaded (like a pack animal)",
+    "чемоданами": "suitcases",
+    "узлами": "bundles",
+    "картонками": "cardboard boxes",
+    "ветчиной": "ham",
+    "кофейной": "coffee (adj.)",
+    "гущей": "grounds (кофейная гуща = coffee grounds)"
+   }
+  },
+  {
+   "kind": "classic",
+   "title": "Русский язык",
+   "en": "The Russian Language",
+   "level": "متوسط",
+   "emoji": "📜",
+   "src": "Иван Тургенев · 1882",
+   "famous": true,
+   "mem": true,
+   "s": [
+    [
+     "Во дни сомнений, во дни тягостных раздумий о судьбах моей родины, — ты один мне поддержка и опора, о великий, могучий, правдивый и свободный русский язык!",
+     "In days of doubt, in days of painful thoughts about the fate of my homeland, you alone are my support and stay, O great, mighty, truthful and free Russian language!"
+    ],
+    [
+     "Не будь тебя — как не впасть в отчаяние при виде всего, что совершается дома?",
+     "Were it not for you, how could one not fall into despair at the sight of everything happening at home?"
+    ],
+    [
+     "Но нельзя верить, чтобы такой язык не был дан великому народу!",
+     "But one cannot believe that such a language was not given to a great people!"
+    ]
+   ],
+   "v": {
+    "во": "in (во всём мире = all over the world)",
+    "дни": "days (во дни = in the days)",
+    "сомнений": "doubts (сомнение)",
+    "тягостных": "painful, heavy",
+    "раздумий": "thoughts, reflections",
+    "о": "about, of",
+    "судьбах": "fates (судьба)",
+    "моей": "my (моя)",
+    "родины": "homeland (of the ~)",
+    "ты": "you (informal)",
+    "один": "one; a certain",
+    "мне": "(to) me",
+    "поддержка": "support",
+    "и": "and",
+    "опора": "pillar, support",
+    "великий": "great",
+    "могучий": "mighty",
+    "правдивый": "truthful",
+    "свободный": "free",
+    "русский": "Russian",
+    "язык": "language",
+    "не": "not",
+    "будь": "be (не будь тебя = if it weren't for you)",
+    "тебя": "you",
+    "как": "how; as, like",
+    "впасть": "to fall into",
+    "в": "in, into",
+    "отчаяние": "despair",
+    "при": "at, upon (при виде = at the sight)",
+    "виде": "sight (при виде)",
+    "всего": "everything (of ~)",
+    "что": "that",
+    "совершается": "is happening (совершаться)",
+    "дома": "home, house (дом — from home)",
+    "но": "but",
+    "нельзя": "one cannot",
+    "верить": "to believe",
+    "чтобы": "that, so that",
+    "такой": "such, so",
+    "был": "was (he — быть)",
+    "дан": "given",
+    "великому": "great (to a ~)",
+    "народу": "people, nation (to a ~)"
+   }
+  },
+  {
+   "kind": "speech",
+   "title": "Пушкинская речь",
+   "en": "The Pushkin Speech",
+   "level": "متقدم",
+   "emoji": "🎙️",
+   "src": "Фёдор Достоевский · 1880",
+   "famous": true,
+   "mem": true,
+   "s": [
+    [
+     "Смирись, гордый человек, и прежде всего сломи свою гордость.",
+     "Humble yourself, proud man, and first of all break your pride."
+    ],
+    [
+     "Смирись, праздный человек, и прежде всего потрудись на родной ниве, вот это решение по народной правде и народному разуму.",
+     "Humble yourself, idle man, and first of all work hard on your native soil — that is the answer according to the people's truth and the people's reason."
+    ],
+    [
+     "Не вне тебя правда, а в тебе самом; найди себя в себе, подчини себя себе, овладей собой — и узришь правду.",
+     "The truth is not outside you but within you; find yourself in yourself, submit yourself to yourself, master yourself — and you will see the truth."
+    ]
+   ],
+   "v": {
+    "смирись": "humble yourself (смириться)",
+    "гордый": "proud",
+    "человек": "person, man",
+    "и": "and",
+    "прежде": "before (прежде всего = first of all)",
+    "всего": "everything (of ~)",
+    "сломи": "break (сломить)",
+    "свою": "her own",
+    "гордость": "pride",
+    "праздный": "idle",
+    "потрудись": "work hard (потрудиться)",
+    "на": "to, on, at",
+    "родной": "native",
+    "ниве": "field, cornfield (on the ~ — нива)",
+    "вот": "here is, that is",
+    "это": "this (is)",
+    "решение": "solution, answer",
+    "по": "along, by (по ночам = at night)",
+    "народной": "people's, national",
+    "правде": "truth (by the ~)",
+    "народному": "people's (to the ~)",
+    "разуму": "reason, mind (by the ~)",
+    "не": "not",
+    "вне": "outside",
+    "тебя": "you",
+    "правда": "truth",
+    "а": "and, while (contrast)",
+    "в": "in, into",
+    "тебе": "you (в тебе = in you)",
+    "самом": "self (в тебе самом = in yourself)",
+    "найди": "find (найти)",
+    "себя": "yourself, oneself",
+    "себе": "oneself (в себе = in yourself)",
+    "подчини": "subordinate, submit (подчинить)",
+    "овладей": "master, take control (овладеть)",
+    "собой": "oneself (with ~)",
+    "узришь": "you will see (old, poetic — узреть)",
+    "правду": "truth (правда)"
+   }
   }
  ],
  "me": {
