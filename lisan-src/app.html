@@ -102,6 +102,9 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 .icon.on { background: var(--good); color: #fff; }
 
 /* reader */
+.txt-item { flex-direction: row; gap: 12px; align-items: center; min-height: 0; }
+.txt-item .te { font-size: 34px; width: 56px; height: 56px; flex: none; display: grid; place-items: center; border-radius: 16px; background: color-mix(in srgb, var(--c) 12%, var(--surface)); }
+.txt-item .tb { display: flex; flex-direction: column; flex: 1; min-width: 0; }
 .kind { display: inline-block; font-size: 13px; font-weight: 800; border-radius: 99px; padding: 1px 10px; background: color-mix(in srgb, var(--c) 14%, var(--surface)); color: var(--c); }
 .reader { background: var(--surface); border-radius: 20px; padding: 18px; display: flex; flex-direction: column; gap: 14px; }
 .sent { display: flex; flex-direction: column; gap: 4px; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
@@ -308,7 +311,9 @@ const addBtn = (lang, t, m, tr = '', ex = '') => {
   const on = inDeck(lang, t);
   return `<button class="icon ${on ? 'on' : ''}" data-add="${esc(t)}" data-l="${lang}" data-m="${esc(m)}" data-tr="${esc(tr)}" data-ex="${esc(ex)}" aria-label="ضيف لجدول الحفظ">${on ? '✓' : '➕'}</button>`;
 };
-const KIND = { story: '📚 قصة', speech: '🎤 خطبة', news: '📰 خبر تدريبي' };
+const KIND = { story: '📚 قصة', speech: '🎤 خطاب', news: '📰 خبر' };
+const kindLabel = t => t.kind === 'news' ? (t.real ? '📰 خبر حقيقي' : '📰 خبر') : KIND[t.kind];
+let tf = 'all', tfLang = '';
 
 // ---------- views ----------
 function viewHome() {
@@ -342,7 +347,7 @@ function viewLang(code) {
     <button class="tile" data-go="abc-${code}"><span class="e">🔤</span><span class="t">${L.abcTitle}</span><span class="d">${ar(L.abc.length)} ${code === 'ru' ? 'حرف' : 'صوت'} بأمثلة</span></button>
     <button class="tile" data-go="phr-${code}"><span class="e">💬</span><span class="t">جمل كل يوم</span><span class="d">${ar(L.phrases.reduce((n, c) => n + c.items.length, 0))} جملة بالصوت</span></button>
     <button class="tile" data-go="me-${code}"><span class="e">🙋</span><span class="t">عرّف نفسك</span><span class="d">اتكلم عن نفسك بالـ${L.name.replace('ال', '')}</span></button>
-    <button class="tile" data-go="texts-${code}"><span class="e">📖</span><span class="t">قصص وخطب وأخبار</span><span class="d">اقرا، دوس على أي كلمة، واحفظها</span></button>
+    <button class="tile" data-go="texts-${code}"><span class="e">📖</span><span class="t">قصص وخطابات وأخبار</span><span class="d">${ar(L.texts.length)} نص · دوس على أي كلمة واحفظها</span></button>
     <button class="tile" data-go="quiz-${code}"><span class="e">🎯</span><span class="t">اختبرني</span><span class="d">١٠ أسئلة سريعة</span></button>
   </div>
   <h2>خطة اليوم (١٥ دقيقة)</h2>
@@ -429,18 +434,24 @@ const introHTML = (code, lines) => lines.map(([t, m]) => `<div class="ln"><div><
 
 function viewTexts(code) {
   const L = LANGS[code];
-  return `<div style="--c:${L.color}">${bar('📖 قصص وخطب وأخبار', 'lang-' + code)}
-  <p class="muted" style="margin:0 4px 12px">دوس على أي كلمة في النص تشوف معناها. ولما تخلّص، هيظهرلك كل كلمات النص بمعناها عشان تضيفها لجدول الحفظ. الأخبار هنا مكتوبة للتدريب ومش أخبار حقيقية.</p>
-  <div class="stack">${L.texts.map((t, i) => `<button class="tile" data-go="read-${code}-${i}" style="min-height:0">
-    <span><span class="kind">${KIND[t.kind]}</span> <span class="muted" style="font-size:14px">${t.level} · ${ar(t.s.length)} جمل · ${ar(Object.keys(t.v).length)} كلمة</span></span>
+  if (tfLang !== code) { tf = 'all'; tfLang = code; }
+  const F = [['all', 'الكل'], ['story', '📚 قصص'], ['speech', '🎤 خطابات'], ['news', '📰 أخبار']];
+  const list = L.texts.map((t, i) => [t, i]).filter(([t]) => tf === 'all' || t.kind === tf);
+  const done = L.texts.filter((_, i) => read[code + '-' + i]).length;
+  return `<div style="--c:${L.color}">${bar('📖 قصص وخطابات وأخبار', 'lang-' + code)}
+  <p class="muted" style="margin:0 4px 12px">دوس على أي كلمة في النص تشوف معناها. ولما تخلّص، هيظهرلك كل كلمات النص عشان تضيفها لجدول الحفظ. الأخبار اللي عليها «حقيقي» معلوماتها حقيقية، والباقي مكتوب للتدريب عن مواقف بتحصل فعلًا. قريت ${ar(done)} من ${ar(L.texts.length)}.</p>
+  <div class="filters">${F.map(([k, l]) => `<button class="chip" data-tf="${k}" aria-pressed="${tf === k}">${l} <span style="opacity:.75">${k === 'all' ? L.texts.length : L.texts.filter(t => t.kind === k).length}</span></button>`).join('')}</div>
+  <div class="stack">${list.map(([t, i]) => `<button class="tile txt-item" data-go="read-${code}-${i}">
+    <span class="te" aria-hidden="true">${t.emoji || '📄'}</span>
+    <span class="tb"><span><span class="kind">${kindLabel(t)}</span> <span class="muted" style="font-size:14px">${t.level} · ${ar(t.s.length)} جمل · ${ar(Object.keys(t.v).length)} كلمة</span></span>
     <span class="t tx" style="text-align:left">${esc(t.title)}</span><span class="d tx" style="text-align:left">${esc(t.en)}</span>
-    ${read[code + '-' + i] ? '<span class="d" style="color:var(--good);font-weight:800">✅ قريته</span>' : ''}</button>`).join('')}</div></div>`;
+    ${read[code + '-' + i] ? '<span class="d" style="color:var(--good);font-weight:800">✅ قريته</span>' : ''}</span></button>`).join('')}</div></div>`;
 }
 
 function viewRead(code, i) {
   const L = LANGS[code], T = L.texts[i];
   const words = s => s.split(/(\p{L}+)/u).map((p, j) => j % 2 ? `<button class="w ${inDeck(code, p) ? 'saved' : ''}" data-w="${esc(p)}">${esc(p)}</button>` : esc(p)).join('');
-  return `<div style="--c:${L.color}" class="${prefs.trans ? '' : 'notrans'}">${bar(KIND[T.kind], 'texts-' + code)}
+  return `<div style="--c:${L.color}" class="${prefs.trans ? '' : 'notrans'}">${bar(kindLabel(T), 'texts-' + code)}
   <h2 class="tx" style="text-align:left;font-size:24px;margin-top:4px">${esc(T.title)}</h2>
   <div class="row" style="margin-bottom:12px">
     <button class="btn small main" data-sayall-text="${i}" data-l="${code}">🔊 اسمع النص</button>
@@ -723,6 +734,7 @@ document.addEventListener('click', e => {
   if (d.qnext) { qz.i++; qz.picked = null; route(); window.scrollTo(0, 0); if (qz && qz.qs[qz.i] && qz.qs[qz.i].listen) say(qz.code, qz.qs[qz.i].it.t); return; }
   if (d.quizAgain !== undefined) { qz = null; return route(); }
   if (d.wf) { wf = d.wf; return route(); }
+  if (d.tf) { tf = d.tf; return route(); }
   if (d.del) { deck = deck.filter(x => x.id !== d.del); saveDeck(); toast('اتمسحت'); return route(); }
   if (d.update) return downloadAll();
   if (d.voicehelp) return voiceHelp(d.voicehelp);
