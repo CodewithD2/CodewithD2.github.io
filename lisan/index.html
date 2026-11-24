@@ -1,0 +1,781 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#5B3FD6">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="لسان">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-192.png">
+<title>لسان</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&family=Inter:wght@400;600;700&display=swap">
+<style>
+/* Layout: one phone-width column. Home → language hub → tools (letters, phrases, about me, reader, review, quiz). */
+:root {
+  --bg: #EFF2F7;
+  --surface: #FFFFFF;
+  --ink: #111A2B;
+  --muted: #5A6679;
+  --line: #D6DDE8;
+  --accent: #5B3FD6;
+  --good: #2B8A3E;
+  --bad: #C92A2A;
+  --c: var(--accent);
+  --ar: 'Cairo', 'Segoe UI', Tahoma, sans-serif;
+  --tx: 'Inter', 'Segoe UI', Roboto, Arial, sans-serif;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #0D121B; --surface: #172030; --ink: #EEF2F8; --muted: #9AA6B8; --line: #2A3547; --accent: #9C88FF; --good: #51CF66; --bad: #FF6B6B; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #0D121B; --surface: #172030; --ink: #EEF2F8; --muted: #9AA6B8; --line: #2A3547; --accent: #9C88FF; --good: #51CF66; --bad: #FF6B6B; color-scheme: dark }
+
+* { box-sizing: border-box; }
+html, body { background: var(--bg); color: var(--ink); }
+body { margin: 0; font-family: var(--ar); font-size: 17px; line-height: 1.6; -webkit-tap-highlight-color: transparent; }
+#app { max-width: 680px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 0 56px; }
+button, input, select, textarea { font: inherit; color: inherit; }
+button { cursor: pointer; }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+.tx { font-family: var(--tx); direction: ltr; unicode-bidi: isolate; }
+h2 { font-size: 19px; margin: 22px 4px 10px; }
+.muted { color: var(--muted); }
+.stack { display: flex; flex-direction: column; gap: 12px; }
+
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--bg); }
+.bar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--bg); display: flex; align-items: center; gap: 12px; padding-block: 12px; }
+.bar h1 { margin: 0; font-size: 21px; font-weight: 800; flex: 1; min-width: 0; text-wrap: balance; }
+.back { border: 0; background: var(--surface); border-radius: 12px; padding: 6px 14px; font-weight: 700; box-shadow: 0 1px 0 var(--line); }
+
+.hero { padding-block: 22px 6px; }
+.hero h1 { margin: 0; font-size: 34px; font-weight: 800; line-height: 1.2; }
+.hero p { margin: 4px 0 0; color: var(--muted); }
+
+.panel { background: var(--surface); border-radius: 20px; padding: 16px; }
+.today { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 16px; }
+.stat { background: var(--surface); border-radius: 18px; padding: 14px; }
+.stat b { display: block; font-size: 30px; line-height: 1.1; font-family: var(--tx); }
+.stat span { color: var(--muted); font-size: 15px; }
+.btn { border: 0; border-radius: 14px; padding: 12px 16px; font-weight: 800; background: var(--surface); box-shadow: 0 1px 0 var(--line); min-height: 48px; }
+.btn.main { background: var(--c); color: #fff; box-shadow: none; }
+.btn.wide { width: 100%; }
+.btn.small { min-height: 38px; padding: 6px 12px; font-size: 15px; }
+.btn.ghost { background: transparent; box-shadow: inset 0 0 0 2px var(--line); }
+.row { display: flex; flex-wrap: wrap; gap: 8px; }
+
+.langs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.lang { border: 0; border-radius: 22px; padding: 18px 16px; background: var(--surface); text-align: right; display: flex; flex-direction: column; gap: 2px; box-shadow: inset 0 -6px 0 var(--c); }
+.lang .f { font-size: 40px; line-height: 1.2; }
+.lang .n { font-size: 21px; font-weight: 800; }
+.lang .nt { font-family: var(--tx); color: var(--muted); font-size: 15px; }
+.lang .p { font-size: 14px; color: var(--muted); margin-top: 6px; }
+
+.tiles { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.tile { border: 0; border-radius: 18px; padding: 14px; background: var(--surface); text-align: right; display: flex; flex-direction: column; min-height: 104px; }
+.tile .e { font-size: 30px; line-height: 1.2; }
+.tile .t { font-weight: 800; font-size: 18px; }
+.tile .d { color: var(--muted); font-size: 14px; line-height: 1.4; }
+.tile.hot { background: var(--c); color: #fff; }
+.tile.hot .d { color: #fff; opacity: .85; }
+.plan { counter-reset: s; list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px; }
+.plan li { display: flex; gap: 10px; align-items: baseline; }
+.plan li::before { counter-increment: s; content: counter(s); font-family: var(--tx); font-weight: 700; color: var(--c); min-width: 1ch; }
+.warn { background: color-mix(in srgb, #F59F00 16%, var(--surface)); border-radius: 14px; padding: 10px 14px; font-size: 15px; }
+
+/* letters */
+.filters { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 4px; margin-bottom: 12px; }
+.chip { border: 0; white-space: nowrap; border-radius: 99px; padding: 6px 14px; background: var(--surface); font-weight: 700; font-size: 15px; }
+.chip[aria-pressed="true"] { background: var(--c); color: #fff; }
+.letters { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.letter { background: var(--surface); border-radius: 18px; padding: 14px; display: flex; flex-direction: column; gap: 4px; border-top: 5px solid var(--kc); min-width: 0; }
+.letter .big { font-family: var(--tx); font-size: 38px; font-weight: 700; line-height: 1.1; direction: ltr; text-align: left; }
+.letter .snd { font-size: 15px; }
+.letter .snd b { font-size: 18px; }
+.letter .exw { border: 0; background: color-mix(in srgb, var(--kc) 12%, var(--surface)); border-radius: 12px; padding: 6px 10px; text-align: left; direction: ltr; }
+.letter .exw b { font-family: var(--tx); font-size: 18px; }
+.letter .exw small { display: block; color: var(--muted); font-family: var(--tx); }
+.letter .note { font-size: 14px; color: var(--muted); }
+.k-same { --kc: #2B8A3E; } .k-false { --kc: #E8590C; } .k-new { --kc: #5B3FD6; } .k-diff { --kc: #E8590C; }
+.legend { display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: 14px; color: var(--muted); margin: 0 4px 12px; }
+.legend i { display: inline-block; width: 10px; height: 10px; border-radius: 3px; background: var(--kc); margin-inline-end: 4px; }
+
+/* phrase rows */
+.ph { background: var(--surface); border-radius: 16px; padding: 12px 14px; display: flex; gap: 10px; align-items: center; }
+.ph .txt { flex: 1; min-width: 0; }
+.ph .t { font-family: var(--tx); font-weight: 700; font-size: 20px; direction: ltr; text-align: left; overflow-wrap: anywhere; }
+.ph .tr { font-family: var(--tx); color: var(--c); font-size: 15px; direction: ltr; text-align: left; }
+.ph .m { font-family: var(--tx); color: var(--muted); font-size: 16px; direction: ltr; text-align: left; transition: filter .15s; }
+.hide .ph .m:not(.open) { filter: blur(7px); cursor: pointer; }
+.icon { border: 0; width: 44px; height: 44px; flex: none; border-radius: 12px; background: color-mix(in srgb, var(--c) 12%, var(--surface)); font-size: 19px; }
+.icon.on { background: var(--good); color: #fff; }
+
+/* reader */
+.kind { display: inline-block; font-size: 13px; font-weight: 800; border-radius: 99px; padding: 1px 10px; background: color-mix(in srgb, var(--c) 14%, var(--surface)); color: var(--c); }
+.reader { background: var(--surface); border-radius: 20px; padding: 18px; display: flex; flex-direction: column; gap: 14px; }
+.sent { display: flex; flex-direction: column; gap: 4px; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
+.sent:last-child { border-bottom: 0; padding-bottom: 0; }
+.sent .src { font-family: var(--tx); font-size: 22px; line-height: 1.6; direction: ltr; text-align: left; }
+.w { cursor: pointer; border-radius: 6px; padding: 0 1px; background: transparent; border: 0; font: inherit; color: inherit; }
+.w:hover, .w.sel { background: color-mix(in srgb, var(--c) 18%, transparent); }
+.w.saved { text-decoration: underline 2px color-mix(in srgb, var(--good) 70%, transparent); text-underline-offset: 4px; }
+.sent .en { font-family: var(--tx); color: var(--muted); font-size: 16px; direction: ltr; text-align: left; }
+.sent .tools { display: flex; gap: 6px; }
+.notrans .sent .en:not(.open) { display: none; }
+
+/* vocab after reading */
+.vrow { display: flex; align-items: center; gap: 10px; background: var(--surface); border-radius: 14px; padding: 8px 12px; }
+.vrow input { width: 22px; height: 22px; flex: none; accent-color: var(--c); }
+.vrow .vw { font-family: var(--tx); font-weight: 700; font-size: 18px; min-width: 0; }
+.vrow .vm { font-family: var(--tx); color: var(--muted); font-size: 15px; flex: 1; min-width: 0; direction: ltr; text-align: left; }
+.vrow .in { font-size: 13px; color: var(--good); font-weight: 800; white-space: nowrap; }
+.sticky-foot { position: sticky; bottom: 0; background: var(--bg); padding-block: 12px calc(env(safe-area-inset-bottom, 0px) + 8px); display: flex; flex-direction: column; gap: 8px; }
+
+/* review card */
+.flash { background: var(--surface); border-radius: 24px; padding: 28px 18px; text-align: center; display: flex; flex-direction: column; gap: 10px; align-items: center; min-height: 300px; justify-content: center; border-top: 6px solid var(--c); }
+.flash .front { font-family: var(--tx); font-size: clamp(28px, 8vw, 44px); font-weight: 700; direction: ltr; overflow-wrap: anywhere; }
+.flash .back { font-family: var(--tx); font-size: 22px; direction: ltr; }
+.flash .ctx { font-family: var(--tx); color: var(--muted); font-size: 15px; direction: ltr; }
+.grade { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 12px; }
+.grade .no { background: var(--bad); color: #fff; }
+.grade .yes { background: var(--good); color: #fff; }
+.grade small { display: block; font-weight: 600; opacity: .85; font-size: 13px; }
+.manual { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 8px; }
+.progress { height: 8px; background: var(--surface); border-radius: 99px; overflow: hidden; margin-bottom: 12px; }
+.progress i { display: block; height: 100%; background: var(--c); }
+
+/* quiz */
+.opts { display: grid; gap: 10px; margin-top: 12px; }
+.opt { border: 2px solid var(--line); background: var(--surface); border-radius: 16px; padding: 14px; font-family: var(--tx); font-size: 18px; direction: ltr; text-align: left; }
+.opt.right { border-color: var(--good); background: color-mix(in srgb, var(--good) 14%, var(--surface)); }
+.opt.wrong { border-color: var(--bad); background: color-mix(in srgb, var(--bad) 12%, var(--surface)); }
+
+/* words table */
+.tbl { width: 100%; border-collapse: collapse; background: var(--surface); border-radius: 16px; overflow: hidden; }
+.tbl .acts { display: flex; flex-direction: column; gap: 6px; }
+.tbl .acts .icon { width: 38px; height: 38px; font-size: 16px; }
+.tbl td, .tbl th { padding: 8px 6px; border-bottom: 1px solid var(--line); text-align: right; vertical-align: middle; }
+.tbl th { font-size: 14px; color: var(--muted); font-weight: 600; }
+.tbl .tx { font-size: 16px; }
+.tbl tr:last-child td { border-bottom: 0; }
+.due-now { color: var(--bad); font-weight: 800; }
+.tblwrap { overflow-x: auto; border-radius: 16px; }
+
+/* forms */
+.form { display: flex; flex-direction: column; gap: 12px; }
+.form label { display: flex; flex-direction: column; gap: 4px; font-weight: 700; }
+.form input[type=text], .form input[type=number], .form select, textarea { border: 2px solid var(--line); border-radius: 12px; padding: 10px 12px; background: var(--bg); font-weight: 400; }
+.checks { display: flex; flex-wrap: wrap; gap: 8px; }
+.checks label { flex-direction: row; align-items: center; gap: 6px; background: var(--bg); border-radius: 99px; padding: 4px 12px; font-weight: 600; font-size: 15px; }
+.seg { display: flex; gap: 8px; }
+.seg label { flex: 1; flex-direction: row; justify-content: center; gap: 6px; background: var(--bg); border-radius: 12px; padding: 8px; }
+.intro { display: flex; flex-direction: column; gap: 10px; }
+.intro .ln { display: flex; gap: 10px; align-items: flex-start; }
+.intro .ln div { flex: 1; min-width: 0; }
+.intro .ln .t { font-family: var(--tx); font-size: 19px; font-weight: 700; direction: ltr; text-align: left; }
+.intro .ln .m { font-family: var(--tx); font-size: 15px; color: var(--muted); direction: ltr; text-align: left; }
+
+.tip { background: var(--surface); border-radius: 18px; padding: 16px; }
+.tip h3 { margin: 0 0 4px; font-size: 18px; }
+.tip p { margin: 0; }
+.tip .how { margin-top: 6px; color: var(--c); font-weight: 700; font-size: 15px; }
+
+/* bottom sheet */
+.scrim { position: fixed; inset: 0; background: rgb(0 0 0 / .35); z-index: 40; }
+.sheet { position: fixed; left: 0; right: 0; bottom: 0; z-index: 41; background: var(--surface); border-radius: 22px 22px 0 0; padding: 18px max(18px, env(safe-area-inset-right, 0px)) calc(env(safe-area-inset-bottom, 0px) + 18px) max(18px, env(safe-area-inset-left, 0px)); max-width: 680px; margin: 0 auto; display: flex; flex-direction: column; gap: 10px; box-shadow: 0 -8px 30px rgb(0 0 0 / .15); }
+.sheet .word { font-family: var(--tx); font-size: 32px; font-weight: 700; direction: ltr; text-align: left; }
+.sheet .mean { font-family: var(--tx); font-size: 20px; direction: ltr; text-align: left; }
+
+.toast { position: fixed; left: 50%; transform: translateX(-50%); bottom: calc(env(safe-area-inset-bottom, 0px) + 24px); background: var(--ink); color: var(--bg); padding: 10px 18px; border-radius: 14px; font-weight: 700; z-index: 60; max-width: calc(100% - 32px); text-align: center; }
+.empty { text-align: center; color: var(--muted); padding: 30px 10px; }
+.upd { margin-top: 22px; }
+.upd .btn { background: var(--good); color: #fff; box-shadow: none; }
+.umeta { margin: 6px 0 0; color: var(--muted); font-size: 14px; }
+@media (prefers-reduced-motion: no-preference) { .tile:active, .lang:active, .btn:active, .opt:active { transform: scale(.98); } }
+</style>
+
+<div id="app" dir="rtl" lang="ar"></div>
+<div class="toast" id="toast" hidden></div>
+
+<script>
+const LANGS = {"es":{"code":"es","name":"الإسباني","native":"Español","flag":"🇪🇸","tts":"es-ES","color":"#E8590C","abcTitle":"الحروف والنطق","abcIntro":"الإسباني بيتكتب بنفس حروف الإنجليزي، بس فيه حروف وأصوات بتتنطق بشكل مختلف. أهم قاعدة: الإسباني بيتقري زي ما هو مكتوب بالظبط، وكل حرف متحرك ليه صوت واحد بس.","abc":[{"l":"A E I O U","s":"a, e, i, o, u — always short and the same","ar":"آ، إ، إي، أو، أو","k":"new","ex":"casa · mesa · sí · todo · uno","m":"house · table · yes · all · one","note":"الحروف المتحركة صوتها ثابت دايمًا، مش زي الإنجليزي"},{"l":"Ñ ñ","s":"ny, like 'canyon'","ar":"نيـ","k":"new","ex":"España · niño","m":"Spain · child"},{"l":"J j","s":"strong h from the throat","ar":"خ خفيفة","k":"diff","ex":"jugo · trabajo","m":"juice · work"},{"l":"G + e / i","s":"same as J (throat h)","ar":"خ خفيفة","k":"diff","ex":"gente · general","m":"people · general"},{"l":"G + a / o / u","s":"hard g, like 'go'","ar":"ج مصرية","k":"same","ex":"gato · amigo","m":"cat · friend"},{"l":"H h","s":"silent — never pronounced","ar":"مبتتنطقش","k":"diff","ex":"hola · hora","m":"hello · hour","note":"hola بتتقري «أولا»"},{"l":"LL ll","s":"y, like 'yes'","ar":"ي","k":"diff","ex":"llamar · pollo","m":"to call · chicken"},{"l":"R r","s":"one quick tap of the tongue","ar":"ر خفيفة","k":"diff","ex":"pero · caro","m":"but · expensive"},{"l":"RR / R at start","s":"strong rolled r","ar":"ر مشددة","k":"diff","ex":"perro · rojo","m":"dog · red","note":"pero (لكن) غير perro (كلب)!"},{"l":"V v","s":"almost like b","ar":"ب","k":"diff","ex":"vivir · vida","m":"to live · life"},{"l":"Z z · C + e / i","s":"th in Spain, s in Latin America","ar":"ث (إسبانيا) أو س","k":"diff","ex":"zapato · cielo","m":"shoe · sky"},{"l":"C + a/o/u · QU","s":"k (the u in qu is silent)","ar":"ك","k":"same","ex":"casa · queso","m":"house · cheese"},{"l":"CH ch","s":"ch, like 'chair'","ar":"تش","k":"same","ex":"chocolate · noche","m":"chocolate · night"},{"l":"Á É Í Ó Ú","s":"the accent shows which syllable is stressed","ar":"الضغط على الحرف ده","k":"new","ex":"café · música","m":"coffee · music"},{"l":"¿ ¡","s":"upside-down marks open a question or exclamation","ar":"علامة بتبدأ السؤال","k":"new","ex":"¿Qué tal? · ¡Hola!","m":"How's it going? · Hello!"}],"phrases":[{"cat":"👋 التحية","items":[["Hola","Hello"],["Buenos días","Good morning"],["Buenas tardes","Good afternoon"],["Buenas noches","Good evening / Good night"],["¿Cómo estás?","How are you?"],["Estoy bien, gracias","I'm fine, thanks"],["¿Y tú?","And you?"],["Mucho gusto","Nice to meet you"],["Adiós","Goodbye"],["Hasta luego","See you later"],["Hasta mañana","See you tomorrow"]]},{"cat":"🙏 الذوق","items":[["Por favor","Please"],["Gracias","Thank you"],["De nada","You're welcome"],["Perdón","Excuse me / Sorry"],["Lo siento","I'm sorry"],["Sí / No","Yes / No"]]},{"cat":"❓ أسئلة","items":[["¿Cómo te llamas?","What's your name?"],["¿De dónde eres?","Where are you from?"],["¿Dónde está el baño?","Where is the bathroom?"],["¿Cuánto cuesta?","How much does it cost?"],["¿Qué hora es?","What time is it?"],["¿Hablas inglés?","Do you speak English?"],["¿Qué significa esto?","What does this mean?"],["¿Puedes repetir, por favor?","Can you repeat, please?"],["¿Puedes hablar más despacio?","Can you speak more slowly?"]]},{"cat":"☕ كل يوم","items":[["No entiendo","I don't understand"],["Tengo hambre","I'm hungry"],["Tengo sed","I'm thirsty"],["Estoy cansado / cansada","I'm tired (m / f)"],["Me gusta","I like it"],["No me gusta","I don't like it"],["Quiero un café, por favor","I want a coffee, please"],["La cuenta, por favor","The check, please"],["Necesito ayuda","I need help"],["¡Vamos!","Let's go!"],["¡Claro!","Of course!"],["Vale","OK (Spain)"]]},{"cat":"🔢 الأرقام","items":[["uno","one"],["dos","two"],["tres","three"],["cuatro","four"],["cinco","five"],["seis","six"],["siete","seven"],["ocho","eight"],["nueve","nine"],["diez","ten"],["veinte","twenty"],["cien","one hundred"],["mil","one thousand"]]}],"texts":[{"kind":"story","title":"El café de la mañana","en":"The morning coffee","level":"مبتدئ","s":[["Cada mañana, Ana va a un café pequeño.","Every morning, Ana goes to a small café."],["El café está cerca de su casa.","The café is near her house."],["Ella pide un café con leche y un pan dulce.","She orders a coffee with milk and a sweet bread."],["El camarero se llama Luis y siempre sonríe.","The waiter is called Luis and he always smiles."],["Hoy Luis le pregunta: «¿Qué tal tu día?»","Today Luis asks her: \"How is your day?\""],["Ana responde: «Muy bien, gracias. Hoy empiezo un trabajo nuevo.»","Ana answers: \"Very good, thanks. Today I start a new job.\""],["Luis dice: «¡Felicidades! El café es gratis hoy.»","Luis says: \"Congratulations! The coffee is free today.\""],["Ana está muy feliz.","Ana is very happy."]],"v":{"cada":"each, every","mañana":"morning (also: tomorrow)","ana":"Ana (name)","va":"goes (ir = to go)","a":"to, at","un":"a, an","café":"coffee; café","pequeño":"small","el":"the","está":"is (estar — location / state)","cerca":"near","de":"of, from","su":"his, her, their","casa":"house, home","ella":"she","pide":"orders, asks for (pedir)","con":"with","leche":"milk","y":"and","pan":"bread","dulce":"sweet","camarero":"waiter","se":"himself/herself (se llama = is called)","llama":"calls (llamarse = to be called)","luis":"Luis (name)","siempre":"always","sonríe":"smiles (sonreír)","hoy":"today","le":"(to) him / her","pregunta":"asks (preguntar); question","qué":"what","tal":"such (¿qué tal? = how is…?)","tu":"your","día":"day","responde":"answers (responder)","muy":"very","bien":"well, good","gracias":"thank you","empiezo":"I start (empezar)","trabajo":"job, work","nuevo":"new","dice":"says (decir)","felicidades":"congratulations","es":"is (ser — identity / description)","gratis":"free (no cost)","feliz":"happy"}},{"kind":"story","title":"Un sábado en Madrid","en":"A Saturday in Madrid","level":"مبتدئ","s":[["Pablo vive en Madrid con su familia.","Pablo lives in Madrid with his family."],["Los sábados, toda la familia sale a pasear.","On Saturdays, the whole family goes out for a walk."],["Primero visitan el parque del Retiro.","First they visit Retiro Park."],["Los niños juegan y los padres leen un libro.","The children play and the parents read a book."],["Después, comen en un restaurante típico.","Afterwards, they eat at a typical restaurant."],["A Pablo le gusta mucho la tortilla de patatas.","Pablo really likes the potato omelette."],["Por la tarde, vuelven a casa en metro.","In the afternoon, they go back home by metro."],["Están cansados, pero contentos.","They are tired, but happy."]],"v":{"pablo":"Pablo (name)","vive":"lives (vivir)","en":"in, on, by","madrid":"Madrid","con":"with","su":"his, her, their","familia":"family","los":"the (plural)","sábados":"Saturdays","toda":"all, whole","la":"the","sale":"goes out (salir)","a":"to","pasear":"to walk, to stroll","primero":"first","visitan":"they visit (visitar)","el":"the","parque":"park","del":"of the (de + el)","retiro":"Retiro (park name; 'retreat')","niños":"children","juegan":"they play (jugar)","y":"and","padres":"parents","leen":"they read (leer)","un":"a, an","libro":"book","después":"afterwards, later","comen":"they eat (comer)","restaurante":"restaurant","típico":"typical","le":"(to) him / her","gusta":"pleases (gustar — me gusta = I like)","mucho":"a lot, much","tortilla":"omelette (Spanish tortilla)","de":"of","patatas":"potatoes","por":"in, for, through (por la tarde = in the afternoon)","tarde":"afternoon (also: late)","vuelven":"they return (volver)","casa":"home, house","metro":"metro, subway","están":"they are (estar)","cansados":"tired","pero":"but","contentos":"happy, glad"}},{"kind":"speech","title":"Nunca es tarde para aprender","en":"It's never too late to learn","level":"متوسط","s":[["Queridos amigos, hoy quiero hablar de algo importante.","Dear friends, today I want to talk about something important."],["Muchas personas piensan que es tarde para aprender un idioma.","Many people think it is too late to learn a language."],["No es verdad.","It is not true."],["Nuestro cerebro puede aprender cosas nuevas a cualquier edad.","Our brain can learn new things at any age."],["El secreto es practicar un poco todos los días.","The secret is to practice a little every day."],["Diez minutos al día son mejores que dos horas una vez por semana.","Ten minutes a day are better than two hours once a week."],["Escuchen, repitan y no tengan miedo de cometer errores.","Listen, repeat, and don't be afraid of making mistakes."],["¡Ustedes pueden hacerlo!","You can do it!"]],"v":{"queridos":"dear (plural)","amigos":"friends","hoy":"today","quiero":"I want (querer)","hablar":"to talk, to speak","de":"about, of","algo":"something","importante":"important","muchas":"many (feminine)","personas":"people, persons","piensan":"they think (pensar)","que":"that; than","es":"is (ser)","tarde":"late","para":"to, in order to, for","aprender":"to learn","un":"a, an","idioma":"language","no":"no, not","verdad":"truth (es verdad = it's true)","nuestro":"our","cerebro":"brain","puede":"can (poder)","cosas":"things","nuevas":"new (feminine plural)","a":"at, to","cualquier":"any","edad":"age","el":"the","secreto":"secret","practicar":"to practice","poco":"little (un poco = a little)","todos":"all, every (todos los días = every day)","los":"the (plural)","días":"days","diez":"ten","minutos":"minutes","al":"per, to the (a + el)","día":"day","son":"are (ser)","mejores":"better (plural)","dos":"two","horas":"hours","una":"one, a","vez":"time, occasion (una vez = once)","por":"per, for","semana":"week","escuchen":"listen! (you all)","repitan":"repeat! (you all)","y":"and","tengan":"have (you all) — no tengan miedo = don't be afraid","miedo":"fear","cometer":"to commit, to make (a mistake)","errores":"mistakes, errors","ustedes":"you (plural)","pueden":"you (all) can (poder)","hacerlo":"to do it (hacer + lo)"}},{"kind":"news","title":"Nueva biblioteca en el centro de la ciudad","en":"New library in the city center","level":"متوسط","s":[["La ciudad abrió ayer una nueva biblioteca en el centro.","The city opened a new library downtown yesterday."],["El edificio tiene tres pisos y más de veinte mil libros.","The building has three floors and more than twenty thousand books."],["También hay una sala con computadoras para estudiantes.","There is also a room with computers for students."],["La entrada es gratis para todos.","Entry is free for everyone."],["La alcaldesa dijo: «Queremos más lectores en nuestra ciudad».","The mayor said: \"We want more readers in our city.\""],["La biblioteca abre de lunes a sábado, de nueve a ocho.","The library is open Monday to Saturday, from nine to eight."],["Muchos vecinos ya visitaron el lugar el primer día.","Many neighbors already visited the place on the first day."]],"v":{"la":"the","ciudad":"city","abrió":"opened (abrir)","ayer":"yesterday","una":"a, one","nueva":"new","biblioteca":"library","en":"in","el":"the","centro":"center, downtown","edificio":"building","tiene":"has (tener)","tres":"three","pisos":"floors","y":"and","más":"more","de":"of, than, from","veinte":"twenty","mil":"thousand","libros":"books","también":"also, too","hay":"there is / there are","sala":"room, hall","con":"with","computadoras":"computers","para":"for","estudiantes":"students","entrada":"entrance, entry","es":"is (ser)","gratis":"free (no cost)","todos":"everyone, all","alcaldesa":"mayor (woman)","dijo":"said (decir)","queremos":"we want (querer)","lectores":"readers","nuestra":"our","abre":"opens (abrir)","lunes":"Monday","a":"to","sábado":"Saturday","nueve":"nine","ocho":"eight","muchos":"many","vecinos":"neighbors","ya":"already","visitaron":"they visited (visitar)","lugar":"place","primer":"first","día":"day"}}],"me":{"hello":"Hola, me llamo {name}.","helloEn":"Hi, my name is {name}.","age":"Tengo {age} años.","ageEn":"I am {age} years old.","from":"Soy de {country}. Soy {demonym}.","fromEn":"I'm from {country_en}. I'm {demonym_en}.","live":"Vivo en {city}.","liveEn":"I live in {city}.","job":"Soy {job}.","jobEn":"I'm {job_en}.","likes":"Me gusta {hobbies}.","likesEn":"I like {hobbies_en}.","and":"y","langs":"Hablo árabe e inglés, y ahora estoy aprendiendo español.","langsEn":"I speak Arabic and English, and now I'm learning Spanish.","bye":"¡Mucho gusto!","byeEn":"Nice to meet you!","countries":{"eg":["Egipto","egipcio","egipcia"],"sa":["Arabia Saudita","saudí","saudí"],"ae":["los Emiratos Árabes Unidos","emiratí","emiratí"],"jo":["Jordania","jordano","jordana"],"us":["Estados Unidos","estadounidense","estadounidense"]},"jobs":{"engineer":["ingeniero","ingeniera"],"doctor":["médico","médica"],"teacher":["profesor","profesora"],"student":["estudiante","estudiante"],"programmer":["programador","programadora"],"accountant":["contador","contadora"],"designer":["diseñador","diseñadora"],"manager":["gerente","gerente"],"business":["empresario","empresaria"]},"hobbies":{"read":"leer","travel":"viajar","cook":"cocinar","football":"jugar al fútbol","music":"escuchar música","movies":"ver películas","code":"programar","swim":"nadar"}}},"ru":{"code":"ru","name":"الروسي","native":"Русский","flag":"🇷🇺","tts":"ru-RU","color":"#1971C2","abcTitle":"الحروف الروسية (الكيريلية)","abcIntro":"الحروف الروسية ٣٣ حرف. متخافش منها: فيه حروف شبه الإنجليزي وبتتنطق زيه، وفيه حروف شكلها إنجليزي بس صوتها مختلف (دي اللي بتلخبط، فركّز عليها)، والباقي حروف جديدة. ابدأ بالمجموعة الأولى، وبعدها التانية، وبعدها التالتة.","abc":[{"l":"А а","s":"a, as in 'father'","ar":"آ","k":"same","ex":"мама","tr":"mama","m":"mom"},{"l":"Б б","s":"b","ar":"ب","k":"new","ex":"банк","tr":"bank","m":"bank"},{"l":"В в","s":"v","ar":"ڤ","k":"false","ex":"вода","tr":"voda","m":"water","note":"شكله B بس صوته V"},{"l":"Г г","s":"g, as in 'go'","ar":"ج مصرية","k":"new","ex":"город","tr":"gorod","m":"city"},{"l":"Д д","s":"d","ar":"د","k":"new","ex":"дом","tr":"dom","m":"house"},{"l":"Е е","s":"ye, as in 'yes'","ar":"يِه","k":"false","ex":"еда","tr":"yeda","m":"food","note":"شكله E بس بيتنطق «يه»"},{"l":"Ё ё","s":"yo, as in 'yogurt'","ar":"يو","k":"new","ex":"ёлка","tr":"yolka","m":"Christmas tree"},{"l":"Ж ж","s":"zh, like 's' in 'measure'","ar":"ج شامية","k":"new","ex":"журнал","tr":"zhurnal","m":"magazine"},{"l":"З з","s":"z","ar":"ز","k":"new","ex":"зима","tr":"zima","m":"winter","note":"شبه الرقم 3"},{"l":"И и","s":"ee, as in 'see'","ar":"إي","k":"new","ex":"игра","tr":"igra","m":"game","note":"شبه N مقلوبة"},{"l":"Й й","s":"short y, as in 'boy'","ar":"ي ساكنة","k":"new","ex":"мой","tr":"moy","m":"my"},{"l":"К к","s":"k","ar":"ك","k":"same","ex":"кот","tr":"kot","m":"cat"},{"l":"Л л","s":"l","ar":"ل","k":"new","ex":"лампа","tr":"lampa","m":"lamp"},{"l":"М м","s":"m","ar":"م","k":"same","ex":"мир","tr":"mir","m":"world; peace"},{"l":"Н н","s":"n","ar":"ن","k":"false","ex":"нос","tr":"nos","m":"nose","note":"شكله H بس صوته N"},{"l":"О о","s":"o (sounds like 'a' when not stressed)","ar":"أو","k":"same","ex":"окно","tr":"okno","m":"window"},{"l":"П п","s":"p","ar":"پ","k":"new","ex":"папа","tr":"papa","m":"dad"},{"l":"Р р","s":"rolled r","ar":"ر","k":"false","ex":"рука","tr":"ruka","m":"hand","note":"شكله P بس صوته R"},{"l":"С с","s":"s","ar":"س","k":"false","ex":"сок","tr":"sok","m":"juice","note":"شكله C بس صوته دايمًا S"},{"l":"Т т","s":"t","ar":"ت","k":"same","ex":"такси","tr":"taksi","m":"taxi"},{"l":"У у","s":"oo, as in 'food'","ar":"أوو","k":"false","ex":"утро","tr":"utro","m":"morning","note":"شكله y بس صوته OO"},{"l":"Ф ф","s":"f","ar":"ف","k":"new","ex":"фото","tr":"foto","m":"photo"},{"l":"Х х","s":"kh","ar":"خ","k":"false","ex":"хлеб","tr":"khleb","m":"bread","note":"شكله X بس صوته خ"},{"l":"Ц ц","s":"ts, as in 'cats'","ar":"تس","k":"new","ex":"цирк","tr":"tsirk","m":"circus"},{"l":"Ч ч","s":"ch, as in 'chair'","ar":"تش","k":"new","ex":"чай","tr":"chay","m":"tea","note":"شبه الرقم 4"},{"l":"Ш ш","s":"sh","ar":"ش","k":"new","ex":"школа","tr":"shkola","m":"school"},{"l":"Щ щ","s":"soft, long sh","ar":"ش ممدودة","k":"new","ex":"борщ","tr":"borshch","m":"borscht (soup)"},{"l":"Ъ ъ","s":"hard sign — no sound, a short pause","ar":"مالوش صوت","k":"new","ex":"объект","tr":"ob\"yekt","m":"object"},{"l":"Ы ы","s":"deep 'i' — say 'ee' with the tongue pulled back","ar":"إي من الزور","k":"new","ex":"сыр","tr":"syr","m":"cheese"},{"l":"Ь ь","s":"soft sign — no sound, softens the letter before","ar":"بيليّن الحرف اللي قبله","k":"new","ex":"день","tr":"den'","m":"day"},{"l":"Э э","s":"e, as in 'met'","ar":"إ","k":"new","ex":"это","tr":"eto","m":"this"},{"l":"Ю ю","s":"yu, as in 'you'","ar":"يو","k":"new","ex":"юг","tr":"yug","m":"south"},{"l":"Я я","s":"ya, as in 'yard'","ar":"يا","k":"new","ex":"яблоко","tr":"yabloko","m":"apple","note":"شبه R مقلوبة"}],"phrases":[{"cat":"👋 التحية","items":[["Привет","Hi","privet"],["Здравствуйте","Hello (formal)","zdravstvuyte"],["Доброе утро","Good morning","dobroye utro"],["Добрый день","Good afternoon","dobryy den'"],["Добрый вечер","Good evening","dobryy vecher"],["Как дела?","How are you?","kak dela?"],["Хорошо, спасибо","Fine, thanks","khorosho, spasibo"],["А у тебя?","And you?","a u tebya?"],["Очень приятно","Nice to meet you","ochen' priyatno"],["Пока","Bye","poka"],["До свидания","Goodbye","do svidaniya"],["До завтра","See you tomorrow","do zavtra"]]},{"cat":"🙏 الذوق","items":[["Пожалуйста","Please / You're welcome","pozhaluysta"],["Спасибо","Thank you","spasibo"],["Извините","Excuse me / Sorry","izvinite"],["Да / Нет","Yes / No","da / net"]]},{"cat":"❓ أسئلة","items":[["Как тебя зовут?","What's your name?","kak tebya zovut?"],["Откуда ты?","Where are you from?","otkuda ty?"],["Где туалет?","Where is the toilet?","gde tualet?"],["Сколько это стоит?","How much does it cost?","skol'ko eto stoit?"],["Который час?","What time is it?","kotoryy chas?"],["Ты говоришь по-английски?","Do you speak English?","ty govorish' po-angliyski?"],["Что это значит?","What does this mean?","chto eto znachit?"],["Повторите, пожалуйста","Repeat, please","povtorite, pozhaluysta"],["Говорите медленнее, пожалуйста","Speak more slowly, please","govorite medlenneye, pozhaluysta"]]},{"cat":"☕ كل يوم","items":[["Я не понимаю","I don't understand","ya ne ponimayu"],["Я хочу есть","I'm hungry (I want to eat)","ya khochu yest'"],["Я хочу пить","I'm thirsty (I want to drink)","ya khochu pit'"],["Я устал / Я устала","I'm tired (m / f)","ya ustal / ya ustala"],["Мне нравится","I like it","mne nravitsya"],["Мне не нравится","I don't like it","mne ne nravitsya"],["Кофе, пожалуйста","Coffee, please","kofe, pozhaluysta"],["Счёт, пожалуйста","The check, please","schyot, pozhaluysta"],["Мне нужна помощь","I need help","mne nuzhna pomoshch'"],["Давай!","Let's go! / Come on!","davay!"],["Конечно","Of course","konechno"],["Хорошо","Good / OK","khorosho"]]},{"cat":"🔢 الأرقام","items":[["один","one","odin"],["два","two","dva"],["три","three","tri"],["четыре","four","chetyre"],["пять","five","pyat'"],["шесть","six","shest'"],["семь","seven","sem'"],["восемь","eight","vosem'"],["девять","nine","devyat'"],["десять","ten","desyat'"],["двадцать","twenty","dvadtsat'"],["сто","one hundred","sto"],["тысяча","one thousand","tysyacha"]]}],"texts":[{"kind":"story","title":"Утро Ивана","en":"Ivan's morning","level":"مبتدئ","s":[["Иван просыпается в семь часов.","Ivan wakes up at seven o'clock."],["Он пьёт кофе и ест бутерброд.","He drinks coffee and eats a sandwich."],["Потом он идёт на работу.","Then he goes to work."],["Его офис находится недалеко от дома.","His office is not far from home."],["На улице холодно, и идёт снег.","It's cold outside, and it's snowing."],["Иван любит зиму, потому что она очень красивая.","Ivan loves winter because it is very beautiful."],["На работе его ждут коллеги.","At work, his colleagues are waiting for him."],["Они говорят: «Доброе утро, Иван!»","They say: \"Good morning, Ivan!\""]],"v":{"иван":"Ivan (name)","просыпается":"wakes up (просыпаться)","в":"in, at","семь":"seven","часов":"o'clock, hours (час)","он":"he","пьёт":"drinks (пить)","кофе":"coffee","и":"and","ест":"eats (есть)","бутерброд":"sandwich","потом":"then, later","идёт":"goes, walks (идти); идёт снег = it's snowing","на":"to, on, at","работу":"work (работа — to work)","его":"his; him","офис":"office","находится":"is located (находиться)","недалеко":"not far","от":"from","дома":"home, house (дом — from home)","улице":"street (на улице = outside)","холодно":"(it is) cold","снег":"snow","любит":"loves (любить)","зиму":"winter (зима)","потому":"because (потому что)","что":"that; what (потому что = because)","она":"she; it","очень":"very","красивая":"beautiful","работе":"work (на работе = at work)","ждут":"(they) wait for (ждать)","коллеги":"colleagues","они":"they","говорят":"(they) say (говорить)","доброе":"good (доброе утро = good morning)","утро":"morning"}},{"kind":"story","title":"Новый друг","en":"A new friend","level":"مبتدئ","s":[["Маша живёт в Москве.","Masha lives in Moscow."],["Она учится в университете.","She studies at the university."],["Однажды в библиотеке она встретила студента из Египта.","One day in the library she met a student from Egypt."],["Его зовут Омар.","His name is Omar."],["Омар изучает русский язык уже два года.","Omar has been studying Russian for two years already."],["Маша помогает ему с грамматикой, а он учит её арабскому.","Masha helps him with grammar, and he teaches her Arabic."],["Теперь они хорошие друзья.","Now they are good friends."]],"v":{"маша":"Masha (name)","живёт":"lives (жить)","в":"in, at","москве":"Moscow (Москва — in Moscow)","она":"she","учится":"studies (учиться)","университете":"university (in the ~)","однажды":"once, one day","библиотеке":"library (in the ~)","встретила":"met (she) (встретить)","студента":"student (студент)","из":"from","египта":"Egypt (Египет — from Egypt)","его":"him; his","зовут":"(they) call — его зовут = his name is","омар":"Omar (name)","изучает":"studies (изучать)","русский":"Russian","язык":"language","уже":"already","два":"two","года":"years (год)","помогает":"helps (помогать)","ему":"(to) him","с":"with","грамматикой":"grammar (грамматика)","а":"and, while (contrast)","он":"he","учит":"teaches (учить)","её":"her","арабскому":"Arabic (to her — арабский)","теперь":"now","они":"they","хорошие":"good (plural)","друзья":"friends"}},{"kind":"speech","title":"Учиться никогда не поздно","en":"It's never too late to learn","level":"متوسط","s":[["Дорогие друзья!","Dear friends!"],["Многие думают, что учить язык трудно.","Many people think that learning a language is hard."],["Да, это не просто, но это возможно.","Yes, it is not easy, but it is possible."],["Каждый день читайте, слушайте и говорите.","Every day, read, listen and speak."],["Не бойтесь ошибок.","Don't be afraid of mistakes."],["Ошибки — это часть учёбы.","Mistakes are part of learning."],["Маленький шаг каждый день — это большой успех через год.","A small step every day is a big success in a year."],["Удачи вам!","Good luck to you!"]],"v":{"дорогие":"dear (plural)","друзья":"friends","многие":"many (people)","думают":"(they) think (думать)","что":"that","учить":"to learn; to teach","язык":"language","трудно":"(it is) difficult","да":"yes","это":"this, it (is)","не":"not","просто":"simple, easy","но":"but","возможно":"possible","каждый":"every, each","день":"day","читайте":"read! (читать)","слушайте":"listen! (слушать)","и":"and","говорите":"speak! (говорить)","бойтесь":"be afraid (бояться)","ошибок":"mistakes (of ~)","ошибки":"mistakes (ошибка)","часть":"part","учёбы":"studies, learning (учёба)","маленький":"small","шаг":"step","большой":"big","успех":"success","через":"in, after (time); through","год":"year","удачи":"(good) luck (удача)","вам":"(to) you"}},{"kind":"news","title":"В городе открыли новый парк","en":"A new park opened in the city","level":"متوسط","s":[["Вчера в центре города открыли новый парк.","Yesterday a new park was opened in the city center."],["В парке есть озеро, детская площадка и много деревьев.","The park has a lake, a playground and many trees."],["Вход в парк бесплатный.","Entrance to the park is free."],["Мэр города сказал: «Это подарок для всех жителей».","The city's mayor said: \"This is a gift for all residents.\""],["Парк работает каждый день с восьми утра до десяти вечера.","The park is open every day from 8 a.m. to 10 p.m."],["В первый день парк посетили тысячи людей.","On the first day, thousands of people visited the park."]],"v":{"вчера":"yesterday","в":"in, into","центре":"center (in the ~)","города":"city (of the ~ — город)","открыли":"(they) opened (открыть)","новый":"new","парк":"park","парке":"park (in the ~)","есть":"there is / has","озеро":"lake","детская":"children's","площадка":"ground, area (детская площадка = playground)","и":"and","много":"many, a lot","деревьев":"trees (of ~ — дерево)","вход":"entrance","бесплатный":"free (no cost)","мэр":"mayor","сказал":"said (he) (сказать)","это":"this (is)","подарок":"gift","для":"for","всех":"all (of ~)","жителей":"residents (житель)","работает":"works, is open (работать)","каждый":"every","день":"day","с":"from","восьми":"eight (восемь — from eight)","утра":"in the morning, a.m. (утро)","до":"until, to","десяти":"ten (десять — to ten)","вечера":"in the evening, p.m. (вечер)","первый":"first","посетили":"(they) visited (посетить)","тысячи":"thousands (тысяча)","людей":"people (люди)"}}],"me":{"hello":"Привет! Меня зовут {name}.","helloEn":"Hi! My name is {name}.","age":"Мне {age} {years}.","ageEn":"I am {age} years old.","from":"Я из {country}.","fromEn":"I'm from {country_en}.","live":"Я живу в городе {city}.","liveEn":"I live in the city of {city}.","job":"Я {job}.","jobEn":"I'm {job_en}.","likes":"Я люблю {hobbies}.","likesEn":"I like {hobbies_en}.","and":"и","langs":"Я говорю по-арабски и по-английски, а сейчас я учу русский язык.","langsEn":"I speak Arabic and English, and now I'm learning Russian.","bye":"Очень приятно!","byeEn":"Nice to meet you!","countries":{"eg":["Египта"],"sa":["Саудовской Аравии"],"ae":["ОАЭ"],"jo":["Иордании"],"us":["США"]},"jobs":{"engineer":["инженер","инженер"],"doctor":["врач","врач"],"teacher":["учитель","учительница"],"student":["студент","студентка"],"programmer":["программист","программист"],"accountant":["бухгалтер","бухгалтер"],"designer":["дизайнер","дизайнер"],"manager":["менеджер","менеджер"],"business":["предприниматель","предпринимательница"]},"hobbies":{"read":"читать","travel":"путешествовать","cook":"готовить","football":"играть в футбол","music":"слушать музыку","movies":"смотреть фильмы","code":"программировать","swim":"плавать"}}}};
+const PWA = true;
+const VERSION = 1795513978767;
+const DAY = 864e5;
+const IV = [1, 3, 7, 14, 30, 90, 180]; // review steps in days
+
+// ---------- helpers ----------
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+const store = {
+  get(k, d) { try { const v = localStorage.getItem('lisan:' + k); return v ? JSON.parse(v) : d; } catch { return d; } },
+  set(k, v) { try { localStorage.setItem('lisan:' + k, JSON.stringify(v)); } catch {} }
+};
+document.documentElement.lang = 'ar'; document.documentElement.dir = 'rtl';
+const shuffle = a => { a = [...a]; for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+let toastTimer;
+function toast(m) { const t = $('#toast'); t.textContent = m; t.hidden = false; clearTimeout(toastTimer); toastTimer = setTimeout(() => t.hidden = true, 2400); }
+const ar = n => String(n);
+function inDays(ms) {
+  const d = (ms - Date.now()) / DAY;
+  if (d <= 0) return '<span class="due-now">دلوقتي</span>';
+  if (d < 1 / 24) return 'بعد دقايق';
+  if (d < 0.75) return 'النهارده';
+  if (d < 1.5) return 'بكرة';
+  if (d < 6.5) return `بعد ${ar(Math.round(d))} أيام`;
+  if (d < 13) return 'بعد أسبوع';
+  if (d < 25) return `بعد ${ar(Math.round(d / 7))} أسابيع`;
+  if (d < 45) return 'بعد شهر';
+  return `بعد ${ar(Math.round(d / 30))} شهور`;
+}
+const ivLabel = days => days === 1 ? 'بكرة' : days < 7 ? `بعد ${ar(days)} أيام` : days === 7 ? 'بعد أسبوع' : days === 14 ? 'بعد أسبوعين' : days === 30 ? 'بعد شهر' : `بعد ${ar(Math.round(days / 30))} شهور`;
+
+// ---------- state ----------
+let deck = store.get('deck', []);          // [{id, lang, t, m, tr, ex, added, due, lvl}]
+let profile = store.get('profile', { gender: 'm', country: 'eg', job: 'engineer', hobbies: ['read', 'travel'] });
+let read = store.get('read', {});          // {"es-0": timestamp}
+let days = store.get('days', []);          // ["2026-11-24", ...]
+let prefs = store.get('prefs', { hidePh: false, trans: true });
+const saveDeck = () => store.set('deck', deck);
+const idOf = (lang, t) => lang + '|' + t.toLowerCase();
+const inDeck = (lang, t) => deck.some(d => d.id === idOf(lang, t));
+function markDay() {
+  const k = new Date().toLocaleDateString('en-CA');
+  if (!days.includes(k)) { days.push(k); store.set('days', days); }
+}
+function streak() {
+  let n = 0; const d = new Date();
+  if (!days.includes(d.toLocaleDateString('en-CA'))) d.setDate(d.getDate() - 1);
+  while (days.includes(d.toLocaleDateString('en-CA'))) { n++; d.setDate(d.getDate() - 1); }
+  return n;
+}
+function addItem(o, inD = 1, quiet) {
+  const id = idOf(o.lang, o.t);
+  const ex = deck.find(d => d.id === id);
+  const due = Date.now() + inD * DAY;
+  if (ex) { ex.due = Math.min(ex.due, due); saveDeck(); if (!quiet) toast('موجودة في جدولك، وقرّبت ميعاد مراجعتها'); return false; }
+  deck.push({ id, lang: o.lang, t: o.t, m: o.m, tr: o.tr || '', ex: o.ex || '', added: Date.now(), due, lvl: 0 });
+  saveDeck(); markDay();
+  if (!quiet) toast(`✅ اتضافت — هتراجعها ${ivLabel(inD)}`);
+  return true;
+}
+const dueList = lang => deck.filter(d => d.due <= Date.now() && (!lang || d.lang === lang)).sort((a, b) => a.due - b.due);
+
+// ---------- speech ----------
+// Never read a language with another language's voice: if the device has no voice for it, explain how to install one.
+let voices = [];
+function loadVoices() { try { voices = speechSynthesis.getVoices() || []; } catch {} }
+if ('speechSynthesis' in window) { loadVoices(); speechSynthesis.onvoiceschanged = loadVoices; }
+const norm = l => String(l || '').toLowerCase().replace('_', '-');
+const hasVoice = lang => voices.some(v => norm(v.lang).startsWith(lang));
+function pickVoice(lang) {
+  const want = norm(LANGS[lang].tts);
+  const ok = voices.filter(v => norm(v.lang).startsWith(lang));
+  const score = v => (norm(v.lang) === want ? 4 : 0) + (/natural|neural|premium|enhanced|google/i.test(v.name) ? 2 : 0) + (v.localService ? 1 : 0);
+  return ok.sort((x, y) => score(y) - score(x))[0] || null;
+}
+function voicesReady() {
+  if (voices.length) return Promise.resolve();
+  return new Promise(res => {
+    const t = setTimeout(res, 1500);
+    speechSynthesis.addEventListener?.('voiceschanged', () => { loadVoices(); clearTimeout(t); res(); }, { once: true });
+    loadVoices(); if (voices.length) { clearTimeout(t); res(); }
+  });
+}
+async function say(lang, text, slow) {
+  if (!('speechSynthesis' in window)) return voiceHelp(lang);
+  await voicesReady();
+  const v = pickVoice(lang);
+  if (!v) return voiceHelp(lang);
+  speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(String(text).replace(/\s\/\s/g, '. '));
+  u.voice = v; u.lang = v.lang; u.rate = slow ? 0.6 : 0.9;
+  speechSynthesis.speak(u);
+}
+function voiceHelp(lang) {
+  const L = LANGS[lang];
+  closeSheet();
+  const d = document.createElement('div'); d.id = 'sheetWrap';
+  d.innerHTML = `<div class="scrim" data-close="1"></div><div class="sheet" role="dialog" style="--c:${L.color}">
+    <b style="font-size:20px">🔇 الجهاز ده معندوش صوت ${L.name}</b>
+    <p style="margin:0">علشان كده مش هنقرأ الكلمة، لأن الصوت الإنجليزي هيقرأها غلط ويعلّمك نطق غلط. نزّل صوت <b class="tx">${L.native}</b> مرة واحدة ببلاش:</p>
+    <ul style="margin:0;padding-inline-start:20px;display:flex;flex-direction:column;gap:6px;font-size:15px">
+      <li><b>أندرويد:</b> الإعدادات ← Text-to-speech ← Speech Services by Google ← Install voice data ← ${L.native}</li>
+      <li><b>آيفون:</b> Settings ← Accessibility ← Spoken Content ← Voices ← ${L.native}</li>
+      <li><b>ويندوز:</b> Settings ← Time &amp; language ← Speech ← Add voices ← ${L.native}</li>
+      <li><b>ماك:</b> System Settings ← Accessibility ← Spoken Content ← System voice ← Manage Voices</li>
+    </ul>
+    <p class="muted" style="margin:0;font-size:14px">بعد ما تنزّله، اقفل التطبيق وافتحه تاني. أو افتحه من Chrome، لأنه فيه أصوات جوجل جاهزة.</p>
+    <button class="btn main" data-close="1">تمام</button></div>`;
+  document.body.appendChild(d);
+}
+
+// ---------- bits ----------
+const bar = (title, back = 'home') => `<div class="bar"><button class="back" data-go="${back}">→ رجوع</button><h1>${title}</h1></div>`;
+const sayBtn = (lang, t, label = '🔊') => `<button class="icon" data-say="${esc(t)}" data-l="${lang}" aria-label="اسمع">${label}</button>`;
+const addBtn = (lang, t, m, tr = '', ex = '') => {
+  const on = inDeck(lang, t);
+  return `<button class="icon ${on ? 'on' : ''}" data-add="${esc(t)}" data-l="${lang}" data-m="${esc(m)}" data-tr="${esc(tr)}" data-ex="${esc(ex)}" aria-label="ضيف لجدول الحفظ">${on ? '✓' : '➕'}</button>`;
+};
+const KIND = { story: '📚 قصة', speech: '🎤 خطبة', news: '📰 خبر تدريبي' };
+
+// ---------- views ----------
+function viewHome() {
+  const due = dueList().length;
+  return `<div class="hero"><h1>لسان 🗣️</h1><p>اتعلم كلمات وجمل حقيقية، وراجعها في الوقت الصح عشان متنساهاش.</p></div>
+  <div class="today">
+    <div class="stat"><b>${ar(due)}</b><span>كلمة محتاجة مراجعة دلوقتي</span></div>
+    <div class="stat"><b>🔥 ${ar(streak())}</b><span>يوم ورا بعض</span></div>
+  </div>
+  ${due ? `<button class="btn main wide" style="margin-top:10px" data-go="review">🔁 راجع دلوقتي (${ar(due)})</button>` : ''}
+  <h2>اختار اللغة</h2>
+  <div class="langs">${Object.values(LANGS).map(L => {
+    const n = deck.filter(d => d.lang === L.code).length, r = L.texts.filter((_, i) => read[L.code + '-' + i]).length;
+    return `<button class="lang" style="--c:${L.color}" data-go="lang-${L.code}"><span class="f">${L.flag}</span><span class="n">${L.name}</span><span class="nt">${L.native}</span>
+      <span class="p">${ar(n)} كلمة في جدولك · قريت ${ar(r)} من ${ar(L.texts.length)} نصوص</span></button>`; }).join('')}</div>
+  <h2>أدواتك</h2>
+  <div class="tiles">
+    <button class="tile" data-go="words"><span class="e">📋</span><span class="t">جدول الحفظ</span><span class="d">${ar(deck.length)} كلمة وجملة</span></button>
+    <button class="tile" data-go="tips"><span class="e">🧠</span><span class="t">طرق الحفظ</span><span class="d">إزاي تحفظ أسرع ومتنساش</span></button>
+    <button class="tile" data-go="backup"><span class="e">💾</span><span class="t">نسخة احتياطية</span><span class="d">احفظ تقدّمك أو انقله لجهاز تاني</span></button>
+  </div>
+  ${updHTML()}`;
+}
+
+function viewLang(code) {
+  const L = LANGS[code], due = dueList(code).length, saved = deck.filter(d => d.lang === code).length;
+  return `<div style="--c:${L.color}">${bar(`${L.flag} ${L.name}`)}
+  ${!hasVoice(code) ? `<p class="warn">⚠️ الجهاز ده معندوش صوت ${L.name}، فالنطق مش هيشتغل. <button class="btn small" data-voicehelp="${code}">إزاي أنزّله؟</button></p>` : ''}
+  <div class="tiles">
+    <button class="tile ${due ? 'hot' : ''}" data-go="review-${code}"><span class="e">🔁</span><span class="t">راجع</span><span class="d">${due ? `${ar(due)} كلمة مستنياك` : `مفيش حاجة دلوقتي · ${ar(saved)} في جدولك`}</span></button>
+    <button class="tile" data-go="abc-${code}"><span class="e">🔤</span><span class="t">${L.abcTitle}</span><span class="d">${ar(L.abc.length)} ${code === 'ru' ? 'حرف' : 'صوت'} بأمثلة</span></button>
+    <button class="tile" data-go="phr-${code}"><span class="e">💬</span><span class="t">جمل كل يوم</span><span class="d">${ar(L.phrases.reduce((n, c) => n + c.items.length, 0))} جملة بالصوت</span></button>
+    <button class="tile" data-go="me-${code}"><span class="e">🙋</span><span class="t">عرّف نفسك</span><span class="d">اتكلم عن نفسك بالـ${L.name.replace('ال', '')}</span></button>
+    <button class="tile" data-go="texts-${code}"><span class="e">📖</span><span class="t">قصص وخطب وأخبار</span><span class="d">اقرا، دوس على أي كلمة، واحفظها</span></button>
+    <button class="tile" data-go="quiz-${code}"><span class="e">🎯</span><span class="t">اختبرني</span><span class="d">١٠ أسئلة سريعة</span></button>
+  </div>
+  <h2>خطة اليوم (١٥ دقيقة)</h2>
+  <div class="panel"><ol class="plan">
+    <li><span><b>راجع</b> الكلمات اللي ميعادها جه (٥ دقايق).</span></li>
+    <li><span><b>اقرا نص</b> أو جزء منه، ودوس على الكلمات اللي متعرفهاش (٥ دقايق).</span></li>
+    <li><span><b>قول تعريف نفسك</b> بصوت عالي من غير ما تبص (دقيقتين).</span></li>
+    <li><span><b>اختبر نفسك</b> ١٠ أسئلة (٣ دقايق).</span></li>
+  </ol></div></div>`;
+}
+
+let abcFilter = 'all';
+function viewAbc(code) {
+  const L = LANGS[code];
+  const kinds = code === 'ru'
+    ? [['all', 'الكل'], ['same', '✅ زي الإنجليزي'], ['false', '⚠️ شبه الإنجليزي وصوتها مختلف'], ['new', '🆕 جديدة']]
+    : [['all', 'الكل'], ['same', '✅ زي الإنجليزي'], ['diff', '⚠️ صوتها مختلف'], ['new', '🆕 جديدة']];
+  const list = L.abc.filter(x => abcFilter === 'all' || x.k === abcFilter);
+  return `<div style="--c:${L.color}">${bar(L.abcTitle, 'lang-' + code)}
+  <p class="panel" style="margin-top:0">${L.abcIntro}</p>
+  <div class="filters" style="margin-top:12px">${kinds.map(([k, l]) => `<button class="chip" data-abcf="${k}" data-l="${code}" aria-pressed="${abcFilter === k}">${l}</button>`).join('')}</div>
+  <div class="letters">${list.map(x => `<div class="letter k-${x.k}">
+    <div class="big">${esc(x.l)}</div>
+    <div class="snd"><b>${esc(x.ar)}</b> · <span class="tx muted">${esc(x.s)}</span></div>
+    <button class="exw" data-say="${esc(x.ex.replace(/·/g, ','))}" data-l="${code}"><b>🔊 ${esc(x.ex)}</b><small>${x.tr ? esc(x.tr) + ' — ' : ''}${esc(x.m)}</small></button>
+    ${x.note ? `<div class="note">💡 ${esc(x.note)}</div>` : ''}
+  </div>`).join('')}</div>
+  <button class="btn main wide" style="margin-top:16px" data-go="abcq-${code}">🎯 اختبرني في ${code === 'ru' ? 'الحروف' : 'الأصوات'}</button></div>`;
+}
+
+function viewPhr(code) {
+  const L = LANGS[code];
+  return `<div style="--c:${L.color}" class="${prefs.hidePh ? 'hide' : ''}">${bar('💬 جمل كل يوم', 'lang-' + code)}
+  <button class="btn ${prefs.hidePh ? 'main' : 'ghost'} wide" data-hideph="1">${prefs.hidePh ? '🙈 وضع الاختبار شغال — دوس على المعنى عشان تشوفه' : '🙈 اختبر نفسك: خبّي المعنى'}</button>
+  ${L.phrases.map(c => `<h2>${c.cat}</h2><div class="stack">${c.items.map(([t, m, tr]) => `<div class="ph">
+    <div class="txt"><div class="t">${esc(t)}</div>${tr ? `<div class="tr">${esc(tr)}</div>` : ''}<div class="m" data-reveal="1">${esc(m)}</div></div>
+    ${sayBtn(code, t)}${addBtn(code, t, m, tr)}</div>`).join('')}</div>`).join('')}</div>`;
+}
+
+// about me
+const COUNTRY_EN = { eg: ['Egypt', 'Egyptian'], sa: ['Saudi Arabia', 'Saudi'], ae: ['the UAE', 'Emirati'], jo: ['Jordan', 'Jordanian'], us: ['the USA', 'American'] };
+const COUNTRY_AR = { eg: 'مصر', sa: 'السعودية', ae: 'الإمارات', jo: 'الأردن', us: 'أمريكا' };
+const JOB_EN = { engineer: ['an engineer', 'مهندس'], doctor: ['a doctor', 'دكتور'], teacher: ['a teacher', 'مدرّس'], student: ['a student', 'طالب'], programmer: ['a programmer', 'مبرمج'], accountant: ['an accountant', 'محاسب'], designer: ['a designer', 'مصمم'], manager: ['a manager', 'مدير'], business: ['a businessperson', 'رجل/سيدة أعمال'] };
+const HOB_EN = { read: ['reading', 'القراية'], travel: ['traveling', 'السفر'], cook: ['cooking', 'الطبخ'], football: ['playing football', 'الكورة'], music: ['listening to music', 'المزيكا'], movies: ['watching movies', 'الأفلام'], code: ['programming', 'البرمجة'], swim: ['swimming', 'العوم'] };
+function joinList(arr, and) { return arr.length < 2 ? (arr[0] || '') : arr.slice(0, -1).join(', ') + ` ${and} ` + arr[arr.length - 1]; }
+function ruYears(n) { const a = n % 10, b = n % 100; return a === 1 && b !== 11 ? 'год' : a >= 2 && a <= 4 && (b < 12 || b > 14) ? 'года' : 'лет'; }
+function introLines(code) {
+  const L = LANGS[code], M = L.me, p = profile, g = p.gender === 'f' ? 1 : 0;
+  const fill = (s, o) => s.replace(/\{(\w+)\}/g, (_, k) => o[k] ?? '');
+  const hob = (p.hobbies || []).slice(0, 3);
+  const o = {
+    name: p.name || '…', age: p.age || '…', years: ruYears(+p.age || 0), city: p.city || '…',
+    country: M.countries[p.country][0], demonym: (M.countries[p.country][g + 1] || ''), country_en: COUNTRY_EN[p.country][0], demonym_en: COUNTRY_EN[p.country][1],
+    job: M.jobs[p.job][g], job_en: JOB_EN[p.job][0],
+    hobbies: joinList(hob.map(h => M.hobbies[h]), M.and), hobbies_en: joinList(hob.map(h => HOB_EN[h][0]), 'and')
+  };
+  const keys = ['hello', 'age', 'from', 'live', 'job'];
+  if (hob.length) keys.push('likes');
+  keys.push('langs', 'bye');
+  return keys.map(k => [fill(M[k], o), fill(M[k + 'En'], o)]);
+}
+function viewMe(code) {
+  const L = LANGS[code], p = profile, lines = introLines(code);
+  const opt = (obj, cur, lab) => Object.keys(obj).map(k => `<option value="${k}" ${k === cur ? 'selected' : ''}>${esc(lab(k))}</option>`).join('');
+  return `<div style="--c:${L.color}">${bar('🙋 عرّف نفسك', 'lang-' + code)}
+  <p class="muted" style="margin:0 4px 12px">املا بياناتك مرة واحدة، والتطبيق يكتبلك تعريف نفسك بالـ${L.name.replace('ال', '')} مع الترجمة. اسمعه، وكرّره بصوتك لحد ما تقوله من غير ما تبص.</p>
+  <div class="panel"><form class="form" id="meForm">
+    <label for="p-name">اسمك (بالإنجليزي)<input type="text" id="p-name" name="name" value="${esc(p.name)}" placeholder="Ahmed" autocomplete="off"></label>
+    <div class="seg"><label><input type="radio" name="gender" value="m" ${p.gender !== 'f' ? 'checked' : ''}> ذكر</label><label><input type="radio" name="gender" value="f" ${p.gender === 'f' ? 'checked' : ''}> أنثى</label></div>
+    <label for="p-age">سنّك<input type="number" id="p-age" name="age" min="5" max="99" value="${esc(p.age)}" placeholder="30"></label>
+    <label for="p-country">من فين<select id="p-country" name="country">${opt(COUNTRY_AR, p.country, k => COUNTRY_AR[k])}</select></label>
+    <label for="p-city">ساكن في (اسم المدينة بالإنجليزي)<input type="text" id="p-city" name="city" value="${esc(p.city)}" placeholder="Cairo" autocomplete="off"></label>
+    <label for="p-job">شغلك<select id="p-job" name="job">${opt(JOB_EN, p.job, k => JOB_EN[k][1])}</select></label>
+    <div><b>بتحب إيه؟ (اختار لحد ٣)</b><div class="checks" style="margin-top:6px">${Object.keys(HOB_EN).map(h => `<label><input type="checkbox" name="hobbies" value="${h}" ${(p.hobbies || []).includes(h) ? 'checked' : ''}> ${HOB_EN[h][1]}</label>`).join('')}</div></div>
+  </form></div>
+  <h2>تعريفك بالـ${L.name.replace('ال', '')}</h2>
+  <div class="panel intro" id="introOut">${introHTML(code, lines)}</div>
+  <div class="row" style="margin-top:12px">
+    <button class="btn main" style="flex:1" data-sayall="${code}">🔊 اسمع التعريف كله</button>
+    <button class="btn" style="flex:1" data-addintro="${code}">➕ ضيف الجمل لجدول الحفظ</button>
+  </div></div>`;
+}
+const introHTML = (code, lines) => lines.map(([t, m]) => `<div class="ln"><div><div class="t">${esc(t)}</div><div class="m">${esc(m)}</div></div>${sayBtn(code, t)}</div>`).join('');
+
+function viewTexts(code) {
+  const L = LANGS[code];
+  return `<div style="--c:${L.color}">${bar('📖 قصص وخطب وأخبار', 'lang-' + code)}
+  <p class="muted" style="margin:0 4px 12px">دوس على أي كلمة في النص تشوف معناها. ولما تخلّص، هيظهرلك كل كلمات النص بمعناها عشان تضيفها لجدول الحفظ. الأخبار هنا مكتوبة للتدريب ومش أخبار حقيقية.</p>
+  <div class="stack">${L.texts.map((t, i) => `<button class="tile" data-go="read-${code}-${i}" style="min-height:0">
+    <span><span class="kind">${KIND[t.kind]}</span> <span class="muted" style="font-size:14px">${t.level} · ${ar(t.s.length)} جمل · ${ar(Object.keys(t.v).length)} كلمة</span></span>
+    <span class="t tx" style="text-align:left">${esc(t.title)}</span><span class="d tx" style="text-align:left">${esc(t.en)}</span>
+    ${read[code + '-' + i] ? '<span class="d" style="color:var(--good);font-weight:800">✅ قريته</span>' : ''}</button>`).join('')}</div></div>`;
+}
+
+function viewRead(code, i) {
+  const L = LANGS[code], T = L.texts[i];
+  const words = s => s.split(/(\p{L}+)/u).map((p, j) => j % 2 ? `<button class="w ${inDeck(code, p) ? 'saved' : ''}" data-w="${esc(p)}">${esc(p)}</button>` : esc(p)).join('');
+  return `<div style="--c:${L.color}" class="${prefs.trans ? '' : 'notrans'}">${bar(KIND[T.kind], 'texts-' + code)}
+  <h2 class="tx" style="text-align:left;font-size:24px;margin-top:4px">${esc(T.title)}</h2>
+  <div class="row" style="margin-bottom:12px">
+    <button class="btn small main" data-sayall-text="${i}" data-l="${code}">🔊 اسمع النص</button>
+    <button class="btn small" data-slowall-text="${i}" data-l="${code}">🐢 ببطء</button>
+    <button class="btn small ghost" data-trans="1">${prefs.trans ? '🙈 خبّي الترجمة' : '👁️ اظهر الترجمة'}</button>
+  </div>
+  <div class="reader" data-text="${code}-${i}">${T.s.map(([s, e], k) => `<div class="sent">
+    <div class="src">${words(s)}</div>
+    <div class="en" id="en-${k}">${esc(e)}</div>
+    <div class="tools"><button class="btn small ghost" data-say="${esc(s)}" data-l="${code}">🔊 الجملة</button>${prefs.trans ? '' : `<button class="btn small ghost" data-showen="${k}">🇬🇧 الترجمة</button>`}</div>
+  </div>`).join('')}</div>
+  <button class="btn main wide" style="margin-top:16px" data-go="vocab-${code}-${i}">✅ خلّصت القراية — وريني الكلمات</button></div>`;
+}
+
+function textWords(code, i) {
+  const T = LANGS[code].texts[i], seen = new Set(), out = [];
+  T.s.forEach(([s]) => (s.match(/\p{L}+/gu) || []).forEach(w => { const k = w.toLowerCase(); if (!seen.has(k)) { seen.add(k); out.push({ t: k, m: T.v[k] || '', ex: s }); } }));
+  return out;
+}
+function viewVocab(code, i) {
+  const L = LANGS[code], T = L.texts[i];
+  if (!read[code + '-' + i]) { read[code + '-' + i] = Date.now(); store.set('read', read); markDay(); }
+  const ws = textWords(code, i), fresh = ws.filter(w => !inDeck(code, w.t)).length;
+  return `<div style="--c:${L.color}">${bar('📝 كلمات النص', 'read-' + code + '-' + i)}
+  <p class="panel" style="margin-top:0">برافو، خلّصت <b class="tx">${esc(T.title)}</b> 👏<br>النص فيه <b>${ar(ws.length)}</b> كلمة، منهم <b>${ar(fresh)}</b> مش في جدولك. شيل علامة ✓ من الكلمات اللي إنت عارفها، واختار إمتى تراجع الباقي.</p>
+  <div class="row" style="margin:12px 0"><button class="btn small ghost" data-vsel="all">اختار الكل</button><button class="btn small ghost" data-vsel="none">شيل الكل</button></div>
+  <div class="stack" id="vlist">${ws.map(w => { const on = inDeck(code, w.t); return `<label class="vrow">
+    <input type="checkbox" ${on ? 'disabled' : 'checked'} data-vt="${esc(w.t)}" data-vm="${esc(w.m)}" data-vex="${esc(w.ex)}">
+    <span class="vw tx">${esc(w.t)}</span><span class="vm">${esc(w.m)}</span>${on ? '<span class="in">✓ في جدولك</span>' : ''}
+    ${sayBtn(code, w.t)}</label>`; }).join('')}</div>
+  <div class="sticky-foot"><b>ضيف المختار لجدول الحفظ — راجعه:</b>
+    <div class="manual" style="margin:0"><button class="btn main" data-vadd="1" data-l="${code}">بكرة</button><button class="btn" data-vadd="7" data-l="${code}">بعد أسبوع</button><button class="btn" data-vadd="30" data-l="${code}">بعد شهر</button></div></div></div>`;
+}
+
+// ---------- review ----------
+let rv = null;
+function startReview(lang) { rv = { lang, queue: dueList(lang), i: 0, shown: false, ok: 0 }; }
+function viewReview(lang) {
+  if (!rv || rv.lang !== lang) startReview(lang);
+  const L = lang ? LANGS[lang] : null, back = lang ? 'lang-' + lang : 'home';
+  const head = bar('🔁 المراجعة' + (L ? ' — ' + L.name : ''), back);
+  if (!rv.queue.length) {
+    const next = deck.filter(d => !lang || d.lang === lang).sort((a, b) => a.due - b.due)[0];
+    return head + `<div class="flash"><div style="font-size:60px">🎉</div><b style="font-size:22px">مفيش حاجة تراجعها دلوقتي</b>
+      <p class="muted">${next ? `المراجعة الجاية: ${inDays(next.due)}` : 'ضيف كلمات من الجمل أو النصوص الأول.'}</p></div>`;
+  }
+  if (rv.i >= rv.queue.length) {
+    const n = rv.queue.length; rv = null; markDay();
+    return head + `<div class="flash"><div style="font-size:60px">✅</div><b style="font-size:22px">خلّصت المراجعة!</b><p class="muted">راجعت ${ar(n)} كلمة. ارجع بكرة تكمّل.</p>
+      <button class="btn main" data-go="${back}">تمام</button></div>`;
+  }
+  const it = rv.queue[rv.i], IL = LANGS[it.lang], nextD = IV[Math.min(it.lvl, IV.length - 1)];
+  return `<div style="--c:${IL.color}">${head}
+  <div class="progress"><i style="width:${Math.round(100 * rv.i / rv.queue.length)}%"></i></div>
+  <p class="muted" style="margin:0 4px 8px">${ar(rv.i + 1)} من ${ar(rv.queue.length)} · ${IL.flag} — فاكر معناها؟ قولها بصوتك الأول، وبعدين اكشف المعنى.</p>
+  <div class="flash">
+    <div class="front">${esc(it.t)}</div>${it.tr ? `<div class="ctx">${esc(it.tr)}</div>` : ''}
+    <div class="row" style="justify-content:center">${sayBtn(it.lang, it.t)}</div>
+    ${rv.shown ? `<div class="back">${esc(it.m)}</div>${it.ex && it.ex.toLowerCase() !== it.t.toLowerCase() ? `<div class="ctx">«${esc(it.ex)}»</div>` : ''}` : `<button class="btn main" data-reveal-card="1">👁️ اكشف المعنى</button>`}
+  </div>
+  ${rv.shown ? `<div class="grade"><button class="btn no" data-grade="no">❌ مكنتش فاكر<small>هتظهر تاني بعد ١٠ دقايق</small></button>
+    <button class="btn yes" data-grade="yes">✅ كنت فاكر<small>المراجعة الجاية ${ivLabel(nextD)}</small></button></div>
+    <p class="muted" style="margin:12px 4px 0;font-size:14px">أو اختار إنت إمتى تشوفها تاني:</p>
+    <div class="manual"><button class="btn" data-grade="1">بكرة</button><button class="btn" data-grade="7">أسبوع</button><button class="btn" data-grade="30">شهر</button></div>` : ''}</div>`;
+}
+function grade(g) {
+  const it = rv.queue[rv.i], d = deck.find(x => x.id === it.id);
+  if (d) {
+    if (g === 'no') { d.lvl = 0; d.due = Date.now() + 10 * 60 * 1000; rv.queue.push(d); }
+    else if (g === 'yes') { const n = IV[Math.min(d.lvl, IV.length - 1)]; d.lvl = Math.min(d.lvl + 1, IV.length - 1); d.due = Date.now() + n * DAY; }
+    else { const n = +g; d.due = Date.now() + n * DAY; d.lvl = Math.max(0, IV.findIndex(x => x >= n)); }
+    saveDeck();
+  }
+  rv.i++; rv.shown = false; route();
+}
+
+// ---------- quiz ----------
+let qz = null;
+function quizPool(code) {
+  const L = LANGS[code], pool = new Map();
+  deck.filter(d => d.lang === code).forEach(d => pool.set(d.t.toLowerCase(), { t: d.t, m: d.m, tr: d.tr }));
+  if (pool.size < 12) {
+    L.phrases.forEach(c => c.items.forEach(([t, m, tr]) => pool.has(t.toLowerCase()) || pool.set(t.toLowerCase(), { t, m, tr })));
+    L.texts.forEach(T => Object.entries(T.v).forEach(([t, m]) => pool.has(t) || pool.set(t, { t, m })));
+  }
+  return [...pool.values()];
+}
+function startQuiz(code, letters) {
+  const L = LANGS[code];
+  let pool = letters ? L.abc.map(x => ({ t: x.l, m: `${x.ar} — ${x.s}`, letter: 1 })) : quizPool(code);
+  const items = shuffle(pool).slice(0, 10);
+  qz = { code, letters, pool, items, i: 0, score: 0, picked: null, wrong: [],
+    qs: items.map((it, k) => {
+      const listen = !letters && k % 3 === 2;
+      const others = shuffle(pool.filter(p => p.t !== it.t && p.m !== it.m)).slice(0, 3);
+      return { it, listen, opts: shuffle([it, ...others]) };
+    }) };
+}
+function viewQuiz(code, letters) {
+  const L = LANGS[code], back = letters ? 'abc-' + code : 'lang-' + code;
+  if (!qz || qz.code !== code || !!qz.letters !== !!letters) startQuiz(code, letters);
+  const head = `<div style="--c:${L.color}">` + bar(letters ? '🎯 اختبار الحروف' : '🎯 اختبرني', back);
+  if (qz.i >= qz.qs.length) {
+    const s = qz.score, n = qz.qs.length, w = qz.wrong.length; qz = null; markDay();
+    return head + `<div class="flash"><div style="font-size:60px">${s >= n * .8 ? '🏆' : s >= n / 2 ? '👍' : '💪'}</div>
+      <b style="font-size:24px">${ar(s)} من ${ar(n)}</b>
+      <p class="muted">${w && !letters ? `الكلمات اللي غلطت فيها (${ar(w)}) اتضافت لجدول الحفظ عشان تراجعها.` : s === n ? 'ممتاز! كلها صح.' : 'كمّل، وكل مرة هتبقى أحسن.'}</p>
+      <div class="row" style="justify-content:center"><button class="btn main" data-quiz-again="${letters ? 1 : 0}">جولة تانية</button><button class="btn" data-go="${back}">رجوع</button></div></div></div>`;
+  }
+  const q = qz.qs[qz.i], done = qz.picked !== null;
+  const label = o => q.listen ? o.t : o.m;
+  return head + `<div class="progress"><i style="width:${Math.round(100 * qz.i / qz.qs.length)}%"></i></div>
+  <p class="muted" style="margin:0 4px 8px">سؤال ${ar(qz.i + 1)} من ${ar(qz.qs.length)} · ${q.listen ? 'اسمع واختار الكلمة' : letters ? 'الحرف ده بيتنطق إزاي؟' : 'معناها إيه؟'}</p>
+  <div class="flash" style="min-height:180px">
+    ${q.listen ? `<button class="btn main" data-say="${esc(q.it.t)}" data-l="${code}" style="font-size:22px">🔊 اسمع تاني</button>` : `<div class="front">${esc(q.it.t)}</div>`}
+    ${!q.listen && !letters ? sayBtn(code, q.it.t) : ''}
+  </div>
+  <div class="opts">${q.opts.map((o, k) => {
+    const cls = done ? (o.t === q.it.t ? 'right' : k === qz.picked ? 'wrong' : '') : '';
+    return `<button class="opt ${cls}" data-pick="${k}" ${done ? 'disabled' : ''}>${esc(label(o))}</button>`; }).join('')}</div>
+  ${done ? `<button class="btn main wide" style="margin-top:12px" data-qnext="1">${qz.i + 1 < qz.qs.length ? 'السؤال اللي بعده ←' : 'النتيجة'}</button>` : ''}</div>`;
+}
+function pick(k) {
+  const q = qz.qs[qz.i]; if (qz.picked !== null) return;
+  qz.picked = k;
+  const ok = q.opts[k].t === q.it.t;
+  if (ok) qz.score++; else { qz.wrong.push(q.it); if (!qz.letters) addItem({ lang: qz.code, t: q.it.t, m: q.it.m, tr: q.it.tr }, 0, true); }
+  if (q.listen || !qz.letters) say(qz.code, q.it.t);
+  route();
+}
+
+// ---------- words table ----------
+let wf = 'all';
+function viewWords() {
+  const list = deck.filter(d => wf === 'all' || d.lang === wf).sort((a, b) => a.due - b.due);
+  return bar('📋 جدول الحفظ') + `
+  <div class="filters">${[['all', 'الكل'], ...Object.values(LANGS).map(L => [L.code, L.flag + ' ' + L.name])].map(([k, l]) => `<button class="chip" data-wf="${k}" aria-pressed="${wf === k}">${l}</button>`).join('')}</div>
+  ${list.length ? `<div class="tblwrap"><table class="tbl"><thead><tr><th>الكلمة</th><th>المعنى</th><th>المراجعة</th><th></th></tr></thead><tbody>
+  ${list.map(d => `<tr><td><span class="tx"><b>${esc(d.t)}</b></span>${d.tr ? `<br><small class="tx muted">${esc(d.tr)}</small>` : ''}</td><td class="tx muted">${esc(d.m)}</td><td style="white-space:nowrap">${inDays(d.due)}</td>
+    <td><div class="acts">${sayBtn(d.lang, d.t)}<button class="icon" data-del="${esc(d.id)}" aria-label="امسح">🗑️</button></div></td></tr>`).join('')}
+  </tbody></table></div>` : '<p class="empty">جدولك فاضي. ضيف كلمات من «جمل كل يوم» أو من النصوص بزرار ➕.</p>'}`;
+}
+
+function viewTips() {
+  const T = [
+    ['🔁 التكرار المتباعد', 'المخ بينسى الكلمة بعد يوم، فلو راجعتها قبل ما تنساها بتثبت أكتر. وكل مرة تفتكرها صح، المسافة بتكبر: بكرة، بعد ٣ أيام، أسبوع، أسبوعين، شهر.', 'ده اللي بيعمله «راجع» و«جدول الحفظ» لوحدهم.'],
+    ['🙈 افتكر قبل ما تبص', 'محاولة إنك تفتكر الكلمة من غير ما تشوف المعنى أقوى بكتير من إنك تقراها تاني. حتى لو غلطت.', 'شغّل «خبّي المعنى» في الجمل، و«اكشف المعنى» في المراجعة.'],
+    ['🗣️ قول بصوت عالي', 'اسمع الجملة وكرّرها وراها على طول بنفس الإيقاع (Shadowing). كده بتتعلم النطق وبتحفظ في نفس الوقت.', 'دوس 🔊 أو 🐢، وكرّر وراه ٣ مرات.'],
+    ['📖 الكلمة جوه جملة', 'الكلمة لوحدها بتتنسي، لكن جوه قصة أو جملة بتفتكرها بسهولة. علشان كده كل كلمة بتحفظها من نص بتتحفظ معاها الجملة.', 'اقرا النصوص ودوس على الكلمات.'],
+    ['🙋 ابدأ بنفسك', 'أسرع كلام هتحتاجه هو الكلام عن نفسك: اسمك، شغلك، بتحب إيه. احفظه كويس الأول وكأنه أغنية.', 'افتح «عرّف نفسك» وقوله كل يوم.'],
+    ['🖼️ اربط بصورة أو كلمة عربي', 'اعمل ربط مضحك: الروسي «сыр» (سير) يعني جبنة، فتخيّل جبنة ماشية في السير. كل ما يكون الربط غريب، بتفتكره أكتر.', 'لما تضيف كلمة، فكّر في ربط ليها قبل المراجعة.'],
+    ['⏱️ ١٥ دقيقة كل يوم أحسن من ساعتين مرة', 'الاستمرار أهم من الكمية. خلّي العدّاد 🔥 يكبر كل يوم.', 'اتبع «خطة اليوم» في صفحة اللغة.'],
+    ['🎯 اختبر نفسك', 'الاختبار مش للدرجة، ده طريقة حفظ. والكلمات اللي بتغلط فيها هي أهم كلمات تراجعها.', 'استخدم «اختبرني»، والغلط بيتضاف لوحده لجدولك.']
+  ];
+  return bar('🧠 طرق الحفظ') + `<div class="stack">${T.map(([h, p, how]) => `<div class="tip"><h3>${h}</h3><p>${p}</p><p class="how">← ${how}</p></div>`).join('')}</div>`;
+}
+
+function viewBackup() {
+  const data = JSON.stringify({ deck, profile, read, days });
+  return bar('💾 نسخة احتياطية') + `<div class="stack">
+  <div class="panel"><b>احفظ تقدّمك</b><p class="muted" style="margin:4px 0 10px">كل تقدّمك متخزّن على الجهاز ده بس. انسخ النص ده وابعته لنفسك على الواتساب أو الإيميل، عشان لو غيّرت الموبايل.</p>
+    <textarea id="bk-out" readonly rows="4" style="width:100%;direction:ltr;font-family:monospace;font-size:12px">${esc(data)}</textarea>
+    <button class="btn main wide" style="margin-top:8px" data-copybk="1">📋 انسخ</button></div>
+  <div class="panel"><b>رجّع نسخة قديمة</b><p class="muted" style="margin:4px 0 10px">الصق النص اللي نسخته قبل كده. الكلمات هتتضاف على اللي عندك، ومش هيتمسح حاجة.</p>
+    <textarea id="bk-in" rows="4" style="width:100%;direction:ltr;font-family:monospace;font-size:12px" placeholder='{"deck":[...]}'></textarea>
+    <button class="btn wide" style="margin-top:8px" data-importbk="1">📥 رجّع النسخة</button></div></div>`;
+}
+
+// ---------- download & update (installed app only) ----------
+let updState = 'idle';
+function updHTML() {
+  if (!PWA) return '';
+  const msg = { idle: '', latest: '✅ عندك آخر نسخة', available: '🆕 فيه محتوى جديد! دوس الزرار عشان تحمّله', working: '⏳ بحمّل…', offline: '📴 مفيش نت — التطبيق شغال باللي متحمّل' }[updState];
+  const n = Object.values(LANGS).reduce((s, L) => s + L.texts.length, 0);
+  return `<div class="panel upd" id="upd"><button class="btn wide" data-update="1" ${updState === 'working' ? 'disabled' : ''}>🔄 حمّل آخر تحديث</button>
+    ${msg ? `<p style="margin:8px 0 0;font-weight:800">${msg}</p>` : ''}
+    <p class="umeta">النسخة: ${new Intl.DateTimeFormat('ar-EG-u-nu-latn', { day: 'numeric', month: 'long', hour: 'numeric', minute: '2-digit' }).format(new Date(VERSION))} · ${ar(n)} نصوص</p>
+    <p class="umeta">${Object.values(LANGS).map(L => `${L.flag} ${hasVoice(L.code) ? 'الصوت موجود ✅' : 'نزّل الصوت من الإعدادات ⚠️'}`).join(' · ')}</p></div>`;
+}
+function paintUpd() { const u = $('#upd'); if (u) u.outerHTML = updHTML(); }
+async function checkUpdate() {
+  if (!PWA) return;
+  if (!navigator.onLine) { updState = 'offline'; return paintUpd(); }
+  try { const j = await (await fetch('version.json?t=' + Date.now(), { cache: 'no-store' })).json(); updState = j.v > VERSION ? 'available' : 'latest'; }
+  catch { updState = 'offline'; }
+  paintUpd();
+}
+async function downloadAll() {
+  if (!navigator.onLine) { updState = 'offline'; return paintUpd(); }
+  updState = 'working'; paintUpd();
+  try {
+    const c = await caches.open('lisan-v1');
+    for (const u of ['./', './index.html', './manifest.json', './icon-192.png', './icon-512.png']) { const r = await fetch(u, { cache: 'reload' }); if (r.ok) await c.put(u, r); }
+    const fl = document.querySelector('link[href*="fonts.googleapis"]');
+    if (fl) {
+      const css = await fetch(fl.href).then(r => { c.put(fl.href, r.clone()); return r.text(); });
+      for (const m of css.matchAll(/url\((https:[^)]+)\)/g)) { try { const r = await fetch(m[1]); if (r.ok) await c.put(m[1], r); } catch {} }
+    }
+    try { const reg = await navigator.serviceWorker.getRegistration(); if (reg) await reg.update(); } catch {}
+    store.set('justUpdated', true); location.reload();
+  } catch { updState = 'offline'; paintUpd(); toast('حصلت مشكلة، جرّب تاني وإنت على واي فاي'); }
+}
+
+// ---------- word sheet ----------
+function openSheet(code, i, w) {
+  closeSheet();
+  const T = LANGS[code].texts[i], k = w.toLowerCase(), m = T.v[k] || '—';
+  const ex = (T.s.find(([s]) => (s.match(/\p{L}+/gu) || []).some(x => x.toLowerCase() === k)) || [''])[0];
+  const on = inDeck(code, k);
+  const d = document.createElement('div');
+  d.innerHTML = `<div class="scrim" data-close="1"></div><div class="sheet" role="dialog" style="--c:${LANGS[code].color}">
+    <div class="row" style="align-items:center"><div class="word" style="flex:1">${esc(k)}</div>${sayBtn(code, k)}</div>
+    <div class="mean">${esc(m)}</div>
+    ${on ? '<p style="margin:0;color:var(--good);font-weight:800">✓ موجودة في جدول الحفظ</p>' : `<b>ضيفها لجدول الحفظ — راجعها:</b>
+    <div class="manual" style="margin:0"><button class="btn main" data-sadd="1">بكرة</button><button class="btn" data-sadd="7">أسبوع</button><button class="btn" data-sadd="30">شهر</button></div>`}
+    <button class="btn ghost" data-close="1">قفل</button></div>`;
+  d.id = 'sheetWrap'; d.dataset.l = code; d.dataset.t = k; d.dataset.m = m; d.dataset.ex = ex;
+  document.body.appendChild(d);
+  if (pickVoice(code)) say(code, k);
+}
+function closeSheet() { const s = $('#sheetWrap'); if (s) s.remove(); }
+
+// ---------- router ----------
+function route() {
+  closeSheet();
+  const h = location.hash.slice(1) || 'home';
+  const [v, a, b] = h.split('-');
+  const L = a && LANGS[a];
+  let html;
+  if (v === 'lang' && L) html = viewLang(a);
+  else if (v === 'abc' && L) html = viewAbc(a);
+  else if (v === 'abcq' && L) html = viewQuiz(a, true);
+  else if (v === 'phr' && L) html = viewPhr(a);
+  else if (v === 'me' && L) html = viewMe(a);
+  else if (v === 'texts' && L) html = viewTexts(a);
+  else if (v === 'read' && L && L.texts[+b]) html = viewRead(a, +b);
+  else if (v === 'vocab' && L && L.texts[+b]) html = viewVocab(a, +b);
+  else if (v === 'review') html = viewReview(L ? a : null);
+  else if (v === 'quiz' && L) html = viewQuiz(a, false);
+  else if (v === 'words') html = viewWords();
+  else if (v === 'tips') html = viewTips();
+  else if (v === 'backup') html = viewBackup();
+  else html = viewHome();
+  $('#app').innerHTML = html;
+}
+let lastHash = '';
+function onHash() { const h = location.hash; if (h.split('-')[0] !== lastHash.split('-')[0] || h !== lastHash) window.scrollTo(0, 0); if (!h.startsWith('#review')) rv = null; if (!h.startsWith('#quiz') && !h.startsWith('#abcq')) qz = null; lastHash = h; route(); }
+function go(h) { if (location.hash.slice(1) === h) route(); else location.hash = h; }
+window.addEventListener('hashchange', onHash);
+
+// ---------- events ----------
+document.addEventListener('click', e => {
+  const b = e.target.closest('button, [data-reveal]'); if (!b) return;
+  const d = b.dataset;
+  if (d.reveal) { b.classList.add('open'); return; }
+  if (d.close) return closeSheet();
+  if (d.go) return go(d.go);
+  if (d.w) { const r = b.closest('.reader').dataset.text.split('-'); document.querySelectorAll('.w.sel').forEach(x => x.classList.remove('sel')); b.classList.add('sel'); return openSheet(r[0], +r[1], d.w); }
+  if (d.say !== undefined && d.l) return say(d.l, d.say);
+  if (d.sayallText !== undefined) return say(d.l, LANGS[d.l].texts[+d.sayallText].s.map(x => x[0]).join(' '));
+  if (d.slowallText !== undefined) return say(d.l, LANGS[d.l].texts[+d.slowallText].s.map(x => x[0]).join(' '), true);
+  if (d.sayall) return say(d.sayall, introLines(d.sayall).map(x => x[0]).join(' '));
+  if (d.add !== undefined) { const ok = addItem({ lang: d.l, t: d.add, m: d.m, tr: d.tr, ex: d.ex }, 1); if (ok !== undefined) { b.classList.add('on'); b.textContent = '✓'; } return; }
+  if (d.sadd) { const w = $('#sheetWrap').dataset; addItem({ lang: w.l, t: w.t, m: w.m, ex: w.ex }, +d.sadd); const btn = document.querySelector('.w.sel'); closeSheet(); document.querySelectorAll('.w').forEach(x => { if (x.dataset.w.toLowerCase() === w.t) x.classList.add('saved'); }); return; }
+  if (d.addintro) { let n = 0; introLines(d.addintro).forEach(([t, m]) => { if (!t.includes('…') && addItem({ lang: d.addintro, t, m }, 1, true)) n++; }); toast(n ? `✅ اتضاف ${ar(n)} جملة — هتراجعهم بكرة` : 'الجمل دي موجودة في جدولك'); return; }
+  if (d.abcf) { abcFilter = d.abcf; return route(); }
+  if (d.hideph) { prefs.hidePh = !prefs.hidePh; store.set('prefs', prefs); return route(); }
+  if (d.trans) { prefs.trans = !prefs.trans; store.set('prefs', prefs); return route(); }
+  if (d.showen) { $('#en-' + d.showen).classList.add('open'); b.remove(); return; }
+  if (d.vsel) { document.querySelectorAll('#vlist input:not(:disabled)').forEach(c => c.checked = d.vsel === 'all'); return; }
+  if (d.vadd) {
+    const sel = [...document.querySelectorAll('#vlist input:checked:not(:disabled)')];
+    if (!sel.length) return toast('اختار كلمة واحدة على الأقل');
+    sel.forEach(c => addItem({ lang: d.l, t: c.dataset.vt, m: c.dataset.vm, ex: c.dataset.vex }, +d.vadd, true));
+    toast(`✅ اتضاف ${ar(sel.length)} كلمة — هتراجعهم ${ivLabel(+d.vadd)}`); return route();
+  }
+  if (d.revealCard) { rv.shown = true; return route(); }
+  if (d.grade) return grade(d.grade);
+  if (d.pick) return pick(+d.pick);
+  if (d.qnext) { qz.i++; qz.picked = null; route(); window.scrollTo(0, 0); if (qz && qz.qs[qz.i] && qz.qs[qz.i].listen) say(qz.code, qz.qs[qz.i].it.t); return; }
+  if (d.quizAgain !== undefined) { qz = null; return route(); }
+  if (d.wf) { wf = d.wf; return route(); }
+  if (d.del) { deck = deck.filter(x => x.id !== d.del); saveDeck(); toast('اتمسحت'); return route(); }
+  if (d.update) return downloadAll();
+  if (d.voicehelp) return voiceHelp(d.voicehelp);
+  if (d.copybk) { const t = $('#bk-out'); navigator.clipboard?.writeText(t.value).then(() => toast('✅ اتنسخت'), () => { t.select(); toast('النص متحدد — انسخه'); }) ?? (t.select(), toast('النص متحدد — انسخه')); return; }
+  if (d.importbk) {
+    try {
+      const j = JSON.parse($('#bk-in').value); let n = 0;
+      (j.deck || []).forEach(x => { if (x.id && !deck.some(y => y.id === x.id)) { deck.push(x); n++; } });
+      saveDeck();
+      if (j.profile && !profile.name) { profile = j.profile; store.set('profile', profile); }
+      if (j.read) { read = { ...j.read, ...read }; store.set('read', read); }
+      if (j.days) { days = [...new Set([...days, ...j.days])]; store.set('days', days); }
+      toast(`✅ اترجعت — ${ar(n)} كلمة جديدة`); go('home');
+    } catch { toast('النص ده مش نسخة صحيحة'); }
+  }
+});
+function syncProfile() {
+  const f = $('#meForm'); if (!f) return;
+  const fd = new FormData(f);
+  profile = { name: fd.get('name').trim(), gender: fd.get('gender'), age: fd.get('age'), country: fd.get('country'), city: fd.get('city').trim(), job: fd.get('job'), hobbies: fd.getAll('hobbies').slice(0, 3) };
+  store.set('profile', profile);
+  const code = location.hash.split('-')[1];
+  $('#introOut').innerHTML = introHTML(code, introLines(code));
+}
+document.addEventListener('input', e => { if (e.target.closest('#meForm')) syncProfile(); });
+document.addEventListener('change', e => {
+  if (e.target.name === 'hobbies' && document.querySelectorAll('#meForm input[name=hobbies]:checked').length > 3) { e.target.checked = false; toast('اختار ٣ بس'); }
+  if (e.target.closest('#meForm')) syncProfile();
+});
+document.addEventListener('submit', e => e.preventDefault());
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeSheet(); });
+
+lastHash = location.hash;
+route();
+if (PWA) {
+  if (store.get('justUpdated', false)) { store.set('justUpdated', false); toast('✅ اتحدّث وكل حاجة متحمّلة للاستخدام من غير نت'); }
+  checkUpdate();
+  window.addEventListener('online', checkUpdate);
+  window.addEventListener('offline', () => { updState = 'offline'; paintUpd(); });
+}
+if ('speechSynthesis' in window) speechSynthesis.addEventListener?.('voiceschanged', () => { const h = location.hash; if (!h || h === '#home' || h.startsWith('#lang')) route(); });
+</script>
+
+<script>if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catch(() => {});</script>
+</html>
